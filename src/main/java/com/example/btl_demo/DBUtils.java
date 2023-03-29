@@ -43,7 +43,7 @@ public class DBUtils {
         stage.show();
     }
 
-    public static void SignUpUser(ActionEvent event , String username, String password) {
+    public static void SignUpUser(ActionEvent event , String username, String password, String confirmPass) {
         Connection connection = null;
         PreparedStatement psInsert = null;
         PreparedStatement psCheckUserExists = null;
@@ -61,18 +61,26 @@ public class DBUtils {
                 alert.setContentText("You can not use this username.");
                 alert.show();
             } else {
-                psInsert = connection.prepareStatement("INSERT INTO user (USERNAME , PASS) VALUES (?,?) ");
+                psInsert = connection.prepareStatement("INSERT INTO user (USERNAME , PASS, CONFIRMPASS) VALUES (?,?,?) ");
                 psInsert.setString(1, username);
                 psInsert.setString(2, password);
+                psInsert.setString(3, confirmPass);
                 psInsert.executeUpdate();
 
+                if(password.equals(confirmPass)) {
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setContentText("Sign Up Success");
+                    alert.setTitle("Success");
+                    alert.show();
+                    changeScence(event, "hello-view.fxml", "Log In", null);
+                }else {
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setContentText("Password and ConfirmPassword are difference");
+                    alert.setTitle("Warning");
+                    alert.show();
+                }
 
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setContentText("Sign Up Success");
-                alert.show();
 
-
-                changeScence(event, "hello-view.fxml", "Log In", null);
             }
 
         } catch (SQLException e) {

@@ -31,7 +31,7 @@ public class SignUpController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 if (!tf_username.getText().trim().isEmpty() && !tf_password.getText().trim().isEmpty() && !tf_confirmpass.getText().trim().isEmpty()){
-                    DBUtils.SignUpUser(event,tf_username.getText(), tf_password.getText());
+                    DBUtils.SignUpUser(event,tf_username.getText(), tf_password.getText(),tf_confirmpass.getText());
                 }else{
                     System.out.println("Please fill in all information ");
                     Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -46,6 +46,8 @@ public class SignUpController implements Initializable {
 //                    Alert alert = new Alert(Alert.AlertType.ERROR);
 //                    alert.setContentText("Password and ConfirmPassWord are different ");
 //                    alert.show();
+//
+//                    DBUtils.changeScence(event , "RegisForm.fxml", "Sign Up", null);
 //                }
             }
         });
