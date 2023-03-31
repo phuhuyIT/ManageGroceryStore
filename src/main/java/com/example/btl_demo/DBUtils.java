@@ -47,7 +47,9 @@ public class DBUtils {
         Connection connection = null;
         PreparedStatement psInsert = null;
         PreparedStatement psCheckUserExists = null;
+        PreparedStatement psDeleteUser = null;
         ResultSet resultSet = null;
+
 
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/account", "root", "123456");
@@ -74,6 +76,8 @@ public class DBUtils {
                     alert.show();
                     changeScence(event, "hello-view.fxml", "Log In", null);
                 }else {
+                    psDeleteUser =connection.prepareStatement("DELETE FROM USER WHERE PASS != CONFIRMPASS");
+                    psDeleteUser.executeUpdate();
                     Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setContentText("Password and ConfirmPassword are difference");
                     alert.setTitle("Warning");
@@ -105,6 +109,14 @@ public class DBUtils {
             if (psInsert != null){
                 try{
                     psInsert.close();
+                }catch (SQLException e){
+                    e.printStackTrace();
+                }
+            }
+
+            if (psDeleteUser != null){
+                try{
+                    psDeleteUser.close();
                 }catch (SQLException e){
                     e.printStackTrace();
                 }
