@@ -9,6 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #171717;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.btl_demo.HelloController">
    <left>
@@ -43,8 +44,14 @@
                   <Image url="@../../../image/padlock_1.png" />
                </image>
             </ImageView>
-            <Label layoutX="50.0" layoutY="359.0" prefHeight="26.0" prefWidth="129.0" text="Don't have account ?" textFill="#f20303" />
-            <Hyperlink fx:id="btn_signup" layoutX="180.0" layoutY="360.0" prefHeight="24.0" prefWidth="98.0" text="Register now !" underline="true" />
+            <Label layoutX="37.0" layoutY="351.0" prefHeight="27.0" prefWidth="172.0" text="Don't have account ?" textFill="#f20303">
+               <font>
+                  <Font size="16.0" />
+               </font></Label>
+            <Hyperlink fx:id="btn_signup" layoutX="185.0" layoutY="347.0" prefHeight="35.0" prefWidth="129.0" text="Register now !" underline="true">
+               <font>
+                  <Font size="15.0" />
+               </font></Hyperlink>
          </children>
       </AnchorPane>
    </center>

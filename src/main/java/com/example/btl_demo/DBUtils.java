@@ -151,6 +151,10 @@ public class DBUtils {
                 while(resultSet.next()){
                     String retrievedPassword = resultSet.getString("PASS");
                     if (retrievedPassword.equals(password)){
+                        Alert alert = new Alert(Alert.AlertType.WARNING);
+                        alert.setContentText("Login Success ! ");
+                        alert.setTitle("Login Success");
+                        alert.show();
                         changeScence(event, "logged.fxml", "Welcome",username);
                     }else{
                         System.out.println("Pass did not match ");

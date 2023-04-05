@@ -11,7 +11,6 @@ import java.util.ResourceBundle;
 
 public class HelloController implements Initializable {
 
-
     @FXML
     private Button btn_login;
 

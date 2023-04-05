@@ -1,5 +1,6 @@
 package com.example.btl_demo;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -8,6 +9,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 import java.net.URL;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class LoggedController implements Initializable {
@@ -16,7 +19,11 @@ public class LoggedController implements Initializable {
     private Button btn_logout;
 
     @FXML
-    private Label label_welcome;
+    private Label wlc_user;
+
+    @FXML
+    private Label lblClock;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -27,10 +34,44 @@ public class LoggedController implements Initializable {
             }
         });
 
+        Runnable clock = new Runnable() {
+            @Override
+            public void run() {
+                runClock();
+            }
+        };
+
+        Thread newClock = new Thread(clock); //Creating new thread
+        newClock.setDaemon(true); //Thread will automatically close on applications closing
+        newClock.start(); //Starting Thread
+
     }
 
     public void setUserInformation(String username){
-        label_welcome.setText("Welcome" + "  " +  username +"!");
+        wlc_user.setText( username );
 
+    }
+
+    //Setting Clock within a new Thread
+
+
+    public void runClock() {
+        while (true) {
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    // Getting the system time in a string
+                    String time = LocalTime.now().format(DateTimeFormatter.ofPattern("hh:mm:ss a"));
+                    // Setting the time in a label
+                    lblClock.setText(time);
+                }
+            });
+
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

@@ -11,11 +11,11 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.btl_demo.SignUpController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.btl_demo.SignUpController">
    <left>
-      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="270.0" style="-fx-background-color: #00FFFF;" BorderPane.alignment="CENTER">
+      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="680.0" prefWidth="240.0" style="-fx-background-color: #00FFFF;" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="236.0" fitWidth="224.0" layoutX="26.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="236.0" fitWidth="224.0" layoutX="29.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../image/convenience-store-96.png" />
                </image>
@@ -23,44 +23,44 @@
          </children>
       </AnchorPane>
    </left>
-   <right>
-      <AnchorPane prefHeight="600.0" prefWidth="431.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
+   <center>
+      <AnchorPane prefHeight="600.0" prefWidth="391.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="91.0" fitWidth="106.0" layoutX="117.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="91.0" fitWidth="106.0" layoutX="135.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../image/user_1.png" />
                </image>
             </ImageView>
-            <TextField fx:id="tf_username" layoutX="62.0" layoutY="165.0" prefHeight="27.0" prefWidth="247.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
-            <PasswordField fx:id="tf_password" layoutX="62.0" layoutY="214.0" prefHeight="27.0" prefWidth="247.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
-            <PasswordField fx:id="tf_confirmpass" layoutX="61.0" layoutY="262.0" prefHeight="27.0" prefWidth="249.0" promptText="Confirm Password" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
-            <Button fx:id="btn_signup" layoutX="55.0" layoutY="315.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="247.0" style="-fx-background-color: #FF9933;" text="Sign Up" />
-            <Label layoutX="78.0" layoutY="364.0" prefHeight="24.0" prefWidth="133.0" text="Have an Account ? " textFill="#e40b0b">
+            <TextField fx:id="tf_username" layoutX="63.0" layoutY="173.0" prefHeight="27.0" prefWidth="247.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+            <PasswordField fx:id="tf_password" layoutX="63.0" layoutY="217.0" prefHeight="27.0" prefWidth="247.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+            <PasswordField fx:id="tf_confirmpass" layoutX="62.0" layoutY="261.0" prefHeight="27.0" prefWidth="249.0" promptText="Confirm Password" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+            <Button fx:id="btn_signup" layoutX="67.0" layoutY="314.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="239.0" style="-fx-background-color: #FF9933;" text="Sign Up" />
+            <Label layoutX="67.0" layoutY="365.0" prefHeight="27.0" prefWidth="156.0" text="Have an Account ? " textFill="#e40b0b">
                <font>
-                  <Font size="13.0" />
+                  <Font size="17.0" />
                </font>
             </Label>
-            <Hyperlink fx:id="btn_log_in" layoutX="192.0" layoutY="362.0" prefHeight="23.0" prefWidth="98.0" text="Log In" underline="true">
+            <Hyperlink fx:id="btn_log_in" layoutX="226.0" layoutY="361.0" prefHeight="35.0" prefWidth="72.0" text="Log In" underline="true">
                <font>
-                  <Font size="15.0" />
+                  <Font size="17.0" />
                </font>
             </Hyperlink>
-            <ImageView fitHeight="26.0" fitWidth="28.0" layoutX="19.0" layoutY="164.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="26.0" fitWidth="28.0" layoutX="21.0" layoutY="174.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../image/user_2.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="25.0" fitWidth="24.0" layoutX="21.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="25.0" fitWidth="24.0" layoutX="22.0" layoutY="218.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../image/key_1.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="27.0" fitWidth="28.0" layoutX="18.0" layoutY="261.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="27.0" fitWidth="28.0" layoutX="21.0" layoutY="261.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../image/padlock_1.png" />
                </image>
             </ImageView>
          </children>
       </AnchorPane>
-   </right>
+   </center>
 </BorderPane>
