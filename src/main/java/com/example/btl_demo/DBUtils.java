@@ -6,6 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.input.KeyCombination;
 import javafx.stage.Stage;
 import org.controlsfx.control.action.Action;
 import org.controlsfx.control.tableview2.filter.filtereditor.SouthFilter;
@@ -39,7 +40,11 @@ public class DBUtils {
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage .setTitle(title);
-        stage.setScene(new Scene(root, 600, 400));
+        stage.setMaximized(true);
+        stage.setFullScreen(true);
+       //stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
+        stage.setScene(new Scene(root,1280, 720));
+        stage.centerOnScreen();
         stage.show();
     }
 
@@ -47,7 +52,7 @@ public class DBUtils {
         Connection connection = null;
         PreparedStatement psInsert = null;
         PreparedStatement psCheckUserExists = null;
-        PreparedStatement psDeleteUser = null;
+     //   PreparedStatement psDeleteUser = null;
         ResultSet resultSet = null;
 
 
@@ -63,26 +68,36 @@ public class DBUtils {
                 alert.setContentText("You can not use this username.");
                 alert.show();
             } else {
-                psInsert = connection.prepareStatement("INSERT INTO user (USERNAME , PASS, CONFIRMPASS) VALUES (?,?,?) ");
-                psInsert.setString(1, username);
-                psInsert.setString(2, password);
-                psInsert.setString(3, confirmPass);
-                psInsert.executeUpdate();
-
-                if(password.equals(confirmPass)) {
-                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                if (confirmPass.equals(password)){
+                    psInsert = connection.prepareStatement("INSERT INTO user (USERNAME , PASS) VALUES (?,?) ");
+                    psInsert.setString(1, username);
+                    psInsert.setString(2, password);
+                  //  psInsert.setString(3, confirmPass);
+                    psInsert.executeUpdate();
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                     alert.setContentText("Sign Up Success");
                     alert.setTitle("Success");
                     alert.show();
                     changeScence(event, "hello-view.fxml", "Log In", null);
-                }else {
-                    psDeleteUser =connection.prepareStatement("DELETE FROM USER WHERE PASS != CONFIRMPASS");
-                    psDeleteUser.executeUpdate();
-                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                }else{
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setContentText("Password and ConfirmPassword are difference");
                     alert.setTitle("Warning");
                     alert.show();
                 }
+
+
+
+//                if(password.equals(confirmPass)) {
+//
+//                }else {
+////                    psDeleteUser =connection.prepareStatement("DELETE FROM USER WHERE PASS != CONFIRMPASS");
+////                    psDeleteUser.executeUpdate();
+////                    Alert alert = new Alert(Alert.AlertType.ERROR);
+////                    alert.setContentText("Password and ConfirmPassword are difference");
+////                    alert.setTitle("Warning");
+////                    alert.show();
+//                }
 
 
             }
@@ -114,13 +129,13 @@ public class DBUtils {
                 }
             }
 
-            if (psDeleteUser != null){
-                try{
-                    psDeleteUser.close();
-                }catch (SQLException e){
-                    e.printStackTrace();
-                }
-            }
+//            if (psDeleteUser != null){
+//                try{
+//                    psDeleteUser.close();
+//                }catch (SQLException e){
+//                    e.printStackTrace();
+//                }
+//            }
 
             if (connection != null){
                 try{
@@ -151,7 +166,7 @@ public class DBUtils {
                 while(resultSet.next()){
                     String retrievedPassword = resultSet.getString("PASS");
                     if (retrievedPassword.equals(password)){
-                        Alert alert = new Alert(Alert.AlertType.WARNING);
+                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                         alert.setContentText("Login Success ! ");
                         alert.setTitle("Login Success");
                         alert.show();

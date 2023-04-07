@@ -27,7 +27,7 @@
       <AnchorPane prefHeight="443.0" prefWidth="394.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
          <children>
             <PasswordField fx:id="tf_password" layoutX="68.0" layoutY="238.0" prefHeight="26.0" prefWidth="205.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
-            <Button fx:id="btn_login" layoutX="52.0" layoutY="298.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="238.0" style="-fx-background-color: #FF9933;" text="Log In" />
+            <Button fx:id="btn_login" layoutX="69.0" layoutY="300.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="204.0" style="-fx-background-color: #FF9933;" text="Log In" />
             <TextField fx:id="tf_username" layoutX="70.0" layoutY="180.0" prefHeight="26.0" prefWidth="202.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
             <ImageView fitHeight="96.0" fitWidth="90.0" layoutX="126.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
                <image>

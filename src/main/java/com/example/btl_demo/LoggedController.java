@@ -53,8 +53,6 @@ public class LoggedController implements Initializable {
     }
 
     //Setting Clock within a new Thread
-
-
     public void runClock() {
         while (true) {
             Platform.runLater(new Runnable() {

@@ -49,27 +49,27 @@
                               <Font size="19.0" />
                            </font>
                         </Label>
-                        <Button layoutX="19.0" layoutY="204.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="211.0" style="-fx-background-radius: 20px; -fx-background-color: transparent;" text="Feature 1 ">
+                        <Button layoutX="19.0" layoutY="204.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="211.0" style="-fx-background-radius: 20px;" text="DashBoard">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </Button>
-                        <Button layoutX="22.0" layoutY="278.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="212.0" style="-fx-background-radius: 20px;" text="Feature 1 ">
+                        <Button layoutX="22.0" layoutY="278.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="212.0" style="-fx-background-radius: 20px;" text="Feature 2">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </Button>
-                        <Button layoutX="18.0" layoutY="341.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="212.0" style="-fx-background-radius: 20px;" text="Feature 1 ">
+                        <Button layoutX="18.0" layoutY="341.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="212.0" style="-fx-background-radius: 20px;" text="Feature 3 ">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </Button>
-                        <Button layoutX="19.0" layoutY="404.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="212.0" style="-fx-background-radius: 20px;" text="Feature 1 ">
+                        <Button layoutX="19.0" layoutY="404.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="212.0" style="-fx-background-radius: 20px;" text="Feature 4 ">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </Button>
-                        <Button layoutX="19.0" layoutY="467.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="212.0" style="-fx-background-radius: 20px;" text="Feature 1 ">
+                        <Button layoutX="19.0" layoutY="467.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="212.0" style="-fx-background-radius: 20px;" text="Feature 5 ">
                            <font>
                               <Font size="22.0" />
                            </font>
