@@ -6,14 +6,11 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.input.KeyCombination;
 import javafx.stage.Stage;
-import org.controlsfx.control.action.Action;
-import org.controlsfx.control.tableview2.filter.filtereditor.SouthFilter;
 
-import java.io.Console;
 import java.io.IOException;
 import java.sql.*;
+import com.example.btl_demo.SignUpController;
 
 public class DBUtils {
     public static void changeScence(ActionEvent event , String fxmlFile , String title , String username){
@@ -23,8 +20,8 @@ public class DBUtils {
             try {
                 FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource(fxmlFile));
                 root = loader.load();
-                LoggedController loggedController = loader.getController();
-                loggedController.setUserInformation(username);
+                HomeController homeController = loader.getController();
+                homeController.setUserInformation(username);
 
             }catch (IOException e){
                 e.printStackTrace();
@@ -48,11 +45,10 @@ public class DBUtils {
         stage.show();
     }
 
-    public static void SignUpUser(ActionEvent event , String username, String password, String confirmPass) {
+    public static void SignUpUser(ActionEvent event , String username, String password, String confirmPass, String src_imageuser) {
         Connection connection = null;
         PreparedStatement psInsert = null;
         PreparedStatement psCheckUserExists = null;
-     //   PreparedStatement psDeleteUser = null;
         ResultSet resultSet = null;
 
 
@@ -69,10 +65,10 @@ public class DBUtils {
                 alert.show();
             } else {
                 if (confirmPass.equals(password)){
-                    psInsert = connection.prepareStatement("INSERT INTO user (USERNAME , PASS) VALUES (?,?) ");
+                    psInsert = connection.prepareStatement("INSERT INTO user (USERNAME , PASS, AVATAR_SRC) VALUES (?,?,?) ");
                     psInsert.setString(1, username);
                     psInsert.setString(2, password);
-                  //  psInsert.setString(3, confirmPass);
+                    psInsert.setString(3, src_imageuser);
                     psInsert.executeUpdate();
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                     alert.setContentText("Sign Up Success");
@@ -85,21 +81,6 @@ public class DBUtils {
                     alert.setTitle("Warning");
                     alert.show();
                 }
-
-
-
-//                if(password.equals(confirmPass)) {
-//
-//                }else {
-////                    psDeleteUser =connection.prepareStatement("DELETE FROM USER WHERE PASS != CONFIRMPASS");
-////                    psDeleteUser.executeUpdate();
-////                    Alert alert = new Alert(Alert.AlertType.ERROR);
-////                    alert.setContentText("Password and ConfirmPassword are difference");
-////                    alert.setTitle("Warning");
-////                    alert.show();
-//                }
-
-
             }
 
         } catch (SQLException e) {
@@ -128,14 +109,6 @@ public class DBUtils {
                     e.printStackTrace();
                 }
             }
-
-//            if (psDeleteUser != null){
-//                try{
-//                    psDeleteUser.close();
-//                }catch (SQLException e){
-//                    e.printStackTrace();
-//                }
-//            }
 
             if (connection != null){
                 try{
@@ -170,7 +143,7 @@ public class DBUtils {
                         alert.setContentText("Login Success ! ");
                         alert.setTitle("Login Success");
                         alert.show();
-                        changeScence(event, "logged.fxml", "Welcome",username);
+                        changeScence(event, "homePage.fxml", "Welcome",username);
                     }else{
                         System.out.println("Pass did not match ");
                         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -205,5 +178,17 @@ public class DBUtils {
                 }
             }
         }
+    }
+
+    public static String getLink_imgFromDB(Connection connection, String username) throws SQLException {
+        String sql = "SELECT USERNAME , AVATAR_SRC FROM user WHERE USERNAME = ?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, username);
+        ResultSet result = statement.executeQuery();
+        if (result.next()) {
+            String myString = result.getString("AVATAR_SRC");
+            return myString ;
+        }
+        return null;
     }
 }

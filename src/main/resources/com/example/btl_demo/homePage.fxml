@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="678.0" prefWidth="823.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.btl_demo.LoggedController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="678.0" prefWidth="823.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.btl_demo.HomeController">
    <children>
       <AnchorPane prefHeight="708.0" prefWidth="796.0">
          <children>
@@ -29,11 +29,7 @@
                <left>
                   <AnchorPane prefHeight="649.0" prefWidth="274.0" style="-fx-background-color: #00FFFF;" BorderPane.alignment="CENTER">
                      <children>
-                        <ImageView fitHeight="95.0" fitWidth="97.0" layoutX="77.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../image/user_1.png" />
-                           </image>
-                        </ImageView>
+                        <ImageView fx:id="img_user" fitHeight="89.0" fitWidth="84.0" layoutX="83.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" />
                         <Button fx:id="btn_logout" layoutX="33.0" layoutY="627.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="179.0" style="-fx-background-radius: 8px;" text="Log Out">
                            <font>
                               <Font size="18.0" />
@@ -76,7 +72,7 @@
                         </Button>
                         <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="45.0" layoutY="632.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../image/exit.png" />
+                              <Image url="@image/exit.png" />
                            </image>
                         </ImageView>
                         <Line endX="100.0" layoutX="125.0" layoutY="192.0" startX="-100.0" />

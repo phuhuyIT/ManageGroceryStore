@@ -17,7 +17,7 @@
          <children>
             <ImageView fitHeight="236.0" fitWidth="241.0" layoutX="32.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../image/convenience-store-96.png" />
+                  <Image url="@image/convenience-store-96.png" />
                </image>
             </ImageView>
          </children>
@@ -29,19 +29,14 @@
             <PasswordField fx:id="tf_password" layoutX="68.0" layoutY="238.0" prefHeight="26.0" prefWidth="205.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
             <Button fx:id="btn_login" layoutX="69.0" layoutY="300.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="204.0" style="-fx-background-color: #FF9933;" text="Log In" />
             <TextField fx:id="tf_username" layoutX="70.0" layoutY="180.0" prefHeight="26.0" prefWidth="202.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
-            <ImageView fitHeight="96.0" fitWidth="90.0" layoutX="126.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../image/user_1.png" />
-               </image>
-            </ImageView>
             <ImageView fitHeight="35.0" fitWidth="44.0" layoutX="20.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../image/user_2.png" />
+                  <Image url="@image/user_2.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="36.0" fitWidth="34.0" layoutX="20.0" layoutY="234.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../image/padlock_1.png" />
+                  <Image url="@image/padlock_1.png" />
                </image>
             </ImageView>
             <Label layoutX="37.0" layoutY="351.0" prefHeight="27.0" prefWidth="172.0" text="Don't have account ?" textFill="#f20303">
@@ -52,6 +47,11 @@
                <font>
                   <Font size="15.0" />
                </font></Hyperlink>
+            <ImageView fitHeight="159.0" fitWidth="207.0" layoutX="81.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/PHmart.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </center>
