@@ -5,11 +5,9 @@ import DatabaseConnection.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Vector;
 public class CustomerDAO implements DaoInterface <Customer>{
     Connection con = null;
     PreparedStatement pstmt = null;
@@ -33,11 +31,19 @@ public class CustomerDAO implements DaoInterface <Customer>{
     }
 
     @Override
-    public int insert(Customer customer) {
+    public int insert(Customer cus) {
         int result;
-        String url="insert into CUSTOMER (CUSTOMERID, FULLNAME, LOCATION, EMAIL, DEBIT, CREDIT, PHONE) values (1000, 'PHU HUY', 'Wenhe', 'DHGA0@wix.com', 1021, 1208, '123 456 7890')";
+        String url="insert into CUSTOMER (CUSTOMERID, FULLNAME, LOCATION, EMAIL, DEBIT, CREDIT, PHONE)"
+                    + "values (?,?,?,?,?,?,?)";
         try {
             pstmt = con.prepareStatement(url);
+            pstmt.setInt(1,cus.getCustomersId());
+            pstmt.setString(2, cus.getFullName());
+            pstmt.setString(3, cus.getLocation());
+            pstmt.setString(4, cus.getEmail());
+            pstmt.setString(5,cus.getDebit());
+            pstmt.setString(6,cus.getCredit());
+            pstmt.setString(7,cus.getPhone());
             result = pstmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
