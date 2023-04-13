@@ -35,11 +35,13 @@ public class CustomerDAO implements DaoInterface <Customer>{
     public void insert(Customer cus) {
         String findCustomerByID = "SELECT * FROM CUSTOMER WHERE CUSTOMERID = ?";
         try {
+            pstmt = con.prepareStatement(findCustomerByID);
             pstmt.setInt(1,cus.getCustomersId());
-            rs= pstmt.executeQuery(findCustomerByID);
+            rs= pstmt.executeQuery();
             if(rs.next()){
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("This customer has already been added");
+                System.out.println("This customer has already been added");
+//                Alert alert = new Alert(Alert.AlertType.ERROR);
+//                alert.setContentText("This customer has already been added");
             }else{
                 addFunction(cus);
             }
