@@ -36,9 +36,8 @@ public class HomeController implements Initializable {
 
     @FXML
     private ImageView img_user;
-
-    private String userName;
     private String avatarSrc;
+    private String userName;
     private HashMap<String, String> acc = new HashMap<String, String>();
 
 
@@ -47,7 +46,7 @@ public class HomeController implements Initializable {
         btn_logout.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                DBUtils.changeScence(actionEvent, "hello-view.fxml", "Log In", null);
+                DBUtils.changeScence1(actionEvent, "hello-view.fxml", "Log In", null);
             }
         });
 
@@ -62,11 +61,11 @@ public class HomeController implements Initializable {
         newClock.setDaemon(true); //Thread will automatically close on applications closing
         newClock.start(); //Starting Thread
 
-       //Lấy dữ liệu tên người dùng và link ảnh từ database và put vào HashMap
+        //Lấy dữ liệu tên người dùng và link ảnh từ database và put vào HashMap
         try {
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/account", "root", "123456");
-                Statement statement = connection.createStatement();
-                ResultSet resultSet = statement.executeQuery("SELECT USERNAME,AVATAR_SRC FROM USER ") ;
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/account", "root", "13062003");
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT USERNAME,AVATAR_SRC FROM USER ") ;
             while (resultSet.next()) {
                 userName = resultSet.getString("USERNAME");
                 avatarSrc = resultSet.getString("AVATAR_SRC");
@@ -77,17 +76,17 @@ public class HomeController implements Initializable {
         }
     }
 
-        public void setUserInformation(String username) {
-            wlc_user.setText(username);
-            //So sánh tên username , nếu trùng tên trong HashMap sẽ lấy ra avatar tương ứng
-            Set<String> keySet = acc.keySet();
-            for (String key : keySet) {
-                if (username.equals(key)) {
-                    Image image = new Image(String.valueOf(acc.get(key)));
-                    img_user.setImage(image);
-                }
+    public void setUserInformation(String username) {
+        wlc_user.setText(username);
+        //So sánh tên username , nếu trùng tên trong HashMap sẽ lấy ra avatar tương ứng
+        Set<String> keySet = acc.keySet();
+        for (String key : keySet) {
+            if (username.equals(key)) {
+                Image image = new Image(String.valueOf(acc.get(key)));
+                img_user.setImage(image);
             }
         }
+    }
 
 
     //Setting Clock within a new Thread

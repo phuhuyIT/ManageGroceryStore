@@ -34,13 +34,45 @@ public class DBUtils {
                 e.printStackTrace();
             }
         }
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage .setTitle(title);
+        stage.setMaximized(true);
+        stage.setFullScreen(true);
+        //stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
+        stage.setScene(new Scene(root,1280, 720));
+        stage.setResizable(false);
+        stage.centerOnScreen();
+        stage.show();
+    }
+    public static void changeScence1(ActionEvent event , String fxmlFile , String title , String username){
+        Parent root = null;
+
+        if(username !=null){
+            try {
+                FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource(fxmlFile));
+                root = loader.load();
+                HomeController homeController = loader.getController();
+                homeController.setUserInformation(username);
+
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+        }else{
+            try{
+                root = FXMLLoader.load(DBUtils.class.getResource(fxmlFile));
+
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+        }
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage .setTitle(title);
         stage.setMaximized(true);
         stage.setFullScreen(true);
-       //stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
-        stage.setScene(new Scene(root,1280, 720));
+        //stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
+        stage.setScene(new Scene(root,650, 450));
+        stage.setResizable(false);
         stage.centerOnScreen();
         stage.show();
     }
@@ -53,7 +85,7 @@ public class DBUtils {
 
 
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/account", "root", "123456");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/account", "root", "13062003");
             psCheckUserExists = connection.prepareStatement("SELECT * FROM user WHERE USERNAME = ?");
             psCheckUserExists.setString(1, username);
             resultSet = psCheckUserExists.executeQuery();
@@ -74,7 +106,7 @@ public class DBUtils {
                     alert.setContentText("Sign Up Success");
                     alert.setTitle("Success");
                     alert.show();
-                    changeScence(event, "hello-view.fxml", "Log In", null);
+                    changeScence1(event, "hello-view.fxml", "Log In", null);
                 }else{
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setContentText("Password and ConfirmPassword are difference");
@@ -125,7 +157,7 @@ public class DBUtils {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet =  null;
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/account", "root", "123456");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/account", "root", "13062003");
             preparedStatement = connection.prepareStatement("SELECT PASS FROM user WHERE USERNAME = ?");
             preparedStatement.setString(1, username);
             resultSet=preparedStatement.executeQuery();
