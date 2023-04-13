@@ -1,6 +1,7 @@
 package DAO;
 import Model.Customer;
 import DatabaseConnection.ConnectionFactory;
+import javafx.scene.control.Alert;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -31,7 +32,45 @@ public class CustomerDAO implements DaoInterface <Customer>{
     }
 
     @Override
-    public int insert(Customer cus) {
+    public void insert(Customer cus) {
+        String findCustomerByID = "SELECT * FROM CUSTOMER WHERE CUSTOMERID = ?";
+        try {
+            pstmt.setInt(1,cus.getCustomersId());
+            rs= pstmt.executeQuery(findCustomerByID);
+            if(rs.next()){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("This customer has already been added");
+            }else{
+                addFunction(cus);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    @Override
+    public int delete(Customer customer) {
+        return 0;
+    }
+
+    @Override
+    public int update(Customer customer) {
+    return 0;
+    }
+
+    @Override
+    public ArrayList<Customer> selectALL(Customer customer) {
+        return null;
+    }
+
+    @Override
+    public Customer selectByID(Customer customer) {
+        return null;
+    }
+
+    @Override
+    public int addFunction(Customer cus) {
         int result;
         String url="insert into CUSTOMER (CUSTOMERID, FULLNAME, LOCATION, EMAIL, DEBIT, CREDIT, PHONE)"
                     + "values (?,?,?,?,?,?,?)";
@@ -48,26 +87,5 @@ public class CustomerDAO implements DaoInterface <Customer>{
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return result;
-    }
-
-    @Override
-    public int delete(Customer customer) {
-        return 0;
-    }
-
-    @Override
-    public int update(Customer customer) {
-        return 0;
-    }
-
-    @Override
-    public ArrayList<Customer> selectALL(Customer customer) {
-        return null;
-    }
-
-    @Override
-    public Customer selectByID(Customer customer) {
-        return null;
-    }
+        return result;    }
 }

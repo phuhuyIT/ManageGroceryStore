@@ -11,8 +11,8 @@ public class ProductDAO implements DaoInterface<Product> {
     }
 
     @Override
-    public int insert(Product product) {
-        return 0;
+    public void insert(Product product) {
+
     }
 
     @Override
@@ -33,5 +33,10 @@ public class ProductDAO implements DaoInterface<Product> {
     @Override
     public Product selectByID(Product product) {
         return null;
+    }
+
+    @Override
+    public int addFunction(Product product) {
+        return 0;
     }
 }
