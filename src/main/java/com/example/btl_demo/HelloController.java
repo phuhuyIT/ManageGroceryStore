@@ -13,10 +13,10 @@ import java.util.ResourceBundle;
 public class HelloController implements Initializable {
 
     @FXML
-    private Button btn_login;
+    private Hyperlink btn_signup;
 
     @FXML
-    private Hyperlink btn_signup;
+    private Button btn_login;
 
     @FXML
     private TextField tf_username;

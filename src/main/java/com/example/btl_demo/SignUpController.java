@@ -35,9 +35,8 @@ public class SignUpController implements Initializable {
 
     @FXML
     private PasswordField tf_confirmpass;
-
-    private FileChooser fileChooser;
     private File filePath;
+    private FileChooser fileChooser;
     @FXML
     private ImageView image_user;
 

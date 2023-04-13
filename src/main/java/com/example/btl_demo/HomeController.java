@@ -36,9 +36,8 @@ public class HomeController implements Initializable {
 
     @FXML
     private ImageView img_user;
-
-    private String userName;
     private String avatarSrc;
+    private String userName;
     private HashMap<String, String> acc = new HashMap<String, String>();
 
 

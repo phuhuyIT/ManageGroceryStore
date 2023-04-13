@@ -40,6 +40,7 @@ public class DBUtils {
         stage.setFullScreen(true);
         //stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
         stage.setScene(new Scene(root,1280, 720));
+        stage.setResizable(false);
         stage.centerOnScreen();
         stage.show();
     }
