@@ -14,13 +14,10 @@ public class HelloController implements Initializable {
 
     @FXML
     private Hyperlink btn_signup;
-
     @FXML
     private Button btn_login;
-
     @FXML
     private TextField tf_username;
-
     @FXML
     private PasswordField tf_password;
     @Override
@@ -29,6 +26,7 @@ public class HelloController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 DBUtils.LogInUser(event , tf_username.getText(), tf_password.getText());
+
             }
         });
 

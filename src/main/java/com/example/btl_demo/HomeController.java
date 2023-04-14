@@ -27,13 +27,10 @@ public class HomeController implements Initializable {
 
     @FXML
     private Button btn_logout;
-
     @FXML
     private Label wlc_user;
-
     @FXML
     private Label lblClock;
-
     @FXML
     private ImageView img_user;
     private String avatarSrc;

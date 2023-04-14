@@ -20,19 +20,14 @@ public class SignUpController implements Initializable {
 
     @FXML
     private AnchorPane pane;
-
     @FXML
     private Button btn_signup;
-
     @FXML
     private Hyperlink btn_log_in;
-
     @FXML
     private TextField tf_username;
-
     @FXML
     private PasswordField tf_password;
-
     @FXML
     private PasswordField tf_confirmpass;
     private File filePath;
