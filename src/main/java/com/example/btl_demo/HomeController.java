@@ -4,14 +4,21 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.paint.Color;
 import org.w3c.dom.ls.LSOutput;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -27,6 +34,11 @@ public class HomeController implements Initializable {
 
     @FXML
     private Button btn_logout;
+    @FXML
+    private Button btn_DashBoard;
+
+    @FXML
+    private Button btn_Customer;
 
     @FXML
     private Label wlc_user;
@@ -37,6 +49,9 @@ public class HomeController implements Initializable {
     @FXML
     private ImageView img_user;
 
+    @FXML
+    private AnchorPane paneRight;
+
     private String userName;
     private String avatarSrc;
     private HashMap<String, String> acc = new HashMap<String, String>();
@@ -44,13 +59,58 @@ public class HomeController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        //hiển thị bảng dashboard lên đầu tiên khi login thành công
+        FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("dashboard.fxml"));
+
+        Node node = null;
+        try {
+            node = loader.load();
+            paneRight.getChildren().add(0, node);
+            System.out.println(node);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        //cài sự kiện cho btn_DashBoard
+        btn_DashBoard.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("dashboard.fxml"));
+                Node node = null;
+                try {
+                    node = loader.load();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                paneRight.getChildren().set(0, node);
+
+            }
+
+        });
+
+        //cài sự kiện cho btn_Customer
+       btn_Customer.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("customer.fxml"));
+                Node node = null;
+                try {
+                    node = loader.load();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                paneRight.getChildren().set(0, node);
+            }
+        });
+
+        //cài sự kiện cho btn_Logout
         btn_logout.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 DBUtils.changeScence(actionEvent, "hello-view.fxml", "Log In", null);
             }
         });
-
+        //thiết lập đồng hồ hiển thị thời gian trên máy
         Runnable clock = new Runnable() {
             @Override
             public void run() {
@@ -62,22 +122,24 @@ public class HomeController implements Initializable {
         newClock.setDaemon(true); //Thread will automatically close on applications closing
         newClock.start(); //Starting Thread
 
-       //Lấy dữ liệu tên người dùng và link ảnh từ database và put vào HashMap
+        //Lấy dữ liệu tên người dùng và link ảnh từ database và put vào HashMap
         try {
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/account", "root", "123456");
-                Statement statement = connection.createStatement();
-                ResultSet resultSet = statement.executeQuery("SELECT USERNAME,AVATAR_SRC FROM USER ") ;
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/account", "root", "123456");
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT USERNAME,AVATAR_SRC FROM USER ");
             while (resultSet.next()) {
                 userName = resultSet.getString("USERNAME");
                 avatarSrc = resultSet.getString("AVATAR_SRC");
-                acc.put(userName,avatarSrc);
+                acc.put(userName, avatarSrc);
             }
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
+
     }
 
-        public void setUserInformation(String username) {
+
+    public void setUserInformation(String username) {
             wlc_user.setText(username);
             //So sánh tên username , nếu trùng tên trong HashMap sẽ lấy ra avatar tương ứng
             Set<String> keySet = acc.keySet();
