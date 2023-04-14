@@ -1,10 +1,9 @@
-package com.example.btl_demo;
+package Controller;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 
 import java.net.URL;
@@ -33,7 +32,7 @@ public class HelloController implements Initializable {
         btn_signup.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DBUtils.changeScence1(event , "RegisForm.fxml", "Sign Up", null);
+                DBUtils.changeScence1(event , "views/RegisForm.fxml", "Sign Up", null);
             }
         });
     }

@@ -1,4 +1,4 @@
-package com.example.btl_demo;
+package Controller;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -7,28 +7,20 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
-import javafx.scene.paint.Color;
-import org.w3c.dom.ls.LSOutput;
 
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.sql.*;
 import java.util.Set;
-
-import static com.example.btl_demo.DBUtils.*;
 
 public class HomeController implements Initializable {
 
@@ -60,7 +52,7 @@ public class HomeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //hiển thị bảng dashboard lên đầu tiên khi login thành công
-        FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("dashboard.fxml"));
+        FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("views/dashboard.fxml"));
 
         Node node = null;
         try {
@@ -75,7 +67,7 @@ public class HomeController implements Initializable {
         btn_DashBoard.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("dashboard.fxml"));
+                FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("views/dashboard.fxml"));
                 Node node = null;
                 try {
                     node = loader.load();
@@ -92,7 +84,7 @@ public class HomeController implements Initializable {
        btn_Customer.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("customer.fxml"));
+                FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("views/customer.fxml"));
                 Node node = null;
                 try {
                     node = loader.load();
@@ -107,7 +99,7 @@ public class HomeController implements Initializable {
         btn_logout.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                DBUtils.changeScence(actionEvent, "hello-view.fxml", "Log In", null);
+                DBUtils.changeScence(actionEvent, "views/hello-view.fxml", "Log In", null);
             }
         });
         //thiết lập đồng hồ hiển thị thời gian trên máy

@@ -1,4 +1,4 @@
-package com.example.btl_demo;
+package Controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +10,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.*;
-import com.example.btl_demo.SignUpController;
 
 public class DBUtils {
     public static void changeScence(ActionEvent event , String fxmlFile , String title , String username){
@@ -18,7 +17,7 @@ public class DBUtils {
 
         if(username !=null){
             try {
-                FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource(fxmlFile));
+                FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource("views/" + fxmlFile));
                 root = loader.load();
                 HomeController homeController = loader.getController();
                 homeController.setUserInformation(username);
@@ -39,8 +38,8 @@ public class DBUtils {
         stage.setMaximized(true);
         stage.setFullScreen(true);
         //stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
-        stage.setScene(new Scene(root,1300, 900));
-        stage.setResizable(false);
+        stage.setScene(new Scene(root,1280, 720));
+      //  stage.setResizable(false);
         stage.centerOnScreen();
         stage.show();
     }
@@ -49,7 +48,7 @@ public class DBUtils {
 
         if(username !=null){
             try {
-                FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource(fxmlFile));
+                FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource("views/" + fxmlFile));
                 root = loader.load();
                 HomeController homeController = loader.getController();
                 homeController.setUserInformation(username);
@@ -85,7 +84,7 @@ public class DBUtils {
 
 
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/account", "root", "13062003");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/account", "root", "123456");
             psCheckUserExists = connection.prepareStatement("SELECT * FROM user WHERE USERNAME = ?");
             psCheckUserExists.setString(1, username);
             resultSet = psCheckUserExists.executeQuery();
@@ -157,7 +156,7 @@ public class DBUtils {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet =  null;
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/account", "root", "13062003");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/account", "root", "123456");
             preparedStatement = connection.prepareStatement("SELECT PASS FROM user WHERE USERNAME = ?");
             preparedStatement.setString(1, username);
             resultSet=preparedStatement.executeQuery();
