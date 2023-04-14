@@ -5,88 +5,112 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="678.0" prefWidth="823.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.btl_demo.HomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.btl_demo.HomeController">
    <children>
-      <AnchorPane prefHeight="708.0" prefWidth="796.0">
+      <GridPane layoutX="-4.0" prefHeight="900.0" prefWidth="1300.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="865.0" minWidth="10.0" prefWidth="266.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1034.0" minWidth="0.0" prefWidth="1034.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
          <children>
-            <BorderPane layoutY="-2.0" prefHeight="701.0" prefWidth="823.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="-4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-2.0">
-               <top>
-                  <AnchorPane prefHeight="15.0" prefWidth="823.0" style="-fx-background-color: #DDDDDD;" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="700.0" prefWidth="1019.0" GridPane.columnIndex="1" />
+            <GridPane prefHeight="700.0" prefWidth="463.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="325.0" minHeight="10.0" prefHeight="235.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="672.0" minHeight="10.0" prefHeight="496.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="672.0" minHeight="10.0" prefHeight="172.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #72F5FD;">
                      <children>
-                        <Label layoutX="14.0" layoutY="8.0" text="Grocery Store | Manage">
+                        <ImageView fx:id="img_user" fitHeight="116.0" fitWidth="127.0" layoutX="63.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label fx:id="label_welcome" layoutX="68.0" layoutY="139.0" text="WELCOME">
                            <font>
-                              <Font size="17.0" />
+                              <Font size="25.0" />
                            </font>
                         </Label>
+                        <Label fx:id="wlc_user" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="92.0" layoutY="175.0" prefHeight="30.0" prefWidth="100.0" style="-fx-padding: 0px 10px 0px 0px;" text="Username" textOverrun="CENTER_ELLIPSIS">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Line endX="100.0" layoutX="127.0" layoutY="213.0" startX="-100.0" />
                      </children>
                   </AnchorPane>
-               </top>
-               <left>
-                  <AnchorPane prefHeight="649.0" prefWidth="274.0" style="-fx-background-color: #00FFFF;" BorderPane.alignment="CENTER">
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #72F5FD;" GridPane.rowIndex="1">
                      <children>
-                        <ImageView fx:id="img_user" fitHeight="89.0" fitWidth="84.0" layoutX="83.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" />
-                        <Button fx:id="btn_logout" layoutX="33.0" layoutY="627.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="179.0" style="-fx-background-radius: 8px;" text="Log Out">
+                        <Button layoutX="13.0" layoutY="21.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="240.0" style="-fx-background-color: #31B4D8; -fx-background-radius: 15;" text="DasBoard" textFill="WHITE">
                            <font>
-                              <Font size="18.0" />
+                              <Font size="20.0" />
                            </font>
                         </Button>
-                        <Label fx:id="label_welcome" layoutX="71.0" layoutY="95.0" prefHeight="50.0" prefWidth="113.0" text="WELCOME">
+                        <Button layoutX="14.0" layoutY="81.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="240.0" style="-fx-background-color: #31B4D8; -fx-background-radius: 15;" text="Button1" textFill="WHITE">
                            <font>
-                              <Font size="23.0" />
+                              <Font size="20.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="14.0" layoutY="141.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="240.0" style="-fx-background-color: #31B4D8; -fx-background-radius: 15;" text="Button2" textFill="WHITE">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="14.0" layoutY="264.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="240.0" style="-fx-background-color: #31B4D8; -fx-background-radius: 15;" text="Button4" textFill="WHITE">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="13.0" layoutY="327.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="240.0" style="-fx-background-color: #31B4D8; -fx-background-radius: 15;" text="Button5" textFill="WHITE">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="13.0" layoutY="202.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="240.0" style="-fx-background-color: #31B4D8; -fx-background-radius: 15;" text="Button3" textFill="WHITE">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Button>
+                        <Line endX="100.0" layoutX="134.0" layoutY="470.0" startX="-100.0" />
+                        <Button layoutX="16.0" layoutY="389.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="234.0" style="-fx-background-color: #31B4D8; -fx-background-radius: 15;" text="Button6" textFill="WHITE">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #72F5FD;" GridPane.rowIndex="2">
+                     <children>
+                        <Label fx:id="lblClock" alignment="CENTER" layoutX="26.0" layoutY="14.0" prefHeight="44.0" prefWidth="215.0" style="-fx-background-color: #72F5FD;" text="Clock">
+                           <font>
+                              <Font size="20.0" />
                            </font>
                         </Label>
-                        <Label fx:id="wlc_user" alignment="CENTER" layoutX="29.0" layoutY="138.0" prefHeight="40.0" prefWidth="193.0" style="-fx-padding: 0px 10px 0px 0px;" text="username" textAlignment="CENTER">
+                        <Button fx:id="btn_logout" layoutX="32.0" layoutY="86.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="215.0" style="-fx-background-color: #31B4D8; -fx-background-radius: 15;" text="Log Out" textFill="WHITE">
                            <font>
-                              <Font size="19.0" />
-                           </font>
-                        </Label>
-                        <Button layoutX="19.0" layoutY="204.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="211.0" style="-fx-background-radius: 20px;" text="DashBoard">
-                           <font>
-                              <Font size="22.0" />
+                              <Font size="20.0" />
                            </font>
                         </Button>
-                        <Button layoutX="22.0" layoutY="278.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="212.0" style="-fx-background-radius: 20px;" text="Feature 2">
-                           <font>
-                              <Font size="22.0" />
-                           </font>
-                        </Button>
-                        <Button layoutX="18.0" layoutY="341.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="212.0" style="-fx-background-radius: 20px;" text="Feature 3 ">
-                           <font>
-                              <Font size="22.0" />
-                           </font>
-                        </Button>
-                        <Button layoutX="19.0" layoutY="404.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="212.0" style="-fx-background-radius: 20px;" text="Feature 4 ">
-                           <font>
-                              <Font size="22.0" />
-                           </font>
-                        </Button>
-                        <Button layoutX="19.0" layoutY="467.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="212.0" style="-fx-background-radius: 20px;" text="Feature 5 ">
-                           <font>
-                              <Font size="22.0" />
-                           </font>
-                        </Button>
-                        <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="45.0" layoutY="632.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="36.0" fitWidth="45.0" layoutX="42.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@image/exit.png" />
                            </image>
                         </ImageView>
-                        <Line endX="100.0" layoutX="125.0" layoutY="192.0" startX="-100.0" />
-                        <Line endX="100.0" layoutX="125.0" layoutY="545.0" startX="-100.0" />
-                        <Label fx:id="lblClock" alignment="CENTER" layoutX="35.0" layoutY="553.0" prefHeight="37.0" prefWidth="178.0" text="Clock" textAlignment="CENTER">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
                      </children>
                   </AnchorPane>
-               </left>
-            </BorderPane>
+               </children>
+            </GridPane>
          </children>
-      </AnchorPane>
+      </GridPane>
    </children>
-</StackPane>
+</AnchorPane>
