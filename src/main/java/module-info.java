@@ -7,6 +7,6 @@ module com.example.btl_demo {
     requires org.kordamp.bootstrapfx.core;
     requires java.sql;
 
-    opens com.example.btl_demo to javafx.fxml;
-    exports com.example.btl_demo;
+    opens Controller to javafx.fxml;
+    exports Controller;
 }
