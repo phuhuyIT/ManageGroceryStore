@@ -26,7 +26,7 @@ public class ProductDAO implements DaoInterface<Product> {
     }
 
     @Override
-    public ArrayList<Product> selectALL(Product product) {
+    public ArrayList<Product> selectALL() {
         return null;
     }
 

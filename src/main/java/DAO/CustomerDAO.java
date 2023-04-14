@@ -33,15 +33,19 @@ public class CustomerDAO implements DaoInterface <Customer>{
 
     @Override
     public void insert(Customer cus) {
-        String findCustomerByID = "SELECT * FROM CUSTOMER WHERE CUSTOMERID = ?";
+        String findCustomerByNameLocatePhone = "SELECT * FROM CUSTOMER WHERE FULLNAME=? AND LOCATION=? AND PHONE=?";
         try {
-            pstmt = con.prepareStatement(findCustomerByID);
-            pstmt.setInt(1,cus.getCustomersId());
+            pstmt = con.prepareStatement(findCustomerByNameLocatePhone);
+            pstmt.setString(1,cus.getFullName());
+            pstmt.setString(2,cus.getLocation());
+            pstmt.setString(3,cus.getPhone());
             rs= pstmt.executeQuery();
             if(rs.next()){
                 System.out.println("This customer has already been added");
 //                Alert alert = new Alert(Alert.AlertType.ERROR);
-//                alert.setContentText("This customer has already been added");
+//                alert.setContentText("Password and ConfirmPassword are difference");
+//                alert.setTitle("Warning");
+//                alert.show();
             }else{
                 addFunction(cus);
             }
@@ -53,17 +57,60 @@ public class CustomerDAO implements DaoInterface <Customer>{
 
     @Override
     public int delete(Customer customer) {
-        return 0;
+        String deleteCustomerDetails= "DELETE FROM CUSTOMER WHERE CUSTOMERID= ?";
+        int result;
+        try {
+            pstmt = con.prepareStatement(deleteCustomerDetails);
+            pstmt.setInt(1,customer.getCustomersId());
+            result=pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return result;
     }
 
     @Override
     public int update(Customer customer) {
-    return 0;
+        String updateCustomerDetails= "UPDATE CUSTOMER SET FULLNAME=?, LOCATION=?, PHONE=?, DEBIT=?, CREDIT=?, EMAIL=? WHERE  CUSTOMERID= ?";
+        int result;
+        try {
+            pstmt = (PreparedStatement) con.prepareStatement(updateCustomerDetails);
+            pstmt.setString(1,customer.getFullName());
+            pstmt.setString(2,customer.getLocation());
+            pstmt.setString(3,customer.getPhone());
+            pstmt.setString(4,customer.getDebit());
+            pstmt.setString(5,customer.getCredit());
+            pstmt.setString(6,customer.getEmail());
+            pstmt.setInt(7,customer.getCustomersId());
+            result=pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return result;
     }
 
     @Override
-    public ArrayList<Customer> selectALL(Customer customer) {
-        return null;
+    public ArrayList<Customer> selectALL() {
+        ArrayList<Customer> result= new ArrayList<Customer>();
+        try {
+            String selectAllInformation= "SELECT * FROM CUSTOMER";
+            pstmt= con.prepareStatement(selectAllInformation);
+            rs = pstmt.executeQuery();
+            while (rs.next()){
+                int id=rs.getInt("CUSTOMERID");
+                String fname=rs.getString("FULLNAME");
+                String location=rs.getString("LOCATION");
+                String phone=rs.getString("PHONE");
+                String debit=rs.getString("DEBIT");
+                String credit=rs.getString("CREDIT");
+                String email=rs.getString("EMAIL");
+                Customer cus=new Customer(id,"cc",fname,location,phone,debit, credit,email);
+                result.add(cus);
+            }
+        }catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return result;
     }
 
     @Override
