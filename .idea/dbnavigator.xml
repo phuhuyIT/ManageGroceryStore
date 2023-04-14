@@ -22,6 +22,13 @@
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files />
   </component>
+  <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="9b6cab4f-4196-4ed2-941c-bfb3e7e36af1" dataset="quanlycongtrinh.congtrinh" active-filter-id="1e7fb676-7d05-437f-8150-317932951513">
+      <filter id="1e7fb676-7d05-437f-8150-317932951513" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND">
+        <condition column="MACT" operator="=" value="" active="true" />
+      </filter>
+    </filter-actions>
+  </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />
   </component>
