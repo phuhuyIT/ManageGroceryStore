@@ -1,8 +1,5 @@
 package Model;
 
-import DAO.ProductDAO;
-
-import java.sql.ResultSet;
 import java.util.Date;
 
 public class Product {
@@ -17,11 +14,29 @@ public class Product {
     private double sellingPrice;
     private String brand;
     private int userId;
-    private String customersName;
     private String customerCode;
     private Double totalCost;
     private Double totalRevenue;
+    public Product (int productId,String productCode,Date date,Date sellDate,String supplierCode,
+                    String productName,int quantity,double costPrice,double sellingPrice,
+                    String brand,int userId,String customerCode,Double totalCost,Double totalRevenue){
+        this.productId = productId;
+        this.productCode = productCode;
+        this.date = date;
+        this.sellDate = sellDate;
+        this.supplierCode = supplierCode;
+        this.customerCode = customerCode;
+        this.productName = productName;
+        this.quantity = quantity;
+        this.costPrice = costPrice;
+        this.sellingPrice = sellingPrice;
+        this.brand = brand;
+        this.userId= userId;
+        this.customerCode = customerCode;
+        this.totalCost = totalCost;
+        this.totalRevenue= totalRevenue;
 
+    }
     public int getProductId() {
         return productId;
     }
@@ -45,10 +60,7 @@ public class Product {
     public void setDate(Date date) {
         this.date = date;
     }
-
-    public Date getSellDate() {
-        return sellDate;
-    }
+    public  Date getSellDate(){ return sellDate;}
 
     public void setSellDate(Date sellDate) {
         this.sellDate = sellDate;
