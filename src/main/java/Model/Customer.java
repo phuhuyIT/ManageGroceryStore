@@ -6,10 +6,34 @@ public class Customer {
     private String fullName;
     private String location;
     private String phone;
-    private double debit;
-    private double credit;
+    private String debit;
+    private String credit;
     private String email;
-    private double balance;
+
+    public Customer(int customersId, String customerCode, String fullName, String location, String phone, String debit, String credit, String email) {
+        this.customersId = customersId;
+        this.customerCode = customerCode;
+        this.fullName = fullName;
+        this.location = location;
+        this.phone = phone;
+        this.debit = debit;
+        this.credit = credit;
+        this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "customersId=" + customersId +
+                ", customerCode='" + customerCode + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", location='" + location + '\'' +
+                ", phone='" + phone + '\'' +
+                ", debit='" + debit + '\'' +
+                ", credit='" + credit + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 
     public String getEmail() {
         return email;
@@ -59,27 +83,20 @@ public class Customer {
         this.phone = phone;
     }
 
-    public double getDebit() {
+    public String getDebit() {
         return debit;
     }
 
-    public void setDebit(double debit) {
+    public void setDebit(String debit) {
         this.debit = debit;
     }
 
-    public double getCredit() {
+    public String getCredit() {
         return credit;
     }
 
-    public void setCredit(double credit) {
+    public void setCredit(String credit) {
         this.credit = credit;
     }
 
-    public double getBalance() {
-        return balance;
-    }
-
-    public void setBalance(double balance) {
-        this.balance = balance;
-    }
 }
