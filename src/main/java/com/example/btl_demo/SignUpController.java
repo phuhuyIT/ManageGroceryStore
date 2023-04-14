@@ -20,24 +20,18 @@ public class SignUpController implements Initializable {
 
     @FXML
     private AnchorPane pane;
-
     @FXML
     private Button btn_signup;
-
     @FXML
     private Hyperlink btn_log_in;
-
     @FXML
     private TextField tf_username;
-
     @FXML
     private PasswordField tf_password;
-
     @FXML
     private PasswordField tf_confirmpass;
-
-    private FileChooser fileChooser;
     private File filePath;
+    private FileChooser fileChooser;
     @FXML
     private ImageView image_user;
 
@@ -87,7 +81,7 @@ public class SignUpController implements Initializable {
         btn_log_in.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DBUtils.changeScence(event, "hello-view.fxml", "Log In", null);
+                DBUtils.changeScence1(event, "hello-view.fxml", "Log In", null);
             }
         });
     }
