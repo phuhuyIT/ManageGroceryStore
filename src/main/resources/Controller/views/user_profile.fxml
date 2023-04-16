@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="pane" prefHeight="900.0" prefWidth="1000.0" style="-fx-background-color: #72F5FD;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.UserProfileController">
+    <children>
+        <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="135.0" layoutY="164.0" prefHeight="30.0" prefWidth="133.0" text="User name    ">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="135.0" layoutY="213.0" prefHeight="30.0" prefWidth="133.0" text="Password       ">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="135.0" layoutY="360.0" prefHeight="30.0" prefWidth="133.0" text="Location        ">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="135.0" layoutY="262.0" prefHeight="30.0" prefWidth="133.0" text="Email">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="135.0" layoutY="458.0" prefHeight="30.0" prefWidth="133.0" text="Credit          ">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="135.0" layoutY="313.0" prefHeight="30.0" prefWidth="133.0" text="Phone          ">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="135.0" layoutY="410.0" prefHeight="30.0" prefWidth="133.0" text="Debit ">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+      <Label alignment="CENTER" layoutY="56.0" prefHeight="53.0" prefWidth="1000.0" style="-fx-font-weight: bold;" text="USER PROFILE">
+         <font>
+            <Font size="36.0" />
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect>
+      </Label>
+      <Label layoutX="290.0" layoutY="164.0" prefHeight="30.0" prefWidth="363.0" text="Hiển thị user name">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="290.0" layoutY="213.0" prefHeight="30.0" prefWidth="363.0" text="Hiển thị user name">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="290.0" layoutY="262.0" prefHeight="30.0" prefWidth="363.0" text="Hiển thị user name">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="290.0" layoutY="313.0" prefHeight="30.0" prefWidth="363.0" text="Hiển thị user name">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="290.0" layoutY="360.0" prefHeight="30.0" prefWidth="363.0" text="Hiển thị user name">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="290.0" layoutY="410.0" prefHeight="30.0" prefWidth="363.0" text="Hiển thị user name">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="290.0" layoutY="458.0" prefHeight="30.0" prefWidth="363.0" text="Hiển thị user name">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="btn_update" layoutX="834.0" layoutY="167.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="Thêm" />
+      <Button fx:id="btn_fix" layoutX="834.0" layoutY="217.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="46.0" style="-fx-background-color: #ffffff;" text="Sửa" />
+      <Button fx:id="btn_delete" layoutX="834.0" layoutY="267.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="46.0" style="-fx-background-color: #ffffff;" text="Xóa" />
+      <Line endX="499.99993896484375" endY="-8.0" layoutX="500.0" layoutY="124.0" startX="-500.0" startY="-8.0" strokeWidth="3.0" />
+      <Line endX="-0.5" endY="381.0" layoutX="259.0" layoutY="118.0" startX="-0.5" startY="34.0" strokeWidth="2.0" />
+    </children>
+</AnchorPane>

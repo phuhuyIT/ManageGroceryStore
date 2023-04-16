@@ -31,7 +31,8 @@ public class HomeController implements Initializable {
 
     @FXML
     private Button btn_Customer;
-
+    @FXML
+    private Button btn_UserProfile;
     @FXML
     private Label wlc_user;
 
@@ -94,12 +95,25 @@ public class HomeController implements Initializable {
                 paneRight.getChildren().set(0, node);
             }
         });
-
+        //cài sự kiện cho btn_UserProfile
+        btn_UserProfile.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("views/user_profile.fxml"));
+                Node node = null;
+                try {
+                    node = loader.load();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                paneRight.getChildren().set(0, node);
+            }
+        });
         //cài sự kiện cho btn_Logout
         btn_logout.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                DBUtils.changeScence(actionEvent, "views/hello-view.fxml", "Log In", null);
+                DBUtils.changeScence1(actionEvent, "views/hello-view.fxml", "Log In", null);
             }
         });
         //thiết lập đồng hồ hiển thị thời gian trên máy
@@ -116,7 +130,7 @@ public class HomeController implements Initializable {
 
         //Lấy dữ liệu tên người dùng và link ảnh từ database và put vào HashMap
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/account", "root", "123456");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/account", "root", "13062003");
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT USERNAME,AVATAR_SRC FROM USER ");
             while (resultSet.next()) {

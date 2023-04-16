@@ -69,7 +69,7 @@
                               <Font size="20.0" />
                            </font>
                         </Button>
-                        <Button layoutX="14.0" layoutY="264.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="240.0" style="-fx-background-color: #31B4D8; -fx-background-radius: 15; -fx-cursor: hand;" text="Staff" textFill="WHITE">
+                        <Button fx:id="btn_UserProfile" layoutX="14.0" layoutY="264.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="240.0" style="-fx-background-color: #31B4D8; -fx-background-radius: 15; -fx-cursor: hand;" text="User Profile" textFill="WHITE">
                            <font>
                               <Font size="20.0" />
                            </font>

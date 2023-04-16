@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="900.0" prefWidth="1000.0" style="-fx-background-color: #72F5FD;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Update_UserProfile">
+    <children>
+        <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="135.0" layoutY="164.0" prefHeight="30.0" prefWidth="133.0" text="User name    ">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="135.0" layoutY="213.0" prefHeight="30.0" prefWidth="133.0" text="Password       ">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="135.0" layoutY="360.0" prefHeight="30.0" prefWidth="133.0" text="Location        ">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="135.0" layoutY="262.0" prefHeight="30.0" prefWidth="133.0" text="Email">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="135.0" layoutY="458.0" prefHeight="30.0" prefWidth="133.0" text="Credit          ">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="135.0" layoutY="313.0" prefHeight="30.0" prefWidth="133.0" text="Phone          ">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="135.0" layoutY="410.0" prefHeight="30.0" prefWidth="133.0" text="Debit ">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Label alignment="CENTER" layoutY="56.0" prefHeight="53.0" prefWidth="1000.0" style="-fx-font-weight: bold;" text="UPDATE USER PROFILE">
+            <font>
+                <Font size="36.0" />
+            </font>
+            <effect>
+                <InnerShadow />
+            </effect>
+        </Label>
+        <Line endX="499.99993896484375" endY="-8.0" layoutX="500.0" layoutY="124.0" startX="-500.0" startY="-8.0" strokeWidth="3.0" />
+        <Line endX="-0.5" endY="381.0" layoutX="259.0" layoutY="118.0" startX="-0.5" startY="34.0" strokeWidth="2.0" />
+      <TextField layoutX="284.0" layoutY="167.0" prefHeight="25.0" prefWidth="271.0" />
+      <TextField layoutX="284.0" layoutY="216.0" prefHeight="25.0" prefWidth="271.0" />
+      <TextField layoutX="284.0" layoutY="265.0" prefHeight="25.0" prefWidth="271.0" />
+      <TextField layoutX="284.0" layoutY="316.0" prefHeight="25.0" prefWidth="271.0" />
+      <TextField layoutX="284.0" layoutY="363.0" prefHeight="25.0" prefWidth="271.0" />
+      <TextField layoutX="284.0" layoutY="413.0" prefHeight="25.0" prefWidth="271.0" />
+      <TextField layoutX="284.0" layoutY="461.0" prefHeight="25.0" prefWidth="271.0" />
+      <Button fx:id="btn_OK" layoutX="654.0" layoutY="523.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="70.0" style="-fx-background-color: #ffffff;" text="OK">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+    </children>
+</AnchorPane>

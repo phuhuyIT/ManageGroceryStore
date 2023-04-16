@@ -75,6 +75,38 @@ public class DBUtils {
         stage.centerOnScreen();
         stage.show();
     }
+    public static void changeScence2(ActionEvent event , String fxmlFile , String title , String username){
+        Parent root = null;
+
+        if(username !=null){
+            try {
+                FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource("views/" + fxmlFile));
+                root = loader.load();
+                HomeController homeController = loader.getController();
+                homeController.setUserInformation(username);
+
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+        }else{
+            try{
+                root = FXMLLoader.load(DBUtils.class.getResource(fxmlFile));
+
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+        }
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage .setTitle(title);
+        stage.setMaximized(true);
+        stage.setFullScreen(true);
+        //stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
+        stage.setScene(new Scene(root,1000, 900));
+        stage.setResizable(false);
+        stage.centerOnScreen();
+        stage.show();
+    }
 
     public static void SignUpUser(ActionEvent event , String username, String password, String confirmPass, String src_imageuser) {
         Connection connection = null;
@@ -84,7 +116,7 @@ public class DBUtils {
 
 
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/account", "root", "123456");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/account", "root", "13062003");
             psCheckUserExists = connection.prepareStatement("SELECT * FROM user WHERE USERNAME = ?");
             psCheckUserExists.setString(1, username);
             resultSet = psCheckUserExists.executeQuery();
@@ -156,7 +188,7 @@ public class DBUtils {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet =  null;
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/account", "root", "123456");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/account", "root", "13062003");
             preparedStatement = connection.prepareStatement("SELECT PASS FROM user WHERE USERNAME = ?");
             preparedStatement.setString(1, username);
             resultSet=preparedStatement.executeQuery();
