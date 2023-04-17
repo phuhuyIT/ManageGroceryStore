@@ -24,7 +24,7 @@
          <children>
             <AnchorPane prefHeight="700.0" prefWidth="1019.0" GridPane.columnIndex="1">
                <children>
-                  <AnchorPane fx:id="paneRight" layoutX="15.0" layoutY="13.0" prefHeight="870.0" prefWidth="1011.0" />
+                  <AnchorPane fx:id="paneRight" layoutX="9.0" layoutY="4.0" prefHeight="887.0" prefWidth="1019.0" />
                </children></AnchorPane>
             <GridPane prefHeight="700.0" prefWidth="463.0">
                <columnConstraints>
@@ -64,7 +64,7 @@
                               <Font size="20.0" />
                            </font>
                         </Button>
-                        <Button layoutX="14.0" layoutY="141.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="240.0" style="-fx-background-color: #31B4D8; -fx-background-radius: 15; -fx-cursor: hand;" text="Product" textFill="WHITE">
+                        <Button fx:id="btn_Product" layoutX="14.0" layoutY="141.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="240.0" style="-fx-background-color: #31B4D8; -fx-background-radius: 15; -fx-cursor: hand;" text="Product" textFill="WHITE">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -80,7 +80,7 @@
                            </font>
                         </Button>
                         <Line endX="100.0" layoutX="134.0" layoutY="342.0" startX="-100.0" />
-                        <Label fx:id="lblClock" alignment="CENTER" layoutX="27.0" layoutY="364.0" prefHeight="44.0" prefWidth="215.0" style="-fx-background-color: #72F5FD;" text="Clock">
+                        <Label fx:id="lblClock" alignment="CENTER" layoutX="26.0" layoutY="364.0" prefHeight="44.0" prefWidth="215.0" style="-fx-background-color: #72F5FD;" text="Clock">
                            <font>
                               <Font size="20.0" />
                            </font>

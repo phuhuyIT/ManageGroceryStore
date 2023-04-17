@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="726.0" prefWidth="938.0" style="-fx-background-color: #72F5FD;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ProductController">
+   <children>
+      <Label layoutX="375.0" layoutY="35.0" prefHeight="52.0" prefWidth="170.0" style="-fx-font-weight: bold;" text="Product ">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Line endX="606.0" layoutX="244.0" layoutY="88.0" startX="-244.0" strokeWidth="3.0" />
+      <Label fx:id="lb_Search" layoutX="17.0" layoutY="101.0" prefHeight="37.0" prefWidth="299.0" style="-fx-border-width: 1px; -fx-border-color: black;" />
+      <TextField fx:id="txt_search" layoutX="63.0" layoutY="102.0" prefHeight="35.0" prefWidth="252.0" promptText="Search here...." style="-fx-background-color: transparent; -fx-font-weight: bold;">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <ImageView fitHeight="37.0" fitWidth="30.0" layoutX="26.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/search.png" />
+         </image>
+      </ImageView>
+      <Label alignment="BASELINE_LEFT" layoutX="364.0" layoutY="101.0" prefHeight="37.0" prefWidth="114.0" style="-fx-border-color: black; -fx-font-weight: bold;" text="Sort by">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="choiceBox" layoutX="422.0" layoutY="102.0" prefHeight="35.0" prefWidth="54.0" style="-fx-background-color: transparent;" />
+      <ImageView fitHeight="37.0" fitWidth="30.0" layoutX="422.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/sort.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

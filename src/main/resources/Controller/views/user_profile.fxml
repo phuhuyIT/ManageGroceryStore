@@ -3,6 +3,8 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
@@ -87,10 +89,34 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Button fx:id="btn_update" layoutX="834.0" layoutY="167.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="Thêm" />
-      <Button fx:id="btn_fix" layoutX="834.0" layoutY="217.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="46.0" style="-fx-background-color: #ffffff;" text="Sửa" />
-      <Button fx:id="btn_delete" layoutX="834.0" layoutY="267.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="46.0" style="-fx-background-color: #ffffff;" text="Xóa" />
+      <Button fx:id="btn_update" alignment="CENTER_RIGHT" layoutX="91.0" layoutY="603.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="186.0" style="-fx-background-color: #ffffff;" text="Add User">
+         <font>
+            <Font size="22.0" />
+         </font></Button>
+      <Button fx:id="btn_fix" alignment="CENTER_RIGHT" layoutX="338.0" layoutY="603.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="223.0" style="-fx-background-color: #ffffff;" text="    Update Information" textAlignment="RIGHT">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button fx:id="btn_delete" alignment="CENTER" layoutX="629.0" layoutY="606.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="202.0" style="-fx-background-color: #ffffff;" text="Delete User" textAlignment="RIGHT">
+         <font>
+            <Font size="19.0" />
+         </font></Button>
       <Line endX="499.99993896484375" endY="-8.0" layoutX="500.0" layoutY="124.0" startX="-500.0" startY="-8.0" strokeWidth="3.0" />
       <Line endX="-0.5" endY="381.0" layoutX="259.0" layoutY="118.0" startX="-0.5" startY="34.0" strokeWidth="2.0" />
+      <ImageView fitHeight="53.0" fitWidth="50.0" layoutX="101.0" layoutY="606.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/add-user.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="53.0" fitWidth="74.0" layoutX="338.0" layoutY="606.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/arrow.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="53.0" fitWidth="53.0" layoutX="629.0" layoutY="605.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/delete.png" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>

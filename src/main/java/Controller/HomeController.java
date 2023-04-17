@@ -31,6 +31,9 @@ public class HomeController implements Initializable {
 
     @FXML
     private Button btn_Customer;
+
+    @FXML
+    private Button btn_Product;
     @FXML
     private Button btn_UserProfile;
     @FXML
@@ -43,7 +46,7 @@ public class HomeController implements Initializable {
     private ImageView img_user;
 
     @FXML
-    private AnchorPane paneRight;
+    public AnchorPane paneRight;
 
     private String userName;
     private String avatarSrc;
@@ -59,7 +62,6 @@ public class HomeController implements Initializable {
         try {
             node = loader.load();
             paneRight.getChildren().add(0, node);
-            System.out.println(node);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -86,6 +88,21 @@ public class HomeController implements Initializable {
             @Override
             public void handle(ActionEvent actionEvent) {
                 FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("views/customer.fxml"));
+                Node node = null;
+                try {
+                    node = loader.load();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                paneRight.getChildren().set(0, node);
+            }
+        });
+
+       //cài sự kiện cho btn_Product
+        btn_Product.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("views/product.fxml"));
                 Node node = null;
                 try {
                     node = loader.load();
@@ -130,7 +147,7 @@ public class HomeController implements Initializable {
 
         //Lấy dữ liệu tên người dùng và link ảnh từ database và put vào HashMap
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/account", "root", "13062003");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/account", "root", "123456");
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT USERNAME,AVATAR_SRC FROM USER ");
             while (resultSet.next()) {
