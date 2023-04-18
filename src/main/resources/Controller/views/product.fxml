@@ -1,23 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="726.0" prefWidth="938.0" style="-fx-background-color: #72F5FD;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ProductController">
+<AnchorPane prefHeight="900.0" prefWidth="1000.0" style="-fx-background-color: #72F5FD;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ProductController">
    <children>
       <Label layoutX="375.0" layoutY="35.0" prefHeight="52.0" prefWidth="170.0" style="-fx-font-weight: bold;" text="Product ">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <Line endX="606.0" layoutX="244.0" layoutY="88.0" startX="-244.0" strokeWidth="3.0" />
+      <Line endX="756.0" layoutX="244.0" layoutY="88.0" startX="-244.0" strokeWidth="3.0" />
       <Label fx:id="lb_Search" layoutX="17.0" layoutY="101.0" prefHeight="37.0" prefWidth="299.0" style="-fx-border-width: 1px; -fx-border-color: black;" />
       <TextField fx:id="txt_search" layoutX="63.0" layoutY="102.0" prefHeight="35.0" prefWidth="252.0" promptText="Search here...." style="-fx-background-color: transparent; -fx-font-weight: bold;">
          <font>
@@ -29,16 +32,593 @@
             <Image url="@../image/search.png" />
          </image>
       </ImageView>
-      <Label alignment="BASELINE_LEFT" layoutX="364.0" layoutY="101.0" prefHeight="37.0" prefWidth="114.0" style="-fx-border-color: black; -fx-font-weight: bold;" text="Sort by">
+      <Label layoutX="334.0" layoutY="101.0" prefHeight="37.0" prefWidth="219.0" style="-fx-border-color: black; -fx-font-weight: bold;" text="Sort by">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="choiceBox" layoutX="422.0" layoutY="102.0" prefHeight="35.0" prefWidth="54.0" style="-fx-background-color: transparent;" />
-      <ImageView fitHeight="37.0" fitWidth="30.0" layoutX="422.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
+      <ChoiceBox fx:id="choiceBox" layoutX="422.0" layoutY="103.0" prefHeight="35.0" prefWidth="128.0" style="-fx-background-color: transparent;" />
+      <ImageView fitHeight="37.0" fitWidth="30.0" layoutX="392.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../image/sort.png" />
          </image>
       </ImageView>
+      <VBox layoutX="13.0" layoutY="197.0" prefHeight="378.0" prefWidth="975.0">
+         <children>
+            <HBox prefHeight="49.0" prefWidth="975.0" style="-fx-background-color: #AAAAAA;">
+               <children>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="148.0" text="Code">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="30.0" prefWidth="112.0" text="Thumbnail">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="85.0" layoutY="10.0" prefHeight="30.0" prefWidth="199.0" text="Product Name">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="240.0" layoutY="10.0" prefHeight="30.0" prefWidth="106.0" text="Category">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="395.0" layoutY="10.0" prefHeight="30.0" prefWidth="105.0" text="Supplier">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="35.0" top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="550.0" layoutY="10.0" prefHeight="30.0" prefWidth="98.0" text="Price">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="35.0" top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="753.0" layoutY="20.0" prefHeight="30.0" prefWidth="98.0" text="Status">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="35.0" top="10.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="43.0" prefWidth="975.0">
+               <children>
+                  <CheckBox mnemonicParsing="false">
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </CheckBox>
+                  <Label alignment="BOTTOM_CENTER" prefHeight="30.0" prefWidth="59.0" text="#011">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="30.0" />
+                     </HBox.margin>
+                  </Label>
+                  <ImageView fitHeight="37.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/hamburger.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="80.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label prefHeight="30.0" prefWidth="123.0" text="Hamburger">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="85.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label prefHeight="30.0" prefWidth="51.0" text="Cake">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="60.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label prefHeight="30.0" prefWidth="126.0" text="CO.FastFood">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="65.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label text="2$">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="45.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label text="Stocking">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="80.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets top="5.0" />
+               </padding>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="59.0" prefHeight="43.0" prefWidth="975.0">
+               <children>
+                  <CheckBox mnemonicParsing="false">
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </CheckBox>
+                  <Label alignment="BOTTOM_CENTER" prefHeight="30.0" prefWidth="59.0" text="#011">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="30.0" />
+                     </HBox.margin>
+                  </Label>
+                  <ImageView fitHeight="37.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/hamburger.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="80.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label prefHeight="30.0" prefWidth="123.0" text="Hamburger">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="85.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label prefHeight="30.0" prefWidth="51.0" text="Cake">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="60.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label prefHeight="30.0" prefWidth="126.0" text="CO.FastFood">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="65.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label text="2$">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="45.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label text="Stocking">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="80.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets top="5.0" />
+               </padding>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="102.0" prefHeight="43.0" prefWidth="975.0">
+               <children>
+                  <CheckBox mnemonicParsing="false">
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </CheckBox>
+                  <Label alignment="BOTTOM_CENTER" prefHeight="30.0" prefWidth="59.0" text="#011">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="30.0" />
+                     </HBox.margin>
+                  </Label>
+                  <ImageView fitHeight="37.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/hamburger.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="80.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label prefHeight="30.0" prefWidth="123.0" text="Hamburger">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="85.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label prefHeight="30.0" prefWidth="51.0" text="Cake">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="60.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label prefHeight="30.0" prefWidth="126.0" text="CO.FastFood">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="65.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label text="2$">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="45.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label text="Stocking">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="80.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets top="5.0" />
+               </padding>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="145.0" prefHeight="43.0" prefWidth="975.0">
+               <children>
+                  <CheckBox mnemonicParsing="false">
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </CheckBox>
+                  <Label alignment="BOTTOM_CENTER" prefHeight="30.0" prefWidth="59.0" text="#011">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="30.0" />
+                     </HBox.margin>
+                  </Label>
+                  <ImageView fitHeight="37.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/hamburger.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="80.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label prefHeight="30.0" prefWidth="123.0" text="Hamburger">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="85.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label prefHeight="30.0" prefWidth="51.0" text="Cake">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="60.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label prefHeight="30.0" prefWidth="126.0" text="CO.FastFood">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="65.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label text="2$">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="45.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label text="Stocking">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="80.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets top="5.0" />
+               </padding>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="188.0" prefHeight="43.0" prefWidth="975.0">
+               <children>
+                  <CheckBox mnemonicParsing="false">
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </CheckBox>
+                  <Label alignment="BOTTOM_CENTER" prefHeight="30.0" prefWidth="59.0" text="#011">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="30.0" />
+                     </HBox.margin>
+                  </Label>
+                  <ImageView fitHeight="37.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/hamburger.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="80.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label prefHeight="30.0" prefWidth="123.0" text="Hamburger">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="85.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label prefHeight="30.0" prefWidth="51.0" text="Cake">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="60.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label prefHeight="30.0" prefWidth="126.0" text="CO.FastFood">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="65.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label text="2$">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="45.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label text="Stocking">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="80.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets top="5.0" />
+               </padding>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="231.0" prefHeight="43.0" prefWidth="975.0">
+               <children>
+                  <CheckBox mnemonicParsing="false">
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </CheckBox>
+                  <Label alignment="BOTTOM_CENTER" prefHeight="30.0" prefWidth="59.0" text="#011">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="30.0" />
+                     </HBox.margin>
+                  </Label>
+                  <ImageView fitHeight="37.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/hamburger.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="80.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label prefHeight="30.0" prefWidth="123.0" text="Hamburger">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="85.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label prefHeight="30.0" prefWidth="51.0" text="Cake">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="60.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label prefHeight="30.0" prefWidth="126.0" text="CO.FastFood">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="65.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label text="2$">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="45.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label text="Stocking">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="80.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets top="5.0" />
+               </padding>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="274.0" prefHeight="43.0" prefWidth="975.0">
+               <children>
+                  <CheckBox mnemonicParsing="false">
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </CheckBox>
+                  <Label alignment="BOTTOM_CENTER" prefHeight="30.0" prefWidth="59.0" text="#011">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="30.0" />
+                     </HBox.margin>
+                  </Label>
+                  <ImageView fitHeight="37.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/hamburger.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="80.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label prefHeight="30.0" prefWidth="123.0" text="Hamburger">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="85.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label prefHeight="30.0" prefWidth="51.0" text="Cake">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="60.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label prefHeight="30.0" prefWidth="126.0" text="CO.FastFood">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="65.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label text="2$">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="45.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label text="Stocking">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="80.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets top="5.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+      <ImageView fitHeight="156.0" fitWidth="73.0" layoutX="316.0" layoutY="575.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/previous.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="156.0" fitWidth="73.0" layoutX="553.0" layoutY="575.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/next.png" />
+         </image>
+      </ImageView>
+      <CheckBox alignment="BOTTOM_CENTER" layoutX="11.0" layoutY="149.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" />
+      <Label alignment="TOP_CENTER" layoutX="26.0" layoutY="157.0" prefHeight="30.0" prefWidth="90.0" text="Select All">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

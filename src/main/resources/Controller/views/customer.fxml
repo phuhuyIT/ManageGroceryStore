@@ -1,15 +1,577 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="900.0" prefWidth="1000.0" style="-fx-background-color: #72F5FD;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CustomerController">
    <children>
-      <Label layoutX="263.0" layoutY="206.0" prefHeight="115.0" prefWidth="244.0" text="Customer">
+      <Label layoutX="375.0" layoutY="35.0" prefHeight="52.0" prefWidth="170.0" style="-fx-font-weight: bold;" text="Customer">
          <font>
-            <Font size="50.0" />
+            <Font size="36.0" />
          </font>
       </Label>
+      <Line endX="756.0" layoutX="244.0" layoutY="88.0" startX="-244.0" strokeWidth="3.0" />
+      <Label fx:id="lb_Search" layoutX="17.0" layoutY="101.0" prefHeight="37.0" prefWidth="299.0" style="-fx-border-width: 1px; -fx-border-color: black;" />
+      <TextField fx:id="txt_search" layoutX="63.0" layoutY="102.0" prefHeight="35.0" prefWidth="252.0" promptText="Search here...." style="-fx-background-color: transparent; -fx-font-weight: bold;">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <ImageView fitHeight="37.0" fitWidth="30.0" layoutX="26.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/search.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="334.0" layoutY="101.0" prefHeight="37.0" prefWidth="219.0" style="-fx-border-color: black; -fx-font-weight: bold;" text="Sort by">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="choiceBox" layoutX="422.0" layoutY="103.0" prefHeight="35.0" prefWidth="128.0" style="-fx-background-color: transparent;" />
+      <ImageView fitHeight="37.0" fitWidth="30.0" layoutX="392.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/sort.png" />
+         </image>
+      </ImageView>
+      <Line endX="100.0" layoutX="233.0" layoutY="88.0" startX="-100.0" />
+      <ImageView fx:id="img_back" fitHeight="79.0" fitWidth="97.0" layoutX="316.0" layoutY="622.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/previous.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="img_next" fitHeight="79.0" fitWidth="97.0" layoutX="602.0" layoutY="622.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/next.png" />
+         </image>
+      </ImageView>
+      <VBox layoutX="17.0" layoutY="163.0" prefHeight="441.0" prefWidth="968.0">
+         <children>
+            <HBox prefHeight="59.0" prefWidth="968.0" style="-fx-background-color: #AAAAAA;">
+               <children>
+                  <Label alignment="BOTTOM_CENTER" prefHeight="46.0" prefWidth="41.0" text="A">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="BOTTOM_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="46.0" prefWidth="206.0" text="Customer Name">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="BOTTOM_CENTER" layoutX="94.0" layoutY="10.0" prefHeight="46.0" prefWidth="104.0" text="Gender">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="BOTTOM_CENTER" layoutX="262.0" layoutY="10.0" prefHeight="46.0" prefWidth="168.0" text="Phone Contact">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="BOTTOM_CENTER" layoutX="414.0" layoutY="10.0" prefHeight="46.0" prefWidth="129.0" text="Email">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="BOTTOM_CENTER" layoutX="582.0" layoutY="10.0" prefHeight="46.0" prefWidth="238.0" text="Action">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="60.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="55.0" prefWidth="968.0">
+               <children>
+                  <ImageView fitHeight="38.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/gamer.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label alignment="BOTTOM_CENTER" prefHeight="30.0" prefWidth="207.0" text="Nguyen Van A ">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="BOTTOM_CENTER" layoutX="65.0" layoutY="10.0" prefHeight="30.0" prefWidth="112.0" text="Nam">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="BOTTOM_CENTER" layoutX="237.0" layoutY="10.0" prefHeight="30.0" prefWidth="140.0" text="0123456789">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="BOTTOM_CENTER" layoutX="409.0" layoutY="10.0" prefHeight="30.0" prefWidth="221.0" text="ngyenvana@gmail.com">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                     <image>
+                        <Image url="@../image/chat.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="28.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                     <image>
+                        <Image url="@../image/remove.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="28.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="43.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                     <image>
+                        <Image url="@../image/information%20(1).png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="28.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="69.0" prefHeight="55.0" prefWidth="968.0">
+               <children>
+                  <ImageView fitHeight="38.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/gamer.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label alignment="BOTTOM_CENTER" prefHeight="30.0" prefWidth="207.0" text="Nguyen Van A ">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="BOTTOM_CENTER" layoutX="65.0" layoutY="10.0" prefHeight="30.0" prefWidth="112.0" text="Nam">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="BOTTOM_CENTER" layoutX="237.0" layoutY="10.0" prefHeight="30.0" prefWidth="140.0" text="0123456789">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="BOTTOM_CENTER" layoutX="409.0" layoutY="10.0" prefHeight="30.0" prefWidth="221.0" text="ngyenvana@gmail.com">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                     <image>
+                        <Image url="@../image/chat.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="28.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                     <image>
+                        <Image url="@../image/remove.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="28.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="43.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                     <image>
+                        <Image url="@../image/information%20(1).png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="28.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="124.0" prefHeight="55.0" prefWidth="968.0">
+               <children>
+                  <ImageView fitHeight="38.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/gamer.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label alignment="BOTTOM_CENTER" prefHeight="30.0" prefWidth="207.0" text="Nguyen Van A ">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="BOTTOM_CENTER" layoutX="65.0" layoutY="10.0" prefHeight="30.0" prefWidth="112.0" text="Nam">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="BOTTOM_CENTER" layoutX="237.0" layoutY="10.0" prefHeight="30.0" prefWidth="140.0" text="0123456789">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="BOTTOM_CENTER" layoutX="409.0" layoutY="10.0" prefHeight="30.0" prefWidth="221.0" text="ngyenvana@gmail.com">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                     <image>
+                        <Image url="@../image/chat.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="28.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                     <image>
+                        <Image url="@../image/remove.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="28.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="43.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                     <image>
+                        <Image url="@../image/information%20(1).png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="28.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="179.0" prefHeight="55.0" prefWidth="968.0">
+               <children>
+                  <ImageView fitHeight="38.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/gamer.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label alignment="BOTTOM_CENTER" prefHeight="30.0" prefWidth="207.0" text="Nguyen Van A ">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="BOTTOM_CENTER" layoutX="65.0" layoutY="10.0" prefHeight="30.0" prefWidth="112.0" text="Nam">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="BOTTOM_CENTER" layoutX="237.0" layoutY="10.0" prefHeight="30.0" prefWidth="140.0" text="0123456789">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="BOTTOM_CENTER" layoutX="409.0" layoutY="10.0" prefHeight="30.0" prefWidth="221.0" text="ngyenvana@gmail.com">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                     <image>
+                        <Image url="@../image/chat.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="28.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                     <image>
+                        <Image url="@../image/remove.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="28.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="43.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                     <image>
+                        <Image url="@../image/information%20(1).png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="28.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="234.0" prefHeight="55.0" prefWidth="968.0">
+               <children>
+                  <ImageView fitHeight="38.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/gamer.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label alignment="BOTTOM_CENTER" prefHeight="30.0" prefWidth="207.0" text="Nguyen Van A ">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="BOTTOM_CENTER" layoutX="65.0" layoutY="10.0" prefHeight="30.0" prefWidth="112.0" text="Nam">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="BOTTOM_CENTER" layoutX="237.0" layoutY="10.0" prefHeight="30.0" prefWidth="140.0" text="0123456789">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="BOTTOM_CENTER" layoutX="409.0" layoutY="10.0" prefHeight="30.0" prefWidth="221.0" text="ngyenvana@gmail.com">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                     <image>
+                        <Image url="@../image/chat.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="28.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                     <image>
+                        <Image url="@../image/remove.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="28.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="43.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                     <image>
+                        <Image url="@../image/information%20(1).png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="28.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="289.0" prefHeight="55.0" prefWidth="968.0">
+               <children>
+                  <ImageView fitHeight="38.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/gamer.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label alignment="BOTTOM_CENTER" prefHeight="30.0" prefWidth="207.0" text="Nguyen Van A ">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="BOTTOM_CENTER" layoutX="65.0" layoutY="10.0" prefHeight="30.0" prefWidth="112.0" text="Nam">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="BOTTOM_CENTER" layoutX="237.0" layoutY="10.0" prefHeight="30.0" prefWidth="140.0" text="0123456789">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="BOTTOM_CENTER" layoutX="409.0" layoutY="10.0" prefHeight="30.0" prefWidth="221.0" text="ngyenvana@gmail.com">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                     <image>
+                        <Image url="@../image/chat.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="28.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                     <image>
+                        <Image url="@../image/remove.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="28.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="43.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                     <image>
+                        <Image url="@../image/information%20(1).png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="28.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="344.0" prefHeight="55.0" prefWidth="968.0">
+               <children>
+                  <ImageView fitHeight="38.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/gamer.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label alignment="BOTTOM_CENTER" prefHeight="30.0" prefWidth="207.0" text="Nguyen Van A ">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="BOTTOM_CENTER" layoutX="65.0" layoutY="10.0" prefHeight="30.0" prefWidth="112.0" text="Nam">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="BOTTOM_CENTER" layoutX="237.0" layoutY="10.0" prefHeight="30.0" prefWidth="140.0" text="0123456789">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="BOTTOM_CENTER" layoutX="409.0" layoutY="10.0" prefHeight="30.0" prefWidth="221.0" text="ngyenvana@gmail.com">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                     <image>
+                        <Image url="@../image/chat.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="28.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                     <image>
+                        <Image url="@../image/remove.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="28.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="43.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                     <image>
+                        <Image url="@../image/information%20(1).png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="28.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

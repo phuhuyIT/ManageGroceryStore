@@ -74,7 +74,7 @@
                               <Font size="20.0" />
                            </font>
                         </Button>
-                        <Button layoutX="13.0" layoutY="202.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="240.0" style="-fx-background-color: #31B4D8; -fx-background-radius: 15; -fx-cursor: hand;" text="Bill" textFill="WHITE">
+                        <Button fx:id="btn_Bill" layoutX="13.0" layoutY="202.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="240.0" style="-fx-background-color: #31B4D8; -fx-background-radius: 15; -fx-cursor: hand;" text="Bill" textFill="WHITE">
                            <font>
                               <Font size="20.0" />
                            </font>

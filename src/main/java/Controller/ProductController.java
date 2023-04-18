@@ -22,16 +22,12 @@ public class ProductController implements Initializable {
     private Label lb_Search;
 
     @FXML
-    private ChoiceBox choiceBox;
+    private ChoiceBox<String> choiceBox;
+
+    private String[] choice = {"Tăng theo giá ", "Giảm theo giá" , "A->Z" , "Z->A"};
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        ObservableList<String> list = FXCollections.observableArrayList(
-                "Tăng dần theo giá", "Giảm dần theo giá", "A->Z", "Z->A"
-        );
-         ChoiceBox<String> choiceBox = new ChoiceBox<>();
-         choiceBox.setItems(list);
-
+            choiceBox.getItems().addAll(choice);
 
     }
 }
