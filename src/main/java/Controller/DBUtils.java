@@ -38,7 +38,7 @@ public class DBUtils {
         stage.setMaximized(true);
         stage.setFullScreen(true);
         //stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
-        stage.setScene(new Scene(root,1280, 720));
+        stage.setScene(new Scene(root,1280, 700));
       //  stage.setResizable(false);
         stage.centerOnScreen();
         stage.show();
@@ -71,7 +71,7 @@ public class DBUtils {
         stage.setFullScreen(true);
         //stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
         stage.setScene(new Scene(root,650, 450));
-        stage.setResizable(false);
+        //stage.setResizable(false);
         stage.centerOnScreen();
         stage.show();
     }
@@ -103,7 +103,7 @@ public class DBUtils {
         stage.setFullScreen(true);
         //stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
         stage.setScene(new Scene(root,1000, 900));
-        stage.setResizable(false);
+       // stage.setResizable(false);
         stage.centerOnScreen();
         stage.show();
     }

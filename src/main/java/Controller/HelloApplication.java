@@ -13,7 +13,7 @@ public class HelloApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("views/hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(),650, 450);
         stage.setTitle("Log In");
-        stage.setResizable(false);
+       // stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }

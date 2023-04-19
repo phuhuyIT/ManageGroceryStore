@@ -8,11 +8,12 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="900.0" prefWidth="1000.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.BillController">
    <children>
-      <ImageView fitHeight="150.0" fitWidth="264.0" layoutX="379.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="264.0" layoutX="172.0" layoutY="-8.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../image/PHMart.jpg" />
          </image>
@@ -50,7 +51,7 @@
          </font>
       </Label>
       <TextField layoutX="104.0" layoutY="554.0" prefHeight="38.0" prefWidth="136.0" />
-      <Button alignment="CENTER_RIGHT" layoutX="154.0" layoutY="626.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="225.0" text="Print receipt">
+      <Button fx:id="btn_prBill" alignment="CENTER_RIGHT" layoutX="154.0" layoutY="626.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="225.0" text="Print receipt">
          <font>
             <Font size="27.0" />
          </font>
@@ -60,5 +61,15 @@
             <Image url="@../image/bill.png" />
          </image>
       </ImageView>
+      <VBox layoutX="551.0" layoutY="23.0" prefHeight="678.0" prefWidth="434.0" style="-fx-border-width: 2px; -fx-border-color: Black; -fx-border-style: dashed;">
+         <children>
+            <Label alignment="CENTER" prefHeight="79.0" prefWidth="415.0" text="Xuất Hoá Đơn" underline="true">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Label>
+            <AnchorPane fx:id="pane_bill" prefHeight="679.0" prefWidth="419.0" />
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

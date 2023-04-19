@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="678.0" prefWidth="419.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DetailBillController">
+   <children>
+      <ImageView fitHeight="136.0" fitWidth="150.0" layoutX="142.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/PHMart.jpg" />
+         </image>
+      </ImageView>
+      <Line endX="183.0" layoutX="196.0" layoutY="162.0" startX="-154.0" />
+      <Label layoutX="46.0" layoutY="136.0" text="THU DUC DISTRICT-HO CHI MINH CITY-VIET NAM">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <VBox layoutX="12.0" layoutY="315.0" prefHeight="84.0" prefWidth="399.0">
+         <children>
+            <HBox prefHeight="40.0" prefWidth="398.0">
+               <children>
+                  <Label alignment="CENTER" text="Code">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="25.0" top="9.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" text="Product Name">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="25.0" top="9.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" text="Count">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="25.0" top="9.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" text="Price">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="25.0" top="9.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" text="Total">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="25.0" top="9.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <Label layoutX="25.0" layoutY="188.0" text="Số HĐ">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="25.0" layoutY="218.0" text="NGÀY HĐ">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="25.0" layoutY="245.0" text="NHÂN VIÊN ">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Line endX="243.0" layoutX="142.0" layoutY="290.0" startX="-100.0" />
+      <TextField layoutX="117.0" layoutY="186.0" prefHeight="25.0" prefWidth="269.0" promptText="#0123456789" />
+      <TextField layoutX="117.0" layoutY="216.0" prefHeight="25.0" prefWidth="269.0" promptText="dd/mm/yyyy" />
+      <TextField layoutX="117.0" layoutY="243.0" prefHeight="25.0" prefWidth="269.0" promptText="name" />
+      <Label layoutX="234.0" layoutY="471.0" text="Total">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField layoutX="279.0" layoutY="466.0" prefHeight="25.0" prefWidth="129.0" />
+      <Label layoutX="238.0" layoutY="504.0" text="Pay ">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField layoutX="279.0" layoutY="502.0" prefHeight="25.0" prefWidth="129.0" />
+      <Line endX="197.0" layoutX="189.0" layoutY="457.0" startX="-169.0" />
+      <Line endX="268.0" layoutX="121.0" layoutY="618.0" startX="-100.0" />
+      <Label layoutX="156.0" layoutY="626.0" text="Good Luck !">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="234.0" layoutY="554.0" text="Cash">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Line endX="204.0" layoutX="192.0" layoutY="540.0" startX="-169.0" />
+      <TextField layoutX="279.0" layoutY="549.0" prefHeight="25.0" prefWidth="129.0" />
+      <Label layoutX="19.0" layoutY="468.0" text="Discount">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField layoutX="84.0" layoutY="466.0" prefHeight="25.0" prefWidth="102.0" />
+      <Label layoutX="218.0" layoutY="587.0" text="Change">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField layoutX="279.0" layoutY="582.0" prefHeight="25.0" prefWidth="129.0" />
+   </children>
+</AnchorPane>

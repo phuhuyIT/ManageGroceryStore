@@ -11,12 +11,12 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1300.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HomeController">
    <children>
       <GridPane layoutX="-4.0" prefHeight="900.0" prefWidth="1300.0">
          <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="865.0" minWidth="10.0" prefWidth="266.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1034.0" minWidth="0.0" prefWidth="1034.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="865.0" minWidth="10.0" prefWidth="274.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1034.0" minWidth="0.0" prefWidth="1026.0" />
          </columnConstraints>
          <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
