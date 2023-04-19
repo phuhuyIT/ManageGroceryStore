@@ -1,5 +1,6 @@
 package DAO;
 
+import DatabaseConnection.ConnectionFactory;
 import Model.Customer;
 import Model.Product;
 
@@ -16,7 +17,16 @@ public class ProductDAO implements DaoInterface<Product> {
     public static ProductDAO getInstance(){
         return new ProductDAO();
     }
-
+    public ProductDAO(){
+        try {
+            con = new ConnectionFactory().getConnection();
+            stmt = con.createStatement();
+            stmt1=con.createStatement();
+            Stocks stocks = new Stocks();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     @Override
     public void insert(Product product) {
 
@@ -101,7 +111,36 @@ public class ProductDAO implements DaoInterface<Product> {
     }
     @Override
     public Product selectByID(Product product) {
-        return null;
+        Product result = null;
+        try {
+            String selectByID_query = "SELECT * FROM PRODUCT WHERE PRODUCTID =?";
+            pstmt= con.prepareStatement(selectByID_query);
+            pstmt.setInt(1,product.getProductId());
+            rs = pstmt.executeQuery();
+            while (rs.next()){
+                int idProduct = rs.getInt("PRODUCTID");
+                String codeProduct = rs.getString("PRODUCTCODE");
+                Date date = rs.getDate("DATE");
+                Date dateSell = rs.getDate("SELLDATE");
+                String codeSupplier = rs.getString("SUPPLIERCODE");
+                String nameProduct = rs.getString("PRODUCTNAME");
+                int quanty = rs.getInt("QUANTITY");
+                double costPrice = rs.getDouble("COSTPRICE");
+                double priceSelling = rs.getDouble("SELLINGPRICE");
+                String brand = rs.getString("BRAND");
+                int userId = rs.getInt("USERID");
+                String customerCode = rs.getString("CUSTOMERCODE");
+                double totalCode = rs.getDouble("TOTALCOST");
+                double totalRevenue = rs.getDouble("TOTALREVENUE");
+                result = new Product(idProduct,codeProduct,date,dateSell,codeSupplier,nameProduct
+                        ,quanty,costPrice,priceSelling,brand,userId,customerCode,totalCode,totalRevenue);
+
+            }
+        }catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return result;
     }
 
     @Override

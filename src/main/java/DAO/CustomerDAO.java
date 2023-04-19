@@ -3,11 +3,7 @@ import Model.Customer;
 import DatabaseConnection.ConnectionFactory;
 import javafx.scene.control.Alert;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 public class CustomerDAO implements DaoInterface <Customer>{
     Connection con = null;
@@ -115,9 +111,29 @@ public class CustomerDAO implements DaoInterface <Customer>{
 
     @Override
     public Customer selectByID(Customer customer) {
-        return null;
-    }
+        Customer result = null;
+        try {
+            String selectByID_query = "SELECT * FROM CUSTOMER WHERE CUSTOMERID =?";
+            pstmt= con.prepareStatement(selectByID_query);
+            pstmt.setInt(1,customer.getCustomersId());
+            rs = pstmt.executeQuery();
+            while (rs.next()){
+                int id=rs.getInt("CUSTOMERID");
+                String fname=rs.getString("FULLNAME");
+                String location=rs.getString("LOCATION");
+                String phone=rs.getString("PHONE");
+                String debit=rs.getString("DEBIT");
+                String credit=rs.getString("CREDIT");
+                String email=rs.getString("EMAIL");
+                result = new Customer (id,"cc",fname,location,phone,debit, credit,email);
 
+            }
+        }catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return result;
+    }
     @Override
     public int addFunction(Customer cus) {
         int result;
