@@ -8,28 +8,27 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class UpdateUserProfileController implements Initializable {
+public class ChangePassController implements Initializable {
+
     @FXML
-    private Label title;
-    @FXML
-    private Button btn_OK;
+    private Button btn_Apply;
 
     @FXML
     private AnchorPane pane;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        btn_OK.setOnAction(new EventHandler<ActionEvent>() {
+        btn_Apply.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setContentText("The information has been updated");
+                alert.setContentText("Your password has been updated");
                 alert.show();
                 FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("views/user_profile.fxml"));
                 Node node = null;
@@ -41,5 +40,6 @@ public class UpdateUserProfileController implements Initializable {
                 }
             }
         });
+
     }
 }

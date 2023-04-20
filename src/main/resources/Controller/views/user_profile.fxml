@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -11,37 +14,42 @@
 
 <AnchorPane fx:id="pane" prefHeight="900.0" prefWidth="1000.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.UserProfileController">
     <children>
-        <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="135.0" layoutY="164.0" prefHeight="30.0" prefWidth="133.0" text="User name    ">
+      <Label fx:id="lbl_password" layoutX="573.0" layoutY="310.0" prefHeight="30.0" prefWidth="201.0" text="Hiển thị password">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+        <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="303.0" layoutY="262.0" prefHeight="30.0" prefWidth="133.0" text="User name    ">
             <font>
                 <Font size="20.0" />
             </font>
         </Label>
-        <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="135.0" layoutY="213.0" prefHeight="30.0" prefWidth="133.0" text="Password       ">
+        <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="303.0" layoutY="310.0" prefHeight="30.0" prefWidth="133.0" text="Password       ">
             <font>
                 <Font size="20.0" />
             </font>
         </Label>
-        <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="135.0" layoutY="360.0" prefHeight="30.0" prefWidth="133.0" text="Location        ">
+        <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="303.0" layoutY="473.0" prefHeight="30.0" prefWidth="133.0" text="Location        ">
             <font>
                 <Font size="20.0" />
             </font>
         </Label>
-        <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="135.0" layoutY="262.0" prefHeight="30.0" prefWidth="133.0" text="Email">
+        <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="303.0" layoutY="360.0" prefHeight="30.0" prefWidth="133.0" text="Email">
             <font>
                 <Font size="20.0" />
             </font>
         </Label>
-        <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="135.0" layoutY="458.0" prefHeight="30.0" prefWidth="133.0" text="Credit          ">
+        <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="303.0" layoutY="577.0" prefHeight="30.0" prefWidth="133.0" text="Credit          ">
             <font>
                 <Font size="20.0" />
             </font>
         </Label>
-        <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="135.0" layoutY="313.0" prefHeight="30.0" prefWidth="133.0" text="Phone          ">
+        <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="303.0" layoutY="415.0" prefHeight="30.0" prefWidth="133.0" text="Phone          ">
             <font>
                 <Font size="20.0" />
             </font>
         </Label>
-        <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="135.0" layoutY="410.0" prefHeight="30.0" prefWidth="133.0" text="Debit ">
+        <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="303.0" layoutY="524.0" prefHeight="30.0" prefWidth="133.0" text="Debit ">
             <font>
                 <Font size="20.0" />
             </font>
@@ -54,50 +62,51 @@
             <InnerShadow />
          </effect>
       </Label>
-      <Label layoutX="290.0" layoutY="164.0" prefHeight="30.0" prefWidth="363.0" text="Hiển thị user name">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="290.0" layoutY="213.0" prefHeight="30.0" prefWidth="363.0" text="Hiển thị user name">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="290.0" layoutY="262.0" prefHeight="30.0" prefWidth="363.0" text="Hiển thị user name">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="290.0" layoutY="313.0" prefHeight="30.0" prefWidth="363.0" text="Hiển thị user name">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="290.0" layoutY="360.0" prefHeight="30.0" prefWidth="363.0" text="Hiển thị user name">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="290.0" layoutY="410.0" prefHeight="30.0" prefWidth="363.0" text="Hiển thị user name">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="290.0" layoutY="458.0" prefHeight="30.0" prefWidth="363.0" text="Hiển thị user name">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Button fx:id="btn_fix" alignment="CENTER_RIGHT" layoutX="338.0" layoutY="603.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="223.0" text="    Update Information" textAlignment="RIGHT">
+      <Button fx:id="btn_update" alignment="CENTER_RIGHT" layoutX="410.0" layoutY="631.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="223.0" text="    Update Information" textAlignment="RIGHT">
          <font>
             <Font size="18.0" />
-         </font></Button>
+         </font>
+         <padding>
+            <Insets left="10.0" />
+         </padding></Button>
       <Line endX="499.99993896484375" endY="-8.0" layoutX="500.0" layoutY="124.0" startX="-500.0" startY="-8.0" strokeWidth="3.0" />
-      <Line endX="-0.5" endY="381.0" layoutX="259.0" layoutY="118.0" startX="-0.5" startY="34.0" strokeWidth="2.0" />
-      <ImageView fitHeight="53.0" fitWidth="74.0" layoutX="338.0" layoutY="606.0" pickOnBounds="true" preserveRatio="true">
+      <Line endX="-0.5" endY="381.0" layoutX="501.0" layoutY="218.0" startX="-0.5" startY="-69.0" strokeWidth="2.0" />
+      <ImageView fitHeight="53.0" fitWidth="74.0" layoutX="410.0" layoutY="634.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../image/arrow.png" />
+         </image>
+      </ImageView>
+      <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="303.0" layoutY="213.0" prefHeight="30.0" prefWidth="133.0" text="Avatar">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="image_user" fitHeight="75.0" fitWidth="91.0" layoutX="611.0" layoutY="163.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/user_1.png" />
+         </image>
+      </ImageView>
+      <Hyperlink layoutX="733.0" layoutY="202.0" />
+      <Button fx:id="choose_avatar" layoutX="559.0" layoutY="200.0" mnemonicParsing="false" onAction="#chooseImageButton" prefHeight="42.0" prefWidth="43.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
+      <ImageView fitHeight="23.0" fitWidth="19.0" layoutX="570.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/edit.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lbl_username" layoutX="572.0" layoutY="262.0" prefHeight="30.0" prefWidth="201.0" text="Hiển thị username">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <TextField layoutX="570.0" layoutY="363.0" prefHeight="25.0" prefWidth="289.0" />
+      <TextField layoutX="570.0" layoutY="418.0" prefHeight="25.0" prefWidth="289.0" />
+      <TextField layoutX="570.0" layoutY="476.0" prefHeight="25.0" prefWidth="289.0" />
+      <TextField layoutX="570.0" layoutY="527.0" prefHeight="25.0" prefWidth="289.0" />
+      <TextField layoutX="570.0" layoutY="580.0" prefHeight="25.0" prefWidth="289.0" />
+      <Button fx:id="change_pass" layoutX="804.0" layoutY="305.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="43.0" style="-fx-cursor: hand; -fx-background-color: transparent;" />
+      <ImageView fitHeight="23.0" fitWidth="19.0" layoutX="816.0" layoutY="311.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/edit.png" />
          </image>
       </ImageView>
     </children>

@@ -30,45 +30,15 @@ public class SignUpController implements Initializable {
     private PasswordField tf_password;
     @FXML
     private PasswordField tf_confirmpass;
-    private File filePath;
-    private FileChooser fileChooser;
-    @FXML
-    private ImageView image_user;
-
-    @FXML
-    public void chooseImageButton(ActionEvent event) throws IOException {
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-
-        fileChooser = new FileChooser();
-        fileChooser.setTitle("Open image");
-
-        //cai dat den thu muc cua ng dung hoac chuyen truc tiep den o c neu ko truy cap duoc
-        String userDirectoryString = System.getProperty("user.home") ;
-        File userDirectory = new File(userDirectoryString);
-
-//        if(!userDirectory.canRead())
-//            userDirectory = new File("C:/");
-
-        fileChooser.setInitialDirectory(userDirectory);
-        filePath = fileChooser.showOpenDialog(stage);
-
-
-        //cập nhật ảnh mới
-        Image image = new Image(String.valueOf(filePath));
-        image_user.setImage(image);
-
-
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        //set image for user
         btn_signup.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 if (!tf_username.getText().trim().isEmpty() && !tf_password.getText().trim().isEmpty() && !tf_confirmpass.getText().trim().isEmpty()){
-                    DBUtils.SignUpUser(event,tf_username.getText(), tf_password.getText(),tf_confirmpass.getText(), filePath.toString());
+                    DBUtils.SignUpUser(event,tf_username.getText(), tf_password.getText(),tf_confirmpass.getText());
                 }else{
                     System.out.println("Please fill in all information ");
                     Alert alert = new Alert(Alert.AlertType.ERROR);

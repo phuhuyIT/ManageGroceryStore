@@ -38,7 +38,10 @@
                <children>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #72F5FD;">
                      <children>
-                        <ImageView fx:id="img_user" fitHeight="118.0" fitWidth="132.0" layoutX="63.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="img_user" fitHeight="118.0" fitWidth="132.0" layoutX="78.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/user_1.png" />
+                           </image></ImageView>
                         <Label fx:id="label_welcome" layoutX="68.0" layoutY="139.0" text="WELCOME">
                            <font>
                               <Font size="25.0" />

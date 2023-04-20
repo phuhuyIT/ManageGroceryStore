@@ -108,7 +108,7 @@ public class DBUtils {
         stage.show();
     }
 
-    public static void SignUpUser(ActionEvent event , String username, String password, String confirmPass, String src_imageuser) {
+    public static void SignUpUser(ActionEvent event , String username, String password, String confirmPass) {
         Connection connection = null;
         PreparedStatement psInsert = null;
         PreparedStatement psCheckUserExists = null;
@@ -116,7 +116,7 @@ public class DBUtils {
 
 
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/account", "root", "13062003");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/account", "root", "123456");
             psCheckUserExists = connection.prepareStatement("SELECT * FROM user WHERE USERNAME = ?");
             psCheckUserExists.setString(1, username);
             resultSet = psCheckUserExists.executeQuery();
@@ -128,10 +128,9 @@ public class DBUtils {
                 alert.show();
             } else {
                 if (confirmPass.equals(password)){
-                    psInsert = connection.prepareStatement("INSERT INTO user (USERNAME , PASS, AVATAR_SRC) VALUES (?,?,?) ");
+                    psInsert = connection.prepareStatement("INSERT INTO user (USERNAME , PASS) VALUES (?,?) ");
                     psInsert.setString(1, username);
                     psInsert.setString(2, password);
-                    psInsert.setString(3, src_imageuser);
                     psInsert.executeUpdate();
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                     alert.setContentText("Sign Up Success");
@@ -188,7 +187,7 @@ public class DBUtils {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet =  null;
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/account", "root", "13062003");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/account", "root", "123456");
             preparedStatement = connection.prepareStatement("SELECT PASS FROM user WHERE USERNAME = ?");
             preparedStatement.setString(1, username);
             resultSet=preparedStatement.executeQuery();
@@ -243,15 +242,70 @@ public class DBUtils {
         }
     }
 
-    public static String getLink_imgFromDB(Connection connection, String username) throws SQLException {
-        String sql = "SELECT USERNAME , AVATAR_SRC FROM user WHERE USERNAME = ?";
-        PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setString(1, username);
-        ResultSet result = statement.executeQuery();
-        if (result.next()) {
-            String myString = result.getString("AVATAR_SRC");
-            return myString ;
+//    public static String getLink_imgFromDB(Connection connection, String username) throws SQLException {
+//        String sql = "SELECT USERNAME , AVATAR_SRC FROM user WHERE USERNAME = ?";
+//        PreparedStatement statement = connection.prepareStatement(sql);
+//        statement.setString(1, username);
+//        ResultSet result = statement.executeQuery();
+//        if (result.next()) {
+//            String myString = result.getString("AVATAR_SRC");
+//            return myString ;
+//        }
+//        return null;
+//    }
+//lấy link ảnh avatar vào database
+    public static void Update_Infor(ActionEvent event ,String username, String pass,  String src_imageuser) throws SQLException{
+        Connection connection = null;
+        PreparedStatement psInsert = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/account", "root", "123456");
+
+           // resultSet = psCheckUserExists.executeQuery();
+
+            psInsert = connection.prepareStatement("UPDATE user SET AVATAR_SRC  = ? WHERE USERNAME = ? AND PASS = ? ");
+            psInsert.setString(1, src_imageuser);
+            psInsert.setString(2, username);
+            psInsert.setString(3, pass);
+            psInsert.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            if (resultSet != null){
+                try{
+                    resultSet.close();
+                }catch (SQLException e){
+                    e.printStackTrace();
+                }
+            }
+
+//            if(psCheckUserExists != null){
+//                try{
+//                    psCheckUserExists.close();
+//                }catch (SQLException e){
+//                    e.printStackTrace();
+//                }
+//            }
+
+            if (psInsert != null){
+                try{
+                    psInsert.close();
+                }catch (SQLException e){
+                    e.printStackTrace();
+                }
+            }
+
+            if (connection != null){
+                try{
+                    connection.close();
+                }catch (SQLException e){
+                    e.printStackTrace();
+                }
+            }
         }
-        return null;
-    }
+}
+
+
 }

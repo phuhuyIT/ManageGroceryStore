@@ -16,9 +16,9 @@ public class HelloController implements Initializable {
     @FXML
     private Button btn_login;
     @FXML
-    private TextField tf_username;
+    public TextField tf_username;
     @FXML
-    private PasswordField tf_password;
+    public PasswordField tf_password;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         btn_login.setOnAction(new EventHandler<ActionEvent>() {

@@ -55,15 +55,10 @@
                   <Image url="@../image/padlock_1.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="image_user" disable="true" fitHeight="152.0" fitWidth="187.0" layoutX="107.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView disable="true" fitHeight="191.0" fitWidth="184.0" layoutX="133.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../image/user_1.png" />
+                  <Image url="@../image/PHMart.jpg" />
                </image></ImageView>
-            <Hyperlink alignment="CENTER" layoutX="116.0" layoutY="177.0" onAction="#chooseImageButton" prefHeight="23.0" prefWidth="135.0" text="Change your avatar" underline="true">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Hyperlink>
          </children>
       </AnchorPane>
    </center>

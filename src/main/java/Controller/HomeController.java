@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -163,7 +164,7 @@ public class HomeController implements Initializable {
 
         //Lấy dữ liệu tên người dùng và link ảnh từ database và put vào HashMap
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/account", "root", "13062003");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/account", "root", "123456");
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT USERNAME,AVATAR_SRC FROM USER ");
             while (resultSet.next()) {
