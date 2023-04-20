@@ -115,7 +115,7 @@ public class CustomerDAO implements DaoInterface <Customer>{
         try {
             String selectByID_query = "SELECT * FROM CUSTOMER WHERE CUSTOMERID =?";
             pstmt= con.prepareStatement(selectByID_query);
-            pstmt.setInt(1,customer.getCustomersId());
+            pstmt.setInt(1,ID);
             rs = pstmt.executeQuery();
             while (rs.next()){
                 int id=rs.getInt("CUSTOMERID");
@@ -135,22 +135,41 @@ public class CustomerDAO implements DaoInterface <Customer>{
         return result;
     }
     @Override
-    public int addFunction(Customer cus) {
-        int result;
-        String url="insert into CUSTOMER (CUSTOMERID, FULLNAME, LOCATION, EMAIL, DEBIT, CREDIT, PHONE)"
-                    + "values (?,?,?,?,?,?,?)";
+    public int addFunction(Customer customer) {
+        int result = 0;
         try {
+            String customerCode = null;
+            String oldCustomerCode = null;
+            String getAllCustomers = "SELECT * FROM customers";
+            rs = stmt.executeQuery(getAllCustomers);
+            if (!rs.next()) {
+                customerCode = "cus" + "1";
+            } else {
+                String getAllCustomersInDescOrder = "SELECT * FROM customers ORDER by customerID DESC";
+                rs = stmt.executeQuery(getAllCustomersInDescOrder);
+                if (rs.next()) {
+                    oldCustomerCode = rs.getString("customercode");
+                    Integer scode = Integer.parseInt(oldCustomerCode.substring(3));
+                    scode++;
+                    customerCode = "cus" + scode;
+                }
+            }
+            String url = "insert into CUSTOMER (CUSTOMERID, FULLNAME, LOCATION, EMAIL, DEBIT, CREDIT, PHONE)"
+                    + "values (?,?,?,?,?,?,?)";
             pstmt = con.prepareStatement(url);
-            pstmt.setInt(1,cus.getCustomersId());
-            pstmt.setString(2, cus.getFullName());
-            pstmt.setString(3, cus.getLocation());
-            pstmt.setString(4, cus.getEmail());
-            pstmt.setString(5,cus.getDebit());
-            pstmt.setString(6,cus.getCredit());
-            pstmt.setString(7,cus.getPhone());
+            pstmt.setInt(1, customer.getCustomersId());
+            pstmt.setString(2, customer.getFullName());
+            pstmt.setString(3, customer.getLocation());
+            pstmt.setString(4, customer.getEmail());
+            pstmt.setString(5, customer.getDebit());
+            pstmt.setString(6, customer.getCredit());
+            pstmt.setString(7, customer.getPhone());
             result = pstmt.executeUpdate();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        return result;    }
+
+        return result;
+    }
 }

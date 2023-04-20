@@ -158,11 +158,27 @@ public class ProductDAO implements DaoInterface<Product> {
 
     @Override
     public int addFunction(Product product) {
-
-        String updateProduct= "INSERT INTO PRODUCT ( PRODUCTID, PRODUCTCODE, DATE, SELLDATE, SUPPLIERCODE, PRODUCTNAME,QUANTITY,COSTPRICE,SELLINGPRICE,BRAND,USERID,CUSTOMERCODE,TOTALCOST,TOTALREVENUE "
-                +"VALUE(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        int result;
+        int result=0;
         try {
+            String productCode = null;
+            String oldProductCode = null;
+            String query1="SELECT * FROM products";
+            rs=stmt.executeQuery(query1);
+            if(!rs.next()){
+                productCode="prod"+"1";
+            }
+            else{
+                String query2="SELECT * FROM products ORDER by productID DESC";
+                rs=stmt.executeQuery(query2);
+                if(rs.next()){
+                    oldProductCode=rs.getString("productcode");
+                    Integer pcode=Integer.parseInt(oldProductCode.substring(4));
+                    pcode++;
+                    productCode="prod"+pcode;
+                }
+            }
+            String updateProduct= "INSERT INTO PRODUCT ( PRODUCTID, PRODUCTBARCODE, DATE, SELLDATE, SUPPLIERCODE, PRODUCTNAME,QUANTITY,COSTPRICE,SELLINGPRICE,BRAND,USERID,CUSTOMERCODE,TOTALCOST,TOTALREVENUE "
+                    +"VALUE(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             pstmt = (PreparedStatement) con.prepareStatement(updateProduct);
             pstmt.setInt(1,product.getProductId());
             pstmt.setString(2,product.getProductBarCode());
@@ -179,8 +195,8 @@ public class ProductDAO implements DaoInterface<Product> {
             pstmt.setDouble(13,product.getTotalCost());
             pstmt.setDouble(14,product.getTotalRevenue());
             result=pstmt.executeUpdate();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return result;
     }
