@@ -38,7 +38,7 @@ public class DBUtils {
         stage.setMaximized(true);
         stage.setFullScreen(true);
         //stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
-        stage.setScene(new Scene(root,1280, 700));
+        stage.setScene(new Scene(root,1280, 720));
       //  stage.setResizable(false);
         stage.centerOnScreen();
         stage.show();
@@ -71,7 +71,7 @@ public class DBUtils {
         stage.setFullScreen(true);
         //stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
         stage.setScene(new Scene(root,650, 450));
-        //stage.setResizable(false);
+        stage.setResizable(false);
         stage.centerOnScreen();
         stage.show();
     }
@@ -103,7 +103,7 @@ public class DBUtils {
         stage.setFullScreen(true);
         //stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
         stage.setScene(new Scene(root,1000, 900));
-       // stage.setResizable(false);
+        stage.setResizable(false);
         stage.centerOnScreen();
         stage.show();
     }
@@ -116,7 +116,7 @@ public class DBUtils {
 
 
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/account", "root", "123456");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/account", "root", "13062003");
             psCheckUserExists = connection.prepareStatement("SELECT * FROM user WHERE USERNAME = ?");
             psCheckUserExists.setString(1, username);
             resultSet = psCheckUserExists.executeQuery();
@@ -188,7 +188,7 @@ public class DBUtils {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet =  null;
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/account", "root", "123456");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/account", "root", "13062003");
             preparedStatement = connection.prepareStatement("SELECT PASS FROM user WHERE USERNAME = ?");
             preparedStatement.setString(1, username);
             resultSet=preparedStatement.executeQuery();
