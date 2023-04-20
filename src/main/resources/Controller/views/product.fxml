@@ -21,8 +21,8 @@
          </font>
       </Label>
       <Line endX="756.0" layoutX="244.0" layoutY="88.0" startX="-244.0" strokeWidth="3.0" />
-      <Label fx:id="lb_Search" layoutX="17.0" layoutY="101.0" prefHeight="37.0" prefWidth="299.0" style="-fx-border-width: 1px; -fx-border-color: black;" />
-      <TextField fx:id="txt_search" layoutX="63.0" layoutY="102.0" prefHeight="35.0" prefWidth="252.0" promptText="Search here...." style="-fx-background-color: transparent; -fx-font-weight: bold;">
+      <Label fx:id="lb_Search" layoutX="17.0" layoutY="101.0" prefHeight="37.0" prefWidth="299.0" style="-fx-border-width: 3px; -fx-border-color: black; -fx-border-radius: 20px;" />
+      <TextField fx:id="txt_search" layoutX="63.0" layoutY="102.0" prefHeight="35.0" prefWidth="252.0" promptText="Search here...." style="-fx-background-color: transparent; -fx-font-weight: bold; -fx-border-width: 2px; -fx-border-radius: 20px;">
          <font>
             <Font size="16.0" />
          </font>
@@ -32,12 +32,18 @@
             <Image url="@../image/search.png" />
          </image>
       </ImageView>
-      <Label layoutX="334.0" layoutY="101.0" prefHeight="37.0" prefWidth="219.0" style="-fx-border-color: black; -fx-font-weight: bold;" text="Sort by">
+      <Label layoutX="328.0" layoutY="101.0" prefHeight="37.0" prefWidth="225.0" style="-fx-border-color: black; -fx-border-width: 3px; -fx-font-weight: bold; -fx-border-radius: 20px;" text="Sort by">
          <font>
             <Font size="16.0" />
          </font>
+         <opaqueInsets>
+            <Insets left="5.0" />
+         </opaqueInsets>
+         <padding>
+            <Insets left="5.0" />
+         </padding>
       </Label>
-      <ChoiceBox fx:id="choiceBox" layoutX="422.0" layoutY="103.0" prefHeight="35.0" prefWidth="128.0" style="-fx-background-color: transparent;" />
+      <ChoiceBox fx:id="choiceBox_sort" layoutX="422.0" layoutY="103.0" prefHeight="35.0" prefWidth="128.0" style="-fx-background-color: transparent;" />
       <ImageView fitHeight="37.0" fitWidth="30.0" layoutX="392.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../image/sort.png" />
@@ -620,5 +626,14 @@
             <Font size="20.0" />
          </font>
       </Label>
+      <Label layoutX="734.0" layoutY="102.0" prefHeight="37.0" prefWidth="244.0" style="-fx-border-color: black; -fx-font-weight: bold; -fx-border-width: 3px; -fx-border-radius: 20px;" text="List Product ">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <padding>
+            <Insets left="5.0" />
+         </padding>
+      </Label>
+      <ChoiceBox fx:id="choiceBox_list" layoutX="837.0" layoutY="102.0" prefHeight="35.0" prefWidth="141.0" style="-fx-background-color: transparent;" />
    </children>
 </AnchorPane>

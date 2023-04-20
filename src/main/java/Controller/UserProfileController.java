@@ -19,11 +19,7 @@ public class UserProfileController implements Initializable{
     @FXML
     private Label title;
     @FXML
-    private Button btn_update;
-    @FXML
     private Button btn_fix;
-    @FXML
-    private Button btn_delete;
 
     @FXML
     private AnchorPane pane;
@@ -31,7 +27,7 @@ public class UserProfileController implements Initializable{
     @FXML
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        btn_update.setOnAction(new EventHandler<ActionEvent>() {
+        btn_fix.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("views/update_view.fxml"));
@@ -44,31 +40,6 @@ public class UserProfileController implements Initializable{
                 }
             }
         });
-        btn_fix.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("views/update_view.fxml"));
-                Node node = null;
-                try {
-                    node = loader.load();
-                    pane.getChildren().add(node);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        btn_delete.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("views/update_view.fxml"));
-                Node node = null;
-                try {
-                    node = loader.load();
-                    pane.getChildren().add(node);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+
     }
 }

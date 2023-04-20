@@ -22,12 +22,19 @@ public class ProductController implements Initializable {
     private Label lb_Search;
 
     @FXML
-    private ChoiceBox<String> choiceBox;
+    private ChoiceBox<String> choiceBox_sort;
+
+    @FXML
+    private ChoiceBox<String> choiceBox_list;
 
     private String[] choice = {"Tăng theo giá ", "Giảm theo giá" , "A->Z" , "Z->A"};
+
+    private String[] list = {"Cake", "Noodle" , "Fast Food" , "Drinking" , "Ice Cream" , "Vegetable"};
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-            choiceBox.getItems().addAll(choice);
+        choiceBox_sort.getItems().addAll(choice);
+        choiceBox_list.getItems().addAll(list);
 
     }
 }
