@@ -16,11 +16,11 @@ public class Product {
     private String customerCode;
     private Double totalCost;
     private Double totalRevenue;
-    public Product (int productId,String productCode,Date date,Date sellDate,String supplierCode,
+    public Product (int productId,String productBarCode,Date date,Date sellDate,String supplierCode,
                     String productName,int quantity,double costPrice,double sellingPrice,
                     String brand,int userId,String customerCode,Double totalCost,Double totalRevenue){
         this.productId = productId;
-        this.productCode = productCode;
+        this.productBarCode = productBarCode;
         this.date = date;
         this.sellDate = sellDate;
         this.supplierCode = supplierCode;
