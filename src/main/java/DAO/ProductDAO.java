@@ -3,6 +3,7 @@ package DAO;
 import DatabaseConnection.ConnectionFactory;
 import Model.Customer;
 import Model.Product;
+import javafx.scene.control.Alert;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -29,6 +30,19 @@ public class ProductDAO implements DaoInterface<Product> {
     }
     @Override
     public void insert(Product product) {
+        try{
+            String query = "SELECT * FROM products WHERE productname='"+product.getProductName()+"' AND costprice='"+product.getCostPrice()+"' AND sellingprice='"+product.getSellingPrice()+"' AND brand='"+product.getBrand()+"'";
+            rs=stmt.executeQuery(query);
+            if(rs.next()){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("This product has been added.");
+                alert.show();
+            }else{
+                addFunction(product);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
 
     }
 
@@ -56,7 +70,7 @@ public class ProductDAO implements DaoInterface<Product> {
         try {
             pstmt = (PreparedStatement) con.prepareStatement(updateProduct);
             pstmt.setInt(1,product.getProductId());
-            pstmt.setString(2,product.getProductCode());
+            pstmt.setString(2,product.getProductBarCode());
             pstmt.setDate(3, (Date) product.getDate());
             pstmt.setDate(4, (Date) product.getSellDate());
             pstmt.setString(5,product.getSupplierCode());
@@ -110,13 +124,12 @@ public class ProductDAO implements DaoInterface<Product> {
         return  result;
     }
     @Override
-    public Product selectByID(Product product) {
+    public Product selectByID(int ID) {
         Product result = null;
         try {
             String selectByID_query = "SELECT * FROM PRODUCT WHERE PRODUCTID =?";
             pstmt= con.prepareStatement(selectByID_query);
-            pstmt.setInt(1,product.getProductId());
-            rs = pstmt.executeQuery();
+            pstmt.setInt(1,ID);
             while (rs.next()){
                 int idProduct = rs.getInt("PRODUCTID");
                 String codeProduct = rs.getString("PRODUCTCODE");
@@ -152,7 +165,7 @@ public class ProductDAO implements DaoInterface<Product> {
         try {
             pstmt = (PreparedStatement) con.prepareStatement(updateProduct);
             pstmt.setInt(1,product.getProductId());
-            pstmt.setString(2,product.getProductCode());
+            pstmt.setString(2,product.getProductBarCode());
             pstmt.setDate(3, (Date) product.getDate());
             pstmt.setDate(4, (Date) product.getSellDate());
             pstmt.setString(5,product.getSupplierCode());

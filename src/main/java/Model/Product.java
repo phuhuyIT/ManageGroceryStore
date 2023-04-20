@@ -1,10 +1,9 @@
 package Model;
 
 import java.util.Date;
-
 public class Product {
     private int productId;
-    private String productCode;
+    private String productBarCode;
     private Date date;
     private Date sellDate;
     private String supplierCode;
@@ -45,12 +44,12 @@ public class Product {
         this.productId = productId;
     }
 
-    public String getProductCode() {
-        return productCode;
+    public String getProductBarCode() {
+        return productBarCode;
     }
 
-    public void setProductCode(String productCode) {
-        this.productCode = productCode;
+    public void setProductBarCode(String productBarCode) {
+        this.productBarCode = productBarCode;
     }
 
     public Date getDate() {

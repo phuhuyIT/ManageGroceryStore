@@ -110,7 +110,7 @@ public class CustomerDAO implements DaoInterface <Customer>{
     }
 
     @Override
-    public Customer selectByID(Customer customer) {
+    public Customer selectByID(int ID) {
         Customer result = null;
         try {
             String selectByID_query = "SELECT * FROM CUSTOMER WHERE CUSTOMERID =?";
