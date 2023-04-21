@@ -20,7 +20,10 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.util.HashMap;
 import java.util.ResourceBundle;
+import java.util.Set;
+
 import Controller.HelloController;
 
 public class UserProfileController implements Initializable{
@@ -53,6 +56,8 @@ public class UserProfileController implements Initializable{
     public String username;
     public String password;
 
+    private HashMap<String, String> acc_user = new HashMap<String, String>();
+
     @FXML
     public void chooseImageButton(ActionEvent event) throws IOException {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -81,7 +86,7 @@ public class UserProfileController implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        //Lấy dữ liệu tên người dùng và link ảnh từ database và put vào HashMap
+        //Lấy dữ liệu tên người dùng và password từ database push vào Hash Map
         try {
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/account", "root", "123456");
             Statement statement = connection.createStatement();
@@ -89,7 +94,7 @@ public class UserProfileController implements Initializable{
             while (resultSet.next()) {
                 username = resultSet.getString("USERNAME");
                 password = resultSet.getString("PASS");
-
+                acc_user.put(username,password);
             }
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
@@ -115,11 +120,17 @@ public class UserProfileController implements Initializable{
             public void handle(ActionEvent actionEvent) {
                 System.out.println(filePath);
                 try {
-                    DBUtils.Update_Infor(actionEvent,username.toString(),password.toString(),filePath.toString());
-                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                    alert.setContentText("The information has been updated - PLEASE RESTART THE PROGRAM TO UPDATE YOUR INFORMATION");
-                    alert.show();
-
+                    Set<String> keySet = acc_user.keySet();
+                    for (String key : keySet) {
+                        System.out.println(key);
+                        System.out.println(acc_user.get(key));
+                        if (username.equals(key) && password.equals(acc_user.get(key))) {
+                            DBUtils.Update_Infor(actionEvent,username.toString(), password.toString(), filePath.toString());
+                            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                            alert.setContentText("The information has been updated - PLEASE RESTART THE PROGRAM TO UPDATE YOUR INFORMATION");
+                            alert.show();
+                        }
+                    }
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }

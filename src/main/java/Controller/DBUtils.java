@@ -27,7 +27,7 @@ public class DBUtils {
             }
         }else{
             try{
-                root = FXMLLoader.load(DBUtils.class.getResource(fxmlFile));
+                root = FXMLLoader.load(DBUtils.class.getResource("views/" + fxmlFile));
 
             }catch (IOException e){
                 e.printStackTrace();
@@ -90,7 +90,7 @@ public class DBUtils {
             }
         }else{
             try{
-                root = FXMLLoader.load(DBUtils.class.getResource(fxmlFile));
+                root = FXMLLoader.load(DBUtils.class.getResource("views/" + fxmlFile));
 
             }catch (IOException e){
                 e.printStackTrace();
@@ -128,9 +128,10 @@ public class DBUtils {
                 alert.show();
             } else {
                 if (confirmPass.equals(password)){
-                    psInsert = connection.prepareStatement("INSERT INTO user (USERNAME , PASS) VALUES (?,?) ");
+                    psInsert = connection.prepareStatement("INSERT INTO user (USERNAME , PASS, AVATAR_SRC) VALUES (?,?,?) ");
                     psInsert.setString(1, username);
                     psInsert.setString(2, password);
+                    psInsert.setString(3, "D:/workspace/BTL_demo/src/main/resources/Controller/image/user_1.png");
                     psInsert.executeUpdate();
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                     alert.setContentText("Sign Up Success");
@@ -280,14 +281,6 @@ public class DBUtils {
                     e.printStackTrace();
                 }
             }
-
-//            if(psCheckUserExists != null){
-//                try{
-//                    psCheckUserExists.close();
-//                }catch (SQLException e){
-//                    e.printStackTrace();
-//                }
-//            }
 
             if (psInsert != null){
                 try{

@@ -180,16 +180,18 @@ public class HomeController implements Initializable {
 
 
     public void setUserInformation(String username) {
-            wlc_user.setText(username);
-            //So sánh tên username , nếu trùng tên trong HashMap sẽ lấy ra avatar tương ứng
-            Set<String> keySet = acc.keySet();
-            for (String key : keySet) {
-                if (username.equals(key)) {
-                    Image image = new Image(String.valueOf(acc.get(key)));
-                    img_user.setImage(image);
+        wlc_user.setText(username);
+        //So sánh tên username , nếu trùng tên trong HashMap sẽ lấy ra avatar tương ứng
+        Set<String> keySet = acc.keySet();
+        for (String key : keySet) {
+            if (username.equals(key)) {
+                if (acc.get(key) != null) {
+                    Image image1 = new Image(String.valueOf(acc.get(key)));
+                    img_user.setImage(image1);
                 }
             }
         }
+    }
 
 
     //Setting Clock within a new Thread
