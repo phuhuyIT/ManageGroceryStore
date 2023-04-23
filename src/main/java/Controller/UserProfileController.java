@@ -18,12 +18,13 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.math.BigInteger;
 import java.net.URL;
+import java.security.MessageDigest;
 import java.sql.*;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.Set;
-
 import Controller.HelloController;
 
 public class UserProfileController implements Initializable{
@@ -137,6 +138,19 @@ public class UserProfileController implements Initializable{
             }
         });
 
+    }
 
+    public String encryptPassword(String input){
+        String encPass=null;
+        if(input==null) return null;
+
+        try{
+            MessageDigest digest=MessageDigest.getInstance("MD5");
+            digest.update(input.getBytes(),0,input.length());
+            encPass=new BigInteger(1,digest.digest()).toString(16);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return encPass;
     }
 }
