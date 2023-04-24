@@ -12,6 +12,11 @@ public class User {
     private String category;
     private String imgLink;
 
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
     public User(String fullName, String location, String phone, String username, String category, String image) {
         this.fullName = fullName;
         this.location = location;

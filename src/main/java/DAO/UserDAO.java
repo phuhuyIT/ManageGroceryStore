@@ -38,10 +38,12 @@ public class UserDAO {
         }
     }
 
-    public void addUserDAO(User userdto, String user) {
+    public void addUserDAO(User userdto) {
         try{
-            String query = "SELECT * FROM users WHERE fullname='"+userdto.getFullName()+"' AND location='"+userdto.getLocation()+"' AND phone='"+userdto.getPhone()+"' AND category='"+userdto.getCategory()+"'";
-            rs=stmt.executeQuery(query);
+            String query = "SELECT username, pass FROM user WHERE USERNAME=?";
+            pstmt = con.prepareStatement(query);
+            pstmt.setString(1, userdto.getUsername());
+            rs=pstmt.executeQuery();
             if(rs.next()){
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Duplicate User");
@@ -49,48 +51,44 @@ public class UserDAO {
                 alert.setContentText("Same User has already been added!");
                 alert.showAndWait();
             }else{
-                addFunction(userdto, user);
+                addFunction(userdto);
             }
         }catch(Exception e){
             e.printStackTrace();
         }
     }//end of method addUser
 
-    public void addFunction(User userdto, String user){
+    public void addFunction(User userdto){
         try{
             String username = null;
             String password = null;
             String oldUsername = null;
             String encPass=null;
-            String query1="SELECT * FROM users";
-            rs=stmt.executeQuery(query1);
+            String query1="SELECT username, pass FROM user";
+            rs=pstmt.executeQuery(query1);
             if(!rs.next()){
                 username="user"+"1";
                 password="user"+"1";
             }
             else{
-                String query2="SELECT * FROM users ORDER by id DESC";
+                String query2="SELECT * FROM user ORDER by id DESC";
                 rs=stmt.executeQuery(query2);
                 if(rs.next()){
                     oldUsername=rs.getString("username");
-                    Integer ucode=Integer.parseInt(oldUsername.substring(4));
+                    Integer ucode=Integer.parseInt(oldUsername.substring(1));
                     ucode++;
                     username="user"+ucode;
                     password="user"+ucode;
                 }
-                encPass=new UserProfileController().encryptPassword(password);
-            }
 
-            String query = "INSERT INTO users (fullname,location, phone, username, password, category) VALUES(?,?,?,?,?,?)";
-            pstmt = (PreparedStatement) con.prepareStatement(query);
-            pstmt.setString(1, userdto.getFullName());
-            pstmt.setString(2, userdto.getLocation());
-            pstmt.setString(3, userdto.getPhone());
-            pstmt.setString(4, username);
-            pstmt.setString(5, encPass);
-            pstmt.setString(6, userdto.getCategory());
+            }
+            encPass=new UserProfileController().encryptPassword(password);
+            String queryTemp = "INSERT INTO user (username, pass) VALUES(?,?)";
+            pstmt = con.prepareStatement(queryTemp);
+            pstmt.setString(1, username);
+            pstmt.setString(2, encPass);
             pstmt.executeUpdate();
-            if("ADMINISTRATOR".equals(user)){
+            if("ADMINISTRATOR".equals("ADMINISTRATOR")){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("New Administrator Added");
                 alert.setHeaderText(null);
