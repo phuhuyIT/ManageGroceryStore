@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1300.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1300.0" style="-fx-background-color: #FFFFFF;" stylesheets="@css/test.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HomeController">
    <children>
       <GridPane layoutX="-4.0" prefHeight="900.0" prefWidth="1300.0">
          <columnConstraints>
@@ -36,7 +36,7 @@
                   <RowConstraints maxHeight="672.0" minHeight="10.0" prefHeight="172.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #72F5FD;">
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #72F5FD;" stylesheets="@css/test.css">
                      <children>
                         <ImageView fx:id="img_user" fitHeight="118.0" fitWidth="132.0" layoutX="78.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -55,29 +55,29 @@
                         <Line endX="100.0" layoutX="127.0" layoutY="213.0" startX="-100.0" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #72F5FD;" GridPane.rowIndex="1">
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #72F5FD;" styleClass="button" stylesheets="@css/test.css" GridPane.rowIndex="1">
                      <children>
-                        <Button fx:id="btn_DashBoard" layoutX="13.0" layoutY="21.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="240.0" style="-fx-background-color: #31B4D8; -fx-background-radius: 15; -fx-cursor: hand;" text="DashBoard" textFill="WHITE">
+                        <Button fx:id="btn_DashBoard" layoutX="13.0" layoutY="21.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="240.0" style="-fx-background-radius: 15; -fx-cursor: hand;" styleClass="button" stylesheets="@css/test.css" text="DashBoard" textFill="WHITE">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btn_Customer" layoutX="14.0" layoutY="81.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="240.0" style="-fx-background-color: #31B4D8; -fx-background-radius: 15; -fx-cursor: hand;" text="Customer" textFill="WHITE">
+                        <Button fx:id="btn_Customer" layoutX="14.0" layoutY="81.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="240.0" style="-fx-background-radius: 15; -fx-cursor: hand;" stylesheets="@css/test.css" text="Customer" textFill="WHITE">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btn_Product" layoutX="14.0" layoutY="141.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="240.0" style="-fx-background-color: #31B4D8; -fx-background-radius: 15; -fx-cursor: hand;" text="Product" textFill="WHITE">
+                        <Button fx:id="btn_Product" layoutX="14.0" layoutY="141.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="240.0" style="-fx-background-radius: 15; -fx-cursor: hand;" stylesheets="@css/test.css" text="Product" textFill="WHITE">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btn_UserProfile" layoutX="14.0" layoutY="264.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="240.0" style="-fx-background-color: #31B4D8; -fx-background-radius: 15; -fx-cursor: hand;" text="User Profile" textFill="WHITE">
+                        <Button fx:id="btn_UserProfile" layoutX="14.0" layoutY="264.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="240.0" style="-fx-background-radius: 15; -fx-cursor: hand;" stylesheets="@css/test.css" text="User Profile" textFill="WHITE">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btn_Bill" layoutX="13.0" layoutY="202.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="240.0" style="-fx-background-color: #31B4D8; -fx-background-radius: 15; -fx-cursor: hand;" text="Bill" textFill="WHITE">
+                        <Button fx:id="btn_Bill" layoutX="13.0" layoutY="202.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="240.0" style="-fx-background-radius: 15; -fx-cursor: hand;" stylesheets="@css/test.css" text="Bill" textFill="WHITE">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -88,7 +88,7 @@
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <Button fx:id="btn_logout" layoutX="27.0" layoutY="408.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="215.0" style="-fx-background-color: #31B4D8; -fx-background-radius: 15; -fx-cursor: hand;" text="Log Out" textFill="WHITE">
+                        <Button fx:id="btn_logout" layoutX="27.0" layoutY="408.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="215.0" style="-fx-background-radius: 15; -fx-cursor: hand;" text="Log Out" textFill="WHITE">
                            <font>
                               <Font size="20.0" />
                            </font>

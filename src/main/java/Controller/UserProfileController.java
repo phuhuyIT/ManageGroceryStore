@@ -95,6 +95,8 @@ public class UserProfileController implements Initializable{
                 username = resultSet.getString("USERNAME");
                 password = resultSet.getString("PASS");
                 acc_user.put(username,password);
+                lbl_username.setText(username);
+                lbl_password.setText(password);
             }
         } catch (SQLException ex) {
             throw new RuntimeException(ex);

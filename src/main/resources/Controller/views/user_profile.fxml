@@ -62,18 +62,18 @@
             <InnerShadow />
          </effect>
       </Label>
-      <Button fx:id="btn_update" alignment="CENTER_RIGHT" layoutX="410.0" layoutY="631.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="223.0" text="    Update Information" textAlignment="RIGHT">
+      <Button fx:id="btn_update" alignment="CENTER_RIGHT" layoutX="410.0" layoutY="631.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="233.0" style="-fx-cursor: hand;" stylesheets="@css/test.css" text="    Update Information" textAlignment="RIGHT">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
          <padding>
             <Insets left="10.0" />
          </padding></Button>
       <Line endX="499.99993896484375" endY="-8.0" layoutX="500.0" layoutY="124.0" startX="-500.0" startY="-8.0" strokeWidth="3.0" />
       <Line endX="-0.5" endY="381.0" layoutX="501.0" layoutY="218.0" startX="-0.5" startY="-69.0" strokeWidth="2.0" />
-      <ImageView fitHeight="53.0" fitWidth="74.0" layoutX="410.0" layoutY="634.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="53.0" fitWidth="49.0" layoutX="418.0" layoutY="636.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../image/arrow.png" />
+            <Image url="@../image/update.png" />
          </image>
       </ImageView>
       <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="303.0" layoutY="213.0" prefHeight="30.0" prefWidth="133.0" text="Avatar">

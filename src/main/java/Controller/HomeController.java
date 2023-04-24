@@ -71,6 +71,7 @@ public class HomeController implements Initializable {
 
         //cài sự kiện cho btn_DashBoard
         btn_DashBoard.setOnAction(new EventHandler<ActionEvent>() {
+
             @Override
             public void handle(ActionEvent actionEvent) {
                 FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("views/dashboard.fxml"));

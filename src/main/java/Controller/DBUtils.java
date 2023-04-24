@@ -243,17 +243,6 @@ public class DBUtils {
         }
     }
 
-//    public static String getLink_imgFromDB(Connection connection, String username) throws SQLException {
-//        String sql = "SELECT USERNAME , AVATAR_SRC FROM user WHERE USERNAME = ?";
-//        PreparedStatement statement = connection.prepareStatement(sql);
-//        statement.setString(1, username);
-//        ResultSet result = statement.executeQuery();
-//        if (result.next()) {
-//            String myString = result.getString("AVATAR_SRC");
-//            return myString ;
-//        }
-//        return null;
-//    }
 //lấy link ảnh avatar vào database
     public static void Update_Infor(ActionEvent event ,String username, String pass,  String src_imageuser) throws SQLException{
         Connection connection = null;
