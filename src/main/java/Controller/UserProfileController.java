@@ -25,7 +25,6 @@ import java.sql.*;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.Set;
-import Controller.HelloController;
 
 public class UserProfileController implements Initializable{
 
@@ -102,7 +101,7 @@ public class UserProfileController implements Initializable{
 
         //Lấy dữ liệu tên người dùng và password từ database push vào Hash Map
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/account", "root", "123456");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/account", "root", "1234");
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT USERNAME,PASS FROM USER ");
             while (resultSet.next()) {
@@ -142,7 +141,7 @@ public class UserProfileController implements Initializable{
                         System.out.println(acc_user.get(key));
                         if (username.equals(key) && password.equals(acc_user.get(key))) {
                             if (!tf_fullname.getText().trim().isEmpty() && !tf_phone.getText().trim().isEmpty() && !tf_location.getText().trim().isEmpty() && !tf_category.getText().trim().isEmpty()) {
-                                DBUtils.Update_Infor(actionEvent, filePath.toString(), tf_fullname.getText(), tf_phone.getText(), tf_location.getText(), tf_category.getText(), username.toString(), password.toString());
+                                LoginController.Update_Infor(actionEvent, filePath.toString(), tf_fullname.getText(), tf_phone.getText(), tf_location.getText(), tf_category.getText(), username.toString(), password.toString());
                                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                                 alert.setContentText("The information has been updated - PLEASE RESTART THE PROGRAM TO UPDATE YOUR INFORMATION");
                                 alert.show();
@@ -162,12 +161,12 @@ public class UserProfileController implements Initializable{
 
     }
 
-    public String encryptPassword(String input){
+    public static String encryptPassword(String input){
         String encPass=null;
         if(input==null) return null;
 
         try{
-            MessageDigest digest=MessageDigest.getInstance("MD5");
+            MessageDigest digest=MessageDigest.getInstance("SHA-256");
             digest.update(input.getBytes(),0,input.length());
             encPass=new BigInteger(1,digest.digest()).toString(16);
         }catch(Exception e){
