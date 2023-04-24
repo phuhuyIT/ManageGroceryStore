@@ -49,10 +49,23 @@ public class UserProfileController implements Initializable{
     private Button change_pass;
 
     @FXML
+    private Button btn_edit;
+
+    @FXML
     private Label lbl_username;
 
     @FXML
     private Label lbl_password;
+    @FXML
+    private TextField tf_fullname;
+    @FXML
+    private TextField tf_phone;
+    @FXML
+    private TextField tf_location;
+    @FXML
+    private TextField tf_category;
+
+
 
     public String username;
     public String password;
@@ -128,10 +141,17 @@ public class UserProfileController implements Initializable{
                         System.out.println(key);
                         System.out.println(acc_user.get(key));
                         if (username.equals(key) && password.equals(acc_user.get(key))) {
-                            DBUtils.Update_Infor(actionEvent,username.toString(), password.toString(), filePath.toString());
-                            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                            alert.setContentText("The information has been updated - PLEASE RESTART THE PROGRAM TO UPDATE YOUR INFORMATION");
-                            alert.show();
+                            if (!tf_fullname.getText().trim().isEmpty() && !tf_phone.getText().trim().isEmpty() && !tf_location.getText().trim().isEmpty() && !tf_category.getText().trim().isEmpty()) {
+                                DBUtils.Update_Infor(actionEvent, filePath.toString(), tf_fullname.getText(), tf_phone.getText(), tf_location.getText(), tf_category.getText(), username.toString(), password.toString());
+                                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                                alert.setContentText("The information has been updated - PLEASE RESTART THE PROGRAM TO UPDATE YOUR INFORMATION");
+                                alert.show();
+                            } else {
+                                System.out.println("Please fill in all information ");
+                                Alert alert = new Alert(Alert.AlertType.ERROR);
+                                alert.setContentText("Please fill in all information");
+                                alert.show();
+                            }
                         }
                     }
                 } catch (SQLException e) {
