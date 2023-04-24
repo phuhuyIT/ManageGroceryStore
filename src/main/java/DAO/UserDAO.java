@@ -60,13 +60,13 @@ public class UserDAO {
 
     public void addFunction(User userdto){
         try{
-            String username = null;
-            String password = null;
-            String oldUsername = null;
+            String username = userdto.getUsername();
+            String password = userdto.getPassword();
+            //String oldUsername = null;
             String encPass=null;
             String query1="SELECT username, pass FROM user";
             rs=pstmt.executeQuery(query1);
-            if(!rs.next()){
+            /*if(!rs.next()){
                 username="user"+"1";
                 password="user"+"1";
             }
@@ -81,7 +81,7 @@ public class UserDAO {
                     password="user"+ucode;
                 }
 
-            }
+            }*/
             encPass=new UserProfileController().encryptPassword(password);
             String queryTemp = "INSERT INTO user (username, pass) VALUES(?,?)";
             pstmt = con.prepareStatement(queryTemp);
