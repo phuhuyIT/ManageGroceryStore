@@ -244,21 +244,24 @@ public class DBUtils {
     }
 
 //lấy link ảnh avatar vào database
-    public static void Update_Infor(ActionEvent event ,String username, String pass,  String src_imageuser) throws SQLException{
+    public static void Update_Infor(ActionEvent event ,String src_imageuser,String fullname,String phone , String location , String category, String username, String pass) throws SQLException{
         Connection connection = null;
-        PreparedStatement psInsert = null;
+        PreparedStatement psUpdate = null;
         ResultSet resultSet = null;
 
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/account", "root", "123456");
 
            // resultSet = psCheckUserExists.executeQuery();
-
-            psInsert = connection.prepareStatement("UPDATE user SET AVATAR_SRC  = ? WHERE USERNAME = ? AND PASS = ? ");
-            psInsert.setString(1, src_imageuser);
-            psInsert.setString(2, username);
-            psInsert.setString(3, pass);
-            psInsert.executeUpdate();
+            psUpdate = connection.prepareStatement("UPDATE user SET AVATAR_SRC = ? , FULL_NAME  = ? , PHONE = ? , LOCATION = ? , CATEGORY = ? WHERE USERNAME = ? AND PASS = ? ");
+            psUpdate.setString(1, src_imageuser);
+            psUpdate.setString(2, fullname);
+            psUpdate.setString(3, phone);
+            psUpdate.setString(4, location);
+            psUpdate.setString(5, category);
+            psUpdate.setString(6, username);
+            psUpdate.setString(7, pass);
+            psUpdate.executeUpdate();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -271,9 +274,9 @@ public class DBUtils {
                 }
             }
 
-            if (psInsert != null){
+            if (psUpdate != null){
                 try{
-                    psInsert.close();
+                    psUpdate.close();
                 }catch (SQLException e){
                     e.printStackTrace();
                 }

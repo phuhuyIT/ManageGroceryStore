@@ -32,3 +32,10 @@
      -fx-background-color:#00FF00;
      -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 5,0,0,0);
 }
+
+
+//User Profile
+#btn_edit{
+     -fx-background-color:#00FF00;
+     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 5,0,0,0);
+}
