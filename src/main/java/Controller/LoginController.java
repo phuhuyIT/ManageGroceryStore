@@ -126,7 +126,7 @@ public class LoginController {
     }
 
     public static void LogInUser(ActionEvent event , String username , String password){
-        String encrp=UserProfileController.encryptPassword(password);
+        String encrp = UserProfileController.encryptPassword(password);
         if(new ConnectionFactory().checkLogin(username,encrp)==true){
             changeScence(event, "homePage.fxml", "Welcome",username);
         }else{

@@ -29,22 +29,22 @@
                 <Font size="20.0" />
             </font>
         </Label>
-        <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="303.0" layoutY="473.0" prefHeight="30.0" prefWidth="133.0" text="Location        ">
+        <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="303.0" layoutY="473.0" prefHeight="30.0" prefWidth="124.0" text="Location        ">
             <font>
                 <Font size="20.0" />
             </font>
         </Label>
-        <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="303.0" layoutY="363.0" prefHeight="30.0" prefWidth="133.0" text="Full Name">
+        <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="303.0" layoutY="363.0" prefHeight="30.0" prefWidth="100.0" text="Full Name">
             <font>
                 <Font size="20.0" />
             </font>
         </Label>
-        <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="303.0" layoutY="417.0" prefHeight="30.0" prefWidth="133.0" text="Phone          ">
+        <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="303.0" layoutY="417.0" prefHeight="30.0" prefWidth="113.0" text="Phone          ">
             <font>
                 <Font size="20.0" />
             </font>
         </Label>
-        <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="303.0" layoutY="524.0" prefHeight="30.0" prefWidth="133.0" text="Category">
+        <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="303.0" layoutY="524.0" prefHeight="30.0" prefWidth="94.0" text="Category">
             <font>
                 <Font size="20.0" />
             </font>
@@ -71,7 +71,7 @@
             <Image url="@../image/update.png" />
          </image>
       </ImageView>
-      <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="303.0" layoutY="213.0" prefHeight="30.0" prefWidth="133.0" text="Avatar">
+      <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="303.0" layoutY="213.0" prefHeight="30.0" prefWidth="66.0" text="Avatar">
          <font>
             <Font size="20.0" />
          </font>
@@ -113,5 +113,30 @@
             <Image url="@../image/draw.png" />
          </image>
       </ImageView>
+      <Label layoutX="366.0" layoutY="215.0" text="*" textFill="RED">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="396.0" layoutY="364.0" text="*" textFill="RED">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="362.0" layoutY="419.0" text="*" textFill="RED">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="384.0" layoutY="475.0" prefHeight="26.0" prefWidth="8.0" text="*" textFill="RED">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="388.0" layoutY="520.0" prefHeight="39.0" prefWidth="8.0" text="*" textFill="RED">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>
