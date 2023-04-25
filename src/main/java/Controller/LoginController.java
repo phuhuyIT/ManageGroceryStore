@@ -126,7 +126,7 @@ public class LoginController {
     }
 
     public static void LogInUser(ActionEvent event , String username , String password){
-        String encrp = UserProfileController.encryptPassword(password);
+        String encrp=UserProfileController.encryptPassword(password);
         if(new ConnectionFactory().checkLogin(username,encrp)==true){
             changeScence(event, "homePage.fxml", "Welcome",username);
         }else{
@@ -139,52 +139,9 @@ public class LoginController {
     }
 
 //lấy link ảnh avatar vào database
-    public static void Update_Infor(ActionEvent event ,String src_imageuser,String fullname,String phone , String location , String category, String username, String pass) throws SQLException{
-        Connection connection = null;
-        PreparedStatement psUpdate = null;
-        ResultSet resultSet = null;
-
-        try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/account", "root", "123456");
-
-           // resultSet = psCheckUserExists.executeQuery();
-            psUpdate = connection.prepareStatement("UPDATE user SET AVATAR_SRC = ? , FULL_NAME  = ? , PHONE = ? , LOCATION = ? , CATEGORY = ? WHERE USERNAME = ? AND PASS = ? ");
-            psUpdate.setString(1, src_imageuser);
-            psUpdate.setString(2, fullname);
-            psUpdate.setString(3, phone);
-            psUpdate.setString(4, location);
-            psUpdate.setString(5, category);
-            psUpdate.setString(6, username);
-            psUpdate.setString(7, pass);
-            psUpdate.executeUpdate();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }finally {
-            if (resultSet != null){
-                try{
-                    resultSet.close();
-                }catch (SQLException e){
-                    e.printStackTrace();
-                }
-            }
-
-            if (psUpdate != null){
-                try{
-                    psUpdate.close();
-                }catch (SQLException e){
-                    e.printStackTrace();
-                }
-            }
-
-            if (connection != null){
-                try{
-                    connection.close();
-                }catch (SQLException e){
-                    e.printStackTrace();
-                }
-            }
-        }
+    public static void Update_Infor(ActionEvent event ,User user) throws SQLException{
+        UserDAO userdao=new UserDAO();
+        userdao.editFunction(user);
 }
 
 

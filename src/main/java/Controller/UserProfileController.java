@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.User;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -101,12 +102,12 @@ public class UserProfileController implements Initializable{
 
         //Lấy dữ liệu tên người dùng và password từ database push vào Hash Map
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/account", "root", "123456");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/MANAGEGROCERYSTORE", "root", "1234");
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT USERNAME,PASS FROM USER ");
+            ResultSet resultSet = statement.executeQuery("SELECT USERNAME,PASSWORD FROM USERS ");
             while (resultSet.next()) {
                 username = resultSet.getString("USERNAME");
-                password = resultSet.getString("PASS");
+                password = resultSet.getString("PASSWORD");
                 acc_user.put(username,password);
                 lbl_username.setText(username);
                 lbl_password.setText(password);
@@ -141,10 +142,8 @@ public class UserProfileController implements Initializable{
                         System.out.println(acc_user.get(key));
                         if (username.equals(key) && password.equals(acc_user.get(key))) {
                             if (!tf_fullname.getText().trim().isEmpty() && !tf_phone.getText().trim().isEmpty() && !tf_location.getText().trim().isEmpty() && !tf_category.getText().trim().isEmpty()) {
-                                LoginController.Update_Infor(actionEvent, filePath.toString(), tf_fullname.getText(), tf_phone.getText(), tf_location.getText(), tf_category.getText(), username.toString(), password.toString());
-                                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                                alert.setContentText("The information has been updated - PLEASE RESTART THE PROGRAM TO UPDATE YOUR INFORMATION");
-                                alert.show();
+                                User user=new User(tf_fullname.getText(),tf_location.getText(), tf_phone.getText(),  username.toString(), password.toString(),tf_category.getText(),filePath.toString());
+                                LoginController.Update_Infor(actionEvent,user);
                             } else {
                                 System.out.println("Please fill in all information ");
                                 Alert alert = new Alert(Alert.AlertType.ERROR);
