@@ -23,7 +23,7 @@ public class ConnectionFactory {
 
     public ConnectionFactory(){
         try{
-            con=DriverManager.getConnection("jdbc:mysql://localhost/MANAGEGROCERYSTORE","root","1234");
+            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/MANAGEGROCERYSTORE", "root", "1234");
             stmt=con.createStatement();
         }catch(Exception e){
             e.printStackTrace();
@@ -32,15 +32,15 @@ public class ConnectionFactory {
 
     public Connection getConnection(){
         try{
-            con=DriverManager.getConnection("jdbc:mysql://localhost/MANAGEGROCERYSTORE","root","1234");
+            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/MANAGEGROCERYSTORE", "root", "1234");
         }catch(Exception e){
             e.printStackTrace();
         }
         return con;
     }
 
-    public boolean checkLogin(String username,String password, String user){
-        String query="SELECT * FROM users WHERE username='"+username+"' AND password='"+password+"' AND category='ADMINISTRATOR' LIMIT 1";
+    public boolean checkLogin(String username,String password/*, String user*/){
+        String query="SELECT * FROM users WHERE username='"+username+"' AND password='"+password+"'  LIMIT 1";//AND category='ADMINISTRATOR'
         try{
             rs=stmt.executeQuery(query);
             if(rs.next()){
