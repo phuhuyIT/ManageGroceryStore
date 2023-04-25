@@ -40,7 +40,7 @@ public class UserDAO {
 
     public void addUserDAO(User userdto) {
         try{
-            String query = "SELECT username, pass FROM user WHERE USERNAME=?";
+            String query = "SELECT username, password FROM users WHERE USERNAME=?";
             pstmt = con.prepareStatement(query);
             pstmt.setString(1, userdto.getUsername());
             rs=pstmt.executeQuery();
@@ -64,26 +64,10 @@ public class UserDAO {
             String password = userdto.getPassword();
             //String oldUsername = null;
             String encPass=null;
-            String query1="SELECT username, pass FROM user";
+            String query1="SELECT username, password FROM users";
             rs=pstmt.executeQuery(query1);
-            /*if(!rs.next()){
-                username="user"+"1";
-                password="user"+"1";
-            }
-            else{
-                String query2="SELECT * FROM user ORDER by id DESC";
-                rs=stmt.executeQuery(query2);
-                if(rs.next()){
-                    oldUsername=rs.getString("username");
-                    Integer ucode=Integer.parseInt(oldUsername.substring(1));
-                    ucode++;
-                    username="user"+ucode;
-                    password="user"+ucode;
-                }
-
-            }*/
             encPass=new UserProfileController().encryptPassword(password);
-            String queryTemp = "INSERT INTO user (username, pass) VALUES(?,?)";
+            String queryTemp = "INSERT INTO users (username, password) VALUES(?,?)";
             pstmt = con.prepareStatement(queryTemp);
             pstmt.setString(1, username);
             pstmt.setString(2, encPass);
@@ -132,30 +116,29 @@ public class UserDAO {
         }
     }//end of method editUser
 
-    public void editFunction(User userdto, String imgLink, File file){
+    public void editFunction(User userdto){ /* File file*/
 
         try{
-            if(imgLink.equals("")) {
+            if(userdto.getImageLink().equals("")) {
 
             } else {
-                String query = "UPDATE users SET fullname=?,location=?,phone=?,username=?,password=?,category=?,image=? WHERE id=?";
-                FileInputStream fis=new FileInputStream(file);
+                String query = "UPDATE users SET fullname=?,location=?,phone=?,password=?,category=?,image=? WHERE username=?";
+                //FileInputStream fis=new FileInputStream(file);
                 pstmt = (PreparedStatement) con.prepareStatement(query);
                 pstmt.setString(1, userdto.getFullName());
                 pstmt.setString(2, userdto.getLocation());
                 pstmt.setString(3, userdto.getPhone());
-                pstmt.setString(4, userdto.getUsername());
-                pstmt.setString(5, userdto.getPassword());
-                pstmt.setString(6, userdto.getCategory());
-                pstmt.setBinaryStream(7, fis,(int)file.length());
-                pstmt.setInt(8, userdto.getId());
+                pstmt.setString(4, userdto.getPassword());
+                pstmt.setString(5, userdto.getCategory());
+                pstmt.setString(6,userdto.getImageLink());
+                //pstmt.setBinaryStream(7, fis,(int)file.length());
+                pstmt.setString(7, userdto.getUsername());
                 pstmt.executeUpdate();
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Update");
                 alert.setHeaderText(null);
                 alert.setContentText("Updated");
                 alert.showAndWait();
-
             }
 
         }catch(Exception e){
