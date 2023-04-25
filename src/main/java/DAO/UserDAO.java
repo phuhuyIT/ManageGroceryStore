@@ -40,7 +40,7 @@ public class UserDAO {
 
     public void addUserDAO(User userdto) {
         try{
-            String query = "SELECT username, pass FROM user WHERE USERNAME=?";
+            String query = "SELECT USERNAME, PASS FROM user WHERE USERNAME=?";
             pstmt = con.prepareStatement(query);
             pstmt.setString(1, userdto.getUsername());
             rs=pstmt.executeQuery();
@@ -64,7 +64,7 @@ public class UserDAO {
             String password = userdto.getPassword();
             //String oldUsername = null;
             String encPass=null;
-            String query1="SELECT username, pass FROM user";
+            String query1="SELECT USERNAME, PASS FROM user";
             rs=pstmt.executeQuery(query1);
             /*if(!rs.next()){
                 username="user"+"1";
@@ -83,7 +83,7 @@ public class UserDAO {
 
             }*/
             encPass=new UserProfileController().encryptPassword(password);
-            String queryTemp = "INSERT INTO user (username, pass) VALUES(?,?)";
+            String queryTemp = "INSERT INTO user (USERNAME, PASS) VALUES(?,?)";
             pstmt = con.prepareStatement(queryTemp);
             pstmt.setString(1, username);
             pstmt.setString(2, encPass);

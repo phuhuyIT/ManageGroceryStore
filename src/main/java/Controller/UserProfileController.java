@@ -101,7 +101,7 @@ public class UserProfileController implements Initializable{
 
         //Lấy dữ liệu tên người dùng và password từ database push vào Hash Map
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/account", "root", "1234");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/account", "root", "123456");
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT USERNAME,PASS FROM USER ");
             while (resultSet.next()) {

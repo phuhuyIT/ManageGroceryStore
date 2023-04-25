@@ -145,7 +145,7 @@ public class LoginController {
         ResultSet resultSet = null;
 
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/account", "root", "1234");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/account", "root", "123456");
 
            // resultSet = psCheckUserExists.executeQuery();
             psUpdate = connection.prepareStatement("UPDATE user SET AVATAR_SRC = ? , FULL_NAME  = ? , PHONE = ? , LOCATION = ? , CATEGORY = ? WHERE USERNAME = ? AND PASS = ? ");
