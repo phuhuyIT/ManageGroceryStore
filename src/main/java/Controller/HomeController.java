@@ -165,12 +165,12 @@ public class HomeController implements Initializable {
 
         //Lấy dữ liệu tên người dùng và link ảnh từ database và put vào HashMap
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/account", "root", "123456");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/MANAGEGROCERYSTORE", "root", "123456");
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT USERNAME,AVATAR_SRC FROM USER ");
+            ResultSet resultSet = statement.executeQuery("SELECT USERNAME,IMAGE FROM USERS ");
             while (resultSet.next()) {
                 userName = resultSet.getString("USERNAME");
-                avatarSrc = resultSet.getString("AVATAR_SRC");
+                avatarSrc = resultSet.getString("IMAGE");
                 acc.put(userName, avatarSrc);
             }
         } catch (SQLException ex) {
@@ -186,8 +186,9 @@ public class HomeController implements Initializable {
         Set<String> keySet = acc.keySet();
         for (String key : keySet) {
             if (username.equals(key)) {
-                if (acc.get(key) != null) {
-                    Image image1 = new Image(String.valueOf(acc.get(key)));
+                if (acc.get(key)!= null) {
+                    Image image1 = new Image(acc.get(key));
+                    System.out.println(acc.get(key));
                     img_user.setImage(image1);
                 }
             }

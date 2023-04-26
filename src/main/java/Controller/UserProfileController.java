@@ -102,7 +102,7 @@ public class UserProfileController implements Initializable{
 
         //Lấy dữ liệu tên người dùng và password từ database push vào Hash Map
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/MANAGEGROCERYSTORE", "root", "1234");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/MANAGEGROCERYSTORE", "root", "123456");
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT USERNAME,PASSWORD FROM USERS ");
             while (resultSet.next()) {
@@ -141,7 +141,7 @@ public class UserProfileController implements Initializable{
                         System.out.println(key);
                         System.out.println(acc_user.get(key));
                         if (username.equals(key) && password.equals(acc_user.get(key))) {
-                            if (!tf_fullname.getText().trim().isEmpty() && !tf_phone.getText().trim().isEmpty() && !tf_location.getText().trim().isEmpty() && !tf_category.getText().trim().isEmpty()) {
+                            if (!tf_fullname.getText().trim().isEmpty() || !tf_phone.getText().trim().isEmpty() || !tf_location.getText().trim().isEmpty() || !tf_category.getText().trim().isEmpty()) {
                                 User user=new User(tf_fullname.getText(),tf_location.getText(), tf_phone.getText(),  username.toString(), password.toString(),tf_category.getText(),filePath.toString());
                                 LoginController.Update_Infor(actionEvent,user);
                             } else {

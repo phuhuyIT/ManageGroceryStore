@@ -23,7 +23,7 @@ public class ConnectionFactory {
 
     public ConnectionFactory(){
         try{
-            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/MANAGEGROCERYSTORE", "root", "1234");
+            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/MANAGEGROCERYSTORE", "root", "123456");
             stmt=con.createStatement();
         }catch(Exception e){
             e.printStackTrace();
@@ -32,7 +32,7 @@ public class ConnectionFactory {
 
     public Connection getConnection(){
         try{
-            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/MANAGEGROCERYSTORE", "root", "1234");
+            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/MANAGEGROCERYSTORE", "root", "123456");
         }catch(Exception e){
             e.printStackTrace();
         }
