@@ -16,15 +16,6 @@ public class User {
         this.username = username;
         this.password = password;
     }
-    public User(String fullName, String location, String phone, String username,String password ,String category, String image) {
-        this.fullName = fullName;
-        this.location = location;
-        this.phone = phone;
-        this.password=password;
-        this.username = username;
-        this.category = category;
-        this.imgLink = image;
-    }
     public User(String fullName, String location, String phone, String username, String category, String image) {
         this.fullName = fullName;
         this.location = location;

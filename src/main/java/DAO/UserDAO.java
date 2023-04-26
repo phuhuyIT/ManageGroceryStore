@@ -122,17 +122,15 @@ public class UserDAO {
             if(userdto.getImageLink().equals("")) {
 
             } else {
-                String query = "UPDATE users SET fullname=?,location=?,phone=?,password=?,category=?,image=? WHERE username=?";
+                String query = "UPDATE users SET fullname=?,location=?,phone=?,category=?,image=? WHERE username=?";
                 //FileInputStream fis=new FileInputStream(file);
                 pstmt = (PreparedStatement) con.prepareStatement(query);
                 pstmt.setString(1, userdto.getFullName());
                 pstmt.setString(2, userdto.getLocation());
                 pstmt.setString(3, userdto.getPhone());
-                pstmt.setString(4, userdto.getPassword());
-                pstmt.setString(5, userdto.getCategory());
-                pstmt.setString(6,userdto.getImageLink());
-                //pstmt.setBinaryStream(7, fis,(int)file.length());
-                pstmt.setString(7, userdto.getUsername());
+                pstmt.setString(4, userdto.getCategory());
+                pstmt.setString(5,userdto.getImageLink());
+                pstmt.setString(6, userdto.getUsername());
                 pstmt.executeUpdate();
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Update");

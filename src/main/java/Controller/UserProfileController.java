@@ -67,13 +67,6 @@ public class UserProfileController implements Initializable{
     @FXML
     private Button btn_refesh;
 
-
-
-    public String username;
-    public String password;
-
-    private HashMap<String, String> acc_user = new HashMap<String, String>();
-
     @FXML
     public void chooseImageButton(ActionEvent event) throws IOException {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -153,32 +146,23 @@ public class UserProfileController implements Initializable{
 
 
 
-//        btn_update.setOnAction(new EventHandler<ActionEvent>() {
-//            @Override
-//            public void handle(ActionEvent actionEvent) {
-//                System.out.println(filePath);
-//                try {
-//                    Set<String> keySet = acc_user.keySet();
-//                    for (String key : keySet) {
-//                        System.out.println(key);
-//                        System.out.println(acc_user.get(key));
-//                        if (username.equals(key) && password.equals(acc_user.get(key))) {
-//                            if (!tf_fullname.getText().trim().isEmpty() && !tf_phone.getText().trim().isEmpty() && !tf_location.getText().trim().isEmpty() && !tf_category.getText().trim().isEmpty()) {
-//                                User user=new User(tf_fullname.getText(),tf_location.getText(), tf_phone.getText(),  username.toString(), password.toString(),tf_category.getText(),filePath.toString());
-//                                LoginController.Update_Infor(actionEvent,user);
-//                            } else {
-//                                System.out.println("Please fill in all information ");
-//                                Alert alert = new Alert(Alert.AlertType.ERROR);
-//                                alert.setContentText("Please fill in all information");
-//                                alert.show();
-//                            }
-//                        }
-//                    }
-//                } catch (SQLException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        });
+        btn_update.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                if (!lbl_fullname.getText().trim().isEmpty() && !lbl_phonenum.getText().trim().isEmpty() && !lbl_location.getText().trim().isEmpty() && !lbl_category.getText().trim().isEmpty()) {
+                    User user=new User(lbl_fullname.getText(),lbl_location.getText(), lbl_phonenum.getText(),  lbl_username.getText(),lbl_category.getText(),filePath.toString());
+                    try {
+                        LoginController.Update_Infor(actionEvent,user);
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+                } else {
+                    System.out.println("Please fill in all information ");
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText("Please fill in all information");
+                    alert.show();}
+            }
+        });
 
     }
 
