@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.sql.*;
 
 public class LoginController {
+    private static String loggedInUsername =null;
     public static void changeScence(ActionEvent event , String fxmlFile , String title , String username){
         Parent root = null;
 
@@ -129,6 +130,7 @@ public class LoginController {
         String encrp=UserProfileController.encryptPassword(password);
         if(new ConnectionFactory().checkLogin(username,encrp)==true){
             changeScence(event, "homePage.fxml", "Welcome",username);
+            loggedInUsername=username;
         }else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Invalid Login");
@@ -138,6 +140,11 @@ public class LoginController {
         }
     }
 
+    public static String getLoggedInUsername(){
+        if(loggedInUsername!=null)
+            return loggedInUsername;
+        return null;
+    }
 //lấy link ảnh avatar vào database
     public static void Update_Infor(ActionEvent event ,User user) throws SQLException{
         UserDAO userdao=new UserDAO();
