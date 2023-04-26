@@ -118,7 +118,7 @@
                         <Insets top="5.0" />
                      </HBox.margin>
                   </CheckBox>
-                  <Label alignment="BOTTOM_CENTER" prefHeight="30.0" prefWidth="59.0" text="#011">
+                  <Label fx:id="product1_code" alignment="BOTTOM_CENTER" prefHeight="30.0" prefWidth="59.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -126,15 +126,12 @@
                         <Insets left="30.0" />
                      </HBox.margin>
                   </Label>
-                  <ImageView fitHeight="37.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../image/hamburger.png" />
-                     </image>
+                  <ImageView fx:id="product1_thumbnail" fitHeight="37.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
                         <Insets left="80.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Label prefHeight="30.0" prefWidth="123.0" text="Hamburger">
+                  <Label fx:id="product1_name" prefHeight="30.0" prefWidth="123.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -142,7 +139,7 @@
                         <Insets left="85.0" />
                      </HBox.margin>
                   </Label>
-                  <Label prefHeight="30.0" prefWidth="51.0" text="Cake">
+                  <Label fx:id="product1_category" prefHeight="30.0" prefWidth="51.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -150,7 +147,7 @@
                         <Insets left="60.0" />
                      </HBox.margin>
                   </Label>
-                  <Label prefHeight="30.0" prefWidth="126.0" text="CO.FastFood">
+                  <Label fx:id="product1_supplier" prefHeight="30.0" prefWidth="126.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -158,7 +155,7 @@
                         <Insets left="65.0" />
                      </HBox.margin>
                   </Label>
-                  <Label text="2$">
+                  <Label fx:id="product1_price" prefHeight="30.0" prefWidth="34.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -166,7 +163,7 @@
                         <Insets left="45.0" />
                      </HBox.margin>
                   </Label>
-                  <Label text="Stocking">
+                  <Label fx:id="product1_status" prefHeight="30.0" prefWidth="93.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -189,7 +186,7 @@
                         <Insets top="5.0" />
                      </HBox.margin>
                   </CheckBox>
-                  <Label alignment="BOTTOM_CENTER" prefHeight="30.0" prefWidth="59.0" text="#011">
+                  <Label fx:id="product2_code" alignment="BOTTOM_CENTER" prefHeight="30.0" prefWidth="59.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -197,15 +194,12 @@
                         <Insets left="30.0" />
                      </HBox.margin>
                   </Label>
-                  <ImageView fitHeight="37.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../image/hamburger.png" />
-                     </image>
+                  <ImageView fx:id="product2_thumbnail" fitHeight="37.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
                         <Insets left="80.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Label prefHeight="30.0" prefWidth="123.0" text="Hamburger">
+                  <Label fx:id="product2_name" prefHeight="30.0" prefWidth="123.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -213,7 +207,7 @@
                         <Insets left="85.0" />
                      </HBox.margin>
                   </Label>
-                  <Label prefHeight="30.0" prefWidth="51.0" text="Cake">
+                  <Label fx:id="product2_category" prefHeight="30.0" prefWidth="51.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -221,7 +215,7 @@
                         <Insets left="60.0" />
                      </HBox.margin>
                   </Label>
-                  <Label prefHeight="30.0" prefWidth="126.0" text="CO.FastFood">
+                  <Label fx:id="product2_supplier" prefHeight="30.0" prefWidth="126.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -229,7 +223,7 @@
                         <Insets left="65.0" />
                      </HBox.margin>
                   </Label>
-                  <Label text="2$">
+                  <Label fx:id="product2_price" prefHeight="30.0" prefWidth="36.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -237,7 +231,7 @@
                         <Insets left="45.0" />
                      </HBox.margin>
                   </Label>
-                  <Label text="Stocking">
+                  <Label fx:id="product2_status" prefHeight="30.0" prefWidth="91.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -260,7 +254,7 @@
                         <Insets top="5.0" />
                      </HBox.margin>
                   </CheckBox>
-                  <Label alignment="BOTTOM_CENTER" prefHeight="30.0" prefWidth="59.0" text="#011">
+                  <Label fx:id="product3_code" alignment="BOTTOM_CENTER" prefHeight="30.0" prefWidth="59.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -268,15 +262,12 @@
                         <Insets left="30.0" />
                      </HBox.margin>
                   </Label>
-                  <ImageView fitHeight="37.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../image/hamburger.png" />
-                     </image>
+                  <ImageView fx:id="product3_thumbnail" fitHeight="37.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
                         <Insets left="80.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Label prefHeight="30.0" prefWidth="123.0" text="Hamburger">
+                  <Label fx:id="product3_name" prefHeight="30.0" prefWidth="123.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -284,7 +275,7 @@
                         <Insets left="85.0" />
                      </HBox.margin>
                   </Label>
-                  <Label prefHeight="30.0" prefWidth="51.0" text="Cake">
+                  <Label fx:id="product3_category" prefHeight="30.0" prefWidth="51.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -292,7 +283,7 @@
                         <Insets left="60.0" />
                      </HBox.margin>
                   </Label>
-                  <Label prefHeight="30.0" prefWidth="126.0" text="CO.FastFood">
+                  <Label fx:id="product3_supplier" prefHeight="30.0" prefWidth="126.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -300,7 +291,7 @@
                         <Insets left="65.0" />
                      </HBox.margin>
                   </Label>
-                  <Label text="2$">
+                  <Label fx:id="product3_price" prefHeight="30.0" prefWidth="38.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -308,7 +299,7 @@
                         <Insets left="45.0" />
                      </HBox.margin>
                   </Label>
-                  <Label text="Stocking">
+                  <Label fx:id="product3_status" prefHeight="30.0" prefWidth="92.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -331,7 +322,7 @@
                         <Insets top="5.0" />
                      </HBox.margin>
                   </CheckBox>
-                  <Label alignment="BOTTOM_CENTER" prefHeight="30.0" prefWidth="59.0" text="#011">
+                  <Label fx:id="product4_code" alignment="BOTTOM_CENTER" prefHeight="30.0" prefWidth="59.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -339,15 +330,12 @@
                         <Insets left="30.0" />
                      </HBox.margin>
                   </Label>
-                  <ImageView fitHeight="37.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../image/hamburger.png" />
-                     </image>
+                  <ImageView fx:id="product4_thumbnail" fitHeight="37.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
                         <Insets left="80.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Label prefHeight="30.0" prefWidth="123.0" text="Hamburger">
+                  <Label fx:id="product4_name" prefHeight="30.0" prefWidth="123.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -355,7 +343,7 @@
                         <Insets left="85.0" />
                      </HBox.margin>
                   </Label>
-                  <Label prefHeight="30.0" prefWidth="51.0" text="Cake">
+                  <Label fx:id="product4_category" prefHeight="30.0" prefWidth="51.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -363,7 +351,7 @@
                         <Insets left="60.0" />
                      </HBox.margin>
                   </Label>
-                  <Label prefHeight="30.0" prefWidth="126.0" text="CO.FastFood">
+                  <Label fx:id="product4_supplier" prefHeight="30.0" prefWidth="126.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -371,7 +359,7 @@
                         <Insets left="65.0" />
                      </HBox.margin>
                   </Label>
-                  <Label text="2$">
+                  <Label fx:id="product4_price" prefHeight="30.0" prefWidth="38.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -379,7 +367,7 @@
                         <Insets left="45.0" />
                      </HBox.margin>
                   </Label>
-                  <Label text="Stocking">
+                  <Label fx:id="product4_status" prefHeight="30.0" prefWidth="90.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -402,7 +390,7 @@
                         <Insets top="5.0" />
                      </HBox.margin>
                   </CheckBox>
-                  <Label alignment="BOTTOM_CENTER" prefHeight="30.0" prefWidth="59.0" text="#011">
+                  <Label fx:id="product5_code" alignment="BOTTOM_CENTER" prefHeight="30.0" prefWidth="59.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -410,15 +398,12 @@
                         <Insets left="30.0" />
                      </HBox.margin>
                   </Label>
-                  <ImageView fitHeight="37.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../image/hamburger.png" />
-                     </image>
+                  <ImageView fx:id="product5_thumbnail" fitHeight="37.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
                         <Insets left="80.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Label prefHeight="30.0" prefWidth="123.0" text="Hamburger">
+                  <Label fx:id="product5_name" prefHeight="30.0" prefWidth="123.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -426,7 +411,7 @@
                         <Insets left="85.0" />
                      </HBox.margin>
                   </Label>
-                  <Label prefHeight="30.0" prefWidth="51.0" text="Cake">
+                  <Label fx:id="product5_category" prefHeight="30.0" prefWidth="51.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -434,7 +419,7 @@
                         <Insets left="60.0" />
                      </HBox.margin>
                   </Label>
-                  <Label prefHeight="30.0" prefWidth="126.0" text="CO.FastFood">
+                  <Label fx:id="product5_supplier" prefHeight="30.0" prefWidth="126.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -442,7 +427,7 @@
                         <Insets left="65.0" />
                      </HBox.margin>
                   </Label>
-                  <Label text="2$">
+                  <Label fx:id="product5_price" prefHeight="30.0" prefWidth="30.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -450,7 +435,7 @@
                         <Insets left="45.0" />
                      </HBox.margin>
                   </Label>
-                  <Label text="Stocking">
+                  <Label fx:id="product5_status" prefHeight="30.0" prefWidth="94.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -473,7 +458,7 @@
                         <Insets top="5.0" />
                      </HBox.margin>
                   </CheckBox>
-                  <Label alignment="BOTTOM_CENTER" prefHeight="30.0" prefWidth="59.0" text="#011">
+                  <Label fx:id="product6_code" alignment="BOTTOM_CENTER" prefHeight="30.0" prefWidth="59.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -481,15 +466,12 @@
                         <Insets left="30.0" />
                      </HBox.margin>
                   </Label>
-                  <ImageView fitHeight="37.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../image/hamburger.png" />
-                     </image>
+                  <ImageView fx:id="product6_thumbnail" fitHeight="37.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
                         <Insets left="80.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Label prefHeight="30.0" prefWidth="123.0" text="Hamburger">
+                  <Label fx:id="product6_name" prefHeight="30.0" prefWidth="123.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -497,7 +479,7 @@
                         <Insets left="85.0" />
                      </HBox.margin>
                   </Label>
-                  <Label prefHeight="30.0" prefWidth="51.0" text="Cake">
+                  <Label fx:id="product6_category" prefHeight="30.0" prefWidth="51.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -505,7 +487,7 @@
                         <Insets left="60.0" />
                      </HBox.margin>
                   </Label>
-                  <Label prefHeight="30.0" prefWidth="126.0" text="CO.FastFood">
+                  <Label fx:id="product6_supplier" prefHeight="30.0" prefWidth="126.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -513,7 +495,7 @@
                         <Insets left="65.0" />
                      </HBox.margin>
                   </Label>
-                  <Label text="2$">
+                  <Label fx:id="product6_price" prefHeight="30.0" prefWidth="34.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -521,7 +503,7 @@
                         <Insets left="45.0" />
                      </HBox.margin>
                   </Label>
-                  <Label text="Stocking">
+                  <Label fx:id="product6_status" prefHeight="30.0" prefWidth="91.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -544,7 +526,7 @@
                         <Insets top="5.0" />
                      </HBox.margin>
                   </CheckBox>
-                  <Label alignment="BOTTOM_CENTER" prefHeight="30.0" prefWidth="59.0" text="#011">
+                  <Label fx:id="product7_code" alignment="BOTTOM_CENTER" prefHeight="30.0" prefWidth="59.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -552,15 +534,12 @@
                         <Insets left="30.0" />
                      </HBox.margin>
                   </Label>
-                  <ImageView fitHeight="37.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../image/hamburger.png" />
-                     </image>
+                  <ImageView fx:id="product7_thumbnail" fitHeight="37.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
                         <Insets left="80.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Label prefHeight="30.0" prefWidth="123.0" text="Hamburger">
+                  <Label fx:id="product7_name" prefHeight="30.0" prefWidth="123.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -568,7 +547,7 @@
                         <Insets left="85.0" />
                      </HBox.margin>
                   </Label>
-                  <Label prefHeight="30.0" prefWidth="51.0" text="Cake">
+                  <Label fx:id="product7_category" prefHeight="30.0" prefWidth="51.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -576,7 +555,7 @@
                         <Insets left="60.0" />
                      </HBox.margin>
                   </Label>
-                  <Label prefHeight="30.0" prefWidth="126.0" text="CO.FastFood">
+                  <Label fx:id="product7_supplier" prefHeight="30.0" prefWidth="126.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -584,7 +563,7 @@
                         <Insets left="65.0" />
                      </HBox.margin>
                   </Label>
-                  <Label text="2$">
+                  <Label fx:id="product7_price" prefHeight="30.0" prefWidth="37.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -592,7 +571,7 @@
                         <Insets left="45.0" />
                      </HBox.margin>
                   </Label>
-                  <Label text="Stocking">
+                  <Label fx:id="product7_status" prefHeight="30.0" prefWidth="88.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
