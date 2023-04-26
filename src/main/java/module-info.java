@@ -6,6 +6,7 @@ module com.example.btl_demo {
     requires com.dlsc.formsfx;
     requires org.kordamp.bootstrapfx.core;
     requires java.sql;
+    requires mysql.connector.j;
 
     opens Controller to javafx.fxml;
     exports Controller;

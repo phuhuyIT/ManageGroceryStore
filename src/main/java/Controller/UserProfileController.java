@@ -1,5 +1,6 @@
 package Controller;
 
+import DAO.UserDAO;
 import Model.User;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -7,10 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -55,7 +53,7 @@ public class UserProfileController implements Initializable{
     private Label lbl_username;
 
     @FXML
-    private Label lbl_password;
+    private PasswordField tf_password;
     @FXML
     private TextField tf_fullname;
     @FXML
@@ -92,7 +90,6 @@ public class UserProfileController implements Initializable{
 
         //cập nhật ảnh mới
         Image image = new Image(String.valueOf(filePath));
-        System.out.println(filePath);
         image_user.setImage(image);
     }
 
@@ -101,19 +98,27 @@ public class UserProfileController implements Initializable{
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         //Lấy dữ liệu tên người dùng và password từ database push vào Hash Map
+
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/MANAGEGROCERYSTORE", "root", "1234");
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT USERNAME,PASSWORD FROM USERS ");
-            while (resultSet.next()) {
-                username = resultSet.getString("USERNAME");
-                password = resultSet.getString("PASSWORD");
-                acc_user.put(username,password);
-                lbl_username.setText(username);
-                lbl_password.setText(password);
+            UserDAO userData=new UserDAO();
+            System.out.println("cc1  "+LoginController.getLoggedInUsername());
+            ResultSet rs=userData.getQueryResult1(LoginController.getLoggedInUsername());
+            while (rs.next()){
+                String img  = rs.getString("IMAGE");
+                if(img!=null) {
+                    Image image1 = new Image(String.valueOf(img));
+                    image_user.setImage(image1);
+                }
+                tf_fullname.setText(rs.getString("FULLNAME"));
+                tf_phone.setText(rs.getString("PHONE"));
+                tf_location.setText(rs.getString("LOCATION"));
+                tf_category.setText(rs.getString("CATEGORY"));
+                tf_password.setText(rs.getString("PASSWORD"));
+
             }
-        } catch (SQLException ex) {
-            throw new RuntimeException(ex);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
 
         change_pass.setOnAction(new EventHandler<ActionEvent>() {

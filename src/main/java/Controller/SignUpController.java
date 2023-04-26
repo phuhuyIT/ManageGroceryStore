@@ -4,15 +4,9 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 
-import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -38,7 +32,7 @@ public class SignUpController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 if (!tf_username.getText().trim().isEmpty() && !tf_password.getText().trim().isEmpty() && !tf_confirmpass.getText().trim().isEmpty()){
-                    DBUtils.SignUpUser(event,tf_username.getText(), tf_password.getText(),tf_confirmpass.getText());
+                    LoginController.SignUpUser(event,tf_username.getText(), tf_password.getText(),tf_confirmpass.getText());
                 }else{
                     System.out.println("Please fill in all information ");
                     Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -51,7 +45,7 @@ public class SignUpController implements Initializable {
         btn_log_in.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DBUtils.changeScence1(event, "views/hello-view.fxml", "Log In", null);
+                LoginController.changeScence1(event, "views/hello-view.fxml", "Log In", null);
             }
         });
     }
