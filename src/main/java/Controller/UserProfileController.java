@@ -11,6 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -55,13 +56,16 @@ public class UserProfileController implements Initializable{
     @FXML
     private PasswordField tf_password;
     @FXML
-    private TextField tf_fullname;
+    private Label lbl_fullname;
     @FXML
-    private TextField tf_phone;
+    private Label lbl_phonenum;
     @FXML
-    private TextField tf_location;
+    private Label lbl_location;
     @FXML
-    private TextField tf_category;
+    private Label lbl_category;
+
+    @FXML
+    private Button btn_refesh;
 
 
 
@@ -97,8 +101,6 @@ public class UserProfileController implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        //Lấy dữ liệu tên người dùng và password từ database push vào Hash Map
-
         try {
             UserDAO userData=new UserDAO();
             System.out.println("cc1  "+LoginController.getLoggedInUsername());
@@ -109,10 +111,11 @@ public class UserProfileController implements Initializable{
                     Image image1 = new Image(String.valueOf(img));
                     image_user.setImage(image1);
                 }
-                tf_fullname.setText(rs.getString("FULLNAME"));
-                tf_phone.setText(rs.getString("PHONE"));
-                tf_location.setText(rs.getString("LOCATION"));
-                tf_category.setText(rs.getString("CATEGORY"));
+                lbl_username.setText(rs.getString("USERNAME"));
+                lbl_fullname.setText(rs.getString("FULLNAME"));
+                lbl_phonenum.setText(rs.getString("PHONE"));
+                lbl_location.setText(rs.getString("LOCATION"));
+                lbl_category.setText(rs.getString("CATEGORY"));
                 tf_password.setText(rs.getString("PASSWORD"));
 
             }
@@ -135,33 +138,48 @@ public class UserProfileController implements Initializable{
             }
         });
 
-
-        btn_update.setOnAction(new EventHandler<ActionEvent>() {
+        btn_edit.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                System.out.println(filePath);
+                FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("views/change_infor.fxml"));
+                Node node = null;
                 try {
-                    Set<String> keySet = acc_user.keySet();
-                    for (String key : keySet) {
-                        System.out.println(key);
-                        System.out.println(acc_user.get(key));
-                        if (username.equals(key) && password.equals(acc_user.get(key))) {
-                            if (!tf_fullname.getText().trim().isEmpty() && !tf_phone.getText().trim().isEmpty() && !tf_location.getText().trim().isEmpty() && !tf_category.getText().trim().isEmpty()) {
-                                User user=new User(tf_fullname.getText(),tf_location.getText(), tf_phone.getText(),  username.toString(), password.toString(),tf_category.getText(),filePath.toString());
-                                LoginController.Update_Infor(actionEvent,user);
-                            } else {
-                                System.out.println("Please fill in all information ");
-                                Alert alert = new Alert(Alert.AlertType.ERROR);
-                                alert.setContentText("Please fill in all information");
-                                alert.show();
-                            }
-                        }
-                    }
-                } catch (SQLException e) {
-                    e.printStackTrace();
+                    node = loader.load();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
                 }
+                pane.getChildren().add(node);
             }
         });
+
+
+
+//        btn_update.setOnAction(new EventHandler<ActionEvent>() {
+//            @Override
+//            public void handle(ActionEvent actionEvent) {
+//                System.out.println(filePath);
+//                try {
+//                    Set<String> keySet = acc_user.keySet();
+//                    for (String key : keySet) {
+//                        System.out.println(key);
+//                        System.out.println(acc_user.get(key));
+//                        if (username.equals(key) && password.equals(acc_user.get(key))) {
+//                            if (!tf_fullname.getText().trim().isEmpty() && !tf_phone.getText().trim().isEmpty() && !tf_location.getText().trim().isEmpty() && !tf_category.getText().trim().isEmpty()) {
+//                                User user=new User(tf_fullname.getText(),tf_location.getText(), tf_phone.getText(),  username.toString(), password.toString(),tf_category.getText(),filePath.toString());
+//                                LoginController.Update_Infor(actionEvent,user);
+//                            } else {
+//                                System.out.println("Please fill in all information ");
+//                                Alert alert = new Alert(Alert.AlertType.ERROR);
+//                                alert.setContentText("Please fill in all information");
+//                                alert.show();
+//                            }
+//                        }
+//                    }
+//                } catch (SQLException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        });
 
     }
 

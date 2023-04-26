@@ -120,9 +120,10 @@ public class LoginController {
             changeScence1(event, "views/hello-view.fxml", "Log In", null);
         }else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Password and ConfirmPassword are difference");
-            alert.setTitle("Warning");
-            alert.show();
+            alert.setTitle("ERROR");
+            alert.setHeaderText(null);
+            alert.setContentText("Password and ConfirmPassWord are different!");
+            alert.showAndWait();
         }
     }
 

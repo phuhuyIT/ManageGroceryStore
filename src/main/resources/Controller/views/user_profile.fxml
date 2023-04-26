@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -53,20 +52,15 @@
             <InnerShadow />
          </effect>
       </Label>
-      <Button fx:id="btn_update" alignment="CENTER_RIGHT" layoutX="400.0" layoutY="623.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="233.0" style="-fx-cursor: hand;" stylesheets="@css/test.css" text="    Update Information" textAlignment="RIGHT">
+      <Button fx:id="btn_update" alignment="CENTER" layoutX="394.0" layoutY="610.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="216.0" style="-fx-cursor: hand;" stylesheets="@css/test.css" text="Apply" textAlignment="RIGHT">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="System Bold" size="26.0" />
          </font>
          <padding>
-            <Insets left="10.0" right="9.0" />
+            <Insets left="25.0" right="9.0" />
          </padding></Button>
       <Line endX="499.99993896484375" endY="-8.0" layoutX="500.0" layoutY="124.0" startX="-500.0" startY="-8.0" strokeWidth="3.0" />
       <Line endX="-0.5" endY="356.0" layoutX="501.0" layoutY="218.0" startX="-0.5" startY="-69.0" strokeWidth="2.0" />
-      <ImageView fitHeight="53.0" fitWidth="49.0" layoutX="400.0" layoutY="628.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../image/update.png" />
-         </image>
-      </ImageView>
       <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="303.0" layoutY="213.0" prefHeight="30.0" prefWidth="133.0" text="Avatar">
          <font>
             <Font size="20.0" />
@@ -89,12 +83,8 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="tf_fullname" layoutX="570.0" layoutY="363.0" prefHeight="25.0" prefWidth="289.0" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
-      <TextField fx:id="tf_phone" layoutX="570.0" layoutY="418.0" prefHeight="25.0" prefWidth="289.0" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
-      <TextField fx:id="tf_location" layoutX="570.0" layoutY="476.0" prefHeight="25.0" prefWidth="289.0" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
-      <TextField fx:id="tf_category" layoutX="570.0" layoutY="527.0" prefHeight="25.0" prefWidth="289.0" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
-      <Button fx:id="change_pass" layoutX="804.0" layoutY="305.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="43.0" style="-fx-cursor: hand; -fx-background-color: transparent;" />
-      <ImageView fitHeight="23.0" fitWidth="19.0" layoutX="816.0" layoutY="311.0" pickOnBounds="true" preserveRatio="true">
+      <Button fx:id="change_pass" layoutX="881.0" layoutY="307.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="43.0" style="-fx-cursor: hand; -fx-background-color: transparent;" />
+      <ImageView fitHeight="23.0" fitWidth="19.0" layoutX="885.0" layoutY="313.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../image/edit.png" />
          </image>
@@ -109,6 +99,22 @@
             <Image url="@../image/draw.png" />
          </image>
       </ImageView>
-      <PasswordField fx:id="tf_password" layoutX="574.0" layoutY="312.0" prefHeight="30.0" prefWidth="233.0" text="cc" />
+      <PasswordField fx:id="tf_password" layoutX="572.0" layoutY="307.0" prefHeight="30.0" prefWidth="289.0" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" text="cc" />
+      <Label fx:id="lbl_fullname" layoutX="564.0" layoutY="359.0" prefHeight="39.0" prefWidth="289.0" text="Full Name" />
+      <Label fx:id="lbl_phonenum" layoutX="559.0" layoutY="413.0" prefHeight="39.0" prefWidth="289.0" text="Number Phone" />
+      <Label fx:id="lbl_location" layoutX="559.0" layoutY="469.0" prefHeight="39.0" prefWidth="289.0" text="Location" />
+      <Label fx:id="lbl_category" layoutX="559.0" layoutY="520.0" prefHeight="39.0" prefWidth="297.0" text="Category" />
+      <ImageView fitHeight="42.0" fitWidth="43.0" layoutX="407.0" layoutY="619.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/confirm.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="566.0" layoutY="306.0" prefHeight="39.0" prefWidth="303.0" />
+      <Button fx:id="btn_refesh" layoutX="786.0" layoutY="129.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="68.0" style="-fx-background-color: tranparent; -fx-cursor: hand;" />
+      <ImageView fitHeight="30.0" fitWidth="33.0" layoutX="790.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/refresh.png" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>

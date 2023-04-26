@@ -47,12 +47,12 @@
          </image>
       </ImageView>
       <Line endX="100.0" layoutX="233.0" layoutY="88.0" startX="-100.0" />
-      <ImageView fx:id="img_back" fitHeight="79.0" fitWidth="97.0" layoutX="316.0" layoutY="622.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 5,0,0,0);">
+      <ImageView fx:id="img_back" fitHeight="79.0" fitWidth="97.0" layoutX="316.0" layoutY="622.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 5,0,0,0); -fx-cursor: hand;">
          <image>
             <Image url="@../image/previous.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="img_next" fitHeight="79.0" fitWidth="97.0" layoutX="602.0" layoutY="622.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 5,0,0,0);">
+      <ImageView fx:id="img_next" fitHeight="79.0" fitWidth="97.0" layoutX="602.0" layoutY="622.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 5,0,0,0); -fx-cursor: hand;">
          <image>
             <Image url="@../image/next.png" />
          </image>
@@ -564,6 +564,12 @@
       <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="859.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../image/add-user.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btn_refesh" layoutX="556.0" layoutY="100.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="79.0" style="-fx-cursor: hand; -fx-background-color: transparent;" />
+      <ImageView fitHeight="35.0" fitWidth="30.0" layoutX="578.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/refresh.png" />
          </image>
       </ImageView>
    </children>

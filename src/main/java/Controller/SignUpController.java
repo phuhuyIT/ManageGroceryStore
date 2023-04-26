@@ -34,10 +34,11 @@ public class SignUpController implements Initializable {
                 if (!tf_username.getText().trim().isEmpty() && !tf_password.getText().trim().isEmpty() && !tf_confirmpass.getText().trim().isEmpty()){
                     LoginController.SignUpUser(event,tf_username.getText(), tf_password.getText(),tf_confirmpass.getText());
                 }else{
-                    System.out.println("Please fill in all information ");
                     Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setContentText("Please fill in all information");
-                    alert.show();
+                    alert.setTitle("ERROR");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Please fill in all information ");
+                    alert.showAndWait();
                 }
             }
         });
