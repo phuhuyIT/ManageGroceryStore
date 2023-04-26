@@ -149,6 +149,7 @@ public class LoginController {
 //lấy link ảnh avatar vào database
     public static void Update_Infor(ActionEvent event ,User user) throws SQLException{
         UserDAO userdao=new UserDAO();
+        System.out.println("da vao day");
         userdao.editFunction(user);
 }
 

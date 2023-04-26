@@ -36,6 +36,15 @@ public class Product {
         this.totalRevenue= totalRevenue;
 
     }
+
+    public Product(int productId, String productBarCode, Date date, Date sellDate, String supplierCode) {
+        this.productId = productId;
+        this.productBarCode = productBarCode;
+        this.date = date;
+        this.sellDate = sellDate;
+        this.supplierCode = supplierCode;
+    }
+
     public int getProductId() {
         return productId;
     }

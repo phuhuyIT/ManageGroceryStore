@@ -112,7 +112,7 @@
                   </Label>
                </children>
             </HBox>
-            <HBox prefHeight="43.0" prefWidth="975.0">
+            <HBox fx:id="hbox_line1" prefHeight="43.0" prefWidth="975.0">
                <children>
                   <CheckBox mnemonicParsing="false">
                      <HBox.margin>
@@ -180,7 +180,7 @@
                   <Insets top="5.0" />
                </padding>
             </HBox>
-            <HBox layoutX="10.0" layoutY="59.0" prefHeight="43.0" prefWidth="975.0">
+            <HBox fx:id="hbox_line2" layoutX="10.0" layoutY="59.0" prefHeight="43.0" prefWidth="975.0">
                <children>
                   <CheckBox mnemonicParsing="false">
                      <HBox.margin>
@@ -248,7 +248,7 @@
                   <Insets top="5.0" />
                </padding>
             </HBox>
-            <HBox layoutX="10.0" layoutY="102.0" prefHeight="43.0" prefWidth="975.0">
+            <HBox fx:id="hbox_line3"  layoutX="10.0" layoutY="102.0" prefHeight="43.0" prefWidth="975.0">
                <children>
                   <CheckBox mnemonicParsing="false">
                      <HBox.margin>
@@ -316,7 +316,7 @@
                   <Insets top="5.0" />
                </padding>
             </HBox>
-            <HBox layoutX="10.0" layoutY="145.0" prefHeight="43.0" prefWidth="975.0">
+            <HBox  fx:id="hbox_line4" layoutX="10.0" layoutY="145.0" prefHeight="43.0" prefWidth="975.0">
                <children>
                   <CheckBox mnemonicParsing="false">
                      <HBox.margin>
@@ -384,7 +384,7 @@
                   <Insets top="5.0" />
                </padding>
             </HBox>
-            <HBox layoutX="10.0" layoutY="188.0" prefHeight="43.0" prefWidth="975.0">
+            <HBox  fx:id="hbox_line5" layoutX="10.0" layoutY="188.0" prefHeight="43.0" prefWidth="975.0">
                <children>
                   <CheckBox mnemonicParsing="false">
                      <HBox.margin>
@@ -452,7 +452,7 @@
                   <Insets top="5.0" />
                </padding>
             </HBox>
-            <HBox layoutX="10.0" layoutY="231.0" prefHeight="43.0" prefWidth="975.0">
+            <HBox  fx:id="hbox_line6"  layoutX="10.0" layoutY="231.0" prefHeight="43.0" prefWidth="975.0">
                <children>
                   <CheckBox mnemonicParsing="false">
                      <HBox.margin>
@@ -520,7 +520,7 @@
                   <Insets top="5.0" />
                </padding>
             </HBox>
-            <HBox layoutX="10.0" layoutY="274.0" prefHeight="43.0" prefWidth="975.0">
+            <HBox  fx:id="hbox_line7" layoutX="10.0" layoutY="274.0" prefHeight="43.0" prefWidth="975.0">
                <children>
                   <CheckBox mnemonicParsing="false">
                      <HBox.margin>

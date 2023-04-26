@@ -205,7 +205,7 @@ public class UserDAO {
     }
     public ResultSet getQueryResult1(String username) {
         try {
-            String query = "SELECT fullname,location,phone,username,category,PASSWORD, IMAGE FROM users Where username=?";
+            String query = "SELECT fullname,location,phone,username,category,IMAGE FROM users Where username=?";
             pstmt=con.prepareStatement(query);
             pstmt.setString(1,username);
             rs =pstmt.executeQuery();

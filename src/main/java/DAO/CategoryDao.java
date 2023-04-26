@@ -66,12 +66,12 @@ public class CategoryDao implements DaoInterface <Category> {
 
     @Override
     // Xóa một danh mục sản phẩm khỏi cơ sở dữ liệu
-    public int delete(Category category) {
-        String sql = "DELETE FROM categories WHERE id=?";
+    public int delete(String categoryCode) {
+        String sql = "DELETE FROM categories WHERE CategoryCode=?";
         int affectedRows = 0;
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setInt(1, category.getId());
+            stmt.setString(1, categoryCode);
             affectedRows = stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -120,23 +120,16 @@ public class CategoryDao implements DaoInterface <Category> {
 
     @Override
     // Lấy danh sách tất cả các danh mục sản phẩm từ cơ sở dữ liệu
-    public ArrayList<Category> selectALL() {
+    public ResultSet selectALL() {
         String sql = "SELECT * FROM categories";
         ArrayList<Category> categories = new ArrayList<>();
         try {
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
-            while (rs.next()) {
-                Category category = new Category();
-                category.setId(rs.getInt("id"));
-                category.setName(rs.getString("name"));
-                category.setProductList(getProductsByCategoryId(category.getId()));
-                categories.add(category);
-            }
+            pstmt = con.prepareStatement(sql);
+            ResultSet rs = pstmt.executeQuery();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return categories;
+        return rs;
     }
 
     // Lấy danh sách các sản phẩm trong một danh mục sản phẩm từ cơ sở dữ liệu theo id

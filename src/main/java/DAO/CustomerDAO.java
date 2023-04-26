@@ -52,12 +52,12 @@ public class CustomerDAO implements DaoInterface <Customer>{
     }
 
     @Override
-    public int delete(Customer customer) {
-        String deleteCustomerDetails= "DELETE FROM CUSTOMER WHERE CUSTOMERID= ?";
+    public int delete(String customerCode) {
+        String deleteCustomerDetails= "DELETE FROM CUSTOMER WHERE CUSTOMERCODE= ?";
         int result;
         try {
             pstmt = con.prepareStatement(deleteCustomerDetails);
-            pstmt.setInt(1,customer.getCustomersId());
+            pstmt.setString(1,customerCode);
             result=pstmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -86,27 +86,16 @@ public class CustomerDAO implements DaoInterface <Customer>{
     }
 
     @Override
-    public ArrayList<Customer> selectALL() {
+    public ResultSet selectALL() {
         ArrayList<Customer> result= new ArrayList<Customer>();
         try {
             String selectAllInformation= "SELECT * FROM CUSTOMER";
             pstmt= con.prepareStatement(selectAllInformation);
             rs = pstmt.executeQuery();
-            while (rs.next()){
-                int id=rs.getInt("CUSTOMERID");
-                String fname=rs.getString("FULLNAME");
-                String location=rs.getString("LOCATION");
-                String phone=rs.getString("PHONE");
-                String debit=rs.getString("DEBIT");
-                String credit=rs.getString("CREDIT");
-                String email=rs.getString("EMAIL");
-                Customer cus=new Customer(id,"cc",fname,location,phone,debit, credit,email);
-                result.add(cus);
-            }
         }catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return result;
+        return rs;
     }
 
     @Override

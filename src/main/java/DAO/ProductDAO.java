@@ -47,12 +47,12 @@ public class ProductDAO implements DaoInterface<Product> {
     }
 
     @Override
-    public int delete(Product product) {
-        String deleteProduct= "DELETE FROM PRODUCT WHERE PRODUCTID= ?";
+    public int delete(String productCode) {
+        String deleteProduct= "DELETE FROM PRODUCT WHERE PRODUCTCODE= ?";
         int result;
         try {
             pstmt = con.prepareStatement(deleteProduct);
-            pstmt.setInt(1,product.getProductId());
+            pstmt.setString(1,productCode);
             result=pstmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -91,37 +91,17 @@ public class ProductDAO implements DaoInterface<Product> {
     }
 
     @Override
-    public ArrayList<Product> selectALL() {
+    public ResultSet selectALL() {
 
         ArrayList<Product> result= new ArrayList<Product>();
         try {
-            String selectAllProduct = "SELECT * FROM PRODUCT";
+            String selectAllProduct = "SELECT * FROM PRODUCTS ORDER BY pid ASC LIMIT 2;";
             pstmt= con.prepareStatement(selectAllProduct);
             rs = pstmt.executeQuery();
-            while (rs.next()){
-            int idProduct = rs.getInt("PRODUCTID");
-            String codeProduct = rs.getString("PRODUCTCODE");
-            Date date = rs.getDate("DATE");
-            Date dateSell = rs.getDate("SELLDATE");
-            String codeSupplier = rs.getString("SUPPLIERCODE");
-            String nameProduct = rs.getString("PRODUCTNAME");
-            int quanty = rs.getInt("QUANTITY");
-            double costPrice = rs.getDouble("COSTPRICE");
-            double priceSelling = rs.getDouble("SELLINGPRICE");
-            String brand = rs.getString("BRAND");
-            int userId = rs.getInt("USERID");
-            String customerCode = rs.getString("CUSTOMERCODE");
-            double totalCode = rs.getDouble("TOTALCOST");
-            double totalRevenue = rs.getDouble("TOTALREVENUE");
-            Product product = new Product(idProduct,codeProduct,date,dateSell,codeSupplier,nameProduct
-                    ,quanty,costPrice,priceSelling,brand,userId,customerCode,totalCode,totalRevenue);
-            result.add(product);
-
-            }
         }catch (SQLException e){
             throw new RuntimeException(e);
         }
-        return  result;
+        return  rs;
     }
     @Override
     public Product selectByID(int ID) {

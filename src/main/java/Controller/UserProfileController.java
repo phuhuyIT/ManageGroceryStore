@@ -116,7 +116,6 @@ public class UserProfileController implements Initializable{
                 lbl_phonenum.setText(rs.getString("PHONE"));
                 lbl_location.setText(rs.getString("LOCATION"));
                 lbl_category.setText(rs.getString("CATEGORY"));
-                tf_password.setText(rs.getString("PASSWORD"));
 
             }
 
