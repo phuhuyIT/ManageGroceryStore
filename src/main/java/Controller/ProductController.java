@@ -8,10 +8,14 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 
 import java.net.URL;
@@ -32,13 +36,7 @@ public class ProductController implements Initializable {
     @FXML
     private ChoiceBox<String> choiceBox_list;
     @FXML
-    private Label product1_code;
-    private Label product2_code;
-    private Label product3_code;
-    private Label product4_code;
-    private Label product5_code;
-    private Label product6_code;
-    private Label product7_code;
+    private AnchorPane anchorPane;
 
     private String[] choice = {"Tăng theo giá ", "Giảm theo giá" , "A->Z" , "Z->A"};
 
@@ -46,20 +44,40 @@ public class ProductController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ArrayList <HBox> hboxList= new ArrayList<HBox>();
         choiceBox_sort.getItems().addAll(choice);
         choiceBox_list.getItems().addAll(list);
         ProductDAO pdao=new ProductDAO();
         ResultSet rs=pdao.selectALL();
         try {
-            rs.next();
-            String code =rs.getString("PRODUCTCODE");
-            String thumbnail=rs.getString("THUMBNAIL");
-            String  name=rs.getString("PRODUCTNAME");
-            String costPrice=rs.getString("COSTPRICE");
-            String category= rs.getString("CATEGORY");
-            String supplier =rs.getString("BRAND");
+            for (int i=0;i<10;i++){
 
+                if(rs.next()){
+                    HBox hbox = (HBox) anchorPane.lookup("#hbox_line"+(i+1));
+                    Label productCode =(Label) hbox.lookup("#product"+(i+1)+"_code");
+
+                    ImageView productThumbnail =(ImageView) hbox.lookup("#product"+(i+1)+"_thumbnail");
+                    Label productName =(Label) hbox.lookup("#product"+(i+1)+"_name");
+                    Label productCategory =(Label) hbox.lookup("#product"+(i+1)+"_category");
+                    Label productSupplier =(Label) hbox.lookup("#product"+(i+1)+"_supplier");
+                    Label productPrice =(Label) hbox.lookup("#product"+(i+1)+"_price");
+                    //Label productStatus =(Label) hbox.lookup("#product"+(i+1)+"_code");
+                    productCode.setText(rs.getString("PRODUCTCODE"));
+                    String img  = rs.getString("THUMBNAIL");
+                    System.out.println(img);
+                    if(img!=null) {
+                        Image image1 = new Image(String.valueOf(img));
+                        productThumbnail.setImage(image1);
+                    }
+                    System.out.println(rs.getString("PRODUCTNAME"));
+                    productName.setText(rs.getString("PRODUCTNAME"));
+                    productCategory.setText(rs.getString("CATEGORY"));
+                    productSupplier.setText(rs.getString("BRAND"));
+                    productPrice.setText(rs.getString("COSTPRICE"));
+                }
+                else
+                    return;
+
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

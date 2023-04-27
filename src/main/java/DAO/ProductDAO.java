@@ -95,7 +95,7 @@ public class ProductDAO implements DaoInterface<Product> {
 
         ArrayList<Product> result= new ArrayList<Product>();
         try {
-            String selectAllProduct = "SELECT * FROM PRODUCTS ORDER BY pid ASC LIMIT 2;";
+            String selectAllProduct = "SELECT * FROM PRODUCTS ORDER BY pid ASC LIMIT 10;";
             pstmt= con.prepareStatement(selectAllProduct);
             rs = pstmt.executeQuery();
         }catch (SQLException e){
