@@ -106,7 +106,7 @@ public class HomeController implements Initializable {
         btn_Product.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("views/product.fxml"));
+                FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("views/sp.fxml"));
                 Node node = null;
                 try {
                     node = loader.load();

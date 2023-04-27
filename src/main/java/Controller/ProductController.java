@@ -45,6 +45,8 @@ public class ProductController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         choiceBox_sort.getItems().addAll(choice);
+        choiceBox_sort.setStyle("-fx-font-size:15px ; -fx-background-color:transparent ; -fx-alignment:Center ; -fx-padding: 0px 5px 5px -2px");
+        choiceBox_list.setStyle("-fx-font-size:20px ; -fx-background-color:transparent ; -fx-alignment:Center ; -fx-padding: 0px 5px 5px -2px");
         choiceBox_list.getItems().addAll(list);
         ProductDAO pdao=new ProductDAO();
         ResultSet rs=pdao.selectALL();

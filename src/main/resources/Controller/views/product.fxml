@@ -16,13 +16,13 @@
 
 <AnchorPane fx:id="anchorPane" prefHeight="900.0" prefWidth="1000.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ProductController">
    <children>
-      <Label layoutX="375.0" layoutY="35.0" prefHeight="52.0" prefWidth="170.0" style="-fx-font-weight: bold;" text="Product ">
+      <Label alignment="CENTER" layoutX="415.0" layoutY="7.0" prefHeight="52.0" prefWidth="170.0" style="-fx-font-weight: bold;" text="Product ">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <Line endX="756.0" layoutX="244.0" layoutY="88.0" startX="-244.0" strokeWidth="3.0" />
-      <Label fx:id="lb_Search" layoutX="17.0" layoutY="101.0" prefHeight="37.0" prefWidth="299.0" style="-fx-border-width: 3px; -fx-border-color: black; -fx-border-radius: 20px;" />
+      <Line endX="756.0" layoutX="244.0" layoutY="60.0" startX="-244.0" strokeWidth="3.0" />
+      <Label fx:id="lb_Search" layoutX="17.0" layoutY="101.0" prefHeight="37.0" prefWidth="299.0" style="-fx-border-width: 3px; -fx-border-radius: 20px; -fx-border-color: black;" />
       <TextField fx:id="txt_search" layoutX="63.0" layoutY="102.0" prefHeight="35.0" prefWidth="252.0" promptText="Search here...." style="-fx-background-color: transparent; -fx-font-weight: bold; -fx-border-width: 2px; -fx-border-radius: 20px;">
          <font>
             <Font size="16.0" />
@@ -44,7 +44,7 @@
             <Insets left="5.0" />
          </padding>
       </Label>
-      <ChoiceBox fx:id="choiceBox_sort" layoutX="422.0" layoutY="103.0" prefHeight="35.0" prefWidth="128.0" style="-fx-background-color: transparent;" />
+      <ChoiceBox fx:id="choiceBox_sort" layoutX="422.0" layoutY="103.0" prefHeight="35.0" prefWidth="127.0" style="-fx-background-color: transparent;" />
       <ImageView fitHeight="37.0" fitWidth="30.0" layoutX="392.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../image/sort.png" />
@@ -791,7 +791,7 @@
             <Insets left="5.0" />
          </padding>
       </Label>
-      <ChoiceBox fx:id="choiceBox_list" layoutX="837.0" layoutY="102.0" prefHeight="35.0" prefWidth="141.0" style="-fx-background-color: transparent;" />
+      <ChoiceBox fx:id="choiceBox_list" layoutX="837.0" layoutY="102.0" prefHeight="35.0" prefWidth="138.0" style="-fx-background-color: transparent;" />
       <Button fx:id="btn_refesh" layoutX="557.0" layoutY="100.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="88.0" style="-fx-cursor: hand; -fx-background-color: transaprent;" />
       <ImageView fitHeight="35.0" fitWidth="30.0" layoutX="586.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
          <image>
