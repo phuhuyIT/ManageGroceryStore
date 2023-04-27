@@ -39,16 +39,23 @@ CREATE TABLE `products` (
   `productname` varchar(50) NOT NULL,
   `costprice` double NOT NULL,
   `sellingprice` double NOT NULL,
-  `brand` varchar(50) NOT NULL
+  `brand` varchar(50) NOT NULL,
+  category varchar(70) DEFAULT NULL,
+  thumbnail varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB;
 
 
-INSERT INTO `products` (`pid`, `productcode`, `productname`, `costprice`, `sellingprice`, `brand`) VALUES
-(73, 'prod3', 'qq', 3, 2, '4d'),
-(72, 'prod2', 'pen', 20, 30, 'techno'),
-(71, 'prod1', 'wai wai', 400, 450, 'cg'),
-(74, 'prod4', 'wai wai', 400, 450, 'cg2'),
-(78, 'prod5', 'Mobile', 500, 700, 'cg');
+INSERT INTO `products` (`productcode`, `productname`, `costprice`, `sellingprice`, `brand`) VALUES
+('prod6', 'qq', 3, 2, '4d'),
+('prod7', 'pen', 20, 30, 'techno'),
+('prod8', 'wai wai', 400, 450, 'cg'),
+('prod9', 'wai wai', 400, 450, 'cg2'),
+('prod10', 'Mobile', 500, 700, 'cg'),
+('prod11', 'qq', 3, 2, '4d'),
+('prod12', 'pen', 20, 30, 'techno'),
+('prod13', 'wai wai', 400, 450, 'cg'),
+('prod14', 'wai wai', 400, 450, 'cg2'),
+('prod15', 'Mobile', 500, 700, 'cg');
 
 CREATE TABLE `purchaseinfo` (
   `purchaseid` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -110,4 +117,23 @@ INSERT INTO `users` (`id`, `fullname`, `location`, `phone`, `username`, `passwor
 (54, 'Sajan Rajbhandari', 'Pokhara', '9849284991', 'user4', 'cc03e747a6afbbcbf8be7668acfebee5', 'ADMINISTRATOR'),
 (56, 'Ram', 'Kathmandu', '9849284991', 'user5', 'a791842f52a0acfbb3a783378c066b8', 'NORMAL USER'),
 (57, 'shyam', 'ktm', '98239832', 'user6', 'affec3b64cf90492377a8114c86fc093', 'NORMAL USER');
+
+CREATE TABLE `currentStocksTemp` (
+  `productcode` varchar(100) NOT NULL,
+  `quantity` int(11) NOT NULL,
+	DateEdit varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB;
+-- trigger--
+DROP TRIGGER update_stock;
+DELIMITER //
+
+CREATE TRIGGER update_stock 
+AFTER UPDATE ON Products
+FOR EACH ROW
+BEGIN
+        UPDATE CurrentStocks
+        SET quantity = quantity + inserted.quantity
+        WHERE productCode = currentstocks.productcode;
+END//
+DELIMITER ;
 
