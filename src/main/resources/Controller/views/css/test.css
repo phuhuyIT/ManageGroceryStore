@@ -39,3 +39,14 @@
      -fx-background-color:#00FF00;
      -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 5,0,0,0);
 }
+#change_pass{
+     -fx-font-size  : 19px;
+     -fx-background-color:  #FFFFFF;
+}
+#change_pass:hover{
+    -fx-font-size  : 20px;
+    -fx-text-fill:#2596be;
+    -fx-background-color:#FFFFFF;
+}
+
+

@@ -26,7 +26,7 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.Set;
 
-public class UserProfileController implements Initializable{
+public class UserProfileController implements Initializable {
 
     @FXML
     private Label title;
@@ -56,26 +56,26 @@ public class UserProfileController implements Initializable{
     @FXML
     private PasswordField tf_password;
     @FXML
-    private Label lbl_fullname;
+    private TextField txt_fullname;
     @FXML
-    private Label lbl_phonenum;
+    private TextField txt_category;
     @FXML
-    private Label lbl_location;
+    private TextField txt_phone;
     @FXML
-    private Label lbl_category;
+    private TextField txt_location;
 
     @FXML
     private Button btn_refesh;
 
     @FXML
     public void chooseImageButton(ActionEvent event) throws IOException {
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         fileChooser = new FileChooser();
         fileChooser.setTitle("Open image");
 
         //cai dat den thu muc cua ng dung hoac chuyen truc tiep den o c neu ko truy cap duoc
-        String userDirectoryString = System.getProperty("user.home") ;
+        String userDirectoryString = System.getProperty("user.home");
         File userDirectory = new File(userDirectoryString);
 
 //        if(!userDirectory.canRead())
@@ -94,27 +94,27 @@ public class UserProfileController implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        try {
-            UserDAO userData=new UserDAO();
-            System.out.println("cc1  "+LoginController.getLoggedInUsername());
-            ResultSet rs=userData.getQueryResult1(LoginController.getLoggedInUsername());
-            while (rs.next()){
-                String img  = rs.getString("IMAGE");
-                if(img!=null) {
-                    Image image1 = new Image(String.valueOf(img));
-                    image_user.setImage(image1);
-                }
-                lbl_username.setText(rs.getString("USERNAME"));
-                lbl_fullname.setText(rs.getString("FULLNAME"));
-                lbl_phonenum.setText(rs.getString("PHONE"));
-                lbl_location.setText(rs.getString("LOCATION"));
-                lbl_category.setText(rs.getString("CATEGORY"));
-
-            }
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+//        try {
+//            UserDAO userData = new UserDAO();
+//            System.out.println("cc1  " + LoginController.getLoggedInUsername());
+//            ResultSet rs = userData.getQueryResult1(LoginController.getLoggedInUsername());
+//            while (rs.next()) {
+//                String img = rs.getString("IMAGE");
+//                if (img != null) {
+//                    Image image1 = new Image(String.valueOf(img));
+//                    image_user.setImage(image1);
+//                }
+//                // lbl_username.setText(rs.getString("USERNAME"));
+//                txt_fullname.setText(rs.getString("FULLNAME"));
+//                txt_phone.setText(rs.getString("PHONE"));
+//                txt_location.setText(rs.getString("LOCATION"));
+//                txt_category.setText(rs.getString("CATEGORY"));
+//
+//            }
+//
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
 
         change_pass.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -130,27 +130,12 @@ public class UserProfileController implements Initializable{
             }
         });
 
-        btn_edit.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("views/change_infor.fxml"));
-                Node node = null;
-                try {
-                    node = loader.load();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                pane.getChildren().add(node);
-            }
-        });
-
-
 
         btn_update.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                if (!lbl_fullname.getText().trim().isEmpty() && !lbl_phonenum.getText().trim().isEmpty() && !lbl_location.getText().trim().isEmpty() && !lbl_category.getText().trim().isEmpty()) {
-                    User user=new User(lbl_fullname.getText(),lbl_location.getText(), lbl_phonenum.getText(),  lbl_username.getText(),lbl_category.getText(),filePath.toString());
+                if (!txt_fullname.getText().trim().isEmpty() && !txt_phone.getText().trim().isEmpty() && !txt_location.getText().trim().isEmpty() && !txt_category.getText().trim().isEmpty()) {
+                    User user=new User(txt_fullname.getText(),txt_location.getText(), txt_phone.getText(),  lbl_username.getText(),txt_category.getText(),filePath.toString());
                     try {
                         LoginController.Update_Infor(actionEvent,user);
                     } catch (SQLException e) {
@@ -180,3 +165,4 @@ public class UserProfileController implements Initializable{
         return encPass;
     }
 }
+
