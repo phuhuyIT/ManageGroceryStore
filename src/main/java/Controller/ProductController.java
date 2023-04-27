@@ -7,8 +7,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -18,6 +21,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -36,11 +40,17 @@ public class ProductController implements Initializable {
     @FXML
     private ChoiceBox<String> choiceBox_list;
     @FXML
-    private AnchorPane anchorPane;
+    private AnchorPane pane;
 
-    private String[] choice = {"Tăng theo giá ", "Giảm theo giá" , "A->Z" , "Z->A"};
+    @FXML
+    private Button btn_infor1;
 
-    private String[] list = {"Cake", "Noodle" , "Fast Food" , "Drinking" , "Ice Cream" , "Vegetable"};
+    @FXML
+    private Button btn_refesh;
+
+    private String[] choice = {"Tăng theo giá ", "Giảm theo giá", "A->Z", "Z->A"};
+
+    private String[] list = {"Cake", "Noodle", "Fast Food", "Drinking", "Ice Cream", "Vegetable"};
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -48,41 +58,21 @@ public class ProductController implements Initializable {
         choiceBox_sort.setStyle("-fx-font-size:15px ; -fx-background-color:transparent ; -fx-alignment:Center ; -fx-padding: 0px 5px 5px -2px");
         choiceBox_list.setStyle("-fx-font-size:20px ; -fx-background-color:transparent ; -fx-alignment:Center ; -fx-padding: 0px 5px 5px -2px");
         choiceBox_list.getItems().addAll(list);
-        ProductDAO pdao=new ProductDAO();
-        ResultSet rs=pdao.selectALL();
-        try {
-            for (int i=0;i<10;i++){
 
-                if(rs.next()){
-                    HBox hbox = (HBox) anchorPane.lookup("#hbox_line"+(i+1));
-                    Label productCode =(Label) hbox.lookup("#product"+(i+1)+"_code");
-
-                    ImageView productThumbnail =(ImageView) hbox.lookup("#product"+(i+1)+"_thumbnail");
-                    Label productName =(Label) hbox.lookup("#product"+(i+1)+"_name");
-                    Label productCategory =(Label) hbox.lookup("#product"+(i+1)+"_category");
-                    Label productSupplier =(Label) hbox.lookup("#product"+(i+1)+"_supplier");
-                    Label productPrice =(Label) hbox.lookup("#product"+(i+1)+"_price");
-                    //Label productStatus =(Label) hbox.lookup("#product"+(i+1)+"_code");
-                    productCode.setText(rs.getString("PRODUCTCODE"));
-                    String img  = rs.getString("THUMBNAIL");
-                    System.out.println(img);
-                    if(img!=null) {
-                        Image image1 = new Image(String.valueOf(img));
-                        productThumbnail.setImage(image1);
-                    }
-                    System.out.println(rs.getString("PRODUCTNAME"));
-                    productName.setText(rs.getString("PRODUCTNAME"));
-                    productCategory.setText(rs.getString("CATEGORY"));
-                    productSupplier.setText(rs.getString("BRAND"));
-                    productPrice.setText(rs.getString("COSTPRICE"));
+        btn_infor1.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("views/detailProduct.fxml"));
+                Node node = null;
+                try {
+                    node = loader.load();
+                    pane.getChildren().add(node);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
                 }
-                else
-                    return;
 
             }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        });
 
     }
 }
