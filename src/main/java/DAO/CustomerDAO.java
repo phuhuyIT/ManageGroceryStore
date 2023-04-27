@@ -89,8 +89,8 @@ public class CustomerDAO implements DaoInterface <Customer>{
     public ResultSet selectALL() {
         ArrayList<Customer> result= new ArrayList<Customer>();
         try {
-            String selectAllInformation= "SELECT * FROM CUSTOMER";
-            pstmt= con.prepareStatement(selectAllInformation);
+            String sql= "SELECT * FROM CUSTOMERS";
+            pstmt= con.prepareStatement(sql);
             rs = pstmt.executeQuery();
         }catch (SQLException e) {
             throw new RuntimeException(e);

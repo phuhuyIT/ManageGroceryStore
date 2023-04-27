@@ -36,7 +36,7 @@ public class ProductController implements Initializable {
     @FXML
     private ChoiceBox<String> choiceBox_list;
     @FXML
-    private AnchorPane anchorPane;
+    private AnchorPane anchorPane_Product;
 
     private String[] choice = {"Tăng theo giá ", "Giảm theo giá" , "A->Z" , "Z->A"};
 
@@ -51,29 +51,21 @@ public class ProductController implements Initializable {
         ProductDAO pdao=new ProductDAO();
         ResultSet rs=pdao.selectALL();
         try {
-            for (int i=0;i<10;i++){
+            for (int i=0;i<8;i++){
 
                 if(rs.next()){
-                    HBox hbox = (HBox) anchorPane.lookup("#hbox_line"+(i+1));
-                    Label productCode =(Label) hbox.lookup("#product"+(i+1)+"_code");
+                    AnchorPane ap = (AnchorPane) anchorPane_Product.lookup("#productBox"+(i+1));
 
-                    ImageView productThumbnail =(ImageView) hbox.lookup("#product"+(i+1)+"_thumbnail");
-                    Label productName =(Label) hbox.lookup("#product"+(i+1)+"_name");
-                    Label productCategory =(Label) hbox.lookup("#product"+(i+1)+"_category");
-                    Label productSupplier =(Label) hbox.lookup("#product"+(i+1)+"_supplier");
-                    Label productPrice =(Label) hbox.lookup("#product"+(i+1)+"_price");
-                    //Label productStatus =(Label) hbox.lookup("#product"+(i+1)+"_code");
-                    productCode.setText(rs.getString("PRODUCTCODE"));
+                    ImageView productThumbnail =(ImageView) ap.lookup("#productThumbnail"+(i+1));
+                    Label productQuantity =(Label) ap.lookup("#productQuantity"+(i+1));
+                    Label productPrice =(Label)ap.lookup("#productPrice"+(i+1));
                     String img  = rs.getString("THUMBNAIL");
                     System.out.println(img);
                     if(img!=null) {
                         Image image1 = new Image(String.valueOf(img));
                         productThumbnail.setImage(image1);
                     }
-                    System.out.println(rs.getString("PRODUCTNAME"));
-                    productName.setText(rs.getString("PRODUCTNAME"));
-                    productCategory.setText(rs.getString("CATEGORY"));
-                    productSupplier.setText(rs.getString("BRAND"));
+                    productQuantity.setText(rs.getString("SELLINGPRICE"));
                     productPrice.setText(rs.getString("COSTPRICE"));
                 }
                 else
