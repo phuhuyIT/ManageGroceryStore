@@ -106,7 +106,7 @@ public class HomeController implements Initializable {
         btn_Product.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("views/sp.fxml"));
+                FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("views/products.fxml"));
                 Node node = null;
                 try {
                     node = loader.load();
@@ -165,7 +165,7 @@ public class HomeController implements Initializable {
 
         //Lấy dữ liệu tên người dùng và link ảnh từ database và put vào HashMap
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/MANAGEGROCERYSTORE", "root", "123456");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/MANAGEGROCERYSTORE", "root", "1234");
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT USERNAME,IMAGE FROM USERS ");
             while (resultSet.next()) {
@@ -194,7 +194,6 @@ public class HomeController implements Initializable {
             }
         }
     }
-
 
     //Setting Clock within a new Thread
     public void runClock() {

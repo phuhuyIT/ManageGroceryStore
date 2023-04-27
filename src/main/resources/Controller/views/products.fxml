@@ -74,7 +74,7 @@
         </Label>
         <ChoiceBox fx:id="choiceBox_list" layoutX="831.0" layoutY="76.0" prefHeight="35.0" prefWidth="138.0" style="-fx-background-color: transparent;" />
         <Button fx:id="btn_refesh" layoutX="558.0" layoutY="74.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="88.0" style="-fx-cursor: hand; -fx-background-color: transaprent;" />
-        <ImageView fitHeight="35.0" fitWidth="30.0" layoutX="587.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="btnRefeshProduct" fitHeight="35.0" fitWidth="30.0" layoutX="954.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../image/refresh.png" />
             </image>
