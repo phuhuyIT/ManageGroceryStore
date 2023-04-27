@@ -42,8 +42,8 @@ public class LoginController {
         stage.setMaximized(true);
         stage.setFullScreen(true);
         //stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
-        stage.setScene(new Scene(root,1280, 720));
-      //  stage.setResizable(false);
+        stage.setScene(new Scene(root,1300, 900));
+        stage.setResizable(true);
         stage.centerOnScreen();
         stage.show();
     }
@@ -75,7 +75,7 @@ public class LoginController {
         stage.setFullScreen(true);
         //stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
         stage.setScene(new Scene(root,650, 450));
-        stage.setResizable(false);
+        stage.setResizable(true);
         stage.centerOnScreen();
         stage.show();
     }
@@ -107,7 +107,7 @@ public class LoginController {
         stage.setFullScreen(true);
         //stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
         stage.setScene(new Scene(root,1000, 900));
-        stage.setResizable(false);
+        stage.setResizable(true);
         stage.centerOnScreen();
         stage.show();
     }
