@@ -24,7 +24,7 @@
          <children>
             <AnchorPane prefHeight="700.0" prefWidth="1019.0" GridPane.columnIndex="1">
                <children>
-                  <AnchorPane fx:id="paneRight" layoutX="9.0" layoutY="4.0" prefHeight="887.0" prefWidth="1019.0" />
+                  <AnchorPane fx:id="paneRight" layoutY="7.0" prefHeight="887.0" prefWidth="1054.0" />
                </children></AnchorPane>
             <GridPane prefHeight="700.0" prefWidth="463.0">
                <columnConstraints>
@@ -36,7 +36,7 @@
                   <RowConstraints maxHeight="672.0" minHeight="10.0" prefHeight="172.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #72F5FD;" stylesheets="@css/test.css">
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #2596be;" stylesheets="@css/test.css">
                      <children>
                         <ImageView fx:id="img_user" fitHeight="118.0" fitWidth="132.0" layoutX="78.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -55,42 +55,42 @@
                         <Line endX="100.0" layoutX="127.0" layoutY="213.0" startX="-100.0" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #72F5FD;" styleClass="button" stylesheets="@css/test.css" GridPane.rowIndex="1">
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #2596be;" styleClass="button" stylesheets="@css/test.css" GridPane.rowIndex="1">
                      <children>
-                        <Button fx:id="btn_DashBoard" layoutX="13.0" layoutY="21.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="240.0" style="-fx-background-radius: 15; -fx-cursor: hand;" styleClass="button" stylesheets="@css/test.css" text="DashBoard" textFill="WHITE">
+                        <Button fx:id="btn_DashBoard" alignment="TOP_LEFT" layoutX="13.0" layoutY="21.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="240.0" style="-fx-cursor: hand; -fx-background-radius: 15;" styleClass="button" stylesheets="@css/test.css" text="          DashBoard" textAlignment="RIGHT" textFill="WHITE">
                            <font>
-                              <Font size="20.0" />
+                              <Font name="System Bold" size="20.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btn_Customer" layoutX="14.0" layoutY="81.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="240.0" style="-fx-background-radius: 15; -fx-cursor: hand;" stylesheets="@css/test.css" text="Customer" textFill="WHITE">
+                        <Button fx:id="btn_Customer" alignment="TOP_LEFT" layoutX="14.0" layoutY="81.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="240.0" style="-fx-background-radius: 15; -fx-cursor: hand;" stylesheets="@css/test.css" text="          Customer" textAlignment="RIGHT" textFill="WHITE">
                            <font>
-                              <Font size="20.0" />
+                              <Font name="System Bold" size="20.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btn_Product" layoutX="14.0" layoutY="141.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="240.0" style="-fx-background-radius: 15; -fx-cursor: hand;" stylesheets="@css/test.css" text="Product" textFill="WHITE">
+                        <Button fx:id="btn_Product" alignment="TOP_LEFT" layoutX="14.0" layoutY="141.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="240.0" style="-fx-background-radius: 15; -fx-cursor: hand;" stylesheets="@css/test.css" text="          Product" textAlignment="RIGHT" textFill="WHITE">
                            <font>
-                              <Font size="20.0" />
+                              <Font name="System Bold" size="20.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btn_UserProfile" layoutX="14.0" layoutY="264.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="240.0" style="-fx-background-radius: 15; -fx-cursor: hand;" stylesheets="@css/test.css" text="User Profile" textFill="WHITE">
+                        <Button fx:id="btn_UserProfile" alignment="TOP_LEFT" layoutX="14.0" layoutY="264.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="240.0" style="-fx-background-radius: 15; -fx-cursor: hand;" stylesheets="@css/test.css" text="          User Profile" textFill="WHITE">
                            <font>
-                              <Font size="20.0" />
+                              <Font name="System Bold" size="20.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btn_Bill" layoutX="13.0" layoutY="202.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="240.0" style="-fx-background-radius: 15; -fx-cursor: hand;" stylesheets="@css/test.css" text="Bill" textFill="WHITE">
+                        <Button fx:id="btn_Bill" alignment="TOP_LEFT" layoutX="13.0" layoutY="202.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="240.0" style="-fx-background-radius: 15; -fx-cursor: hand;" stylesheets="@css/test.css" text="          Bill" textFill="WHITE">
                            <font>
-                              <Font size="20.0" />
+                              <Font name="System Bold" size="20.0" />
                            </font>
                         </Button>
                         <Line endX="100.0" layoutX="134.0" layoutY="342.0" startX="-100.0" />
-                        <Label fx:id="lblClock" alignment="CENTER" layoutX="26.0" layoutY="364.0" prefHeight="44.0" prefWidth="215.0" style="-fx-background-color: #72F5FD;" text="Clock">
+                        <Label fx:id="lblClock" alignment="CENTER" layoutX="26.0" layoutY="364.0" prefHeight="44.0" prefWidth="215.0" style="-fx-background-color: #2596be;" text="Clock">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
                         <Button fx:id="btn_logout" layoutX="27.0" layoutY="408.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="215.0" style="-fx-background-radius: 15; -fx-cursor: hand;" text="Log Out" textFill="WHITE">
                            <font>
-                              <Font size="20.0" />
+                              <Font name="System Bold" size="20.0" />
                            </font>
                         </Button>
                         <ImageView fitHeight="36.0" fitWidth="45.0" layoutX="44.0" layoutY="412.0" pickOnBounds="true" preserveRatio="true">
@@ -98,9 +98,34 @@
                               <Image url="@../image/exit.png" />
                            </image>
                         </ImageView>
+                        <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="26.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/layout.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="30.0" fitWidth="55.0" layoutX="29.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/target.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="26.0" layoutY="145.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/process.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="30.0" fitWidth="36.0" layoutX="29.0" layoutY="209.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/invoice.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="30.0" fitWidth="36.0" layoutX="29.0" layoutY="271.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/profile.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #72F5FD;" GridPane.rowIndex="2" />
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #2596be;" GridPane.rowIndex="2" />
                </children>
             </GridPane>
          </children>

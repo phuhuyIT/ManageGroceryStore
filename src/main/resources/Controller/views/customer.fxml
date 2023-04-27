@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="900.0" prefWidth="1000.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CustomerController">
+<AnchorPane fx:id="anchorPane_customer" prefHeight="900.0" prefWidth="1000.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CustomerController">
    <children>
       <Label layoutX="375.0" layoutY="35.0" prefHeight="52.0" prefWidth="170.0" style="-fx-font-weight: bold;" text="Customer">
          <font>
@@ -99,7 +99,7 @@
                   </Label>
                </children>
             </HBox>
-            <HBox prefHeight="55.0" prefWidth="968.0">
+            <HBox fx:id="customerHbox1" prefHeight="55.0" prefWidth="968.0">
                <children>
                   <ImageView fx:id="user1_avatar" fitHeight="38.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
@@ -156,7 +156,7 @@
                   </ImageView>
                   <ImageView fitHeight="43.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                      <image>
-                        <Image url="@../image/information%20(1).png" />
+                        <Image url="@../image/information (1).png" />
                      </image>
                      <HBox.margin>
                         <Insets left="28.0" top="10.0" />
@@ -164,7 +164,7 @@
                   </ImageView>
                </children>
             </HBox>
-            <HBox layoutX="10.0" layoutY="69.0" prefHeight="55.0" prefWidth="968.0">
+            <HBox fx:id="customerHbox2" layoutX="10.0" layoutY="69.0" prefHeight="55.0" prefWidth="968.0">
                <children>
                   <ImageView fx:id="user2_avatar" fitHeight="38.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
@@ -221,7 +221,7 @@
                   </ImageView>
                   <ImageView fitHeight="43.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                      <image>
-                        <Image url="@../image/information%20(1).png" />
+                        <Image url="@../image/information (1).png" />
                      </image>
                      <HBox.margin>
                         <Insets left="28.0" top="10.0" />
@@ -229,7 +229,7 @@
                   </ImageView>
                </children>
             </HBox>
-            <HBox layoutX="10.0" layoutY="124.0" prefHeight="55.0" prefWidth="968.0">
+            <HBox fx:id="customerHbox3" layoutX="10.0" layoutY="124.0" prefHeight="55.0" prefWidth="968.0">
                <children>
                   <ImageView fx:id="user3_avatar" fitHeight="38.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
@@ -286,7 +286,7 @@
                   </ImageView>
                   <ImageView fitHeight="43.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                      <image>
-                        <Image url="@../image/information%20(1).png" />
+                        <Image url="@../image/information (1).png" />
                      </image>
                      <HBox.margin>
                         <Insets left="28.0" top="10.0" />
@@ -294,7 +294,7 @@
                   </ImageView>
                </children>
             </HBox>
-            <HBox layoutX="10.0" layoutY="179.0" prefHeight="55.0" prefWidth="968.0">
+            <HBox fx:id="customerHbox4" layoutX="10.0" layoutY="179.0" prefHeight="55.0" prefWidth="968.0">
                <children>
                   <ImageView fx:id="user4_avatar" fitHeight="38.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
@@ -351,7 +351,7 @@
                   </ImageView>
                   <ImageView fitHeight="43.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                      <image>
-                        <Image url="@../image/information%20(1).png" />
+                        <Image url="@../image/information (1).png" />
                      </image>
                      <HBox.margin>
                         <Insets left="28.0" top="10.0" />
@@ -359,7 +359,7 @@
                   </ImageView>
                </children>
             </HBox>
-            <HBox layoutX="10.0" layoutY="234.0" prefHeight="55.0" prefWidth="968.0">
+            <HBox fx:id="customerHbox5" layoutX="10.0" layoutY="234.0" prefHeight="55.0" prefWidth="968.0">
                <children>
                   <ImageView fx:id="user5_avatar" fitHeight="38.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
@@ -416,7 +416,7 @@
                   </ImageView>
                   <ImageView fitHeight="43.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                      <image>
-                        <Image url="@../image/information%20(1).png" />
+                        <Image url="@../image/information (1).png" />
                      </image>
                      <HBox.margin>
                         <Insets left="28.0" top="10.0" />
@@ -424,7 +424,7 @@
                   </ImageView>
                </children>
             </HBox>
-            <HBox layoutX="10.0" layoutY="289.0" prefHeight="55.0" prefWidth="968.0">
+            <HBox fx:id="customerHbox6" layoutX="10.0" layoutY="289.0" prefHeight="55.0" prefWidth="968.0">
                <children>
                   <ImageView fx:id="user6_avatar" fitHeight="38.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
@@ -481,7 +481,7 @@
                   </ImageView>
                   <ImageView fitHeight="43.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                      <image>
-                        <Image url="@../image/information%20(1).png" />
+                        <Image url="@../image/information (1).png" />
                      </image>
                      <HBox.margin>
                         <Insets left="28.0" top="10.0" />
@@ -489,7 +489,7 @@
                   </ImageView>
                </children>
             </HBox>
-            <HBox layoutX="10.0" layoutY="344.0" prefHeight="55.0" prefWidth="968.0">
+            <HBox fx:id="customerHbox7" layoutX="10.0" layoutY="344.0" prefHeight="55.0" prefWidth="968.0">
                <children>
                   <ImageView fx:id="user7_avatar" fitHeight="38.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
@@ -546,7 +546,7 @@
                   </ImageView>
                   <ImageView fitHeight="43.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                      <image>
-                        <Image url="@../image/information%20(1).png" />
+                        <Image url="@../image/information (1).png" />
                      </image>
                      <HBox.margin>
                         <Insets left="28.0" top="10.0" />

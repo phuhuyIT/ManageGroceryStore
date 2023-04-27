@@ -1,16 +1,17 @@
 
 .button{
 
-     -fx-background-color: #31B4D8;
+     -fx-background-color:  #2596be;
 }
 .button:hover{
 
-     -fx-background-color:linear-gradient(to top right, #FF99FF, #9999FF);
-
+     -fx-background-color:#FFFFFF;
+     -fx-text-fill:#2596be;
  }
 .button:focused{
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.9), 5,0,0,0);
-    -fx-background-color:linear-gradient(to top right, #FF99FF, #9999FF);
+    -fx-background-color:#FFFFFF;
+    -fx-text-fill:#2596be;
 }
 
 #btn_prBill{
