@@ -10,6 +10,18 @@ import java.util.ResourceBundle;
 public class DashBoardController implements Initializable {
     @FXML
     private Label title;
+
+    @FXML
+    private Label num_customer;
+    @FXML
+    private Label num_product;
+    @FXML
+    private Label num_category;
+    @FXML
+    private Label num_revenue;
+
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

@@ -42,6 +42,11 @@ public class BillDao implements DaoInterface <Bill> {
 
     }
 
+    @Override
+    public int delete(String t) throws SQLException {
+        return 0;
+    }
+
     public int update(Bill bill) {
         String sql = "UPDATE bills SET name = ?, amount = ?, due_date = ?, paid = ? WHERE id = ?";
         try {
@@ -74,7 +79,7 @@ public class BillDao implements DaoInterface <Bill> {
         return affectedRows;
     }
     @Override
-    public ArrayList<Bill> selectALL() {
+    public ResultSet selectALL() {
         String sql = "SELECT * FROM bills";
         try {
             pstmt = connection.prepareStatement(sql);
@@ -95,7 +100,7 @@ public class BillDao implements DaoInterface <Bill> {
 
                 bills.add(bill);
             }
-            return bills;
+            return (ResultSet) bills;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
