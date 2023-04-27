@@ -165,7 +165,7 @@ public class HomeController implements Initializable {
 
         //Lấy dữ liệu tên người dùng và link ảnh từ database và put vào HashMap
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/MANAGEGROCERYSTORE", "root", "1234");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/MANAGEGROCERYSTORE", "root", "123456");
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT USERNAME,IMAGE FROM USERS ");
             while (resultSet.next()) {

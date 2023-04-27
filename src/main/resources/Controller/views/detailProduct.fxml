@@ -8,57 +8,55 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane fx:id="pane" prefHeight="900.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.views.DetailProduct">
+<AnchorPane fx:id="pane" prefHeight="900.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DetailProductController">
    <children>
-      <Label alignment="CENTER" layoutX="431.0" layoutY="6.0" text="Detail Product ">
+      <Label alignment="CENTER" layoutX="431.0" layoutY="14.0" text="Detail Product">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>
       </Label>
-      <Line endX="795.0" layoutX="205.0" layoutY="59.0" startX="-205.0" strokeWidth="3.0" />
-      <ImageView fitHeight="513.0" fitWidth="384.0" layoutX="99.0" layoutY="184.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="btn_back" layoutX="9.0" layoutY="76.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="101.0" style="-fx-cursor: hand; -fx-background-color: transparent;" />
-      <ImageView fitHeight="43.0" fitWidth="55.0" layoutX="38.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
+      <Button fx:id="btn_back" layoutX="36.0" layoutY="80.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="105.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
+      <Line endX="778.0" layoutX="222.0" layoutY="67.0" startX="-222.0" strokeWidth="3.0" />
+      <ImageView fitHeight="36.0" fitWidth="40.0" layoutX="69.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../image/back.png" />
          </image>
       </ImageView>
-      <Label layoutX="72.0" layoutY="167.0" prefHeight="550.0" prefWidth="436.0" style="-fx-border-color: black; -fx-border-radius: 20px; -fx-border-width: 2px;" />
-      <Line endX="100.0" endY="480.0" layoutX="448.0" layoutY="249.0" startX="100.0" startY="-150.0" stroke="#cccccc" strokeWidth="3.0" />
-      <Label layoutX="583.0" layoutY="167.0" prefHeight="53.0" prefWidth="67.0" text="Code">
+      <Label layoutX="36.0" layoutY="162.0" prefHeight="632.0" prefWidth="382.0" style="-fx-border-color: black; -fx-border-radius: 20px;" />
+      <Line endX="100.0" endY="575.0" layoutX="413.0" layoutY="235.0" startX="100.0" startY="-148.0" strokeWidth="2.0" />
+      <Label layoutX="553.0" layoutY="162.0" text="CODE">
          <font>
-            <Font name="System Bold" size="20.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="583.0" layoutY="230.0" prefHeight="53.0" prefWidth="144.0" text="Product Name">
+      <Label layoutX="553.0" layoutY="220.0" text="Product Name">
          <font>
-            <Font name="System Bold" size="20.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="583.0" layoutY="302.0" prefHeight="53.0" prefWidth="67.0" text="Brand">
+      <Label layoutX="553.0" layoutY="279.0" text="Category">
          <font>
-            <Font name="System Bold" size="20.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="583.0" layoutY="361.0" prefHeight="53.0" prefWidth="101.0" text="Category">
+      <Label layoutX="553.0" layoutY="343.0" text="Supplier">
          <font>
-            <Font name="System Bold" size="20.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="583.0" layoutY="424.0" prefHeight="53.0" prefWidth="101.0" text="Cost Price">
+      <Label layoutX="553.0" layoutY="405.0" text="CostPrice">
          <font>
-            <Font name="System Bold" size="20.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="580.0" layoutY="495.0" prefHeight="53.0" prefWidth="101.0" text="Sell Price">
+      <Label layoutX="553.0" layoutY="478.0" text="SellPrice">
          <font>
-            <Font name="System Bold" size="20.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="584.0" layoutY="576.0" prefHeight="53.0" prefWidth="94.0" text="Describle">
+      <Label layoutX="553.0" layoutY="556.0" text="Describle">
          <font>
-            <Font name="System Bold" size="20.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
    </children>

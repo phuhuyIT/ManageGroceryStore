@@ -13,27 +13,25 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class DetailProduct implements Initializable {
+public class DetailProductController implements Initializable {
+    @FXML
+    private AnchorPane pane;
 
     @FXML
     private Button btn_back;
-
-    @FXML
-    private AnchorPane pane;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         btn_back.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("views/sp.fxml"));
+                FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("views/products.fxml"));
                 Node node = null;
                 try {
                     node = loader.load();
-                    pane.getChildren().add(node);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-
+                pane.getChildren().add(node);
             }
         });
     }
