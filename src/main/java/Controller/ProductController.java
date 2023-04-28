@@ -2,6 +2,8 @@ package Controller;
 
 import DAO.ProductDAO;
 import Model.Category;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,10 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -34,7 +33,7 @@ public class ProductController implements Initializable {
     @FXML
     private Label lb_search;
     @FXML
-    private Button btn_test;
+    private Button btn_addProduct;
 
     @FXML
     private Button btnProductDetails1;
@@ -53,6 +52,24 @@ public class ProductController implements Initializable {
     @FXML
     private Button btnProductDetails8;
 
+    @FXML
+    private CheckBox select_all;
+    @FXML
+    private CheckBox select_product1;
+    @FXML
+    private CheckBox select_product2;
+    @FXML
+    private CheckBox select_product3;
+    @FXML
+    private CheckBox select_product4;
+    @FXML
+    private CheckBox select_product5;
+    @FXML
+    private CheckBox select_product6;
+    @FXML
+    private CheckBox select_product7;
+    @FXML
+    private CheckBox select_product8;
 
     @FXML
     private ChoiceBox<String> choiceBox_sort;
@@ -85,6 +102,45 @@ public class ProductController implements Initializable {
                 throw new RuntimeException(e);
             }
             pane_Product.getChildren().set(0,node);
+        }
+    });
+
+    btn_addProduct.setOnAction(new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(ActionEvent actionEvent) {
+            FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("views/addProduct.fxml"));
+            Node node = null;
+            try {
+                node = loader.load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            pane_Product.getChildren().set(0,node);
+        }
+    });
+
+    select_all.selectedProperty().addListener(new ChangeListener<Boolean>() {
+        @Override
+        public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean t1) {
+            if (t1) {
+                select_product1.setSelected(true);
+                select_product2.setSelected(true);
+                select_product3.setSelected(true);
+                select_product4.setSelected(true);
+                select_product5.setSelected(true);
+                select_product6.setSelected(true);
+                select_product7.setSelected(true);
+                select_product8.setSelected(true);
+            }else{
+                select_product1.setSelected(false);
+                select_product2.setSelected(false);
+                select_product3.setSelected(false);
+                select_product4.setSelected(false);
+                select_product5.setSelected(false);
+                select_product6.setSelected(false);
+                select_product7.setSelected(false);
+                select_product8.setSelected(false);
+            }
         }
     });
 

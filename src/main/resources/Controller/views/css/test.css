@@ -49,4 +49,23 @@
     -fx-background-color:#FFFFFF;
 }
 
+//Add Product
+#btn_save{
+ -fx-background-color:#DDDDDD;
+}
+
+#btn_save:hover{
+  -fx-background-color:linear-gradient(to top right, #FF99FF, #9999FF);
+}
+
+#btn_addThumnail{
+     -fx-font-size  : 20px;
+     -fx-background-color:  #FFFFFF;
+}
+
+#btn_addThumnail:hover{
+    -fx-font-size  : 21px;
+    -fx-text-fill:#2596be;
+}
+
 
