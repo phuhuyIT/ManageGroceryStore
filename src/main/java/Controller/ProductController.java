@@ -2,6 +2,7 @@ package Controller;
 
 import DAO.ProductDAO;
 import Model.Category;
+import Model.Product;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -82,6 +83,9 @@ public class ProductController implements Initializable {
     private String[] choice = {"Tăng theo giá ", "Giảm theo giá" , "A->Z" , "Z->A"};
 
     private String[] list = {"Cake", "Noodle" , "Fast Food" , "Drinking" , "Ice Cream" , "Vegetable"};
+    private static int currentProductID;
+
+    public static int getCurrentProductID() {return currentProductID;}
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -91,31 +95,23 @@ public class ProductController implements Initializable {
         choiceBox_list.getItems().addAll(list);
 
 
-    btnProductDetails1.setOnAction(new EventHandler<ActionEvent>() {
-        @Override
-        public void handle(ActionEvent actionEvent) {
-            FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("views/detailProduct.fxml"));
-            Node node = null;
-            try {
-                node = loader.load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            pane_Product.getChildren().set(0,node);
-        }
-    });
+        EventHandler<ActionEvent> linktoDetailProduct =event -> {
+            String fxmlPath = "views/detailProduct.fxml";
+            Button btn= (Button) event.getSource();
+            String id= (String)btn.getUserData();
+            currentProductID = Integer.parseInt(id);
+            loadFXML(fxmlPath);
+        };
 
+        for (int i=0;i<8;i++){
+            AnchorPane ap = (AnchorPane) pane_Product.lookup("#productBox"+(i+1));
+            Button btnDetailsProduct = (Button) ap.lookup("#btnProductDetails"+(i+1));
+            btnDetailsProduct.setOnAction(linktoDetailProduct);
+        }
     btn_addProduct.setOnAction(new EventHandler<ActionEvent>() {
         @Override
         public void handle(ActionEvent actionEvent) {
-            FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("views/addProduct.fxml"));
-            Node node = null;
-            try {
-                node = loader.load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            pane_Product.getChildren().set(0,node);
+            loadFXML("views/addProduct.fxml");
         }
     });
 
@@ -144,33 +140,45 @@ public class ProductController implements Initializable {
         }
     });
 
-//        ProductDAO pdao=new ProductDAO();
-//        ResultSet rs=pdao.selectALL();
-//        try {
-//            for (int i=0;i<8;i++){
-//
-//                if(rs.next()){
-//                    AnchorPane ap = (AnchorPane) pane.lookup("#productBox"+(i+1));
-//
-//                    ImageView productThumbnail =(ImageView) ap.lookup("#productThumbnail"+(i+1));
-//                    Label productQuantity =(Label) ap.lookup("#productQuantity"+(i+1));
-//                    Label productPrice =(Label)ap.lookup("#productPrice"+(i+1));
-//                    String img  = rs.getString("THUMBNAIL");
-//                    System.out.println(img);
-//                    if(img!=null) {
-//                        Image image1 = new Image(String.valueOf(img));
-//                        productThumbnail.setImage(image1);
-//                    }
-//                    productQuantity.setText(rs.getString("SELLINGPRICE"));
-//                    productPrice.setText(rs.getString("COSTPRICE"));
-//                }
-//                else
-//                    return;
-//
-//            }
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
+        ProductDAO pdao=new ProductDAO();
+        ResultSet rs=pdao.selectALL();
+        try {
+            for (int i=0;i<8;i++){
 
+                if(rs.next()){
+                    AnchorPane ap = (AnchorPane) pane_Product.lookup("#productBox"+(i+1));
+
+                    ImageView productThumbnail =(ImageView) ap.lookup("#productThumbnail"+(i+1));
+                    Label productQuantity =(Label) ap.lookup("#productQuantity"+(i+1));
+                    Label productPrice =(Label)ap.lookup("#productPrice"+(i+1));
+                    Button productDetailBtn= (Button) ap.lookup("#btnProductDetails"+(i+1));
+                    String img  = rs.getString("THUMBNAIL");
+                    if(img!=null) {
+                        Image image1 = new Image(String.valueOf(img));
+                        productThumbnail.setImage(image1);
+                        productDetailBtn.setUserData(rs.getString("PID"));
+                    }
+                    productQuantity.setText(rs.getString("SELLINGPRICE"));
+                    productPrice.setText(rs.getString("COSTPRICE"));
+                }
+                else
+                    return;
+
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+    private void loadFXML(String fxmlPath) {
+
+        FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource(fxmlPath));
+        Node node = null;
+        try {
+            node = loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        pane_Product.getChildren().set(0,node);
     }
 }

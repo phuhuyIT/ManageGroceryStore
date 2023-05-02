@@ -104,36 +104,18 @@ public class ProductDAO implements DaoInterface<Product> {
         return  rs;
     }
     @Override
-    public Product selectByID(int ID) {
-        Product result = null;
+    public ResultSet selectByID(int ID) {
+        ResultSet rs;
         try {
-            String selectByID_query = "SELECT * FROM PRODUCT WHERE PRODUCTID =?";
+            String selectByID_query = "SELECT * FROM PRODUCTS WHERE Pid =?";
             pstmt= con.prepareStatement(selectByID_query);
             pstmt.setInt(1,ID);
-            while (rs.next()){
-                int idProduct = rs.getInt("PRODUCTID");
-                String codeProduct = rs.getString("PRODUCTCODE");
-                Date date = rs.getDate("DATE");
-                Date dateSell = rs.getDate("SELLDATE");
-                String codeSupplier = rs.getString("SUPPLIERCODE");
-                String nameProduct = rs.getString("PRODUCTNAME");
-                int quanty = rs.getInt("QUANTITY");
-                double costPrice = rs.getDouble("COSTPRICE");
-                double priceSelling = rs.getDouble("SELLINGPRICE");
-                String brand = rs.getString("BRAND");
-                int userId = rs.getInt("USERID");
-                String customerCode = rs.getString("CUSTOMERCODE");
-                double totalCode = rs.getDouble("TOTALCOST");
-                double totalRevenue = rs.getDouble("TOTALREVENUE");
-                result = new Product(idProduct,codeProduct,date,dateSell,codeSupplier,nameProduct
-                        ,quanty,costPrice,priceSelling,brand,userId,customerCode,totalCode,totalRevenue);
-
-            }
+            rs =pstmt.executeQuery();
         }catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
-        return result;
+        return rs;
     }
 
     @Override
