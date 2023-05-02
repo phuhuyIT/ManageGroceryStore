@@ -99,29 +99,17 @@ public class CustomerDAO implements DaoInterface <Customer>{
     }
 
     @Override
-    public Customer selectByID(int ID) {
-        Customer result = null;
+    public ResultSet selectByID(int ID) {
         try {
             String selectByID_query = "SELECT * FROM CUSTOMER WHERE CUSTOMERID =?";
             pstmt= con.prepareStatement(selectByID_query);
             pstmt.setInt(1,ID);
             rs = pstmt.executeQuery();
-            while (rs.next()){
-                int id=rs.getInt("CUSTOMERID");
-                String fname=rs.getString("FULLNAME");
-                String location=rs.getString("LOCATION");
-                String phone=rs.getString("PHONE");
-                String debit=rs.getString("DEBIT");
-                String credit=rs.getString("CREDIT");
-                String email=rs.getString("EMAIL");
-                result = new Customer (id,"cc",fname,location,phone,debit, credit,email);
-
-            }
         }catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
-        return result;
+        return rs;
     }
     @Override
     public int addFunction(Customer customer) {

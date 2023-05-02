@@ -9,6 +9,6 @@ public interface DaoInterface <T>{
     public int delete(String t) throws SQLException;
     public int update(T t);
     public ResultSet selectALL () ;
-    public T selectByID(int ID);
+    public ResultSet selectByID(int ID);
     public int addFunction(T t);
 }

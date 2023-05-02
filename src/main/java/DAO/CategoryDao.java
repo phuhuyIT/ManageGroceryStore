@@ -81,23 +81,16 @@ public class CategoryDao implements DaoInterface <Category> {
 
     @Override
     // Lấy danh mục sản phẩm từ cơ sở dữ liệu theo id
-    public Category selectByID(int ID) {
+    public ResultSet selectByID(int ID) {
         String sql = "SELECT * FROM categories WHERE ID=?";
         try {
-            PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setInt(1, ID);
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-                Category category = new Category();
-                category.setId(rs.getInt("ID"));
-                category.setName(rs.getString("name"));
-                category.setProductList(getProductsByCategoryId(category.getId()));
-                return category;
-            }
+            pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1, ID);
+            rs = pstmt.executeQuery();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return rs;
     }
 
     @Override
