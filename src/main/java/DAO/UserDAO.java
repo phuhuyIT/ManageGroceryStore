@@ -1,5 +1,6 @@
 package DAO;
 
+import Controller.LoginController;
 import Controller.UserProfileController;
 import DatabaseConnection.ConnectionFactory;
 import Model.Customer;
@@ -122,7 +123,7 @@ public class UserDAO {
             if(userdto.getImageLink().equals("")) {
 
             } else {
-                String query = "UPDATE users SET fullname=?,location=?,phone=?,category=?,image=? WHERE username=?";
+                String query = "UPDATE users SET fullname=?,location=?,phone=?,category=?,image=?,email=? WHERE username=?";
                 //FileInputStream fis=new FileInputStream(file);
                 pstmt = (PreparedStatement) con.prepareStatement(query);
                 pstmt.setString(1, userdto.getFullName());
@@ -130,7 +131,8 @@ public class UserDAO {
                 pstmt.setString(3, userdto.getPhone());
                 pstmt.setString(4, userdto.getCategory());
                 pstmt.setString(5,userdto.getImageLink());
-                pstmt.setString(6, userdto.getUsername());
+                pstmt.setString(6, userdto.getEmail());
+                pstmt.setString(7, LoginController.getLoggedInUsername());
                 pstmt.executeUpdate();
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Update");
@@ -203,7 +205,7 @@ public class UserDAO {
     }
     public ResultSet getQueryResult1(String username) {
         try {
-            String query = "SELECT fullname,location,phone,username,category,IMAGE FROM users Where username=?";
+            String query = "SELECT fullname,location,phone,email,category,IMAGE FROM users Where username=?";
             pstmt=con.prepareStatement(query);
             pstmt.setString(1,username);
             rs =pstmt.executeQuery();

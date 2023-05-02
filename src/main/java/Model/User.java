@@ -7,20 +7,25 @@ public class User {
     private String fullName;
     private String location;
     private String phone;
+    private String email;
     private String username;
     private String password;
     private String category;
     private String imgLink;
 
+    public String getEmail() {
+        return email;
+    }
+
     public User(String username, String password) {
         this.username = username;
         this.password = password;
     }
-    public User(String fullName, String location, String phone, String username, String category, String image) {
+    public User(String fullName, String location, String phone, String email, String category, String image) {
         this.fullName = fullName;
         this.location = location;
         this.phone = phone;
-        this.username = username;
+        this.email = email;
         this.category = category;
         this.imgLink = image;
     }
@@ -34,6 +39,16 @@ public class User {
         this.password = password;
         this.category = category;
         this.imgLink = image;
+    }    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getImgLink() {
+        return imgLink;
+    }
+
+    public void setImgLink(String imgLink) {
+        this.imgLink = imgLink;
     }
 
     public int getId() {

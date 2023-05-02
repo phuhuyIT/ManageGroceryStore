@@ -58,15 +58,15 @@ public class UserProfileController implements Initializable {
     @FXML
     private TextField txt_fullname;
     @FXML
-    private TextField txt_category;
+    private ChoiceBox cb_category;
     @FXML
     private TextField txt_phone;
     @FXML
     private TextField txt_location;
-
+    @FXML
+    private TextField txt_email;
     @FXML
     private Button btn_refesh;
-
     @FXML
     public void chooseImageButton(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -77,9 +77,6 @@ public class UserProfileController implements Initializable {
         //cai dat den thu muc cua ng dung hoac chuyen truc tiep den o c neu ko truy cap duoc
         String userDirectoryString = System.getProperty("user.home");
         File userDirectory = new File(userDirectoryString);
-
-//        if(!userDirectory.canRead())
-//            userDirectory = new File("C:/");
 
         fileChooser.setInitialDirectory(userDirectory);
         filePath = fileChooser.showOpenDialog(stage);
@@ -94,27 +91,29 @@ public class UserProfileController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-//        try {
-//            UserDAO userData = new UserDAO();
-//            System.out.println("cc1  " + LoginController.getLoggedInUsername());
-//            ResultSet rs = userData.getQueryResult1(LoginController.getLoggedInUsername());
-//            while (rs.next()) {
-//                String img = rs.getString("IMAGE");
-//                if (img != null) {
-//                    Image image1 = new Image(String.valueOf(img));
-//                    image_user.setImage(image1);
-//                }
-//                // lbl_username.setText(rs.getString("USERNAME"));
-//                txt_fullname.setText(rs.getString("FULLNAME"));
-//                txt_phone.setText(rs.getString("PHONE"));
-//                txt_location.setText(rs.getString("LOCATION"));
-//                txt_category.setText(rs.getString("CATEGORY"));
-//
-//            }
-//
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
+        // Hiển thị cho choiceBox
+        cb_category.getItems().addAll("ADMINISTRATOR", "STAFF", "CUSTOMER");
+        // Lấy thông tin từ database hiện lên
+        try {
+            UserDAO userData = new UserDAO();
+            ResultSet rs = userData.getQueryResult1(LoginController.getLoggedInUsername());
+            while (rs.next()) {
+                String img = rs.getString("IMAGE");
+                if (img != null) {
+                    Image image1 = new Image(String.valueOf(img));
+                    image_user.setImage(image1);
+                }
+                txt_email.setText(rs.getString("EMAIL"));
+                txt_fullname.setText(rs.getString("FULLNAME"));
+                txt_phone.setText(rs.getString("PHONE"));
+                txt_location.setText(rs.getString("LOCATION"));
+                cb_category.setValue(rs.getString("CATEGORY"));
+
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
         change_pass.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -134,17 +133,19 @@ public class UserProfileController implements Initializable {
         btn_update.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                if (!txt_fullname.getText().trim().isEmpty() && !txt_phone.getText().trim().isEmpty() && !txt_location.getText().trim().isEmpty() && !txt_category.getText().trim().isEmpty()) {
-                    User user=new User(txt_fullname.getText(),txt_location.getText(), txt_phone.getText(),  lbl_username.getText(),txt_category.getText(),filePath.toString());
+                Image image =image_user.getImage();
+                filePath =new File(image.getUrl());
+                if (!txt_fullname.getText().trim().isEmpty() && !txt_phone.getText().trim().isEmpty() && !txt_location.getText().trim().isEmpty() && !cb_category.getValue().toString().trim().isEmpty()&& !txt_email.getText().trim().isEmpty()) {
+                    User user=new User(txt_fullname.getText(),txt_location.getText(), txt_phone.getText(), txt_email.getText(), (String) cb_category.getValue(), filePath.toString());
                     try {
                         LoginController.Update_Infor(actionEvent,user);
                     } catch (SQLException e) {
                         throw new RuntimeException(e);
                     }
                 } else {
-                    System.out.println("Please fill in all information ");
+                    System.out.println("Please fill in information ");
                     Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setContentText("Please fill in all information");
+                    alert.setContentText("Please fill in information");
                     alert.show();}
             }
         });

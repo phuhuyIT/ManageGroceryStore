@@ -26,7 +26,7 @@ public class LoginController {
                 HomeController homeController = loader.getController();
                 homeController.setUserInformation(username);
 
-            }catch (IOException e){
+            }catch (IOException | SQLException e){
                 e.printStackTrace();
             }
         }else{
@@ -57,7 +57,7 @@ public class LoginController {
                 HomeController homeController = loader.getController();
                 homeController.setUserInformation(username);
 
-            }catch (IOException e){
+            }catch (IOException | SQLException e){
                 e.printStackTrace();
             }
         }else{
@@ -89,7 +89,7 @@ public class LoginController {
                 HomeController homeController = loader.getController();
                 homeController.setUserInformation(username);
 
-            }catch (IOException e){
+            }catch (IOException | SQLException e){
                 e.printStackTrace();
             }
         }else{
@@ -149,7 +149,6 @@ public class LoginController {
 //lấy link ảnh avatar vào database
     public static void Update_Infor(ActionEvent event ,User user) throws SQLException{
         UserDAO userdao=new UserDAO();
-        System.out.println("da vao day");
         userdao.editFunction(user);
 }
 

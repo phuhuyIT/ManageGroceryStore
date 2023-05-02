@@ -1,5 +1,6 @@
 package Controller;
 
+import DAO.UserDAO;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -53,7 +54,6 @@ public class HomeController implements Initializable {
 
     private String userName;
     private String avatarSrc;
-    private HashMap<String, String> acc = new HashMap<String, String>();
 
 
     @Override
@@ -162,36 +162,26 @@ public class HomeController implements Initializable {
         Thread newClock = new Thread(clock); //Creating new thread
         newClock.setDaemon(true); //Thread will automatically close on applications closing
         newClock.start(); //Starting Thread
-
-        //Lấy dữ liệu tên người dùng và link ảnh từ database và put vào HashMap
-        try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/MANAGEGROCERYSTORE", "root", "123456");
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT USERNAME,IMAGE FROM USERS ");
-            while (resultSet.next()) {
-                userName = resultSet.getString("USERNAME");
-                avatarSrc = resultSet.getString("IMAGE");
-                acc.put(userName, avatarSrc);
-            }
-        } catch (SQLException ex) {
-            throw new RuntimeException(ex);
-        }
-
     }
 
 
-    public void setUserInformation(String username) {
+    public void setUserInformation(String username) throws SQLException {
         wlc_user.setText(username);
         //So sánh tên username , nếu trùng tên trong HashMap sẽ lấy ra avatar tương ứng
-        Set<String> keySet = acc.keySet();
-        for (String key : keySet) {
-            if (username.equals(key)) {
-                if (acc.get(key)!= null) {
-                    Image image1 = new Image(acc.get(key));
-                    System.out.println(acc.get(key));
-                    img_user.setImage(image1);
+        UserDAO user = new UserDAO();
+        ResultSet rs =user.getUser(username);
+
+        try {
+            if (rs.next()) {
+                avatarSrc =rs.getString("IMAGE");
+                if(avatarSrc!=null){
+                    Image avatar = new Image(String.valueOf(avatarSrc));
+                    img_user.setImage(avatar);
                 }
             }
+            else return;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
