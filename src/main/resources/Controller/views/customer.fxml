@@ -8,8 +8,6 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
@@ -47,515 +45,16 @@
          </image>
       </ImageView>
       <Line endX="100.0" layoutX="233.0" layoutY="88.0" startX="-100.0" />
-      <ImageView fx:id="img_back" fitHeight="79.0" fitWidth="97.0" layoutX="316.0" layoutY="622.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 5,0,0,0); -fx-cursor: hand;">
+      <ImageView fx:id="img_back" fitHeight="79.0" fitWidth="97.0" layoutX="316.0" layoutY="781.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 5,0,0,0); -fx-cursor: hand;">
          <image>
             <Image url="@../image/previous.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="img_next" fitHeight="79.0" fitWidth="97.0" layoutX="602.0" layoutY="622.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 5,0,0,0); -fx-cursor: hand;">
+      <ImageView fx:id="img_next" fitHeight="79.0" fitWidth="97.0" layoutX="608.0" layoutY="781.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 5,0,0,0); -fx-cursor: hand;">
          <image>
             <Image url="@../image/next.png" />
          </image>
       </ImageView>
-      <VBox layoutX="17.0" layoutY="163.0" prefHeight="441.0" prefWidth="968.0">
-         <children>
-            <HBox prefHeight="59.0" prefWidth="968.0" style="-fx-background-color: #AAAAAA;">
-               <children>
-                  <Label alignment="BOTTOM_CENTER" prefHeight="46.0" prefWidth="41.0" text="A">
-                     <font>
-                        <Font name="System Bold" size="20.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="BOTTOM_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="46.0" prefWidth="206.0" text="Customer Name">
-                     <font>
-                        <Font name="System Bold" size="20.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="BOTTOM_CENTER" layoutX="94.0" layoutY="10.0" prefHeight="46.0" prefWidth="104.0" text="Gender">
-                     <font>
-                        <Font name="System Bold" size="20.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="BOTTOM_CENTER" layoutX="262.0" layoutY="10.0" prefHeight="46.0" prefWidth="168.0" text="Phone Contact">
-                     <font>
-                        <Font name="System Bold" size="20.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="BOTTOM_CENTER" layoutX="414.0" layoutY="10.0" prefHeight="46.0" prefWidth="129.0" text="Email">
-                     <font>
-                        <Font name="System Bold" size="20.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="15.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label alignment="BOTTOM_CENTER" layoutX="582.0" layoutY="10.0" prefHeight="46.0" prefWidth="238.0" text="Action">
-                     <font>
-                        <Font name="System Bold" size="20.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="60.0" />
-                     </HBox.margin>
-                  </Label>
-               </children>
-            </HBox>
-            <HBox fx:id="customerHbox1" prefHeight="55.0" prefWidth="968.0">
-               <children>
-                  <ImageView fx:id="user1_avatar" fitHeight="38.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
-                     <HBox.margin>
-                        <Insets top="10.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <Label fx:id="user1_name" alignment="BOTTOM_CENTER" prefHeight="30.0" prefWidth="207.0">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets top="10.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label fx:id="user1_gender" alignment="BOTTOM_CENTER" layoutX="65.0" layoutY="10.0" prefHeight="30.0" prefWidth="112.0">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets top="10.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label fx:id="user1_phone" alignment="BOTTOM_CENTER" layoutX="237.0" layoutY="10.0" prefHeight="30.0" prefWidth="140.0">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets top="10.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label fx:id="user1_email" alignment="BOTTOM_CENTER" layoutX="409.0" layoutY="10.0" prefHeight="30.0" prefWidth="221.0">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets top="10.0" />
-                     </HBox.margin>
-                  </Label>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
-                     <image>
-                        <Image url="@../image/chat.png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets left="28.0" top="10.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
-                     <image>
-                        <Image url="@../image/remove.png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets left="28.0" top="10.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <ImageView fitHeight="43.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
-                     <image>
-                        <Image url="@../image/information (1).png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets left="28.0" top="10.0" />
-                     </HBox.margin>
-                  </ImageView>
-               </children>
-            </HBox>
-            <HBox fx:id="customerHbox2" layoutX="10.0" layoutY="69.0" prefHeight="55.0" prefWidth="968.0">
-               <children>
-                  <ImageView fx:id="user2_avatar" fitHeight="38.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
-                     <HBox.margin>
-                        <Insets top="10.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <Label fx:id="user2_name" alignment="BOTTOM_CENTER" prefHeight="30.0" prefWidth="207.0">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets top="10.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label fx:id="user2_gender" alignment="BOTTOM_CENTER" layoutX="65.0" layoutY="10.0" prefHeight="30.0" prefWidth="112.0">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets top="10.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label fx:id="user2_phone" alignment="BOTTOM_CENTER" layoutX="237.0" layoutY="10.0" prefHeight="30.0" prefWidth="140.0">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets top="10.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label fx:id="user2_email" alignment="BOTTOM_CENTER" layoutX="409.0" layoutY="10.0" prefHeight="30.0" prefWidth="221.0">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets top="10.0" />
-                     </HBox.margin>
-                  </Label>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
-                     <image>
-                        <Image url="@../image/chat.png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets left="28.0" top="10.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
-                     <image>
-                        <Image url="@../image/remove.png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets left="28.0" top="10.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <ImageView fitHeight="43.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
-                     <image>
-                        <Image url="@../image/information (1).png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets left="28.0" top="10.0" />
-                     </HBox.margin>
-                  </ImageView>
-               </children>
-            </HBox>
-            <HBox fx:id="customerHbox3" layoutX="10.0" layoutY="124.0" prefHeight="55.0" prefWidth="968.0">
-               <children>
-                  <ImageView fx:id="user3_avatar" fitHeight="38.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
-                     <HBox.margin>
-                        <Insets top="10.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <Label fx:id="user3_name" alignment="BOTTOM_CENTER" prefHeight="30.0" prefWidth="207.0">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets top="10.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label fx:id="user3_gender" alignment="BOTTOM_CENTER" layoutX="65.0" layoutY="10.0" prefHeight="30.0" prefWidth="112.0">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets top="10.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label fx:id="user3_phone" alignment="BOTTOM_CENTER" layoutX="237.0" layoutY="10.0" prefHeight="30.0" prefWidth="140.0">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets top="10.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label fx:id="user3_email" alignment="BOTTOM_CENTER" layoutX="409.0" layoutY="10.0" prefHeight="30.0" prefWidth="221.0">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets top="10.0" />
-                     </HBox.margin>
-                  </Label>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
-                     <image>
-                        <Image url="@../image/chat.png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets left="28.0" top="10.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
-                     <image>
-                        <Image url="@../image/remove.png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets left="28.0" top="10.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <ImageView fitHeight="43.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
-                     <image>
-                        <Image url="@../image/information (1).png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets left="28.0" top="10.0" />
-                     </HBox.margin>
-                  </ImageView>
-               </children>
-            </HBox>
-            <HBox fx:id="customerHbox4" layoutX="10.0" layoutY="179.0" prefHeight="55.0" prefWidth="968.0">
-               <children>
-                  <ImageView fx:id="user4_avatar" fitHeight="38.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
-                     <HBox.margin>
-                        <Insets top="10.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <Label fx:id="user4_name" alignment="BOTTOM_CENTER" prefHeight="30.0" prefWidth="207.0">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets top="10.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label fx:id="user4_gender" alignment="BOTTOM_CENTER" layoutX="65.0" layoutY="10.0" prefHeight="30.0" prefWidth="112.0">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets top="10.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label fx:id="user4_phone" alignment="BOTTOM_CENTER" layoutX="237.0" layoutY="10.0" prefHeight="30.0" prefWidth="140.0">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets top="10.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label fx:id="user4_email" alignment="BOTTOM_CENTER" layoutX="409.0" layoutY="10.0" prefHeight="30.0" prefWidth="221.0">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets top="10.0" />
-                     </HBox.margin>
-                  </Label>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
-                     <image>
-                        <Image url="@../image/chat.png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets left="28.0" top="10.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
-                     <image>
-                        <Image url="@../image/remove.png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets left="28.0" top="10.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <ImageView fitHeight="43.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
-                     <image>
-                        <Image url="@../image/information (1).png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets left="28.0" top="10.0" />
-                     </HBox.margin>
-                  </ImageView>
-               </children>
-            </HBox>
-            <HBox fx:id="customerHbox5" layoutX="10.0" layoutY="234.0" prefHeight="55.0" prefWidth="968.0">
-               <children>
-                  <ImageView fx:id="user5_avatar" fitHeight="38.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
-                     <HBox.margin>
-                        <Insets top="10.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <Label fx:id="user5_name" alignment="BOTTOM_CENTER" prefHeight="30.0" prefWidth="207.0">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets top="10.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label fx:id="user5_gender" alignment="BOTTOM_CENTER" layoutX="65.0" layoutY="10.0" prefHeight="30.0" prefWidth="112.0">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets top="10.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label fx:id="user5_phone" alignment="BOTTOM_CENTER" layoutX="237.0" layoutY="10.0" prefHeight="30.0" prefWidth="140.0">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets top="10.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label fx:id="user5_email" alignment="BOTTOM_CENTER" layoutX="409.0" layoutY="10.0" prefHeight="30.0" prefWidth="221.0">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets top="10.0" />
-                     </HBox.margin>
-                  </Label>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
-                     <image>
-                        <Image url="@../image/chat.png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets left="28.0" top="10.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
-                     <image>
-                        <Image url="@../image/remove.png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets left="28.0" top="10.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <ImageView fitHeight="43.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
-                     <image>
-                        <Image url="@../image/information (1).png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets left="28.0" top="10.0" />
-                     </HBox.margin>
-                  </ImageView>
-               </children>
-            </HBox>
-            <HBox fx:id="customerHbox6" layoutX="10.0" layoutY="289.0" prefHeight="55.0" prefWidth="968.0">
-               <children>
-                  <ImageView fx:id="user6_avatar" fitHeight="38.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
-                     <HBox.margin>
-                        <Insets top="10.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <Label fx:id="user6_name" alignment="BOTTOM_CENTER" prefHeight="30.0" prefWidth="207.0">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets top="10.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label fx:id="user6_gender" alignment="BOTTOM_CENTER" layoutX="65.0" layoutY="10.0" prefHeight="30.0" prefWidth="112.0">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets top="10.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label fx:id="user6_phone" alignment="BOTTOM_CENTER" layoutX="237.0" layoutY="10.0" prefHeight="30.0" prefWidth="140.0">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets top="10.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label fx:id="user6_email" alignment="BOTTOM_CENTER" layoutX="409.0" layoutY="10.0" prefHeight="30.0" prefWidth="221.0">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets top="10.0" />
-                     </HBox.margin>
-                  </Label>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
-                     <image>
-                        <Image url="@../image/chat.png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets left="28.0" top="10.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
-                     <image>
-                        <Image url="@../image/remove.png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets left="28.0" top="10.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <ImageView fitHeight="43.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
-                     <image>
-                        <Image url="@../image/information (1).png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets left="28.0" top="10.0" />
-                     </HBox.margin>
-                  </ImageView>
-               </children>
-            </HBox>
-            <HBox fx:id="customerHbox7" layoutX="10.0" layoutY="344.0" prefHeight="55.0" prefWidth="968.0">
-               <children>
-                  <ImageView fx:id="user7_avatar" fitHeight="38.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
-                     <HBox.margin>
-                        <Insets top="10.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <Label fx:id="user7_name" alignment="BOTTOM_CENTER" prefHeight="30.0" prefWidth="207.0">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets top="10.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label fx:id="user7_gender" alignment="BOTTOM_CENTER" layoutX="65.0" layoutY="10.0" prefHeight="30.0" prefWidth="112.0">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets top="10.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label fx:id="user7_phone" alignment="BOTTOM_CENTER" layoutX="237.0" layoutY="10.0" prefHeight="30.0" prefWidth="140.0">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets top="10.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label fx:id="user7_email" alignment="BOTTOM_CENTER" layoutX="409.0" layoutY="10.0" prefHeight="30.0" prefWidth="221.0">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets top="10.0" />
-                     </HBox.margin>
-                  </Label>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
-                     <image>
-                        <Image url="@../image/chat.png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets left="28.0" top="10.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
-                     <image>
-                        <Image url="@../image/remove.png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets left="28.0" top="10.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <ImageView fitHeight="43.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
-                     <image>
-                        <Image url="@../image/information (1).png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets left="28.0" top="10.0" />
-                     </HBox.margin>
-                  </ImageView>
-               </children>
-            </HBox>
-         </children>
-      </VBox>
       <Button fx:id="btn_add_user" alignment="CENTER_RIGHT" layoutX="841.0" layoutY="101.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="112.0" style="-fx-cursor: hand;" stylesheets="@css/test.css" text="Add">
          <font>
             <Font name="System Bold" size="18.0" />
@@ -570,6 +69,82 @@
       <ImageView fitHeight="35.0" fitWidth="30.0" layoutX="578.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../image/refresh.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="17.0" layoutY="182.0" prefHeight="259.0" prefWidth="201.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5,0,0,0);" />
+      <ImageView fitHeight="108.0" fitWidth="112.0" layoutX="64.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/gamer.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="user1_name" alignment="CENTER" layoutX="18.0" layoutY="309.0" prefHeight="32.0" prefWidth="201.0" text="Name">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="86.0" layoutY="348.0" text="Female">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="64.0" layoutY="401.0" text="0123456789">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="259.0" layoutY="182.0" prefHeight="259.0" prefWidth="201.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5,0,0,0);" />
+      <Label layoutX="508.0" layoutY="182.0" prefHeight="259.0" prefWidth="201.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5,0,0,0);" />
+      <Label layoutX="759.0" layoutY="182.0" prefHeight="259.0" prefWidth="201.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5,0,0,0);" />
+      <Label layoutX="17.0" layoutY="496.0" prefHeight="259.0" prefWidth="201.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5,0,0,0);" />
+      <Label layoutX="259.0" layoutY="496.0" prefHeight="259.0" prefWidth="201.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5,0,0,0);" />
+      <Label layoutX="508.0" layoutY="496.0" prefHeight="259.0" prefWidth="201.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5,0,0,0);" />
+      <Label layoutX="759.0" layoutY="496.0" prefHeight="259.0" prefWidth="201.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5,0,0,0);" />
+      <Button fx:id="btn_detailUser1" layoutX="169.0" layoutY="186.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="47.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="178.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/information%20(1).png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btn_detailUser2" layoutX="408.0" layoutY="186.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="47.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="417.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/information%20(1).png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btn_detailUser3" layoutX="656.0" layoutY="186.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="47.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="665.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/information%20(1).png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btn_detailUser4" layoutX="906.0" layoutY="183.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="47.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="915.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/information%20(1).png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="178.0" layoutY="501.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/information%20(1).png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btn_detailUser5" layoutX="169.0" layoutY="496.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="47.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
+      <Button fx:id="btn_detailUser6" layoutX="409.0" layoutY="497.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="47.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="418.0" layoutY="502.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/information%20(1).png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btn_detailUser7" layoutX="657.0" layoutY="497.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="47.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
+      <Button fx:id="btn_detailUser8" layoutX="907.0" layoutY="499.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="47.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="665.0" layoutY="503.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/information%20(1).png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="916.0" layoutY="501.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/information%20(1).png" />
          </image>
       </ImageView>
    </children>

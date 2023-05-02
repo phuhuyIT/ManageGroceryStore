@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -83,17 +84,20 @@
                            </font>
                         </Button>
                         <Line endX="100.0" layoutX="134.0" layoutY="342.0" startX="-100.0" />
-                        <Label fx:id="lblClock" alignment="CENTER" layoutX="26.0" layoutY="364.0" prefHeight="44.0" prefWidth="215.0" style="-fx-background-color: #2596be;" text="Clock">
+                        <Label fx:id="lblClock" alignment="CENTER" layoutX="23.0" layoutY="349.0" prefHeight="56.0" prefWidth="222.0" text="Clock">
                            <font>
-                              <Font size="20.0" />
+                              <Font name="System Bold" size="22.0" />
                            </font>
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
                         </Label>
-                        <Button fx:id="btn_logout" layoutX="27.0" layoutY="408.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="215.0" style="-fx-background-radius: 15; -fx-cursor: hand;" text="Log Out" textFill="WHITE">
+                        <Button fx:id="btn_logout" layoutX="34.0" layoutY="441.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="215.0" style="-fx-background-radius: 15; -fx-cursor: hand;" text="Log Out" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="20.0" />
                            </font>
                         </Button>
-                        <ImageView fitHeight="36.0" fitWidth="45.0" layoutX="44.0" layoutY="412.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="36.0" fitWidth="45.0" layoutX="51.0" layoutY="445.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../image/exit.png" />
                            </image>
@@ -121,6 +125,11 @@
                         <ImageView fitHeight="30.0" fitWidth="36.0" layoutX="29.0" layoutY="271.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../image/profile.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="56.0" fitWidth="68.0" layoutX="23.0" layoutY="349.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/Really%20Nice%20Cards%20Mailed%20For%20You.gif" />
                            </image>
                         </ImageView>
                      </children>
