@@ -69,12 +69,7 @@
 }
 //Làm đẹp choiceBox
 .choice-box {
-    -fx-background-color: #f5f5f5;
-    -fx-border-color: #dddddd;
-    -fx-border-radius: 3;
-    -fx-font-size: 16;
-    -fx-padding: 5 30 5 10;
-    -fx-background-insets: 0;
+    -fx-font-size: 18;
 }
 
 .choice-box:hover {
@@ -85,29 +80,5 @@
     -fx-background-color: black;
 }
 
-.choice-box .arrow-button {
-    -fx-background-color: #f5f5f5;
-    -fx-background-insets: 0;
-    -fx-padding: 0 10 0 0;
-    -fx-background-radius: 0;
-}
-//test
-.button,
-.toggle-button,
-.radio-button > .radio,
-.check-box > .box,
-.menu-button,
-.choice-box,
-.color-picker.split-button > .color-picker-label,
-.combo-box-base,
-.combo-box-base:editable > .arrow-button {
-    -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
-    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
-    -fx-background-radius: 3px, 3px, 2px, 1px;
-    -fx-padding: 0.333333em 0.666667em 0.333333em 0.666667em; /* 4 8 4 8 */
-    -fx-text-fill: -fx-text-base-color;
-    -fx-alignment: CENTER;
-    -fx-content-display: LEFT;
-}
 
 

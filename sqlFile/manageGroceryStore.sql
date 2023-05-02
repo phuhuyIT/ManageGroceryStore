@@ -21,16 +21,24 @@ INSERT INTO `currentstocks` (`productcode`, `quantity`) VALUES
 
 
 CREATE TABLE `customers` (
-  `cid` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `cid` int(11) PRIMARY KEY AUTO_INCREMENT,
   `customercode` varchar(100) NOT NULL,
+  gender TINYINT(1) DEFAULT 0,
   `fullname` varchar(50) NOT NULL,
   `location` varchar(50) NOT NULL,
-  `phone` varchar(50) NOT NULL
+  `phone` varchar(50) NOT NULL,
+  EMAIL varchar(100) DEFAULT NULL,
+  avatarLink varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB;
 
 
-INSERT INTO `customers` (`cid`, `customercode`, `fullname`, `location`, `phone`) VALUES
-(2, 'cus3', 'ram', 'ktm', '331');
+INSERT INTO `customers` (`customercode`, `fullname`, `location`, `phone`) VALUES
+('cus1', 'ram1', 'ktm', '331'),
+('cus2', 'ram2', 'ktm', '331'),
+('cus3', 'ram3', 'ktm', '331'),
+('cus4', 'ram4', 'ktm', '331'),
+('cus5', 'ram5', 'ktm', '331'),
+('cus6', 'ram6', 'ktm', '331');
 
 
 CREATE TABLE `products` (
@@ -110,7 +118,8 @@ CREATE TABLE `users` (
   `username` varchar(20) NOT NULL,
   `password` varchar(256) NOT NULL,
   `category` varchar(20) DEFAULT 'ADMINISTRATOR',
-  IMAGE varchar(200) DEFAULT NULL
+  IMAGE varchar(200) DEFAULT NULL,
+  EMAIL varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB;
 
 INSERT INTO `users` (`id`, `fullname`, `location`, `phone`, `username`, `password`, `category`) VALUES
@@ -124,16 +133,16 @@ CREATE TABLE `currentStocksTemp` (
 	DateEdit varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB;
 -- trigger--
-DROP TRIGGER update_stock;
-DELIMITER //
+-- DROP TRIGGER update_stock;
+-- DELIMITER //
 
-CREATE TRIGGER update_stock 
-AFTER UPDATE ON Products
-FOR EACH ROW
-BEGIN
-        UPDATE CurrentStocks
-        SET quantity = quantity + inserted.quantity
-        WHERE productCode = currentstocks.productcode;
-END//
-DELIMITER ;
+-- CREATE TRIGGER update_stock 
+-- AFTER UPDATE ON Products
+-- FOR EACH ROW
+-- BEGIN
+--         UPDATE CurrentStocks
+--         SET quantity = quantity + inserted.quantity
+--         WHERE productCode = currentstocks.productcode;
+-- END//
+-- DELIMITER ;
 
