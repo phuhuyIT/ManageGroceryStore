@@ -196,7 +196,8 @@ public class UserDAO {
 
     public ResultSet getPassword(String user, String pass){
         try {
-            String query = "SELECT password FROM users WHERE username='"+user+"' AND password='"+pass+"'";
+            String encPass = new UserProfileController().encryptPassword(pass);
+            String query = "SELECT password FROM users WHERE username='"+user+"' AND password='"+encPass+"'";
             rs = stmt.executeQuery(query);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -218,14 +219,14 @@ public class UserDAO {
         try{
             String query="UPDATE users SET password=? WHERE username=?";
             pstmt=con.prepareStatement(query);
-            String encPass=new UserProfileController().encryptPassword(pass);
+            String encPass = new UserProfileController().encryptPassword(pass);
             pstmt.setString(1, encPass);
             pstmt.setString(2, user);
             pstmt.executeUpdate();
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Update");
             alert.setHeaderText(null);
-            alert.setContentText("Updated!");
+            alert.setContentText("Your password has been updated");
 
             alert.showAndWait();
 

@@ -14,12 +14,12 @@
 
 <AnchorPane fx:id="pane" prefHeight="900.0" prefWidth="1000.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ChangePassController">
     <children>
-        <Label contentDisplay="CENTER" layoutX="271.0" layoutY="164.0" prefHeight="30.0" prefWidth="141.0" text="Old PassWord  ">
+        <Label contentDisplay="CENTER" layoutX="261.0" layoutY="160.0" prefHeight="30.0" prefWidth="141.0" text="Old PassWord  ">
             <font>
                 <Font size="20.0" />
             </font>
         </Label>
-        <Label contentDisplay="CENTER" layoutX="271.0" layoutY="235.0" prefHeight="30.0" prefWidth="204.0" text="Confirm Password       ">
+        <Label contentDisplay="CENTER" layoutX="261.0" layoutY="320.0" prefHeight="30.0" prefWidth="204.0" text="Confirm Password       ">
             <font>
                 <Font size="20.0" />
             </font>
@@ -33,8 +33,8 @@
             </effect>
         </Label>
         <Line endX="499.99993896484375" endY="-8.0" layoutX="500.0" layoutY="124.0" startX="-500.0" startY="-8.0" strokeWidth="3.0" />
-        <TextField layoutX="500.0" layoutY="156.0" prefHeight="38.0" prefWidth="271.0" promptText="Enter your password" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
-        <TextField layoutX="500.0" layoutY="216.0" prefHeight="38.0" prefWidth="271.0" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+        <TextField fx:id="tf_oldPassword" layoutX="501.0" layoutY="146.0" prefHeight="38.0" prefWidth="271.0" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+        <TextField fx:id="tf_confirmPassword" layoutX="501.0" layoutY="306.0" prefHeight="38.0" prefWidth="271.0" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
         <Button fx:id="btn_update" layoutX="389.0" layoutY="444.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="159.0" style="-fx-cursor: hand;" stylesheets="@css/test.css" text="Apply">
             <font>
                 <Font name="System Bold" size="23.0" />
@@ -43,12 +43,12 @@
             <Insets left="20.0" />
          </padding>
         </Button>
-      <Label contentDisplay="CENTER" layoutX="271.0" layoutY="307.0" prefHeight="30.0" prefWidth="173.0" text="New Password       ">
+      <Label contentDisplay="CENTER" layoutX="261.0" layoutY="242.0" prefHeight="30.0" prefWidth="173.0" text="New Password       ">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <TextField layoutX="500.0" layoutY="284.0" prefHeight="38.0" prefWidth="271.0" promptText="Enter your new password" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #0598ff;" />
+      <TextField fx:id="tf_newPassword" layoutX="501.0" layoutY="228.0" prefHeight="38.0" prefWidth="271.0" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #0598ff;" />
       <Hyperlink layoutX="396.0" layoutY="372.0" text="Forget Password" textFill="RED" underline="true">
          <font>
             <Font size="20.0" />

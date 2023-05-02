@@ -39,7 +39,7 @@
       <Line endX="499.99993896484375" endY="-8.0" layoutX="498.0" layoutY="75.0" startX="-500.0" startY="-8.0" strokeWidth="3.0" />
       <ImageView fx:id="image_user" fitHeight="127.0" fitWidth="125.0" layoutX="440.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../image/user_1.png" />
+            <Image url="https://img.freepik.com/free-vector/illustration-user-avatar-icon_53876-5907.jpg?w=740&amp;t=st=1683003422~exp=1683004022~hmac=057b6d420859ea6a49f175db90ae4017350a9aa8ce8e93b8caab5e3f10c16493" />
          </image>
       </ImageView>
       <Hyperlink layoutX="733.0" layoutY="202.0" />
@@ -60,7 +60,7 @@
             <Image url="@../image/refresh.png" />
          </image>
       </ImageView>
-      <TextField fx:id="txt_fullname" layoutX="283.0" layoutY="264.0" opacity="0.29" prefHeight="42.0" prefWidth="376.0" AnchorPane.bottomAnchor="649.0" AnchorPane.leftAnchor="283.0" AnchorPane.rightAnchor="341.0" AnchorPane.topAnchor="264.0">
+      <TextField fx:id="txt_fullname" layoutX="283.0" layoutY="264.0" prefHeight="42.0" prefWidth="376.0" AnchorPane.bottomAnchor="649.0" AnchorPane.leftAnchor="283.0" AnchorPane.rightAnchor="341.0" AnchorPane.topAnchor="264.0">
          <font>
             <Font size="18.0" />
          </font>
@@ -85,7 +85,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="txt_email" layoutX="283.0" layoutY="347.0" opacity="0.29" prefHeight="30.0" prefWidth="376.0">
+      <TextField fx:id="txt_email" layoutX="283.0" layoutY="347.0" prefHeight="30.0" prefWidth="376.0">
          <font>
             <Font size="18.0" />
          </font></TextField>
@@ -94,7 +94,7 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="txt_phone" layoutX="283.0" layoutY="435.0" opacity="0.29" prefHeight="30.0" prefWidth="376.0">
+      <TextField fx:id="txt_phone" layoutX="283.0" layoutY="435.0" prefHeight="30.0" prefWidth="376.0">
          <font>
             <Font size="18.0" />
          </font></TextField>
@@ -113,7 +113,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="txt_location" layoutX="283.0" layoutY="526.0" opacity="0.29" prefHeight="30.0" prefWidth="376.0">
+      <TextField fx:id="txt_location" layoutX="283.0" layoutY="526.0" prefHeight="30.0" prefWidth="376.0">
          <font>
             <Font size="18.0" />
          </font></TextField>

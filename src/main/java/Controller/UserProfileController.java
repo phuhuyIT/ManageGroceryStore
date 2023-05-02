@@ -93,6 +93,7 @@ public class UserProfileController implements Initializable {
 
         // Hiển thị cho choiceBox
         cb_category.getItems().addAll("ADMINISTRATOR", "STAFF", "CUSTOMER");
+        cb_category.setStyle("-fx-font-size: 18;");
         // Lấy thông tin từ database hiện lên
         try {
             UserDAO userData = new UserDAO();
