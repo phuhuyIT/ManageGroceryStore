@@ -73,7 +73,8 @@ public class CustomerController implements Initializable {
                 anchorPane_customer.getChildren().add(node);
             }
         });
-//        choiceBox.getItems().addAll(choice);
+
+          choiceBox.getItems().addAll(choice);
 //        CustomerDAO customers= new CustomerDAO();
 //        ResultSet rs=customers.selectALL();
 //        try {

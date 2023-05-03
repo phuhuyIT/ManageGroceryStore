@@ -13,19 +13,14 @@
     -fx-background-color:#FFFFFF;
     -fx-text-fill:#2596be;
 }
-
+//Bill
 #btn_prBill{
-       -fx-background-color:#DDDDDD;
+       -fx-background-color:#2596be;
+       -fx-text-fill  : #FFFFFF;
 }
 
 #btn_prBill:hover{
         -fx-background-color:linear-gradient(to top right, #FF99FF, #9999FF);
-}
-#btn_update{
-       -fx-background-color:#DDDDDD;
-}
-#btn_update:hover{
-       -fx-background-color:linear-gradient(to top right, #FF99FF, #9999FF);
 }
 
 //Customer
@@ -35,6 +30,13 @@
 }
 
 //User Profile
+#btn_update{
+       -fx-background-color:#2596be;
+        -fx-text-fill  : #FFFFFF;
+}
+#btn_update:hover{
+       -fx-background-color:linear-gradient(to top right, #FF99FF, #9999FF);
+}
 #btn_edit{
      -fx-background-color:#00FF00;
      -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 5,0,0,0);

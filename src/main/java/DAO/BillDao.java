@@ -108,7 +108,7 @@ public class BillDao implements DaoInterface <Bill> {
 
     }
     @Override
-    public Bill selectByID(int ID) {
+    public ResultSet selectByID(int ID) {
         String sql = "SELECT * FROM bills WHERE id = ?";
         try {
             pstmt = connection.prepareStatement(sql);
@@ -126,7 +126,7 @@ public class BillDao implements DaoInterface <Bill> {
                 bill.setCreatedAt(rs.getTimestamp("created_at"));
                 bill.setUpdatedAt(rs.getTimestamp("updated_at"));
 
-                return bill;
+                return (ResultSet) bill;
             } else {
                 return null;
             }

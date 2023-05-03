@@ -54,7 +54,7 @@
       <TextField layoutX="104.0" layoutY="554.0" prefHeight="38.0" prefWidth="136.0" />
       <Button fx:id="btn_prBill" alignment="CENTER" layoutX="154.0" layoutY="626.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="150.0" style="-fx-cursor: hand;" stylesheets="@css/test.css" text="Print">
          <font>
-            <Font size="27.0" />
+            <Font name="System Bold" size="27.0" />
          </font>
          <padding>
             <Insets left="30.0" />

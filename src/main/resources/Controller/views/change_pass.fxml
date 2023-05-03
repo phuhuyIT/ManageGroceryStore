@@ -37,7 +37,7 @@
         <TextField fx:id="tf_confirmPassword" layoutX="501.0" layoutY="306.0" prefHeight="38.0" prefWidth="271.0" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
         <Button fx:id="btn_update" layoutX="389.0" layoutY="444.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="159.0" style="-fx-cursor: hand;" stylesheets="@css/test.css" text="Apply">
             <font>
-                <Font name="System Bold" size="23.0" />
+                <Font name="System Bold" size="27.0" />
             </font>
          <padding>
             <Insets left="20.0" />
