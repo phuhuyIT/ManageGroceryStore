@@ -50,6 +50,8 @@ public class CustomerController implements Initializable {
 
 
     @FXML
+    private Button btn_add_user;
+    @FXML
     private ImageView img_back;
     @FXML
     private ImageView img_next;
@@ -64,6 +66,20 @@ public class CustomerController implements Initializable {
             @Override
             public void handle(ActionEvent actionEvent) {
                 FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("views/detailCustomer.fxml"));
+                Node node = null;
+                try {
+                    node = loader.load();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                anchorPane_customer.getChildren().add(node);
+            }
+        });
+
+        btn_add_user.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("views/addCustomer.fxml"));
                 Node node = null;
                 try {
                     node = loader.load();

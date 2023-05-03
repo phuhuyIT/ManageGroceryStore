@@ -53,22 +53,25 @@
 
 //Add Product
 #btn_save{
- -fx-background-color:#DDDDDD;
+  -fx-background-color:#2596be;
+  -fx-text-fill: #FFFFFF;
 }
 
 #btn_save:hover{
-  -fx-background-color:linear-gradient(to top right, #FF99FF, #9999FF);
+     -fx-background-color:linear-gradient(to top right, #FF99FF, #9999FF);
 }
 
 #btn_addThumnail{
-     -fx-font-size  : 20px;
-     -fx-background-color:  #FFFFFF;
+     -fx-background-color:transparent;
+     -fx-font-size  :20px;
 }
 
 #btn_addThumnail:hover{
     -fx-font-size  : 21px;
-    -fx-text-fill:#2596be;
+     -fx-text-fill:#2596be;
 }
+
+
 //Làm đẹp choiceBox
 .choice-box {
     -fx-font-size: 18;

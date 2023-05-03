@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -30,6 +31,9 @@ public class AddCustomerController implements Initializable {
     private FileChooser fileChooser;
     @FXML
     private ImageView image_customer;
+    @FXML
+    private ChoiceBox<String> choice_gender;
+    private String[] gender = {"Nam" , "Nữ" , "Khác"};
 
     @FXML
     public void chooseImageProduct(ActionEvent event) throws IOException {
@@ -52,6 +56,7 @@ public class AddCustomerController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        choice_gender.getItems().addAll(gender);
         btn_back.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
