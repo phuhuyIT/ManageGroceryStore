@@ -1,5 +1,6 @@
 package DAO;
 
+import Controller.AlertAndVerifyController;
 import Controller.LoginController;
 import Controller.UserProfileController;
 import DatabaseConnection.ConnectionFactory;
@@ -23,7 +24,7 @@ import java.util.ArrayList;
  * The class BuildTableModel.java is then extended to two classes UserDAO.java and SupplierDAO.java.*/
 
 
-public class UserDAO {
+public class UserDAO extends AlertAndVerifyController {
 
     Connection con = null;
     PreparedStatement pstmt = null;
@@ -74,21 +75,11 @@ public class UserDAO {
             pstmt.setString(2, encPass);
             pstmt.executeUpdate();
             if("ADMINISTRATOR".equals("ADMINISTRATOR")){
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("New Administrator Added");
-                alert.setHeaderText(null);
-                alert.setContentText("NEW ADMINISTRATOR ADDED");
-
-                alert.showAndWait();
+                informationAlert("AdministratorAdded","NEW ADMINISTRATOR ADDED");
             }
 
             else{
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("New Normal User Added");
-                alert.setHeaderText(null);
-                alert.setContentText("NEW NORMAL USER ADDED");
-
-                alert.showAndWait();
+                informationAlert("Normal User Added","NEW NORMAL USER ADDED");
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -134,11 +125,7 @@ public class UserDAO {
                 pstmt.setString(6, userdto.getEmail());
                 pstmt.setString(7, LoginController.getLoggedInUsername());
                 pstmt.executeUpdate();
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Update");
-                alert.setHeaderText(null);
-                alert.setContentText("Updated");
-                alert.showAndWait();
+                informationAlert("Update","UPDATED");
             }
 
         }catch(Exception e){
@@ -223,12 +210,7 @@ public class UserDAO {
             pstmt.setString(1, encPass);
             pstmt.setString(2, user);
             pstmt.executeUpdate();
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Update");
-            alert.setHeaderText(null);
-            alert.setContentText("Your password has been updated");
-
-            alert.showAndWait();
+            informationAlert("Update","YOUR PASSWORD HAS BEEN UPDATED!");
 
         }catch(Exception e){
             e.printStackTrace();

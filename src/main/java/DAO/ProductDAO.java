@@ -1,5 +1,6 @@
 package DAO;
 
+import Controller.AlertAndVerifyController;
 import DatabaseConnection.ConnectionFactory;
 import Model.Customer;
 import Model.Product;
@@ -8,7 +9,7 @@ import javafx.scene.control.Alert;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class ProductDAO implements DaoInterface<Product> {
+public class ProductDAO extends AlertAndVerifyController implements DaoInterface<Product> {
     Connection con = null;
     PreparedStatement pstmt = null;
     Statement stmt = null;
@@ -34,9 +35,8 @@ public class ProductDAO implements DaoInterface<Product> {
             String query = "SELECT * FROM products WHERE productname='"+product.getProductName()+"' AND costprice='"+product.getCostPrice()+"' AND sellingprice='"+product.getSellingPrice()+"' AND brand='"+product.getBrand()+"'";
             rs=stmt.executeQuery(query);
             if(rs.next()){
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("This product has been added.");
-                alert.show();
+                errorAlert("ERROR","THIS PRODUCT HAS BEEN ADDED!");
+
             }else{
                 addFunction(product);
             }

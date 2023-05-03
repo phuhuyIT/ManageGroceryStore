@@ -41,20 +41,8 @@ public class DetailProductController implements Initializable {
     @FXML
     private Button btn_back;
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        btn_back.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("views/products.fxml"));
-                Node node = null;
-                try {
-                    node = loader.load();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                pane.getChildren().add(node);
-            }
-        });
+    public void initialize(URL url, ResourceBundle resourceBundle)  {
+        setBtnBackAction();
         ProductDAO product=new ProductDAO();
         System.out.println("CUR productID: "+ProductController.getCurrentProductID());
         ResultSet rs = product.selectByID(ProductController.getCurrentProductID());
@@ -78,5 +66,20 @@ public class DetailProductController implements Initializable {
         }
 
 
+    }
+    protected void setBtnBackAction(){
+        btn_back.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("views/products.fxml"));
+                Node node = null;
+                try {
+                    node = loader.load();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                pane.getChildren().add(node);
+            }
+        });
     }
 }

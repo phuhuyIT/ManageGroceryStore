@@ -139,7 +139,22 @@ public class ProductController implements Initializable {
             }
         }
     });
+    loadDataProduct();
 
+    }
+    private void loadFXML(String fxmlPath) {
+
+        FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource(fxmlPath));
+        Node node = null;
+        try {
+            node = loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        pane_Product.getChildren().set(0,node);
+    }
+
+    protected void loadDataProduct(){
         ProductDAO pdao=new ProductDAO();
         ResultSet rs=pdao.selectALL();
         try {
@@ -168,17 +183,6 @@ public class ProductController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
-    }
-    private void loadFXML(String fxmlPath) {
-
-        FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource(fxmlPath));
-        Node node = null;
-        try {
-            node = loader.load();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        pane_Product.getChildren().set(0,node);
     }
 }
+

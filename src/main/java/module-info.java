@@ -7,6 +7,10 @@ module com.example.btl_demo {
     requires org.kordamp.bootstrapfx.core;
     requires java.sql;
     requires mysql.connector.j;
+    requires java.desktop;
+    requires com.google.zxing;
+    requires com.google.protobuf;
+    requires com.google.zxing.javase;
 
     opens Controller to javafx.fxml;
     exports Controller;

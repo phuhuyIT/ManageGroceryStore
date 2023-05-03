@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.*;
 
-public class LoginController {
+public class LoginController extends AlertAndVerifyController{
     private static String loggedInUsername =null;
     public static void changeScence(ActionEvent event , String fxmlFile , String title , String username){
         Parent root = null;
@@ -119,11 +119,7 @@ public class LoginController {
             user.addUserDAO(userdto);
             changeScence1(event, "views/hello-view.fxml", "Log In", null);
         }else{
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("ERROR");
-            alert.setHeaderText(null);
-            alert.setContentText("Password and ConfirmPassWord are different!");
-            alert.showAndWait();
+            errorAlert("ERROR","PASSWORD AND CONFIRMPASSWORD ARE DIFFERENCE!");
         }
     }
 
@@ -133,11 +129,7 @@ public class LoginController {
             changeScence(event, "homePage.fxml", "Welcome",username);
             loggedInUsername=username;
         }else{
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Invalid Login");
-            alert.setHeaderText(null);
-            alert.setContentText("Invalid username or password");
-            alert.showAndWait();
+            errorAlert("Invalid Login","Invalid username or password");
         }
     }
 

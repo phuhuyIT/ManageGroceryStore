@@ -10,7 +10,7 @@ import javafx.scene.layout.AnchorPane;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class SignUpController implements Initializable {
+public class SignUpController extends AlertAndVerifyController implements Initializable {
 
     @FXML
     private AnchorPane pane;
@@ -34,11 +34,7 @@ public class SignUpController implements Initializable {
                 if (!tf_username.getText().trim().isEmpty() && !tf_password.getText().trim().isEmpty() && !tf_confirmpass.getText().trim().isEmpty()){
                     LoginController.SignUpUser(event,tf_username.getText(), tf_password.getText(),tf_confirmpass.getText());
                 }else{
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("ERROR");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Please fill in all information ");
-                    alert.showAndWait();
+                    errorAlert("ERROR","Please fill in all information!");
                 }
             }
         });

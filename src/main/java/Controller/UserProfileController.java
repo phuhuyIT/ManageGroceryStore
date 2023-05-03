@@ -11,7 +11,6 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -22,11 +21,9 @@ import java.math.BigInteger;
 import java.net.URL;
 import java.security.MessageDigest;
 import java.sql.*;
-import java.util.HashMap;
 import java.util.ResourceBundle;
-import java.util.Set;
 
-public class UserProfileController implements Initializable {
+public class UserProfileController extends AlertAndVerifyController implements Initializable {
 
     @FXML
     private Label title;
@@ -144,10 +141,8 @@ public class UserProfileController implements Initializable {
                         throw new RuntimeException(e);
                     }
                 } else {
-                    System.out.println("Please fill in information ");
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setContentText("Please fill in information");
-                    alert.show();}
+                    errorAlert("Error","Please fill in at lease one field!");
+                }
             }
         });
 

@@ -342,7 +342,7 @@
                </padding>
             </Label>
             <ChoiceBox fx:id="choiceBox_list" layoutX="832.5" layoutY="70.0" prefHeight="35.0" prefWidth="138.0" style="-fx-background-color: transparent;" />
-            <Button fx:id="btn_addProduct" alignment="CENTER_RIGHT" layoutX="856.0" layoutY="117.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="87.0" style="-fx-background-color: #00FF00; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 5,0,0,0); -fx-cursor: hand;" text="Add">
+            <Button fx:id="btn_addProduct" alignment="CENTER_RIGHT" layoutX="856.0" layoutY="117.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="87.0" style="-fx-background-color: #2596be; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 5,0,0,0); -fx-cursor: hand;" text="Add" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>
