@@ -112,6 +112,7 @@ public class AddProductController implements Initializable {
         });
 
         //SET SỰ KIỆN btn_back
+
             btn_back.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent actionEvent) {
