@@ -26,7 +26,7 @@
                 <InnerShadow />
             </effect>
         </Label>
-        <Button fx:id="btn_save" alignment="CENTER" layoutX="406.0" layoutY="921.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="153.0" style="-fx-cursor: hand;" stylesheets="@css/test.css" text="Save" textAlignment="RIGHT" textFill="WHITE">
+        <Button fx:id="btn_save" alignment="CENTER" layoutX="406.0" layoutY="869.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="153.0" style="-fx-cursor: hand;" stylesheets="@css/test.css" text="Save" textAlignment="RIGHT" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="28.0" />
             </font>
@@ -34,7 +34,7 @@
                 <Insets left="25.0" right="9.0" />
             </padding></Button>
         <Line endX="499.99993896484375" endY="-8.0" layoutX="500.0" layoutY="67.0" startX="-500.0" startY="-8.0" strokeWidth="3.0" />
-        <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="418.0" layoutY="933.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="418.0" layoutY="881.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../image/confirm.png" />
             </image>
@@ -57,13 +57,19 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <TextField layoutX="46.0" layoutY="199.0" prefHeight="44.0" prefWidth="382.0" />
+      <TextField layoutX="46.0" layoutY="199.0" prefHeight="44.0" prefWidth="382.0">
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
       <Label layoutX="46.0" layoutY="254.0" prefHeight="44.0" prefWidth="197.0" text="Business Description">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <TextArea layoutX="46.0" layoutY="295.0" prefHeight="179.0" prefWidth="382.0" />
+      <TextArea layoutX="46.0" layoutY="295.0" prefHeight="179.0" prefWidth="382.0">
+         <font>
+            <Font size="18.0" />
+         </font></TextArea>
       <Label layoutX="29.0" layoutY="542.0" prefHeight="108.0" prefWidth="416.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 7px;" />
       <Label layoutX="40.0" layoutY="548.0" prefHeight="44.0" prefWidth="172.0" text="Product Category">
          <font>
@@ -97,8 +103,14 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <TextField layoutX="42.0" layoutY="763.0" prefHeight="44.0" prefWidth="119.0" />
-      <TextField layoutX="197.0" layoutY="763.0" prefHeight="44.0" prefWidth="236.0" />
+      <TextField layoutX="42.0" layoutY="763.0" prefHeight="44.0" prefWidth="119.0">
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+      <TextField layoutX="197.0" layoutY="763.0" prefHeight="44.0" prefWidth="236.0">
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
       <Label layoutX="507.0" layoutY="114.0" text="Product Image">
          <font>
             <Font name="System Bold" size="26.0" />
@@ -120,8 +132,8 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <DatePicker layoutX="513.0" layoutY="421.0" prefHeight="38.0" prefWidth="207.0" />
-      <DatePicker layoutX="752.0" layoutY="421.0" prefHeight="38.0" prefWidth="197.0" />
+      <DatePicker fx:id="datePicker_MFG" layoutX="513.0" layoutY="421.0" prefHeight="38.0" prefWidth="207.0" stylesheets="@css/test.css" />
+      <DatePicker fx:id="datePicker_EXP" layoutX="752.0" layoutY="421.0" prefHeight="38.0" prefWidth="197.0" stylesheets="@css/test.css" />
       <Label layoutX="504.0" layoutY="498.0" prefHeight="38.0" prefWidth="153.0" text="Selling Type">
          <font>
             <Font name="System Bold" size="26.0" />
@@ -163,8 +175,14 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <TextField layoutX="551.0" layoutY="772.0" prefHeight="44.0" prefWidth="150.0" />
-      <TextField layoutX="787.0" layoutY="772.0" prefHeight="44.0" prefWidth="150.0" />
+      <TextField layoutX="551.0" layoutY="772.0" prefHeight="44.0" prefWidth="150.0">
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+      <TextField layoutX="787.0" layoutY="772.0" prefHeight="44.0" prefWidth="150.0">
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
       <ImageView fitHeight="44.0" fitWidth="45.0" layoutX="507.0" layoutY="769.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../image/Dólar.jpg" />

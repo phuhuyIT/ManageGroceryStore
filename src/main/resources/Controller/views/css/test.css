@@ -70,6 +70,12 @@
     -fx-font-size  : 21px;
      -fx-text-fill:#2596be;
 }
+#datePicker_MFG{
+   -fx-font-size: 18px;
+}
+#datePicker_EXP{
+    -fx-font-size: 18px;
+}
 
 
 //Làm đẹp choiceBox
