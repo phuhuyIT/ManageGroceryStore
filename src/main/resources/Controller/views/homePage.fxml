@@ -84,7 +84,7 @@
                            </font>
                         </Button>
                         <Line endX="100.0" layoutX="134.0" layoutY="342.0" startX="-100.0" />
-                        <Label fx:id="lblClock" alignment="CENTER" layoutX="23.0" layoutY="349.0" prefHeight="56.0" prefWidth="222.0" text="Clock">
+                        <Label fx:id="lblClock" alignment="CENTER" layoutX="23.0" layoutY="349.0" prefHeight="56.0" prefWidth="222.0" text="Clock" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="22.0" />
                            </font>
@@ -92,7 +92,7 @@
                               <Insets left="20.0" />
                            </padding>
                         </Label>
-                        <Button fx:id="btn_logout" layoutX="34.0" layoutY="441.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="215.0" style="-fx-background-radius: 15; -fx-cursor: hand;" text="Log Out" textFill="WHITE">
+                        <Button fx:id="btn_logout" layoutX="16.0" layoutY="441.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="240.0" style="-fx-background-radius: 15; -fx-cursor: hand;" text="Log Out" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="20.0" />
                            </font>
