@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public interface DaoInterface <T>{
-    public void insert(T t);
+    public int insert(T t);
     public int delete(String t) throws SQLException;
     public int update(T t);
     public ResultSet selectALL () ;

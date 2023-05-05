@@ -14,10 +14,10 @@
 
 <AnchorPane fx:id="pane_Product" prefHeight="900.0" prefWidth="1000.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ProductController">
    <children>
-      <AnchorPane layoutX="6.0" prefHeight="900.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="-3.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane layoutX="6.0" prefHeight="900.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="-6.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button fx:id="btn_refesh" layoutX="549.5" layoutY="58.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="88.0" style="-fx-cursor: hand; -fx-background-color: transaprent;" />
-            <AnchorPane fx:id="productBox1" layoutX="20.5" layoutY="161.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20px;">
+            <Button fx:id="btn_refesh" layoutX="560.5" layoutY="58.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="88.0" style="-fx-cursor: hand; -fx-background-color: transaprent;" />
+            <AnchorPane fx:id="productBox1" layoutX="33.5" layoutY="161.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 7px;">
                <children>
                   <CheckBox fx:id="select_product1" layoutX="14.0" layoutY="6.0" mnemonicParsing="false" />
                   <ImageView fx:id="productThumbnail1" fitHeight="104.0" fitWidth="101.0" layoutX="53.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
@@ -27,12 +27,12 @@
                   </ImageView>
                   <Label layoutX="16.0" layoutY="154.0" text="Số lượng:">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <Label layoutX="16.0" layoutY="189.0" text="Giá:">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <ImageView fitHeight="35.0" fitWidth="30.0" layoutX="173.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
@@ -42,29 +42,29 @@
                   </ImageView>
                   <Label fx:id="productQuantity1" alignment="CENTER" layoutX="83.0" layoutY="154.0" prefHeight="27.0" prefWidth="111.0" text="Number">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <Label fx:id="productPrice1" alignment="CENTER" layoutX="83.0" layoutY="189.0" prefHeight="27.0" prefWidth="111.0" text="\$">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <Button fx:id="btnProductDetails1" layoutX="167.0" layoutY="2.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="38.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="productBox2" layoutX="265.5" layoutY="161.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20px;">
+            <AnchorPane fx:id="productBox2" layoutX="277.5" layoutY="161.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 7px;">
                <children>
                   <CheckBox fx:id="select_product2" layoutX="14.0" layoutY="6.0" mnemonicParsing="false" />
                   <ImageView fx:id="productThumbnail2" fitHeight="104.0" fitWidth="101.0" layoutX="53.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true" />
                   <Label layoutX="16.0" layoutY="154.0" text="Số lượng:">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <Label layoutX="16.0" layoutY="189.0" text="Giá:">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <ImageView fitHeight="35.0" fitWidth="30.0" layoutX="173.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
@@ -74,29 +74,29 @@
                   </ImageView>
                   <Label fx:id="productQuantity2" alignment="CENTER" layoutX="83.0" layoutY="154.0" prefHeight="27.0" prefWidth="111.0" text="Number">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <Label fx:id="productPrice2" alignment="CENTER" layoutX="83.0" layoutY="189.0" prefHeight="27.0" prefWidth="111.0" text="\$">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <Button fx:id="btnProductDetails2" layoutX="167.0" layoutY="2.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="38.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="productBox3" layoutX="505.5" layoutY="161.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20px;">
+            <AnchorPane fx:id="productBox3" layoutX="516.5" layoutY="161.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 7px;">
                <children>
                   <CheckBox fx:id="select_product3" layoutX="14.0" layoutY="6.0" mnemonicParsing="false" />
                   <ImageView fx:id="productThumbnail3" fitHeight="104.0" fitWidth="101.0" layoutX="53.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true" />
                   <Label layoutX="16.0" layoutY="154.0" text="Số lượng:">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <Label layoutX="16.0" layoutY="189.0" text="Giá:">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <ImageView fitHeight="35.0" fitWidth="30.0" layoutX="173.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
@@ -106,29 +106,29 @@
                   </ImageView>
                   <Label fx:id="productPrice3" alignment="CENTER" layoutX="83.0" layoutY="154.0" prefHeight="27.0" prefWidth="111.0" text="Number">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <Label fx:id="productQuantity3" alignment="CENTER" layoutX="83.0" layoutY="189.0" prefHeight="27.0" prefWidth="111.0" text="\$">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <Button fx:id="btnProductDetails3" layoutX="167.0" layoutY="2.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="38.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="productBox4" layoutX="741.5" layoutY="161.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20px;">
+            <AnchorPane fx:id="productBox4" layoutX="756.5" layoutY="161.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 7px;">
                <children>
                   <CheckBox fx:id="select_product4" layoutX="14.0" layoutY="6.0" mnemonicParsing="false" />
                   <ImageView fx:id="productThumbnail4" fitHeight="104.0" fitWidth="101.0" layoutX="53.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true" />
                   <Label layoutX="16.0" layoutY="154.0" text="Số lượng: ">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <Label layoutX="16.0" layoutY="189.0" text="Giá:">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <ImageView fitHeight="35.0" fitWidth="30.0" layoutX="173.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
@@ -138,29 +138,29 @@
                   </ImageView>
                   <Label fx:id="productQuantity4" alignment="CENTER" layoutX="83.0" layoutY="154.0" prefHeight="27.0" prefWidth="111.0" text="Number">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <Label fx:id="productPrice4" alignment="CENTER" layoutX="83.0" layoutY="189.0" prefHeight="27.0" prefWidth="111.0" text="\$">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <Button fx:id="btnProductDetails4" layoutX="167.0" layoutY="2.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="38.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="productBox5" layoutX="20.5" layoutY="434.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20px;">
+            <AnchorPane fx:id="productBox5" layoutX="33.5" layoutY="417.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 7px;">
                <children>
                   <CheckBox fx:id="select_product5" layoutX="14.0" layoutY="6.0" mnemonicParsing="false" />
                   <ImageView fx:id="productThumbnail5" fitHeight="104.0" fitWidth="101.0" layoutX="53.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true" />
                   <Label layoutX="16.0" layoutY="154.0" text="Số lượng:">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <Label layoutX="16.0" layoutY="189.0" text="Giá:">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <ImageView fitHeight="35.0" fitWidth="30.0" layoutX="173.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
@@ -170,29 +170,29 @@
                   </ImageView>
                   <Label fx:id="productQuantity5" alignment="CENTER" layoutX="83.0" layoutY="154.0" prefHeight="27.0" prefWidth="111.0" text="Number">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <Label fx:id="productPrice5" alignment="CENTER" layoutX="83.0" layoutY="189.0" prefHeight="27.0" prefWidth="111.0" text="\$">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <Button fx:id="btnProductDetails5" layoutX="167.0" layoutY="2.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="38.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="productBox6" layoutX="265.5" layoutY="434.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20px;">
+            <AnchorPane fx:id="productBox6" layoutX="277.5" layoutY="417.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 7px;">
                <children>
                   <CheckBox fx:id="select_product6" layoutX="14.0" layoutY="6.0" mnemonicParsing="false" />
                   <ImageView fx:id="productThumbnail6" fitHeight="104.0" fitWidth="101.0" layoutX="53.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true" />
                   <Label layoutX="16.0" layoutY="154.0" text="Số lượng:">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <Label layoutX="16.0" layoutY="189.0" text="Giá:">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <ImageView fitHeight="35.0" fitWidth="30.0" layoutX="173.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
@@ -202,29 +202,29 @@
                   </ImageView>
                   <Label fx:id="productQuantity6" alignment="CENTER" layoutX="83.0" layoutY="154.0" prefHeight="27.0" prefWidth="111.0" text="Number">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <Label fx:id="productPrice6" alignment="CENTER" layoutX="83.0" layoutY="189.0" prefHeight="27.0" prefWidth="111.0" text="\$">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <Button fx:id="btnProductDetails6" layoutX="167.0" layoutY="2.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="38.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="productBox7" layoutX="505.5" layoutY="434.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20px;">
+            <AnchorPane fx:id="productBox7" layoutX="516.5" layoutY="417.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 7px;">
                <children>
                   <CheckBox fx:id="select_product7" layoutX="14.0" layoutY="6.0" mnemonicParsing="false" />
                   <ImageView fx:id="productThumbnail7" fitHeight="104.0" fitWidth="101.0" layoutX="53.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true" />
                   <Label layoutX="16.0" layoutY="154.0" text="Số lượng:">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <Label layoutX="16.0" layoutY="189.0" text="Giá: ">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <ImageView fitHeight="35.0" fitWidth="30.0" layoutX="173.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
@@ -234,29 +234,29 @@
                   </ImageView>
                   <Label fx:id="productQuantity7" alignment="CENTER" layoutX="83.0" layoutY="154.0" prefHeight="27.0" prefWidth="111.0" text="Number">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <Label fx:id="productPrice7" alignment="CENTER" layoutX="83.0" layoutY="189.0" prefHeight="27.0" prefWidth="111.0" text="\$">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <Button fx:id="btnProductDetails7" layoutX="167.0" layoutY="2.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="38.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="productBox8" layoutX="741.5" layoutY="434.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20px;">
+            <AnchorPane fx:id="productBox8" layoutX="756.5" layoutY="417.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 7px;">
                <children>
                   <CheckBox fx:id="select_product8" layoutX="14.0" layoutY="6.0" mnemonicParsing="false" />
                   <ImageView fx:id="productThumbnail8" fitHeight="104.0" fitWidth="101.0" layoutX="53.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true" />
                   <Label layoutX="16.0" layoutY="154.0" text="Số lượng:">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <Label layoutX="16.0" layoutY="189.0" text="Giá:">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <ImageView fitHeight="35.0" fitWidth="30.0" layoutX="173.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
@@ -266,12 +266,12 @@
                   </ImageView>
                   <Label fx:id="productQuantity8" alignment="CENTER" layoutX="83.0" layoutY="154.0" prefHeight="27.0" prefWidth="111.0" text="Number">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <Label fx:id="productPrice8" alignment="CENTER" layoutX="83.0" layoutY="189.0" prefHeight="27.0" prefWidth="111.0" text="\$">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <Button fx:id="btnProductDetails8" layoutX="167.0" layoutY="2.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="38.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
@@ -283,24 +283,24 @@
                   <Image url="@../image/refresh.png" />
                </image>
             </ImageView>
-            <Label alignment="CENTER" layoutX="416.5" layoutY="1.0" prefHeight="52.0" prefWidth="170.0" style="-fx-font-weight: bold;" text="Product ">
+            <Label alignment="CENTER" layoutX="434.5" layoutY="1.0" prefHeight="52.0" prefWidth="170.0" style="-fx-font-weight: bold;" text="Product ">
                <font>
                   <Font size="36.0" />
                </font>
             </Label>
-            <Line endX="992.5" layoutY="52.5" startX="-244.0" strokeWidth="3.0" />
-            <Label fx:id="lb_Search" layoutX="15.5" layoutY="69.0" prefHeight="37.0" prefWidth="299.0" style="-fx-border-width: 3px; -fx-border-radius: 20px; -fx-border-color: black;" />
-            <TextField fx:id="txt_search" layoutX="57.5" layoutY="71.0" prefHeight="35.0" prefWidth="252.0" promptText="Search here...." style="-fx-background-color: transparent; -fx-font-weight: bold; -fx-border-width: 2px; -fx-border-radius: 20px;">
+            <Line endX="1000.0" layoutX="18.0" layoutY="52.5" startX="-244.0" strokeWidth="3.0" />
+            <Label fx:id="lb_Search" layoutX="33.5" layoutY="69.0" prefHeight="37.0" prefWidth="299.0" style="-fx-border-width: 3px; -fx-border-radius: 7px; -fx-border-color: black;" />
+            <TextField fx:id="txt_search" layoutX="75.5" layoutY="71.0" prefHeight="35.0" prefWidth="252.0" promptText="Search here...." style="-fx-background-color: transparent; -fx-font-weight: bold; -fx-border-width: 2px; -fx-border-radius: 7px;">
                <font>
                   <Font size="16.0" />
                </font>
             </TextField>
-            <ImageView fitHeight="37.0" fitWidth="30.0" layoutX="27.5" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="37.0" fitWidth="30.0" layoutX="45.5" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../image/search.png" />
                </image>
             </ImageView>
-            <Label layoutX="326.5" layoutY="70.0" prefHeight="37.0" prefWidth="232.0" style="-fx-border-color: black; -fx-border-width: 3px; -fx-font-weight: bold; -fx-border-radius: 20px;" text="Sort by">
+            <Label layoutX="342.5" layoutY="70.0" prefHeight="37.0" prefWidth="232.0" style="-fx-border-color: black; -fx-border-width: 3px; -fx-font-weight: bold; -fx-border-radius: 7px;" text="Sort by">
                <font>
                   <Font size="16.0" />
                </font>
@@ -311,29 +311,29 @@
                   <Insets left="5.0" />
                </padding>
             </Label>
-            <ChoiceBox fx:id="choiceBox_sort" layoutX="423.5" layoutY="71.0" prefHeight="35.0" prefWidth="132.0" style="-fx-background-color: transparent;" />
-            <ImageView fitHeight="37.0" fitWidth="30.0" layoutX="393.5" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+            <ChoiceBox fx:id="choiceBox_sort" layoutX="439.5" layoutY="71.0" prefHeight="35.0" prefWidth="132.0" style="-fx-background-color: transparent;" />
+            <ImageView fitHeight="37.0" fitWidth="30.0" layoutX="411.5" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../image/sort.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="52.0" fitWidth="52.0" layoutX="326.0" layoutY="754.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 5,0,0,0); -fx-cursor: hand;">
+            <ImageView fitHeight="52.0" fitWidth="52.0" layoutX="351.0" layoutY="668.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 5,0,0,0); -fx-cursor: hand;">
                <image>
                   <Image url="@../image/previous.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="53.0" fitWidth="52.0" layoutX="578.0" layoutY="754.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 5,0,0,0); -fx-cursor: hand;">
+            <ImageView fitHeight="53.0" fitWidth="52.0" layoutX="602.0" layoutY="668.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 5,0,0,0); -fx-cursor: hand;">
                <image>
                   <Image url="@../image/next.png" />
                </image>
             </ImageView>
-            <CheckBox fx:id="select_all" alignment="BOTTOM_CENTER" layoutX="15.5" layoutY="114.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" />
-            <Label alignment="TOP_CENTER" layoutX="42.5" layoutY="121.0" prefHeight="30.0" prefWidth="88.0" text="Select All">
+            <CheckBox fx:id="select_all" alignment="BOTTOM_CENTER" layoutX="33.5" layoutY="114.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" />
+            <Label alignment="TOP_CENTER" layoutX="55.5" layoutY="121.0" prefHeight="30.0" prefWidth="88.0" text="Select All">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="732.5" layoutY="69.0" prefHeight="37.0" prefWidth="244.0" style="-fx-border-color: black; -fx-font-weight: bold; -fx-border-width: 3px; -fx-border-radius: 20px;" text="List Product ">
+            <Label layoutX="720.5" layoutY="69.0" prefHeight="37.0" prefWidth="244.0" style="-fx-border-color: black; -fx-font-weight: bold; -fx-border-width: 3px; -fx-border-radius: 7px;" text="List Product ">
                <font>
                   <Font size="16.0" />
                </font>
@@ -341,13 +341,13 @@
                   <Insets left="5.0" />
                </padding>
             </Label>
-            <ChoiceBox fx:id="choiceBox_list" layoutX="832.5" layoutY="70.0" prefHeight="35.0" prefWidth="138.0" style="-fx-background-color: transparent;" />
-            <Button fx:id="btn_addProduct" alignment="CENTER_RIGHT" layoutX="856.0" layoutY="117.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="87.0" style="-fx-background-color: #2596be; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 5,0,0,0); -fx-cursor: hand;" text="Add" textFill="WHITE">
+            <ChoiceBox fx:id="choiceBox_list" layoutX="822.5" layoutY="70.0" prefHeight="35.0" prefWidth="138.0" style="-fx-background-color: transparent;" />
+            <Button fx:id="btn_addProduct" alignment="CENTER_RIGHT" layoutX="875.0" layoutY="115.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="87.0" style="-fx-background-color: #2596be; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 2,0,0,0); -fx-cursor: hand;" text="Add" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>
             </Button>
-            <ImageView fitHeight="27.0" fitWidth="30.0" layoutX="862.0" layoutY="123.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="27.0" fitWidth="30.0" layoutX="881.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../image/more.png" />
                </image>

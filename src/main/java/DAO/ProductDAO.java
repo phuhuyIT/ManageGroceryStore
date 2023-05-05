@@ -7,6 +7,7 @@ import Model.Product;
 import javafx.scene.control.Alert;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class ProductDAO extends AlertAndVerifyController implements DaoInterface<Product> {
@@ -30,25 +31,27 @@ public class ProductDAO extends AlertAndVerifyController implements DaoInterface
         }
     }
     @Override
-    public void insert(Product product) {
+    public int insert(Product product) {
         try{
-            String query = "SELECT * FROM products WHERE productname='"+product.getProductName()+"' AND costprice='"+product.getCostPrice()+"' AND sellingprice='"+product.getSellingPrice()+"' AND brand='"+product.getBrand()+"'";
-            rs=stmt.executeQuery(query);
+            String query = "SELECT pid FROM products WHERE PRODUCTBARCODE=?";
+            pstmt = con.prepareStatement(query);
+            pstmt.setString(1,product.getProductBarCode());
+            rs=pstmt.executeQuery();
             if(rs.next()){
                 errorAlert("ERROR","THIS PRODUCT HAS BEEN ADDED!");
-
+                return 0;
             }else{
                 addFunction(product);
             }
         }catch(Exception e){
             e.printStackTrace();
         }
-
+        return 1;
     }
 
     @Override
     public int delete(String productCode) {
-        String deleteProduct= "DELETE FROM PRODUCT WHERE PRODUCTCODE= ?";
+        String deleteProduct= "DELETE FROM PRODUCTS WHERE PRODUCTBARCODE= ?";
         int result;
         try {
             pstmt = con.prepareStatement(deleteProduct);
@@ -63,7 +66,7 @@ public class ProductDAO extends AlertAndVerifyController implements DaoInterface
     @Override
     public int update(Product product) {
 
-        String updateProduct= "UPDATE PRODUCT SET PRODUCTID=?, PRODUCTCODE=?, DATE=?, SELLDATE=?," +
+       /* String updateProduct= "UPDATE PRODUCT SET PRODUCTID=?, PRODUCTCODE=?, DATE=?, SELLDATE=?," +
                 " SUPPLIERCODE=?, PRODUCTNAME=?,QUANTITY=?,COSTPRICE=?,SELLINGPRICE=?,BRAND=?,USERID=?," +
                 "CUSTOMERCODE=?,TOTALCOST=?,TOTALREVENUE=? WHERE  CUSTOMERID= ?";
         int result;
@@ -86,8 +89,8 @@ public class ProductDAO extends AlertAndVerifyController implements DaoInterface
             result=pstmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        }
-        return result;
+        }*/
+        return 0;
     }
 
     @Override
@@ -122,41 +125,35 @@ public class ProductDAO extends AlertAndVerifyController implements DaoInterface
     public int addFunction(Product product) {
         int result=0;
         try {
-            String productCode = null;
-            String oldProductCode = null;
-            String query1="SELECT * FROM products";
-            rs=stmt.executeQuery(query1);
-            if(!rs.next()){
-                productCode="prod"+"1";
+            String productSKUCode = null;
+            productSKUCode = product.getProductBarCode()+product.getMFGDate();
+            String addProduct= "INSERT INTO PRODUCTS (productBarCode, productname, costprice, sellingprice, sid,categoryid,productSKU,thumbnail)"
+                    +"VALUE(?,?,?,?,?,?,?,?)";
+            pstmt = con.prepareStatement(addProduct);
+            pstmt.setString(1,product.getProductBarCode());
+            pstmt.setString(2, product.getProductName());
+            pstmt.setDouble(3,product.getCostPrice());
+            pstmt.setDouble(4,product.getSellingPrice());
+            pstmt.setInt(5,product.getSupplierID());
+            pstmt.setInt(6,product.getCategoryID());
+            pstmt.setString(7,productSKUCode);
+            pstmt.setString(8,product.getThumbnailLink());
+            pstmt.executeUpdate();
+            String getPid ="SELECT LAST_INSERT_ID()";
+            rs=pstmt.executeQuery(getPid);
+            int pid=0;
+            if(rs.next()) {
+                pid = rs.getInt("LAST_INSERT_ID()");
             }
-            else{
-                String query2="SELECT * FROM products ORDER by productID DESC";
-                rs=stmt.executeQuery(query2);
-                if(rs.next()){
-                    oldProductCode=rs.getString("productcode");
-                    Integer pcode=Integer.parseInt(oldProductCode.substring(4));
-                    pcode++;
-                    productCode="prod"+pcode;
-                }
-            }
-            String updateProduct= "INSERT INTO PRODUCT ( PRODUCTID, PRODUCTBARCODE, DATE, SELLDATE, SUPPLIERCODE, PRODUCTNAME,QUANTITY,COSTPRICE,SELLINGPRICE,BRAND,USERID,CUSTOMERCODE,TOTALCOST,TOTALREVENUE "
-                    +"VALUE(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-            pstmt = (PreparedStatement) con.prepareStatement(updateProduct);
-            pstmt.setInt(1,product.getProductId());
-            pstmt.setString(2,product.getProductBarCode());
-            pstmt.setDate(3, (Date) product.getDate());
-            pstmt.setDate(4, (Date) product.getSellDate());
-            pstmt.setString(5,product.getSupplierCode());
-            pstmt.setString(6,product.getProductName());
-            pstmt.setInt(7,product.getQuantity());
-            pstmt.setDouble(8,product.getCostPrice());
-            pstmt.setDouble(9,product.getSellingPrice());
-            pstmt.setString(10,product.getBrand());
-            pstmt.setInt(11,product.getUserId());
-            pstmt.setString(12,product.getCustomerCode());
-            pstmt.setDouble(13,product.getTotalCost());
-            pstmt.setDouble(14,product.getTotalRevenue());
-            result=pstmt.executeUpdate();
+            System.out.println(pid);
+            String addProductBatch= "INSERT INTO PRODUCTBATCH (pid, expirationDate, manufactureDate, quantity)"
+                    +"VALUE(?,?,?,?)";
+            pstmt = con.prepareStatement(addProductBatch);
+            pstmt.setInt(1,pid);
+            pstmt.setDate(2, Date.valueOf(product.getEXPDate()));
+            pstmt.setDate(3,Date.valueOf(product.getMFGDate()));
+            pstmt.setInt(4,product.getQuantity());
+            pstmt.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }

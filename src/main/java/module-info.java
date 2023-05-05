@@ -11,6 +11,10 @@ module com.example.btl_demo {
     requires com.google.zxing;
     requires com.google.protobuf;
     requires com.google.zxing.javase;
+    requires javafx.media;
+    requires org.bytedeco.javacpp;
+    requires org.bytedeco.javacv;
+    requires org.bytedeco.opencv;
 
     opens Controller to javafx.fxml;
     exports Controller;

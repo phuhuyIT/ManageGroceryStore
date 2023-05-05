@@ -37,23 +37,6 @@ public class ProductController implements Initializable {
     private Button btn_addProduct;
 
     @FXML
-    private Button btnProductDetails1;
-    @FXML
-    private Button btnProductDetails2;
-    @FXML
-    private Button btnProductDetails3;
-    @FXML
-    private Button btnProductDetails4;
-    @FXML
-    private Button btnProductDetails5;
-    @FXML
-    private Button btnProductDetails6;
-    @FXML
-    private Button btnProductDetails7;
-    @FXML
-    private Button btnProductDetails8;
-
-    @FXML
     private CheckBox select_all;
     @FXML
     private CheckBox select_product1;
@@ -171,8 +154,9 @@ public class ProductController implements Initializable {
                     if(img!=null) {
                         Image image1 = new Image(String.valueOf(img));
                         productThumbnail.setImage(image1);
-                        productDetailBtn.setUserData(rs.getString("PID"));
+
                     }
+                    productDetailBtn.setUserData(rs.getString("PID"));
                     productQuantity.setText(rs.getString("SELLINGPRICE"));
                     productPrice.setText(rs.getString("COSTPRICE"));
                 }

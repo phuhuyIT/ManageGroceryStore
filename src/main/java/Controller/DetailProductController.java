@@ -19,7 +19,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class DetailProductController implements Initializable {
+public class DetailProductController extends AlertAndVerifyController implements Initializable {
     @FXML
     private AnchorPane pane;
     @FXML
@@ -41,7 +41,7 @@ public class DetailProductController implements Initializable {
     @FXML
     private Button btn_back;
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle)  {
+    public void initialize (URL url, ResourceBundle resourceBundle)  {
         setBtnBackAction();
         ProductDAO product=new ProductDAO();
         System.out.println("CUR productID: "+ProductController.getCurrentProductID());

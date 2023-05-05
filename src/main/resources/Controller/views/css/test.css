@@ -89,6 +89,13 @@
 .choice-box .arrow {
     -fx-background-color: black;
 }
+//Đổ bóng textFeild
+.text-field {
+    -fx-background-color: white;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 2, 0, 0, 0),
+                dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 0, 0, 0, 2);
+}
+
 
 
 

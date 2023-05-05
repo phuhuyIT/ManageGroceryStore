@@ -1,14 +1,17 @@
 package Controller;
 
+import DAO.ProductDAO;
+import DAO.SupplierDAO;
+import Model.CameraApp;
+import Model.Product;
+import Model.Supplier;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Hyperlink;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -23,12 +26,12 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
-public class AddProductController implements Initializable {
+public class AddProductController extends DetailProductController implements Initializable {
     @FXML
-    private DatePicker datePicker_MFG;
+    private DatePicker dp_addProductManufractureDate;
 
     @FXML
-    private DatePicker datePicker_EXP;
+    private DatePicker dp_addProductExpireDate;
 
     @FXML
     private Button btn_back;
@@ -40,7 +43,29 @@ public class AddProductController implements Initializable {
     private FileChooser fileChooser;
     @FXML
     private ImageView image_product;
+    @FXML
+    private TextField tf_addProductName;
+    @FXML
+    private TextField tf_addProductSupplierName;
+    @FXML
+    private TextField tf_addProductSupplierLocation;
+    @FXML
+    private TextField tf_addProductSupplierPhone;
 
+    @FXML
+    private ChoiceBox cb_addProductCategory;
+    @FXML
+    private TextField tf_addProductQuantity;
+    @FXML
+    private TextField tf_addProductUPC;
+    @FXML
+    private TextField tf_addProductCostPrice;
+    @FXML
+    private TextField tf_addProductSellingPrice;
+    @FXML
+    private Button btn_save;
+    @FXML
+    private Button btn_addProductUPCScan;
     @FXML
     public void chooseImageProduct(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -61,70 +86,83 @@ public class AddProductController implements Initializable {
         image_product.setImage(image);
     }
 
-//    @FXML
-//    public void getDate(ActionEvent event){
-//        LocalDate myDate = datePicker_MFG.getValue();
-//        myDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-//    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //Định dạng DatePicker thành dd/mm/yyyy
-        datePicker_MFG.setConverter(new StringConverter<LocalDate>() {
-            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
+        setDatePickerConverter(dp_addProductManufractureDate);
+        setDatePickerConverter(dp_addProductExpireDate);
+        cb_addProductCategory.getItems().addAll("Thực phẩm tươi sống","Thực phẩm đóng gói","Hàng gia dụng", "Đồ dùng cá nhân","Vật dụng học tập và văn phòng phẩm",
+                "Hóa phẩm và chất tẩy rửa","Đồ chơi và quà tặng","Thuốc và vật dụng y tế");
+        setBtnBackAction();
+        btn_save.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public String toString(LocalDate date) {
-                if (date != null) {
-                    return dateFormatter.format(date);
-                } else {
-                    return "";
-                }
+            public void handle(ActionEvent actionEvent) {
+                addProduct();
             }
+        });
+        btn_addProductUPCScan.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public LocalDate fromString(String string) {
-                if (string != null && !string.isEmpty()) {
-                    return LocalDate.parse(string, dateFormatter);
-                } else {
-                    return null;
+            public void handle(ActionEvent actionEvent) {
+                try {
+                    tf_addProductUPC.setText(CameraApp.scan());
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
                 }
             }
         });
-        datePicker_EXP.setConverter(new StringConverter<LocalDate>() {
-            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    }
+    private void setDatePickerConverter(DatePicker datePicker) {
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
+        StringConverter<LocalDate> converter = new StringConverter<LocalDate>() {
             @Override
             public String toString(LocalDate date) {
-                if (date != null) {
-                    return dateFormatter.format(date);
-                } else {
-                    return "";
-                }
+                return date == null ? "" : dateFormatter.format(date);
             }
             @Override
             public LocalDate fromString(String string) {
-                if (string != null && !string.isEmpty()) {
-                    return LocalDate.parse(string, dateFormatter);
-                } else {
-                    return null;
-                }
+                return string == null || string.isEmpty() ? null : LocalDate.parse(string, dateFormatter);
             }
-        });
+        };
 
-        //SET SỰ KIỆN btn_back
+        datePicker.setConverter(converter);
+    }
+    private void addProduct(){
+        if(tf_addProductName.getText().isEmpty()||cb_addProductCategory.getValue()==null||tf_addProductQuantity.getText().isEmpty()||
+        tf_addProductUPC.getText().isEmpty()||dp_addProductManufractureDate.getValue()==null||dp_addProductExpireDate.getValue()==null||
+                tf_addProductCostPrice.getText().isEmpty()||tf_addProductSellingPrice.getText().isEmpty()){
+            errorAlert("Empty field","PLEASE FILL IN ALL INFORMATION!");
+        }else{
+            Supplier supplier = new Supplier(tf_addProductSupplierName.getText(),tf_addProductSupplierLocation.getText(),tf_addProductSupplierPhone.getText());
+            SupplierDAO supplierDAO = new SupplierDAO();
+            int sid = supplierDAO.insert(supplier);
 
-            btn_back.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent actionEvent) {
-                    FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("views/products.fxml"));
-                    Node node = null;
-                    try {
-                        node = loader.load();
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                    pane.getChildren().add(node);
-                }
-            });
+            int categoryId =getCategoryIDFromChoiceBox(cb_addProductCategory.getValue().toString());
+            ProductDAO productdao = new ProductDAO();
+            Product product = new Product(tf_addProductName.getText(),categoryId,tf_addProductUPC.getText(),filePath.toString(),sid,Double.parseDouble(tf_addProductCostPrice.getText()),Double.parseDouble(tf_addProductSellingPrice.getText()),
+                    dp_addProductManufractureDate.getValue(),dp_addProductExpireDate.getValue(),Integer.parseInt(tf_addProductQuantity.getText()));
+            int isAdded=productdao.insert(product);
+
+            if(isAdded!=0)
+                informationAlert("Successful addition","THIS PRODUCT HAS BEEN ADDED");
+        }
+    }
+    private int getCategoryIDFromChoiceBox(String category){
+        if(category=="Thực phẩm tươi sống"){
+            return 1;
+        } else if (category=="Thực phẩm đóng gói") {
+            return 2;
+        } else if (category=="Hàng gia dụng") {
+            return 3;
+        }else if (category=="Đồ dùng cá nhân") {
+            return 4;
+        }else if (category=="Vật dụng học tập và văn phòng phẩm") {
+            return 5;
+        }else if (category=="Hóa phẩm và chất tẩy rửa") {
+            return 6;
+        }else if (category=="Đồ chơi và quà tặng") {
+            return 7;
+        }else return 8;
     }
 }

@@ -1,11 +1,12 @@
 package DAO;
+import Controller.AlertAndVerifyController;
 import Model.Customer;
 import DatabaseConnection.ConnectionFactory;
 import javafx.scene.control.Alert;
 
 import java.sql.*;
 import java.util.ArrayList;
-public class CustomerDAO implements DaoInterface <Customer>{
+public class CustomerDAO extends AlertAndVerifyController implements DaoInterface <Customer>{
     Connection con = null;
     PreparedStatement pstmt = null;
     Statement stmt = null;
@@ -28,7 +29,7 @@ public class CustomerDAO implements DaoInterface <Customer>{
     }
 
     @Override
-    public void insert(Customer cus) {
+    public int insert(Customer cus) {
         String findCustomerByNameLocatePhone = "SELECT * FROM CUSTOMER WHERE FULLNAME=? AND LOCATION=? AND PHONE=?";
         try {
             pstmt = con.prepareStatement(findCustomerByNameLocatePhone);
@@ -37,18 +38,14 @@ public class CustomerDAO implements DaoInterface <Customer>{
             pstmt.setString(3,cus.getPhone());
             rs= pstmt.executeQuery();
             if(rs.next()){
-                System.out.println("This customer has already been added");
-//                Alert alert = new Alert(Alert.AlertType.ERROR);
-//                alert.setContentText("Password and ConfirmPassword are difference");
-//                alert.setTitle("Warning");
-//                alert.show();
+                errorAlert("Error","THIS CUSTOMER HAS BEEN ADDED");
             }else{
                 addFunction(cus);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
+        return 0;
     }
 
     @Override

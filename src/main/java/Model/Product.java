@@ -1,48 +1,108 @@
 package Model;
 
+import java.time.LocalDate;
 import java.util.Date;
 public class Product {
     private int productId;
     private String productBarCode;
-    private Date date;
-    private Date sellDate;
-    private String supplierCode;
+    private LocalDate MFGDate;
+    private LocalDate EXPDate;
+    private int supplierID;
     private String productName;
     private int quantity;
     private double costPrice;
     private double sellingPrice;
-    private String brand;
+    private int categoryID;
     private int userId;
     private String customerCode;
     private Double totalCost;
     private Double totalRevenue;
-    public Product (int productId,String productBarCode,Date date,Date sellDate,String supplierCode,
-                    String productName,int quantity,double costPrice,double sellingPrice,
-                    String brand,int userId,String customerCode,Double totalCost,Double totalRevenue){
-        this.productId = productId;
+    private String SKUCode;
+    private String thumbnailLink;
+
+    public Product(String productName, int categoryID, String productBarCode, String thumbnailLink, int supplierID, double costPrice, double sellingPrice, LocalDate MFGDate, LocalDate EXPDate, int quantity) {
         this.productBarCode = productBarCode;
-        this.date = date;
-        this.sellDate = sellDate;
-        this.supplierCode = supplierCode;
-        this.customerCode = customerCode;
+        this.MFGDate = MFGDate;
+        this.EXPDate = EXPDate;
+        this.supplierID = supplierID;
         this.productName = productName;
         this.quantity = quantity;
         this.costPrice = costPrice;
         this.sellingPrice = sellingPrice;
-        this.brand = brand;
-        this.userId= userId;
-        this.customerCode = customerCode;
-        this.totalCost = totalCost;
-        this.totalRevenue= totalRevenue;
-
+        this.categoryID = categoryID;
+        this.thumbnailLink = thumbnailLink;
     }
 
-    public Product(int productId, String productBarCode, Date date, Date sellDate, String supplierCode) {
+    public String getThumbnailLink() {
+        return thumbnailLink;
+    }
+
+    public void setThumbnailLink(String thumbnailLink) {
+        this.thumbnailLink = thumbnailLink;
+    }
+
+    public Product(int productId, String productBarCode, LocalDate MFGDate, LocalDate EXPDate, int supplierID, String productName, int quantity, double costPrice, double sellingPrice, int categoryID, int userId, String customerCode, Double totalCost, Double totalRevenue, String SKUCode) {
         this.productId = productId;
         this.productBarCode = productBarCode;
-        this.date = date;
-        this.sellDate = sellDate;
-        this.supplierCode = supplierCode;
+        this.MFGDate = MFGDate;
+        this.EXPDate = EXPDate;
+        this.supplierID = supplierID;
+        this.productName = productName;
+        this.quantity = quantity;
+        this.costPrice = costPrice;
+        this.sellingPrice = sellingPrice;
+        this.categoryID = categoryID;
+        this.userId = userId;
+        this.customerCode = customerCode;
+        this.totalCost = totalCost;
+        this.totalRevenue = totalRevenue;
+        this.SKUCode = SKUCode;
+    }
+
+    public String getSKUCode() {
+        return SKUCode;
+    }
+
+    public void setSKUCode(String SKUCode) {
+        this.SKUCode = SKUCode;
+    }
+
+    public Product(int productId, String productBarCode, LocalDate MFGDate, LocalDate EXPDate, int supplierID) {
+        this.productId = productId;
+        this.productBarCode = productBarCode;
+        this.MFGDate = MFGDate;
+        this.EXPDate = EXPDate;
+        this.supplierID = supplierID;
+    }
+    public int getSupplierID() {
+        return supplierID;
+    }
+
+    public void setSupplierID(int supplierID) {
+        this.supplierID = supplierID;
+    }
+
+    public int getCategoryID() {
+        return categoryID;
+    }
+
+    public void setCategoryID(int categoryID) {
+        this.categoryID = categoryID;
+    }
+    public LocalDate getMFGDate() {
+        return MFGDate;
+    }
+
+    public void setMFGDate(LocalDate MFGDate) {
+        this.MFGDate = MFGDate;
+    }
+
+    public LocalDate getEXPDate() {
+        return EXPDate;
+    }
+
+    public void setEXPDate() {
+        this.EXPDate = EXPDate;
     }
 
     public int getProductId() {
@@ -61,26 +121,6 @@ public class Product {
         this.productBarCode = productBarCode;
     }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-    public  Date getSellDate(){ return sellDate;}
-
-    public void setSellDate(Date sellDate) {
-        this.sellDate = sellDate;
-    }
-
-    public String getSupplierCode() {
-        return supplierCode;
-    }
-
-    public void setSupplierCode(String supplierCode) {
-        this.supplierCode = supplierCode;
-    }
 
     public String getCustomerCode() {
         return customerCode;
@@ -120,29 +160,6 @@ public class Product {
 
     public void setSellingPrice(double sellingPrice) {
         this.sellingPrice = sellingPrice;
-    }
-
-//    public ResultSet getSuppliersName() {
-//        ResultSet rs=new ProductDAO().getSuppliersInfo();
-//        return rs;
-//    }
-//
-//    public ResultSet getCustomersName() {
-//        ResultSet rs=new ProductDAO().getCustomersInfo();
-//        return rs;
-//    }
-//
-//    public ResultSet getProductsName() {
-//        ResultSet rs=new ProductDAO().getProductInfo();
-//        return rs;
-//    }
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
     }
 
     public int getUserId() {

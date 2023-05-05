@@ -30,7 +30,7 @@ public class CategoryDao implements DaoInterface <Category> {
 
     // Thêm mới một danh mục sản phẩm vào cơ sở dữ liệu
     @Override
-    public void insert(Category category) {
+    public int insert(Category category) {
         try{
             String query = "SELECT * FROM products WHERE id=? AND name=?";
             pstmt.setInt(1,category.getId());
@@ -46,6 +46,7 @@ public class CategoryDao implements DaoInterface <Category> {
         }catch(Exception e){
             e.printStackTrace();
         }
+        return 0;
     }
 
     @Override
@@ -128,16 +129,14 @@ public class CategoryDao implements DaoInterface <Category> {
     // Lấy danh sách các sản phẩm trong một danh mục sản phẩm từ cơ sở dữ liệu theo id
     private List<Product> getProductsByCategoryId(int categoryId) {
         List<Product> products = new ArrayList<>();
-        String sql = "SELECT * FROM category_products cp JOIN products p ON cp.product_id=p.id WHERE cp.category_id=?";
+        String sql = "SELECT * FROM product_categories cp JOIN products p ON cp.pid=p.pid WHERE cp.category_id=?";
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setInt(1, categoryId);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                Product product = new Product(rs.getInt("productId"), rs.getString("productBarCode"), rs.getDate("date"), rs.getDate("sellDate")
-                        , rs.getString("supplierCode"),rs.getString("productName"),rs.getInt("Quantity"), rs.getDouble("costPrice"),rs.getDouble("sellingPrice")
-                        , rs.getString("brand"), rs.getInt("userID"), rs.getString("customerCode"), rs.getDouble("totalCost"),rs.getDouble("totalRevenue") );
-                products.add(product);
+                /*Product product = new Product();
+                products.add(product);*/
             }
         } catch (SQLException e) {
             e.printStackTrace();
