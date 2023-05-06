@@ -83,7 +83,7 @@
                </font>
             </Label>
             <Line endX="36.0" layoutX="286.0" layoutY="484.0" startX="-78.0" />
-            <Button layoutX="31.0" layoutY="503.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="297.0" style="-fx-background-color: #E8ADAA; -fx-cursor: hand;" text="Continue with Google">
+            <Button fx:id="btn_loginGoogle" layoutX="31.0" layoutY="503.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="297.0" style="-fx-background-color: #E8ADAA; -fx-cursor: hand;" text="Continue with Google">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
@@ -91,7 +91,7 @@
                   <Insets left="25.0" />
                </padding>
             </Button>
-            <Button layoutX="29.0" layoutY="565.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="301.0" style="-fx-background-color: #E8ADAA; -fx-cursor: hand;" text="Continue with Facebook">
+            <Button fx:id="btn_loginFB" layoutX="29.0" layoutY="565.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="301.0" style="-fx-background-color: #E8ADAA; -fx-cursor: hand;" text="Continue with Facebook">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>

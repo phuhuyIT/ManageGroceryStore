@@ -17,6 +17,10 @@ public class SignUpController extends AlertAndVerifyController implements Initia
     @FXML
     private Button btn_signup;
     @FXML
+    private Button btn_loginGoogle;
+    @FXML
+    private Button btn_loginFB;
+    @FXML
     private Hyperlink btn_log_in;
     @FXML
     private TextField tf_username;

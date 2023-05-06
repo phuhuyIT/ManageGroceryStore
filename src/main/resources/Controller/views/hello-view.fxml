@@ -72,7 +72,7 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Button alignment="CENTER" layoutX="33.0" layoutY="392.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="284.0" style="-fx-background-color: #E8ADAA; -fx-cursor: HAND;" text="Continue with Google">
+            <Button fx:id="btn_loginGoogle" alignment="CENTER" layoutX="33.0" layoutY="392.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="284.0" style="-fx-background-color: #E8ADAA; -fx-cursor: HAND;" text="Continue with Google">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
@@ -85,7 +85,7 @@
                   <Image url="@../image/google.png" />
                </image>
             </ImageView>
-            <Button alignment="CENTER" layoutX="33.0" layoutY="450.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="284.0" style="-fx-background-color: #E8ADAA; -fx-cursor: HAND;" text="Continue with Facebook">
+            <Button fx:id="btn_loginFB" alignment="CENTER" layoutX="33.0" layoutY="450.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="284.0" style="-fx-background-color: #E8ADAA; -fx-cursor: HAND;" text="Continue with Facebook">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>

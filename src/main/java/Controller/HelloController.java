@@ -16,6 +16,10 @@ public class HelloController implements Initializable {
     @FXML
     private Button btn_login;
     @FXML
+    private Button btn_loginGoogle;
+    @FXML
+    private Button btn_loginFB;
+    @FXML
     public TextField tf_username;
     @FXML
     public PasswordField tf_password;
