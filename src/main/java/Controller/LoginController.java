@@ -74,7 +74,7 @@ public class LoginController extends AlertAndVerifyController{
         stage.setMaximized(true);
         stage.setFullScreen(true);
         //stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
-        stage.setScene(new Scene(root,650, 450));
+        stage.setScene(new Scene(root,620, 670));
         stage.setResizable(true);
         stage.centerOnScreen();
         stage.show();

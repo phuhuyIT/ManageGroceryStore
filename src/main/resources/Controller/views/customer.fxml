@@ -95,12 +95,12 @@
             <Image url="@../image/next.png" />
          </image>
       </ImageView>
-      <Button fx:id="btn_add_user" alignment="CENTER_RIGHT" layoutX="841.0" layoutY="101.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="108.0" style="-fx-cursor: hand; -fx-border-color: black; -fx-border-width: 3px;" stylesheets="@css/test.css" text="Add" textFill="WHITE">
+      <Button fx:id="btn_add_user" alignment="CENTER_RIGHT" layoutX="841.0" layoutY="101.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="108.0" style="-fx-cursor: hand; -fx-border-color: black; -fx-border-width: 3px; -fx-border-radius: 5px;" stylesheets="@css/test.css" text="Add">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="System Bold" size="19.0" />
          </font>
       </Button>
-      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="859.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="853.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../image/add-user.png" />
          </image>
