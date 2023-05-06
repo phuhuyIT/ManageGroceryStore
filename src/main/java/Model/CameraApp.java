@@ -12,7 +12,7 @@ import org.bytedeco.javacv.*;
 
 public class CameraApp {
     public static String scan() throws Exception {
-        OpenCVFrameGrabber grabber = new OpenCVFrameGrabber(1); // truy cập camera laptop
+        OpenCVFrameGrabber grabber = new OpenCVFrameGrabber(0); // truy cập camera laptop
         grabber.start();
         CanvasFrame canvasFrame = new CanvasFrame("Barcode Scanner");
         canvasFrame.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);

@@ -15,7 +15,7 @@ public class BillDao implements DaoInterface <Bill> {
         this.connection = connection;
     }
     @Override
-    public void insert(Bill bill)  {
+    public int insert(Bill bill)  {
         String sql = "INSERT INTO bills (name, amount, due_date) VALUES (?, ?, ?)";
         try {
             pstmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -40,6 +40,7 @@ public class BillDao implements DaoInterface <Bill> {
             throw new RuntimeException(e);
         }
 
+        return 0;
     }
 
     @Override
