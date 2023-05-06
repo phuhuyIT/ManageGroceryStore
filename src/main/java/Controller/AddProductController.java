@@ -66,6 +66,7 @@ public class AddProductController extends DetailProductController implements Ini
     private Button btn_save;
     @FXML
     private Button btn_addProductUPCScan;
+
     @FXML
     public void chooseImageProduct(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -105,7 +106,9 @@ public class AddProductController extends DetailProductController implements Ini
             @Override
             public void handle(ActionEvent actionEvent) {
                 try {
-                    tf_addProductUPC.setText(CameraApp.scan());
+                    CameraApp barCodeScanner= new CameraApp();
+                    barCodeScanner.getTextField(tf_addProductUPC);
+                    barCodeScanner.start();
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }

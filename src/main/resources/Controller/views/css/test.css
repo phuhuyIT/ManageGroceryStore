@@ -24,9 +24,9 @@
 }
 
 //Customer
-#btn_add_user{
-     -fx-background-color:#00FF00;
-     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 5,0,0,0);
+#btn_add_user:hover{
+     -fx-background-color: #FFFFFF;
+     -fx-text-fill:# #2596be;
 }
 
 //User Profile
@@ -89,13 +89,72 @@
 .choice-box .arrow {
     -fx-background-color: black;
 }
-//Đổ bóng textFeild
-.text-field {
-    -fx-background-color: white;
-    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 2, 0, 0, 0),
-                dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 0, 0, 0, 2);
+//product
+#productBox1:hover{
+     -fx-background-color: #559EFC;
+     -fx-background-radius :20;
+}
+#productBox2:hover{
+     -fx-background-color: #559EFC;
+     -fx-background-radius :20;
+}
+#productBox3:hover{
+     -fx-background-color: #559EFC;
+     -fx-background-radius :20;
+}
+#productBox4:hover{
+     -fx-background-color: #559EFC;
+     -fx-background-radius :20;
+}
+#productBox5:hover{
+     -fx-background-color: #559EFC;
+     -fx-background-radius :20;
+}
+#productBox6:hover{
+     -fx-background-color: #559EFC;
+     -fx-background-radius :20;
+}
+#productBox7:hover{
+     -fx-background-color: #559EFC;
+     -fx-background-radius :20;
+}
+#productBox8:hover{
+     -fx-background-color: #559EFC;
+     -fx-background-radius :20;
 }
 
-
+// Customer
+#CustomerBox_1:hover{
+     -fx-background-radius :20;
+     -fx-background-color: #559EFC;
+}
+#CustomerBox_2:hover{
+     -fx-background-radius :20;
+     -fx-background-color: #559EFC;
+}
+#CustomerBox_3:hover{
+     -fx-background-radius :20;
+     -fx-background-color: #559EFC;
+}
+#CustomerBox_4:hover{
+     -fx-background-radius :20;
+     -fx-background-color: #559EFC;
+}
+#CustomerBox_5:hover{
+     -fx-background-radius :20;
+     -fx-background-color: #559EFC;
+}
+#CustomerBox_6:hover{
+     -fx-background-radius :20;
+     -fx-background-color: #559EFC;
+}
+#CustomerBox_7:hover{
+     -fx-background-radius :20;
+     -fx-background-color: #559EFC;
+}
+#CustomerBox_8:hover{
+     -fx-background-radius :20;
+     -fx-background-color: #559EFC;
+}
 
 

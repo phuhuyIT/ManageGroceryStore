@@ -17,7 +17,7 @@
       <AnchorPane layoutX="6.0" prefHeight="900.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="-6.0" AnchorPane.topAnchor="0.0">
          <children>
             <Button fx:id="btn_refesh" layoutX="560.5" layoutY="58.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="88.0" style="-fx-cursor: hand; -fx-background-color: transaprent;" />
-            <AnchorPane fx:id="productBox1" layoutX="33.5" layoutY="161.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 7px;">
+            <AnchorPane fx:id="productBox1" layoutX="33.5" layoutY="161.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20px; -fx-cursor: hand;" styleClass="custom-anchopane" stylesheets="@css/test.css">
                <children>
                   <CheckBox fx:id="select_product1" layoutX="14.0" layoutY="6.0" mnemonicParsing="false" />
                   <ImageView fx:id="productThumbnail1" fitHeight="104.0" fitWidth="101.0" layoutX="53.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
@@ -53,7 +53,7 @@
                   <Button fx:id="btnProductDetails1" layoutX="167.0" layoutY="2.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="38.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="productBox2" layoutX="277.5" layoutY="161.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 7px;">
+            <AnchorPane fx:id="productBox2" layoutX="277.5" layoutY="161.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20;" stylesheets="@css/test.css">
                <children>
                   <CheckBox fx:id="select_product2" layoutX="14.0" layoutY="6.0" mnemonicParsing="false" />
                   <ImageView fx:id="productThumbnail2" fitHeight="104.0" fitWidth="101.0" layoutX="53.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true" />
@@ -85,7 +85,7 @@
                   <Button fx:id="btnProductDetails2" layoutX="167.0" layoutY="2.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="38.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="productBox3" layoutX="516.5" layoutY="161.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 7px;">
+            <AnchorPane fx:id="productBox3" layoutX="516.5" layoutY="161.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20;" stylesheets="@css/test.css">
                <children>
                   <CheckBox fx:id="select_product3" layoutX="14.0" layoutY="6.0" mnemonicParsing="false" />
                   <ImageView fx:id="productThumbnail3" fitHeight="104.0" fitWidth="101.0" layoutX="53.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true" />
@@ -117,7 +117,7 @@
                   <Button fx:id="btnProductDetails3" layoutX="167.0" layoutY="2.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="38.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="productBox4" layoutX="756.5" layoutY="161.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 7px;">
+            <AnchorPane fx:id="productBox4" layoutX="756.5" layoutY="161.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20;" stylesheets="@css/test.css">
                <children>
                   <CheckBox fx:id="select_product4" layoutX="14.0" layoutY="6.0" mnemonicParsing="false" />
                   <ImageView fx:id="productThumbnail4" fitHeight="104.0" fitWidth="101.0" layoutX="53.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true" />
@@ -149,7 +149,7 @@
                   <Button fx:id="btnProductDetails4" layoutX="167.0" layoutY="2.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="38.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="productBox5" layoutX="33.5" layoutY="417.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 7px;">
+            <AnchorPane fx:id="productBox5" layoutX="33.5" layoutY="417.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20;" stylesheets="@css/test.css">
                <children>
                   <CheckBox fx:id="select_product5" layoutX="14.0" layoutY="6.0" mnemonicParsing="false" />
                   <ImageView fx:id="productThumbnail5" fitHeight="104.0" fitWidth="101.0" layoutX="53.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true" />
@@ -181,7 +181,7 @@
                   <Button fx:id="btnProductDetails5" layoutX="167.0" layoutY="2.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="38.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="productBox6" layoutX="277.5" layoutY="417.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 7px;">
+            <AnchorPane fx:id="productBox6" layoutX="277.5" layoutY="417.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20;" stylesheets="@css/test.css">
                <children>
                   <CheckBox fx:id="select_product6" layoutX="14.0" layoutY="6.0" mnemonicParsing="false" />
                   <ImageView fx:id="productThumbnail6" fitHeight="104.0" fitWidth="101.0" layoutX="53.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true" />
@@ -213,7 +213,7 @@
                   <Button fx:id="btnProductDetails6" layoutX="167.0" layoutY="2.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="38.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="productBox7" layoutX="516.5" layoutY="417.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 7px;">
+            <AnchorPane fx:id="productBox7" layoutX="516.5" layoutY="417.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20;" stylesheets="@css/test.css">
                <children>
                   <CheckBox fx:id="select_product7" layoutX="14.0" layoutY="6.0" mnemonicParsing="false" />
                   <ImageView fx:id="productThumbnail7" fitHeight="104.0" fitWidth="101.0" layoutX="53.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true" />
@@ -245,7 +245,7 @@
                   <Button fx:id="btnProductDetails7" layoutX="167.0" layoutY="2.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="38.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="productBox8" layoutX="756.5" layoutY="417.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 7px;">
+            <AnchorPane fx:id="productBox8" layoutX="756.5" layoutY="417.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20;" stylesheets="@css/test.css">
                <children>
                   <CheckBox fx:id="select_product8" layoutX="14.0" layoutY="6.0" mnemonicParsing="false" />
                   <ImageView fx:id="productThumbnail8" fitHeight="104.0" fitWidth="101.0" layoutX="53.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true" />
@@ -290,7 +290,7 @@
             </Label>
             <Line endX="1000.0" layoutX="18.0" layoutY="52.5" startX="-244.0" strokeWidth="3.0" />
             <Label fx:id="lb_Search" layoutX="33.5" layoutY="69.0" prefHeight="37.0" prefWidth="299.0" style="-fx-border-width: 3px; -fx-border-radius: 7px; -fx-border-color: black;" />
-            <TextField fx:id="txt_search" layoutX="75.5" layoutY="71.0" prefHeight="35.0" prefWidth="252.0" promptText="Search here...." style="-fx-background-color: transparent; -fx-font-weight: bold; -fx-border-width: 2px; -fx-border-radius: 7px;">
+            <TextField fx:id="txt_search" layoutX="88.0" layoutY="70.0" prefHeight="35.0" prefWidth="244.0" promptText="Search here...." style="-fx-font-weight: bold; -fx-background-color: transparent;">
                <font>
                   <Font size="16.0" />
                </font>
@@ -342,7 +342,7 @@
                </padding>
             </Label>
             <ChoiceBox fx:id="choiceBox_list" layoutX="822.5" layoutY="70.0" prefHeight="35.0" prefWidth="138.0" style="-fx-background-color: transparent;" />
-            <Button fx:id="btn_addProduct" alignment="CENTER_RIGHT" layoutX="875.0" layoutY="115.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="87.0" style="-fx-background-color: #2596be; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 2,0,0,0); -fx-cursor: hand;" text="Add" textFill="WHITE">
+            <Button fx:id="btn_addProduct" alignment="CENTER_RIGHT" layoutX="875.0" layoutY="115.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="88.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 2,0,0,0); -fx-cursor: hand; -fx-border-width: 2px; -fx-border-color: black;" stylesheets="@css/test.css" text="Add" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>

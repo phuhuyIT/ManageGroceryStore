@@ -2,6 +2,7 @@ package DAO;
 
 import Controller.AlertAndVerifyController;
 import DatabaseConnection.ConnectionFactory;
+import Model.CameraApp;
 import Model.Customer;
 import Model.Product;
 import javafx.scene.control.Alert;
@@ -126,7 +127,7 @@ public class ProductDAO extends AlertAndVerifyController implements DaoInterface
         int result=0;
         try {
             String productSKUCode = null;
-            productSKUCode = product.getProductBarCode()+product.getMFGDate();
+            productSKUCode = product.getProductBarCode()+" "+product.getMFGDate();
             String addProduct= "INSERT INTO PRODUCTS (productBarCode, productname, costprice, sellingprice, sid,categoryid,productSKU,thumbnail)"
                     +"VALUE(?,?,?,?,?,?,?,?)";
             pstmt = con.prepareStatement(addProduct);
@@ -139,6 +140,8 @@ public class ProductDAO extends AlertAndVerifyController implements DaoInterface
             pstmt.setString(7,productSKUCode);
             pstmt.setString(8,product.getThumbnailLink());
             pstmt.executeUpdate();
+            String skuFileName=product.getProductName()+product.getMFGDate();
+            CameraApp.skuGenerate(productSKUCode,skuFileName+".png");
             String getPid ="SELECT LAST_INSERT_ID()";
             rs=pstmt.executeQuery(getPid);
             int pid=0;

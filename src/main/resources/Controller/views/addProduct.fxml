@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="pane" prefHeight="1000.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AddProductController">
+<AnchorPane fx:id="pane" prefHeight="900.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AddProductController">
     <children>
       <ImageView fitHeight="30.0" fitWidth="37.0" layoutX="275.0" layoutY="729.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -30,7 +30,7 @@
                 <InnerShadow />
             </effect>
         </Label>
-        <Button fx:id="btn_save" alignment="CENTER" layoutX="406.0" layoutY="855.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="153.0" style="-fx-cursor: hand;" stylesheets="@css/test.css" text="Save" textAlignment="RIGHT" textFill="WHITE">
+        <Button fx:id="btn_save" alignment="CENTER" layoutX="412.0" layoutY="838.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="141.0" style="-fx-cursor: hand;" stylesheets="@css/test.css" text="Save" textAlignment="RIGHT" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="28.0" />
             </font>
@@ -38,7 +38,7 @@
                 <Insets left="25.0" right="9.0" />
             </padding></Button>
         <Line endX="499.99993896484375" endY="-8.0" layoutX="500.0" layoutY="67.0" startX="-500.0" startY="-8.0" strokeWidth="3.0" />
-        <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="418.0" layoutY="867.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="425.0" layoutY="845.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../image/confirm.png" />
             </image>
