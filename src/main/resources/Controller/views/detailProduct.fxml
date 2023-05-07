@@ -25,7 +25,7 @@
             <InnerShadow />
          </effect>
       </Label>
-      <Button fx:id="btn_save" alignment="CENTER" layoutX="406.0" layoutY="869.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="153.0" style="-fx-cursor: hand;" stylesheets="@css/test.css" text="  Update" textAlignment="RIGHT" textFill="WHITE">
+      <Button fx:id="btn_update" alignment="CENTER" layoutX="406.0" layoutY="869.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="153.0" style="-fx-cursor: hand;" stylesheets="@css/test.css" text="  Update" textAlignment="RIGHT" textFill="WHITE">
          <font>
             <Font name="System Bold" size="28.0" />
          </font>
@@ -152,7 +152,7 @@
          </font>
       </Label>
       <Label layoutX="39.0" layoutY="734.0" prefHeight="100.0" prefWidth="416.0" style="-fx-border-radius: 7px; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 1.5, 0, 0, 0); -fx-border-color: #eeeeee;" textAlignment="CENTER" />
-      <ChoiceBox fx:id="cb_detailProductCategory" layoutX="56.0" layoutY="596.0" prefHeight="44.0" prefWidth="382.0" style="-fx-background-color: #ffffff; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 2, 0, 0, 0);" />
+      <ChoiceBox fx:id="cb_detailProductCategory" layoutX="62.0" layoutY="594.0" prefHeight="44.0" prefWidth="382.0" style="-fx-background-color: #ffffff; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 2, 0, 0, 0);" />
       <Label layoutX="39.0" layoutY="513.0" text="Category">
          <font>
             <Font size="26.0" />

@@ -13,6 +13,16 @@
 
 <AnchorPane fx:id="anchorPane_customer" prefHeight="900.0" prefWidth="1000.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CustomerController">
    <children>
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="666.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/information%20(1).png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="417.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/information%20(1).png" />
+         </image>
+      </ImageView>
       <AnchorPane fx:id="CustomerBox_3" layoutX="508.0" layoutY="182.0" prefHeight="259.0" prefWidth="200.0" style="-fx-border-radius: 20; -fx-border-color: #CCCCCC; -fx-cursor: hand;">
          <children>
             <ImageView fx:id="imageCustomer3" fitHeight="108.0" fitWidth="112.0" layoutX="42.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true" />
@@ -31,6 +41,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
+            <Button fx:id="btn_detailUser3" layoutX="149.0" layoutY="2.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="47.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="CustomerBox_2" layoutX="262.0" layoutY="182.0" prefHeight="259.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20; -fx-cursor: hand;">
@@ -51,6 +62,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
+            <Button fx:id="btn_detailUser2" layoutX="148.0" layoutY="3.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="47.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
          </children>
       </AnchorPane>
       <Label layoutX="375.0" layoutY="35.0" prefHeight="52.0" prefWidth="170.0" style="-fx-font-weight: bold;" text="Customer">
@@ -111,23 +123,6 @@
             <Image url="@../image/refresh.png" />
          </image>
       </ImageView>
-      <Button fx:id="btn_detailUser1" layoutX="169.0" layoutY="186.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="47.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
-      <Button fx:id="btn_detailUser2" layoutX="408.0" layoutY="186.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="47.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
-      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="417.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../image/information%20(1).png" />
-         </image>
-      </ImageView>
-      <Button fx:id="btn_detailUser3" layoutX="656.0" layoutY="186.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="47.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
-      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="666.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../image/information%20(1).png" />
-         </image>
-      </ImageView>
-      <Button fx:id="btn_detailUser4" layoutX="906.0" layoutY="183.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="47.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
-      <Button fx:id="btn_detailUser6" layoutX="409.0" layoutY="497.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="47.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
-      <Button fx:id="btn_detailUser7" layoutX="657.0" layoutY="497.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="47.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
-      <Button fx:id="btn_detailUser8" layoutX="907.0" layoutY="499.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="47.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
       <AnchorPane fx:id="CustomerBox_1" layoutX="19.0" layoutY="182.0" prefHeight="259.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-cursor: hand; -fx-border-radius: 20;">
          <children>
             <ImageView fx:id="imageCustomer1" fitHeight="108.0" fitWidth="112.0" layoutX="47.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
@@ -155,6 +150,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
+            <Button fx:id="btn_detailUser1" layoutX="152.0" layoutY="3.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="47.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="CustomerBox_4" layoutX="758.0" layoutY="182.0" prefHeight="259.0" prefWidth="200.0" style="-fx-border-radius: 20; -fx-border-color: #CCCCCC; -fx-cursor: hand;">
@@ -180,6 +176,7 @@
                   <Image url="@../image/information%20(1).png" />
                </image>
             </ImageView>
+            <Button fx:id="btn_detailUser4" layoutX="149.0" layoutY="4.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="47.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="CustomerBox_5" layoutX="20.0" layoutY="485.0" prefHeight="259.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20; -fx-cursor: hand;">
@@ -205,6 +202,7 @@
                   <Image url="@../image/information%20(1).png" />
                </image>
             </ImageView>
+            <Button fx:id="btn_detailUser5" layoutX="149.0" layoutY="3.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="47.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="CustomerBox_6" layoutX="254.0" layoutY="485.0" prefHeight="259.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20; -fx-cursor: hand;">
@@ -230,6 +228,7 @@
                   <Image url="@../image/information%20(1).png" />
                </image>
             </ImageView>
+            <Button fx:id="btn_detailUser6" layoutX="148.0" layoutY="1.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="47.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="CustomerBox_7" layoutX="507.0" layoutY="485.0" prefHeight="259.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20; -fx-cursor: hand;">
@@ -255,6 +254,7 @@
                   <Image url="@../image/information%20(1).png" />
                </image>
             </ImageView>
+            <Button fx:id="btn_detailUser7" layoutX="150.0" layoutY="3.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="47.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="CustomerBox_8" layoutX="758.0" layoutY="485.0" prefHeight="259.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20; -fx-cursor: hand;">
@@ -280,6 +280,7 @@
                   <Image url="@../image/information%20(1).png" />
                </image>
             </ImageView>
+            <Button fx:id="btn_detailUser8" layoutX="152.0" layoutY="3.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="47.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
          </children>
       </AnchorPane>
    </children>
