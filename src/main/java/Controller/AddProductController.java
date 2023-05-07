@@ -29,6 +29,10 @@ import java.util.ResourceBundle;
 
 public class AddProductController extends DetailProductController implements Initializable {
     @FXML
+    private MenuButton mbCategory;
+    @FXML
+    private Label lb_Category;
+    @FXML
     private DatePicker dp_addProductManufractureDate;
 
     @FXML
@@ -94,9 +98,89 @@ public class AddProductController extends DetailProductController implements Ini
         //Định dạng DatePicker thành dd/mm/yyyy
         setDatePickerConverter(dp_addProductManufractureDate);
         setDatePickerConverter(dp_addProductExpireDate);
-        cb_addProductCategory.getItems().addAll("Thực phẩm tươi sống","Thực phẩm chế biến sẵn","Hàng gia dụng", "Đồ dùng cá nhân","Vật dụng học tập và văn phòng phẩm",
-                "Hóa phẩm và chất tẩy rửa","Đồ chơi và quà tặng","Thuốc và vật dụng y tế");
+//        cb_addProductCategory.getItems().addAll("Thực phẩm tươi sống","Thực phẩm chế biến sẵn","Hàng gia dụng", "Đồ dùng cá nhân","Vật dụng học tập và văn phòng phẩm",
+//                "Hóa phẩm và chất tẩy rửa","Đồ chơi và quà tặng","Thuốc và vật dụng y tế");
         setBtnBackAction();
+
+        //Menu cấp 1
+        Menu foodRefesh = new Menu("Thực phẩm tươi sống");
+        Menu processFood = new Menu("Thực phẩm chế biến sẵn");
+        MenuItem vegestable = new MenuItem("Rau củ quả");
+        Menu drink = new Menu("Đồ uống");
+        Menu icecream = new Menu("Kem");
+        Menu houseHold = new Menu("Hàng gia dụng");
+        Menu personalItem = new Menu("Đồ dùng cá nhân");
+        Menu officeItem = new Menu("Vật dụng học tập và văn phòng phẩm");
+        Menu chemicalItem = new Menu("Hóa phẩm và chất tẩy rửa");
+        Menu toy = new Menu("Đồ chơi và quà tặng");
+        Menu medical = new Menu("Thuốc và vật dụng y tế");
+
+        //set font size
+        foodRefesh.setStyle("-fx-font-size : 18px");
+        processFood.setStyle("-fx-font-size : 18px");
+        houseHold.setStyle("-fx-font-size : 18px");
+        personalItem.setStyle("-fx-font-size : 18px");
+        officeItem.setStyle("-fx-font-size : 18px");
+        chemicalItem.setStyle("-fx-font-size : 18px");
+        toy.setStyle("-fx-font-size : 18px");
+        medical.setStyle("-fx-font-size : 18px");
+        vegestable.setStyle("-fx-font-size : 18px");
+        drink.setStyle("-fx-font-size : 18px");
+        icecream.setStyle("-fx-font-size : 18px");
+
+        //Menu cấp 2
+        MenuItem meat = new MenuItem("Thịt");
+        MenuItem seaFood = new MenuItem("Hải sản");
+        meat.setOnAction(event -> {
+            lb_Category.setText(meat.getText());
+        });
+        seaFood.setOnAction(event -> {
+            lb_Category.setText(seaFood.getText());
+        });
+        meat.setStyle("-fx-font-size : 18px");
+        seaFood.setStyle("-fx-font-size : 18px");
+
+        vegestable.setOnAction(event -> {
+            lb_Category.setText(vegestable.getText());
+        });
+
+
+        MenuItem hotDrink = new MenuItem("Đồ uống nóng");
+        MenuItem coldDrink = new MenuItem("Đồ uống lạnh");
+        //set font size
+        hotDrink.setStyle("-fx-font-size : 18px");
+        coldDrink.setStyle("-fx-font-size : 18px");
+        //set sự kiện
+        hotDrink.setOnAction(event -> {
+            lb_Category.setText(hotDrink.getText());
+        });
+        coldDrink.setOnAction(event -> {
+            lb_Category.setText(coldDrink.getText());
+        });
+
+        MenuItem boxCream = new MenuItem("Kem hộp");
+        MenuItem cupCream = new MenuItem("Kem cốc");
+        //set font size
+        boxCream.setStyle("-fx-font-size : 18px");
+        cupCream.setStyle("-fx-font-size : 18px");
+        //set sự kiện
+        boxCream.setOnAction(event -> {
+            lb_Category.setText(boxCream.getText());
+        });
+        cupCream.setOnAction(event -> {
+            lb_Category.setText(cupCream.getText());
+        });
+
+        mbCategory.getItems().addAll(foodRefesh,processFood,houseHold,personalItem,medical,officeItem,chemicalItem,toy,vegestable,drink,icecream);
+        foodRefesh.getItems().addAll(meat,seaFood);
+        drink.getItems().addAll(hotDrink,coldDrink);
+        icecream.getItems().addAll(boxCream,cupCream);
+
+
+
+
+
+
         btn_save.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {

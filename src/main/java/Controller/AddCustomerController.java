@@ -9,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -24,9 +25,22 @@ public class AddCustomerController implements Initializable {
     @FXML
     private Button btn_back;
     @FXML
+    private Button btn_save;
+    @FXML
     private Button btn_addThumnail;
     @FXML
     private AnchorPane pane;
+    @FXML
+    private TextField txt_fullNameCustomer;
+    @FXML
+    private TextField txt_IndentifierCustomer;
+    @FXML
+    private TextField txt_phoneNumberCustomer;
+    @FXML
+    private TextField txt_emailCustomer;
+    @FXML
+    private TextField txt_locationCustomer;
+
     private File filePath;
     private FileChooser fileChooser;
     @FXML

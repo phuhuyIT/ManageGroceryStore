@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.InnerShadow?>
@@ -15,12 +14,10 @@
 
 <AnchorPane fx:id="pane" prefHeight="900.0" prefWidth="1000.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DetailCustomerController">
     <children>
-        <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="291.0" layoutY="409.0" prefHeight="30.0" prefWidth="101.0" text="Full Name">
-            <font>
-                <Font name="System Bold" size="20.0" />
-            </font>
-        </Label>
-        <Label alignment="CENTER" layoutY="14.0" prefHeight="53.0" prefWidth="1000.0" style="-fx-font-weight: bold;" text="DETAIL USER">
+        <Label layoutX="19.0" layoutY="571.0" prefHeight="94.0" prefWidth="510.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 7px;" />
+        <Label layoutX="18.0" layoutY="411.0" prefHeight="94.0" prefWidth="792.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 7px;" />
+        <Label layoutX="20.0" layoutY="164.0" prefHeight="182.0" prefWidth="602.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 7px;" />
+        <Label alignment="CENTER" layoutY="6.0" prefHeight="53.0" prefWidth="1000.0" style="-fx-font-weight: bold;" text="DETAIL CUSTOMER">
             <font>
                 <Font size="36.0" />
             </font>
@@ -28,103 +25,105 @@
                 <InnerShadow />
             </effect>
         </Label>
-        <Line endX="499.99993896484375" endY="-8.0" layoutX="498.0" layoutY="75.0" startX="-500.0" startY="-8.0" strokeWidth="3.0" />
-        <ImageView fx:id="image_user" fitHeight="131.0" fitWidth="133.0" layoutX="440.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true">
+        <Button fx:id="btn_save" alignment="CENTER" layoutX="414.0" layoutY="718.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="153.0" style="-fx-cursor: hand;" stylesheets="@css/test.css" text="  Save" textAlignment="RIGHT" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="28.0" />
+            </font>
+            <padding>
+                <Insets left="25.0" right="9.0" />
+            </padding></Button>
+        <Line endX="499.99993896484375" endY="-8.0" layoutX="500.0" layoutY="67.0" startX="-500.0" startY="-8.0" strokeWidth="3.0" />
+        <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="426.0" layoutY="730.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="https://img.freepik.com/free-vector/illustration-user-avatar-icon_53876-5907.jpg?w=740&amp;t=st=1683003422~exp=1683004022~hmac=057b6d420859ea6a49f175db90ae4017350a9aa8ce8e93b8caab5e3f10c16493" />
+                <Image url="@../image/confirm.png" />
             </image>
         </ImageView>
-        <Hyperlink layoutX="733.0" layoutY="202.0" />
-        <Button fx:id="btn_refesh" layoutX="915.0" layoutY="21.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="68.0" style="-fx-background-color: tranparent; -fx-cursor: hand;" />
-        <ImageView fitHeight="30.0" fitWidth="33.0" layoutX="934.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../image/refresh.png" />
-            </image>
-        </ImageView>
-        <TextField fx:id="txt_fullname" layoutX="294.0" layoutY="439.0" prefHeight="39.0" prefWidth="418.0" AnchorPane.bottomAnchor="474.0" AnchorPane.leftAnchor="294.0" AnchorPane.rightAnchor="288.0" AnchorPane.topAnchor="439.0">
+        <Label layoutX="697.0" layoutY="154.0" prefHeight="188.0" prefWidth="234.0" style="-fx-border-color: #2596be; -fx-border-radius: 20px; -fx-border-style: dashed;" />
+        <Label layoutX="34.0" layoutY="174.0" prefHeight="30.0" prefWidth="108.0" text="Full Name">
             <font>
-                <Font size="18.0" />
-            </font>
-            <opaqueInsets>
-                <Insets />
-            </opaqueInsets>
-            <cursor>
-                <Cursor fx:constant="DEFAULT" />
-            </cursor></TextField>
-        <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="291.0" layoutY="486.0" prefHeight="30.0" prefWidth="77.0" text="Gender">
-            <font>
-                <Font name="System Bold" size="20.0" />
+                <Font size="20.0" />
             </font>
         </Label>
-        <TextField fx:id="txt_email" layoutX="291.0" layoutY="516.0" prefHeight="39.0" prefWidth="418.0">
+        <Label layoutX="34.0" layoutY="252.0" prefHeight="30.0" prefWidth="93.0" text="Identifier">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <TextField fx:id="txt_IndentifierCustomer" layoutX="30.0" layoutY="282.0" prefHeight="38.0" prefWidth="350.0">
             <font>
                 <Font size="18.0" />
             </font></TextField>
-        <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="294.0" layoutY="572.0" prefHeight="30.0" prefWidth="68.0" text="Email">
+        <Label layoutX="441.0" layoutY="174.0" prefHeight="3.0" prefWidth="69.0" text="Gender">
             <font>
-                <Font name="System Bold" size="20.0" />
+                <Font size="20.0" />
             </font>
         </Label>
-        <TextField fx:id="txt_phone" layoutX="294.0" layoutY="602.0" prefHeight="39.0" prefWidth="418.0">
+        <Label layoutX="29.0" layoutY="419.0" text="Phone">
             <font>
-                <Font size="18.0" />
-            </font></TextField>
-        <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="295.0" layoutY="663.0" prefHeight="30.0" prefWidth="165.0" text="Contact Number">
-            <font>
-                <Font name="System Bold" size="20.0" />
+                <Font size="20.0" />
             </font>
         </Label>
-        <TextField fx:id="txt_location" layoutX="294.0" layoutY="693.0" prefHeight="39.0" prefWidth="418.0">
+        <Label layoutX="412.0" layoutY="419.0" prefHeight="30.0" prefWidth="60.0" text="Email">
             <font>
-                <Font size="18.0" />
-            </font></TextField>
-        <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="295.0" layoutY="754.0" prefHeight="30.0" prefWidth="94.0" text="Location">
-            <font>
-                <Font name="System Bold" size="20.0" />
+                <Font size="20.0" />
             </font>
         </Label>
-      <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="288.0" layoutY="233.0" prefHeight="30.0" prefWidth="101.0" text="CID">
-         <font>
-            <Font name="System Bold" size="20.0" />
-         </font>
-      </Label>
-      <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="288.0" layoutY="321.0" prefHeight="30.0" prefWidth="152.0" text="Customer Code">
-         <font>
-            <Font name="System Bold" size="20.0" />
-         </font>
-      </Label>
-      <TextField fx:id="txt_fullname1" layoutX="291.0" layoutY="351.0" prefHeight="39.0" prefWidth="418.0">
-         <font>
-            <Font size="18.0" />
-         </font>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-         <cursor>
-            <Cursor fx:constant="DEFAULT" />
-         </cursor>
-      </TextField>
-      <TextField fx:id="txt_fullname11" layoutX="289.0" layoutY="263.0" prefHeight="39.0" prefWidth="418.0">
-         <font>
-            <Font size="18.0" />
-         </font>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-         <cursor>
-            <Cursor fx:constant="DEFAULT" />
-         </cursor>
-      </TextField>
-      <Button fx:id="btn_back" layoutX="10.0" layoutY="78.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="88.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
-      <ImageView fitHeight="39.0" fitWidth="56.0" layoutX="14.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="image_customer" fitHeight="142.0" fitWidth="160.0" layoutX="737.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../image/back.png" />
-         </image>
-      </ImageView>
-      <TextField fx:id="txt_location1" layoutX="294.0" layoutY="784.0" prefHeight="39.0" prefWidth="418.0">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </TextField>
+            <Image url="https://img.freepik.com/free-vector/illustration-user-avatar-icon_53876-5907.jpg?w=740&amp;amp;t=st=1683003422~exp=1683004022~hmac=057b6d420859ea6a49f175db90ae4017350a9aa8ce8e93b8caab5e3f10c16493" />
+         </image></ImageView>
+        <ImageView fitHeight="38.0" fitWidth="42.0" layoutX="20.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../image/back.png" />
+            </image>
+        </ImageView>
+        <Button fx:id="btn_addThumnail" layoutX="724.0" layoutY="302.0" mnemonicParsing="false" onAction="#chooseImageProduct" prefHeight="44.0" prefWidth="173.0" style="-fx-cursor: hand;" stylesheets="@css/test.css" text="Add Thumnail" underline="true">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Button>
+        <Label layoutX="38.0" layoutY="588.0" prefHeight="30.0" prefWidth="100.0" text="Location">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Button fx:id="btn_back" layoutX="6.0" layoutY="58.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="83.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
+        <TextField fx:id="txt_fullNameCustomer" layoutX="30.0" layoutY="205.0" prefHeight="38.0" prefWidth="350.0">
+            <font>
+                <Font size="18.0" />
+            </font></TextField>
+        <ChoiceBox fx:id="choice_gender" layoutX="441.0" layoutY="205.0" prefHeight="38.0" prefWidth="150.0" />
+        <TextField fx:id="txt_phoneNumberCustomer" layoutX="29.0" layoutY="449.0" prefHeight="38.0" prefWidth="350.0">
+            <font>
+                <Font size="18.0" />
+            </font></TextField>
+        <TextField fx:id="txt_emailCustomer" layoutX="412.0" layoutY="449.0" prefHeight="38.0" prefWidth="379.0">
+            <font>
+                <Font size="18.0" />
+            </font></TextField>
+        <TextField fx:id="txt_locationCustomer" layoutX="29.0" layoutY="618.0" prefHeight="38.0" prefWidth="483.0">
+            <font>
+                <Font size="18.0" />
+            </font></TextField>
+        <Label layoutX="18.0" layoutY="372.0" prefHeight="35.0" prefWidth="100.0" text="Contact">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font>
+        </Label>
+        <Label layoutX="20.0" layoutY="129.0" prefHeight="35.0" prefWidth="141.0" text="Information">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font>
+        </Label>
+        <Label layoutX="18.0" layoutY="536.0" prefHeight="35.0" prefWidth="100.0" text="Address">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font>
+        </Label>
+        <Label layoutX="690.0" layoutY="121.0" prefHeight="35.0" prefWidth="193.0" text="Customer Image">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font>
+        </Label>
     </children>
 </AnchorPane>
