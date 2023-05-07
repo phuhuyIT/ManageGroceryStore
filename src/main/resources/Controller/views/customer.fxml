@@ -62,7 +62,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Button fx:id="btn_detailUser2" layoutX="148.0" layoutY="3.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="47.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
+            <Button fx:id="btn_detailUser2" layoutX="146.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="47.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
          </children>
       </AnchorPane>
       <Label layoutX="375.0" layoutY="35.0" prefHeight="52.0" prefWidth="170.0" style="-fx-font-weight: bold;" text="Customer">
