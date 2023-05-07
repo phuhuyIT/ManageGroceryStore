@@ -17,7 +17,7 @@ public class CategoryDao implements DaoInterface <Category> {
     private Statement stmt1=null;
     private ResultSet rs = null;
     Stocks stocks = null;
-    public CategoryDao(Connection conn) {
+    public CategoryDao() {
         try {
             con = new ConnectionFactory().getConnection();
             stmt = con.createStatement();
@@ -143,5 +143,35 @@ public class CategoryDao implements DaoInterface <Category> {
         }
         return products;
 
+    }
+    public int getCategoryIDByName(String name){
+        String query = "SELECT categoryid FROM product_categories WHERE name = ?";
+        int categoryId=0;
+        try {
+            pstmt =con.prepareStatement(query);
+            pstmt.setString(1, name);
+            rs = pstmt.executeQuery();
+            if (rs.next()) {
+                categoryId = rs.getInt("categoryid");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return categoryId;
+    }
+    public String getNameByCategoryID(int ID){
+        String query = "SELECT name FROM product_categories WHERE categoryid = ?";
+        String name=null;
+        try {
+            pstmt =con.prepareStatement(query);
+            pstmt.setInt(1, ID);
+            rs = pstmt.executeQuery();
+            if (rs.next()) {
+                name = rs.getString("name");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return name;
     }
 }

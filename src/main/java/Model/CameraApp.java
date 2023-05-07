@@ -71,9 +71,8 @@ public class CameraApp extends Thread{
                 Result finalResult = result;
                 Platform.runLater(() -> {
                     tf_addProductUPC.setText(finalResult.getText());
-                    AlertAndVerifyController.informationAlert("Success","ĐÃ QUÉT THÀNH CÔNG");
                 });
-                Thread.sleep(10000);
+                Thread.sleep(3000);
                 System.out.println("Barcode: " + finalResult.getText());
 
             }

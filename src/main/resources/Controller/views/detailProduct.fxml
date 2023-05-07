@@ -3,6 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.InnerShadow?>
@@ -23,7 +25,7 @@
             <InnerShadow />
          </effect>
       </Label>
-      <Button fx:id="btn_save" alignment="CENTER" layoutX="406.0" layoutY="869.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="153.0" style="-fx-cursor: hand;" stylesheets="@css/test.css" text="Update" textAlignment="RIGHT" textFill="WHITE">
+      <Button fx:id="btn_save" alignment="CENTER" layoutX="406.0" layoutY="869.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="153.0" style="-fx-cursor: hand;" stylesheets="@css/test.css" text="  Update" textAlignment="RIGHT" textFill="WHITE">
          <font>
             <Font name="System Bold" size="28.0" />
          </font>
@@ -31,12 +33,12 @@
             <Insets left="25.0" right="9.0" />
          </padding></Button>
       <Line endX="499.99993896484375" endY="-8.0" layoutX="500.0" layoutY="67.0" startX="-500.0" startY="-8.0" strokeWidth="3.0" />
-      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="418.0" layoutY="881.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="413.0" layoutY="881.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../image/confirm.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="image_product" fitHeight="141.0" fitWidth="141.0" layoutX="553.0" layoutY="163.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="iv_productThumbnail" fitHeight="141.0" fitWidth="141.0" layoutX="553.0" layoutY="163.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="14.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../image/back.png" />
@@ -48,188 +50,173 @@
          </font>
       </Button>
       <Button fx:id="btn_back" layoutX="4.0" layoutY="61.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="80.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
-      <Label layoutX="29.0" layoutY="153.0" prefHeight="114.0" prefWidth="450.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 7px;" />
-      <Label layoutX="46.0" layoutY="155.0" prefHeight="44.0" prefWidth="141.0" text="Product Name">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="29.0" layoutY="550.0" prefHeight="120.0" prefWidth="457.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 7px;" />
-      <Label layoutX="40.0" layoutY="560.0" prefHeight="44.0" prefWidth="172.0" text="Product Category">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="29.0" layoutY="715.0" prefHeight="120.0" prefWidth="457.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 7px;" />
-      <Label layoutX="29.0" layoutY="115.0" text="Description">
-         <font>
-            <Font name="System Bold" size="26.0" />
-         </font>
-      </Label>
-      <Label layoutX="29.0" layoutY="515.0" text="Category">
-         <font>
-            <Font name="System Bold" size="26.0" />
-         </font>
-      </Label>
-      <Label layoutX="29.0" layoutY="681.0" text="Inventory">
-         <font>
-            <Font name="System Bold" size="26.0" />
-         </font>
-      </Label>
-      <Label layoutX="44.0" layoutY="719.0" prefHeight="44.0" prefWidth="80.0" text="Quantity">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="225.0" layoutY="719.0" prefHeight="44.0" prefWidth="102.0" text="UPC CODE">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <TextField layoutX="42.0" layoutY="763.0" prefHeight="44.0" prefWidth="160.0">
-         <font>
-            <Font size="18.0" />
-         </font></TextField>
       <Label layoutX="533.0" layoutY="115.0" text="Product Image">
          <font>
-            <Font name="System Bold" size="26.0" />
+            <Font size="26.0" />
          </font>
       </Label>
-      <Label layoutX="534.0" layoutY="352.0" text="Date">
+      <Label layoutX="516.0" layoutY="684.0" prefHeight="38.0" prefWidth="94.0" text="Pricing">
          <font>
-            <Font name="System Bold" size="26.0" />
+            <Font size="26.0" />
          </font>
       </Label>
-      <Label layoutX="530.0" layoutY="390.0" prefHeight="108.0" prefWidth="450.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 7px;" />
-      <Label layoutX="585.0" layoutY="400.0" prefHeight="44.0" prefWidth="94.0" text="MFG.Date">
+      <Label layoutX="514.0" layoutY="734.0" prefHeight="100.0" prefWidth="468.0" style="-fx-border-color: #eeeeee; -fx-border-radius: 7px; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 1.5, 0, 0, 0);" />
+      <Label layoutX="531.0" layoutY="730.0" prefHeight="44.0" prefWidth="94.0" text="Cost Price" textFill="#8a8a8a">
          <font>
-            <Font size="20.0" />
+            <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="821.0" layoutY="400.0" prefHeight="44.0" prefWidth="94.0" text="EXP.Date">
+      <Label layoutX="768.0" layoutY="730.0" prefHeight="44.0" prefWidth="109.0" text="Selling Price" textFill="#8a8a8a">
          <font>
-            <Font size="20.0" />
+            <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="533.0" layoutY="518.0" prefHeight="38.0" prefWidth="153.0" text="Selling Type">
+      <TextField fx:id="tf_detailProductCostPrice" layoutX="564.0" layoutY="773.0" prefHeight="44.0" prefWidth="160.0" style="-fx-background-radius: 7px;">
          <font>
-            <Font name="System Bold" size="26.0" />
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="tf_detailProductSellingPrice" layoutX="800.0" layoutY="773.0" prefHeight="44.0" prefWidth="160.0" style="-fx-background-radius: 7px;">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <ImageView fitHeight="44.0" fitWidth="45.0" layoutX="519.0" layoutY="770.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/Dólar.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="44.0" fitWidth="58.0" layoutX="755.0" layoutY="770.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/Dólar.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="514.0" layoutY="508.0" prefHeight="38.0" prefWidth="153.0" text="Selling Type">
+         <font>
+            <Font size="26.0" />
          </font>
       </Label>
-      <Label layoutX="530.0" layoutY="553.0" prefHeight="114.0" prefWidth="450.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 7px;">
+      <Label layoutX="514.0" layoutY="546.0" prefHeight="116.0" prefWidth="468.0" style="-fx-border-color: #eeeeee; -fx-border-radius: 7px; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 1.5, 0, 0, 0);">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <CheckBox layoutX="538.0" layoutY="559.0" mnemonicParsing="false" text="In-store selling only">
+      <CheckBox layoutX="531.0" layoutY="558.0" mnemonicParsing="false" text="In-store selling only">
          <font>
             <Font size="16.0" />
          </font>
       </CheckBox>
-      <CheckBox layoutX="538.0" layoutY="592.0" mnemonicParsing="false" text="Online selling only">
+      <CheckBox layoutX="531.0" layoutY="591.0" mnemonicParsing="false" text="Online selling only">
          <font>
             <Font size="16.0" />
          </font>
       </CheckBox>
-      <CheckBox layoutX="538.0" layoutY="630.0" mnemonicParsing="false" text="Available both in-store and online">
+      <CheckBox layoutX="531.0" layoutY="625.0" mnemonicParsing="false" text="Available both in-store and online">
          <font>
             <Font size="16.0" />
          </font>
       </CheckBox>
-      <Label layoutX="538.0" layoutY="681.0" prefHeight="38.0" prefWidth="94.0" text="Pricing">
+      <Label layoutX="517.0" layoutY="347.0" text="Date">
          <font>
-            <Font name="System Bold" size="26.0" />
+            <Font size="26.0" />
          </font>
       </Label>
-      <Label layoutX="538.0" layoutY="715.0" prefHeight="120.0" prefWidth="450.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 7px;" />
-      <Label layoutX="546.0" layoutY="726.0" prefHeight="44.0" prefWidth="94.0" text="Cost Price">
+      <Label layoutX="514.0" layoutY="396.0" prefHeight="90.0" prefWidth="468.0" style="-fx-border-color: #eeeeee; -fx-border-radius: 7px; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 1.5, 0, 0, 0);" />
+      <Label layoutX="529.0" layoutY="395.0" prefHeight="44.0" prefWidth="180.0" text="Manufracture Date" textFill="#8a8a8a">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="788.0" layoutY="726.0" prefHeight="44.0" prefWidth="94.0" text="Sell Price">
+      <Label fx:id="dp_addProductExpirationDate" layoutX="768.0" layoutY="395.0" prefHeight="44.0" prefWidth="166.0" text="Expiration date" textFill="#8a8a8a">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <TextField layoutX="585.0" layoutY="770.0" prefHeight="44.0" prefWidth="150.0">
-         <font>
-            <Font size="18.0" />
-         </font></TextField>
-      <TextField layoutX="821.0" layoutY="770.0" prefHeight="44.0" prefWidth="150.0">
-         <font>
-            <Font size="18.0" />
-         </font></TextField>
-      <ImageView fitHeight="44.0" fitWidth="45.0" layoutX="541.0" layoutY="767.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../image/Dólar.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="44.0" fitWidth="58.0" layoutX="777.0" layoutY="767.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../image/Dólar.jpg" />
-         </image>
-      </ImageView>
-      <Label fx:id="productName" layoutX="46.0" layoutY="199.0" prefHeight="44.0" prefWidth="416.0" style="-fx-border-color: #CCCCCC;">
+      <DatePicker fx:id="dp_detailProductManufractureDate" layoutX="529.0" layoutY="431.0" prefHeight="38.0" prefWidth="207.0" />
+      <DatePicker fx:id="dp_detailProductExpireDate" layoutX="768.0" layoutY="431.0" prefHeight="38.0" prefWidth="197.0" />
+      <Label layoutX="39.0" layoutY="167.0" prefHeight="334.0" prefWidth="416.0" style="-fx-border-color: #eeeeee; -fx-border-radius: 7px; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 1.7, 0, 0, 0);" />
+      <Label layoutX="56.0" layoutY="165.0" prefHeight="44.0" prefWidth="141.0" text="Product Name" textFill="#8a8a8a">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="productCategory" layoutX="40.0" layoutY="609.0" prefHeight="44.0" prefWidth="435.0" style="-fx-border-color: #CCCCCC;">
+      <Label layoutX="56.0" layoutY="241.0" prefHeight="44.0" prefWidth="197.0" text="Supplier name" textFill="#8a8a8a">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="productCode" layoutX="225.0" layoutY="763.0" prefHeight="44.0" prefWidth="247.0" style="-fx-border-color: #CCCCCC;">
+      <Label layoutX="39.0" layoutY="552.0" prefHeight="108.0" prefWidth="416.0" style="-fx-border-color: #eeeeee; -fx-border-radius: 7px; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 1.5, 0, 0, 0);" />
+      <Label layoutX="54.0" layoutY="558.0" prefHeight="44.0" prefWidth="172.0" text="Product Category" textFill="#8a8a8a">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField layoutX="547.0" layoutY="441.0" prefHeight="44.0" prefWidth="197.0">
+      <Label layoutX="39.0" layoutY="734.0" prefHeight="100.0" prefWidth="416.0" style="-fx-border-radius: 7px; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 1.5, 0, 0, 0); -fx-border-color: #eeeeee;" textAlignment="CENTER" />
+      <ChoiceBox fx:id="cb_detailProductCategory" layoutX="56.0" layoutY="596.0" prefHeight="44.0" prefWidth="382.0" style="-fx-background-color: #ffffff; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 2, 0, 0, 0);" />
+      <Label layoutX="39.0" layoutY="513.0" text="Category">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="45.0" layoutY="684.0" text="Inventory">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="60.0" layoutY="737.0" prefHeight="44.0" prefWidth="80.0" text="Quantity" textFill="#8a8a8a">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="183.0" layoutY="737.0" prefHeight="44.0" prefWidth="102.0" text="UPC CODE" textFill="#8a8a8a">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tf_detailProductQuantity" layoutX="60.0" layoutY="773.0" prefHeight="44.0" prefWidth="111.0" style="-fx-background-radius: 7px;">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField layoutX="769.0" layoutY="444.0" prefHeight="44.0" prefWidth="197.0">
+      <Label layoutX="56.0" layoutY="321.0" prefHeight="44.0" prefWidth="197.0" text="Supplier Location" textFill="#8a8a8a">
          <font>
             <Font size="18.0" />
          </font>
-      </TextField>
-      <Label layoutX="26.0" layoutY="286.0" text="Supplier">
-         <font>
-            <Font name="System Bold" size="26.0" />
-         </font>
       </Label>
-      <Label layoutX="26.0" layoutY="324.0" prefHeight="176.0" prefWidth="457.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 7px;" />
-      <Label layoutX="36.0" layoutY="341.0" prefHeight="30.0" prefWidth="141.0" text="Supplier Name">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="38.0" layoutY="395.0" prefHeight="25.0" prefWidth="160.0" text="Supplier Location">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="36.0" layoutY="451.0" prefHeight="30.0" prefWidth="141.0" text="Supplier Phone">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <TextField layoutX="207.0" layoutY="334.0" prefHeight="44.0" prefWidth="262.0">
+      <Label layoutX="56.0" layoutY="402.0" prefHeight="44.0" prefWidth="197.0" text="Supplier phone" textFill="#8a8a8a">
          <font>
             <Font size="18.0" />
          </font>
-      </TextField>
-      <TextField layoutX="207.0" layoutY="388.0" prefHeight="44.0" prefWidth="262.0">
+      </Label>
+      <Label layoutX="40.0" layoutY="124.0" text="Original">
          <font>
-            <Font size="18.0" />
+            <Font size="26.0" />
          </font>
-      </TextField>
-      <TextField layoutX="207.0" layoutY="444.0" prefHeight="44.0" prefWidth="262.0">
+      </Label>
+      <Label fx:id="lb_detailProductSupplierName" alignment="CENTER" contentDisplay="CENTER" layoutX="56.0" layoutY="277.0" prefHeight="44.0" prefWidth="382.0" style="-fx-border-color: #ebebeb; -fx-border-radius: 7px;" textAlignment="CENTER" textFill="#2596be">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
-      </TextField>
+      </Label>
+      <Label fx:id="lb_detailProductSupplierLocation" alignment="CENTER" contentDisplay="CENTER" layoutX="56.0" layoutY="363.0" prefHeight="44.0" prefWidth="382.0" style="-fx-border-color: #ebebeb; -fx-border-radius: 7px;" textAlignment="CENTER" textFill="#2596be">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lb_detailProductSupplierPhone" alignment="CENTER" contentDisplay="CENTER" layoutX="56.0" layoutY="441.0" prefHeight="44.0" prefWidth="382.0" style="-fx-border-color: #ebebeb; -fx-border-radius: 7px;" textAlignment="CENTER" textFill="#2596be">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lb_detailProductUPC" alignment="CENTER" contentDisplay="CENTER" layoutX="183.0" layoutY="773.0" prefHeight="44.0" prefWidth="247.0" style="-fx-border-color: #ebebeb; -fx-border-radius: 7px;" textAlignment="CENTER" textFill="#2596be">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lb_detailProductName" alignment="CENTER" contentDisplay="CENTER" layoutX="56.0" layoutY="201.0" prefHeight="44.0" prefWidth="382.0" style="-fx-border-radius: 7px; -fx-border-color: #ebebeb;" textAlignment="CENTER" textFill="#2596be">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

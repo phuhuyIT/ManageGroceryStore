@@ -111,7 +111,7 @@ public class ProductDAO extends AlertAndVerifyController implements DaoInterface
     public ResultSet selectByID(int ID) {
         ResultSet rs;
         try {
-            String selectByID_query = "SELECT * FROM PRODUCTS WHERE Pid =?";
+            String selectByID_query = "SELECT * FROM PRODUCTS P INNER JOIN PRODUCTBATCH PB ON P.PID = PB.PID WHERE P.Pid =? ";
             pstmt= con.prepareStatement(selectByID_query);
             pstmt.setInt(1,ID);
             rs =pstmt.executeQuery();
@@ -161,5 +161,19 @@ public class ProductDAO extends AlertAndVerifyController implements DaoInterface
             e.printStackTrace();
         }
         return result;
+    }
+    public long getQuantity(int pid){
+        String query="SELECT SUM(quantity) AS totalQuantity FROM PRODUCTBATCH WHERE pid = ?";
+        long totalQuantity=0;
+        try {
+            pstmt = con.prepareStatement(query);
+            pstmt.setInt(1,pid);
+            rs =pstmt.executeQuery();
+            if(rs.next())
+                totalQuantity=rs.getInt("totalQuantity");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return totalQuantity;
     }
 }

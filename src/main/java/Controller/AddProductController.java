@@ -1,5 +1,6 @@
 package Controller;
 
+import DAO.CategoryDao;
 import DAO.ProductDAO;
 import DAO.SupplierDAO;
 import Model.CameraApp;
@@ -93,7 +94,7 @@ public class AddProductController extends DetailProductController implements Ini
         //Định dạng DatePicker thành dd/mm/yyyy
         setDatePickerConverter(dp_addProductManufractureDate);
         setDatePickerConverter(dp_addProductExpireDate);
-        cb_addProductCategory.getItems().addAll("Thực phẩm tươi sống","Thực phẩm đóng gói","Hàng gia dụng", "Đồ dùng cá nhân","Vật dụng học tập và văn phòng phẩm",
+        cb_addProductCategory.getItems().addAll("Thực phẩm tươi sống","Thực phẩm chế biến sẵn","Hàng gia dụng", "Đồ dùng cá nhân","Vật dụng học tập và văn phòng phẩm",
                 "Hóa phẩm và chất tẩy rửa","Đồ chơi và quà tặng","Thuốc và vật dụng y tế");
         setBtnBackAction();
         btn_save.setOnAction(new EventHandler<ActionEvent>() {
@@ -141,7 +142,8 @@ public class AddProductController extends DetailProductController implements Ini
             SupplierDAO supplierDAO = new SupplierDAO();
             int sid = supplierDAO.insert(supplier);
 
-            int categoryId =getCategoryIDFromChoiceBox(cb_addProductCategory.getValue().toString());
+            CategoryDao categoryDao= new CategoryDao();
+            int categoryId =categoryDao.getCategoryIDByName(cb_addProductCategory.getValue().toString());
             ProductDAO productdao = new ProductDAO();
             Product product = new Product(tf_addProductName.getText(),categoryId,tf_addProductUPC.getText(),filePath.toString(),sid,Double.parseDouble(tf_addProductCostPrice.getText()),Double.parseDouble(tf_addProductSellingPrice.getText()),
                     dp_addProductManufractureDate.getValue(),dp_addProductExpireDate.getValue(),Integer.parseInt(tf_addProductQuantity.getText()));
@@ -150,22 +152,5 @@ public class AddProductController extends DetailProductController implements Ini
             if(isAdded!=0)
                 informationAlert("Successful addition","THIS PRODUCT HAS BEEN ADDED");
         }
-    }
-    private int getCategoryIDFromChoiceBox(String category){
-        if(category=="Thực phẩm tươi sống"){
-            return 1;
-        } else if (category=="Thực phẩm đóng gói") {
-            return 2;
-        } else if (category=="Hàng gia dụng") {
-            return 3;
-        }else if (category=="Đồ dùng cá nhân") {
-            return 4;
-        }else if (category=="Vật dụng học tập và văn phòng phẩm") {
-            return 5;
-        }else if (category=="Hóa phẩm và chất tẩy rửa") {
-            return 6;
-        }else if (category=="Đồ chơi và quà tặng") {
-            return 7;
-        }else return 8;
     }
 }

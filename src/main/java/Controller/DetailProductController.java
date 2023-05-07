@@ -1,5 +1,6 @@
 package Controller;
 
+import DAO.CategoryDao;
 import DAO.ProductDAO;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -7,8 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -26,21 +26,29 @@ public class DetailProductController extends AlertAndVerifyController implements
     @FXML
     private AnchorPane pane;
     @FXML
-    private Label lb_detailProductCode;
-    @FXML
     private Label lb_detailProductName;
     @FXML
-    private Label lb_detailProductCategory;
+    private Label lb_detailProductSupplierName;
     @FXML
-    private Label lb_detailProductSupplier;
+    private Label lb_detailProductSupplierLocation;
     @FXML
-    private Label lb_detailProductCostPrice;
+    private Label lb_detailProductSupplierPhone;
     @FXML
-    private Label lb_detailProductSellingPrice;
+    private ChoiceBox cb_detailProductCategory;
     @FXML
-    private Label lb_detailProductDescription;
+    private TextField tf_detailProductQuantity;
+    @FXML
+    private Label lb_detailProductUPC;
     @FXML
     private ImageView iv_productThumbnail;
+    @FXML
+    private DatePicker dp_detailProductManufractureDate;
+    @FXML
+    private DatePicker dp_detailProductExpireDate;
+    @FXML
+    private TextField tf_detailProductCostPrice;
+    @FXML
+    private TextField tf_detailProductSellingPrice;
     @FXML
     private Button btn_back;
     private File filePath;
@@ -73,6 +81,9 @@ public class DetailProductController extends AlertAndVerifyController implements
         ProductDAO product=new ProductDAO();
         System.out.println("CUR productID: "+ProductController.getCurrentProductID());
         ResultSet rs = product.selectByID(ProductController.getCurrentProductID());
+
+        CategoryDao categoryDao = new CategoryDao();
+
         try {
             if(rs.next()){
                 String img  = rs.getString("THUMBNAIL");
@@ -80,13 +91,19 @@ public class DetailProductController extends AlertAndVerifyController implements
                     Image image1 = new Image(String.valueOf(img));
                     iv_productThumbnail.setImage(image1);
                 }
-                lb_detailProductCode.setText(rs.getString("PRODUCTCODE"));
                 lb_detailProductName.setText(rs.getString("PRODUCTNAME"));
-                lb_detailProductCategory.setText(rs.getString("CATEGORY"));
-                lb_detailProductSupplier.setText("CUC");
-                lb_detailProductCostPrice.setText(String.valueOf(rs.getDouble("COSTPRICE")));
-                lb_detailProductSellingPrice.setText(String.valueOf(rs.getDouble("SELLINGPRICE")));
-                lb_detailProductDescription.setText("CHUA CO");
+                int categoryID=rs.getInt("Categoryid");
+
+                cb_detailProductCategory.setValue(categoryDao.getNameByCategoryID(categoryID));
+                tf_detailProductQuantity.setText(String.valueOf(product.getQuantity(rs.getInt("Pid"))));
+                tf_detailProductCostPrice.setText(String.valueOf(rs.getDouble("COSTPRICE")));
+                tf_detailProductSellingPrice.setText(String.valueOf(rs.getDouble("SELLINGPRICE")));
+                lb_detailProductUPC.setText(rs.getString("PRODUCTBARCODE"));
+                dp_detailProductManufractureDate.setValue(rs.getDate("manufactureDate").toLocalDate());
+                dp_detailProductExpireDate.setValue(rs.getDate("expirationDate").toLocalDate());
+                lb_detailProductSupplierName.setText(rs.getString("PRODUCTNAME"));
+                lb_detailProductSupplierLocation.setText(rs.getString("CATEGORYID"));
+                lb_detailProductSupplierPhone.setText("CUC");
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

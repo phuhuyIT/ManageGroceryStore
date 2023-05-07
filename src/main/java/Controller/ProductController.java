@@ -78,19 +78,19 @@ public class ProductController implements Initializable {
         choiceBox_list.getItems().addAll(list);
 
 
-//        EventHandler<ActionEvent> linktoDetailProduct =event -> {
-//            String fxmlPath = "views/detailProduct.fxml";
-//            Button btn= (Button) event.getSource();
-//            String id= (String)btn.getUserData();
-//            currentProductID = Integer.parseInt(id);
-//            loadFXML(fxmlPath);
-//        };
-//
-//        for (int i=0;i<8;i++){
-//            AnchorPane ap = (AnchorPane) pane_Product.lookup("#productBox"+(i+1));
-//            Button btnDetailsProduct = (Button) ap.lookup("#btnProductDetails"+(i+1));
-//            btnDetailsProduct.setOnAction(linktoDetailProduct);
-//        }
+        EventHandler<ActionEvent> linktoDetailProduct =event -> {
+            String fxmlPath = "views/detailProduct.fxml";
+            Button btn= (Button) event.getSource();
+            String id= (String)btn.getUserData();
+            currentProductID = Integer.parseInt(id);
+            loadFXML(fxmlPath);
+        };
+
+        for (int i=0;i<8;i++){
+            AnchorPane ap = (AnchorPane) pane_Product.lookup("#productBox"+(i+1));
+            Button btnDetailsProduct = (Button) ap.lookup("#btnProductDetails"+(i+1));
+            btnDetailsProduct.setOnAction(linktoDetailProduct);
+        }
     btn_addProduct.setOnAction(new EventHandler<ActionEvent>() {
         @Override
         public void handle(ActionEvent actionEvent) {
@@ -130,7 +130,7 @@ public class ProductController implements Initializable {
         FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource(fxmlPath));
         Node node = null;
         try {
-            node = loader.load();
+            node = loader.<Node>load();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
