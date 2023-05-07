@@ -20,6 +20,18 @@ public class Product {
     private String SKUCode;
     private String thumbnailLink;
 
+    public Product(String productName, int productId,int categoryID, int quantity,  String thumbnailLink,LocalDate MFGDate, LocalDate EXPDate, double costPrice, double sellingPrice) {
+        this.productName = productName;
+        this.productId = productId;
+        this.MFGDate = MFGDate;
+        this.EXPDate = EXPDate;
+        this.quantity = quantity;
+        this.costPrice = costPrice;
+        this.sellingPrice = sellingPrice;
+        this.categoryID = categoryID;
+        this.thumbnailLink = thumbnailLink;
+    }
+
     public Product(String productName, int categoryID, String productBarCode, String thumbnailLink, int supplierID, double costPrice, double sellingPrice, LocalDate MFGDate, LocalDate EXPDate, int quantity) {
         this.productBarCode = productBarCode;
         this.MFGDate = MFGDate;

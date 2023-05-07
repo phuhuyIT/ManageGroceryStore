@@ -126,6 +126,13 @@ public class SupplierDAO extends AlertAndVerifyController implements DaoInterfac
 
     @Override
     public ResultSet selectByID(int ID) {
+        try{
+            String query="select fullname, location, phone from suppliers where sid=?";
+            pstmt=con.prepareStatement(query);
+            pstmt.setInt(1,ID);
+            rs=pstmt.executeQuery();
+        }catch(SQLException  e){
+        }
         return rs;
     }
     @Override

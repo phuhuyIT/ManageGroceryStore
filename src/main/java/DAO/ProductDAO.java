@@ -66,32 +66,42 @@ public class ProductDAO extends AlertAndVerifyController implements DaoInterface
 
     @Override
     public int update(Product product) {
-
-       /* String updateProduct= "UPDATE PRODUCT SET PRODUCTID=?, PRODUCTCODE=?, DATE=?, SELLDATE=?," +
-                " SUPPLIERCODE=?, PRODUCTNAME=?,QUANTITY=?,COSTPRICE=?,SELLINGPRICE=?,BRAND=?,USERID=?," +
-                "CUSTOMERCODE=?,TOTALCOST=?,TOTALREVENUE=? WHERE  CUSTOMERID= ?";
-        int result;
+        int affectedRow=0;
+        String updateProduct = "UPDATE products SET categoryid = ?, costPrice = ?, sellingPrice = ?, thumbnail =? WHERE pid=?";
         try {
-            pstmt = (PreparedStatement) con.prepareStatement(updateProduct);
-            pstmt.setInt(1,product.getProductId());
-            pstmt.setString(2,product.getProductBarCode());
-            pstmt.setDate(3, (Date) product.getDate());
-            pstmt.setDate(4, (Date) product.getSellDate());
-            pstmt.setString(5,product.getSupplierCode());
-            pstmt.setString(6,product.getProductName());
-            pstmt.setInt(7,product.getQuantity());
-            pstmt.setDouble(8,product.getCostPrice());
-            pstmt.setDouble(9,product.getSellingPrice());
-            pstmt.setString(10,product.getBrand());
-            pstmt.setInt(11,product.getUserId());
-            pstmt.setString(12,product.getCustomerCode());
-            pstmt.setDouble(13,product.getTotalCost());
-            pstmt.setDouble(14,product.getTotalRevenue());
-            result=pstmt.executeUpdate();
+            pstmt = con.prepareStatement(updateProduct);
+            pstmt.setInt(1,product.getCategoryID());
+            pstmt.setDouble(2,product.getCostPrice());
+            pstmt.setDouble(3,product.getSellingPrice());
+            pstmt.setString(4, product.getThumbnailLink());
+            pstmt.setInt(5,product.getProductId());
+            affectedRow+=pstmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        }*/
-        return 0;
+        }
+
+        try {
+            String checkProductBatch = "Select BATCHID FROM PRODUCTBATCH WHERE manufractureDate=? AND PID =?";
+            pstmt = con.prepareStatement(checkProductBatch);
+            pstmt.setDate(1,Date.valueOf(product.getMFGDate()));
+            pstmt.setInt(2,product.getProductId());
+            rs=pstmt.executeQuery();
+            if(rs.next()){
+                String updateProductBatch = "UPDATE PRODUCTBATCH SET Quantity=?,importDate=CURRENT_TIMESTAMP WHERE manufractureDate=? AND PID =?";
+                pstmt = con.prepareStatement(updateProductBatch);
+                pstmt.setInt(1, product.getQuantity());
+                pstmt.setDate(2,Date.valueOf(product.getMFGDate()));
+                pstmt.setInt(3,product.getProductId());
+                affectedRow+=pstmt.executeUpdate();
+                informationAlert("Update","THE BATCH OF PRODUCT "+product.getProductName().toUpperCase()+" PRODUCED ON "+product.getMFGDate()+" HAS BEEN UPDATED WITH THE QUANTITY");
+            }else{
+                addProductBatch(product,product.getProductId());
+                informationAlert("Addition","SUCCESSFULLY ADDED NEW BATCH FOR PRODUCT "+product.getProductName().toUpperCase());
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return affectedRow;
     }
 
     @Override
@@ -148,15 +158,7 @@ public class ProductDAO extends AlertAndVerifyController implements DaoInterface
             if(rs.next()) {
                 pid = rs.getInt("LAST_INSERT_ID()");
             }
-            System.out.println(pid);
-            String addProductBatch= "INSERT INTO PRODUCTBATCH (pid, expirationDate, manufactureDate, quantity)"
-                    +"VALUE(?,?,?,?)";
-            pstmt = con.prepareStatement(addProductBatch);
-            pstmt.setInt(1,pid);
-            pstmt.setDate(2, Date.valueOf(product.getEXPDate()));
-            pstmt.setDate(3,Date.valueOf(product.getMFGDate()));
-            pstmt.setInt(4,product.getQuantity());
-            pstmt.executeUpdate();
+            addProductBatch(product, pid);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -175,5 +177,21 @@ public class ProductDAO extends AlertAndVerifyController implements DaoInterface
             throw new RuntimeException(e);
         }
         return totalQuantity;
+    }
+    private void addProductBatch(Product product, int pid){
+
+        try {
+            String addProductBatch= "INSERT INTO PRODUCTBATCH (pid, expirationDate, manufractureDate, quantity)"
+                    +"VALUE(?,?,?,?)";
+            pstmt = con.prepareStatement(addProductBatch);
+            pstmt.setInt(1,pid);
+            pstmt.setDate(2, Date.valueOf(product.getEXPDate()));
+            pstmt.setDate(3,Date.valueOf(product.getMFGDate()));
+            pstmt.setInt(4,product.getQuantity());
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }
