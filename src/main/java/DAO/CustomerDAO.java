@@ -83,10 +83,9 @@ public class CustomerDAO extends AlertAndVerifyController implements DaoInterfac
     }
 
     @Override
-    public ResultSet selectALL() {
-        ArrayList<Customer> result= new ArrayList<Customer>();
+    public ResultSet selectALL(int Limit, int offSet) {
         try {
-            String sql= "SELECT * FROM CUSTOMERS";
+            String sql= "SELECT * FROM CUSTOMERS LIMIT "+Limit+" OFFSET "+offSet;
             pstmt= con.prepareStatement(sql);
             rs = pstmt.executeQuery();
         }catch (SQLException e) {
@@ -145,5 +144,18 @@ public class CustomerDAO extends AlertAndVerifyController implements DaoInterfac
         }
 
         return result;
+    }
+    public int getNumCustomer(){
+        String query="SELECT COUNT(cid) as numberCustomer FROM customers";
+        int numberCustomer=0;
+        try {
+            pstmt = con.prepareStatement(query);
+            rs = pstmt.executeQuery();
+            if(rs.next())
+                numberCustomer=rs.getInt("numberCustomer");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return numberCustomer;
     }
 }

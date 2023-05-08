@@ -8,7 +8,7 @@ public interface DaoInterface <T>{
     public int insert(T t);
     public int delete(String t) throws SQLException;
     public int update(T t);
-    public ResultSet selectALL () ;
+    public ResultSet selectALL (int Limit, int offSet) ;
     public ResultSet selectByID(int ID);
     public int addFunction(T t);
 }

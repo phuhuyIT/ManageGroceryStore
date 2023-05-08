@@ -28,7 +28,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class ProductController implements Initializable {
+public class ProductController extends Pagination implements Initializable {
     @FXML
     private TextField txt_search;
     @FXML
@@ -62,7 +62,6 @@ public class ProductController implements Initializable {
     private ChoiceBox<String> choiceBox_list;
     @FXML
     private AnchorPane pane_Product;
-
     private String[] choice = {"Tăng theo giá ", "Giảm theo giá" , "A->Z" , "Z->A"};
 
     private String[] list = {"Cake", "Noodle" , "Fast Food" , "Drinking" , "Ice Cream" , "Vegetable"};
@@ -72,6 +71,10 @@ public class ProductController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        numberData = new ProductDAO().getNumProuduct();
+        Limit=8;
+        offSet=0;
+
         choiceBox_sort.getItems().addAll(choice);
         choiceBox_sort.setStyle("-fx-font-size:15px ; -fx-background-color:transparent ; -fx-alignment:Center ; -fx-padding: 0px 5px 5px -2px");
         choiceBox_list.setStyle("-fx-font-size:20px ; -fx-background-color:transparent ; -fx-alignment:Center ; -fx-padding: 0px 5px 5px -2px");
@@ -122,7 +125,9 @@ public class ProductController implements Initializable {
             }
         }
     });
-    loadDataProduct();
+
+    showData(Limit,offSet);
+    setActionForBtn();
 
     }
     private void loadFXML(String fxmlPath) {
@@ -137,9 +142,10 @@ public class ProductController implements Initializable {
         pane_Product.getChildren().set(0,node);
     }
 
-    protected void loadDataProduct(){
+    @Override
+    protected void showData(int limit, int offSet) {
         ProductDAO pdao=new ProductDAO();
-        ResultSet rs=pdao.selectALL();
+        ResultSet rs=pdao.selectALL(limit,offSet);
         try {
             for (int i=0;i<8;i++){
 
@@ -150,12 +156,14 @@ public class ProductController implements Initializable {
                     Label productQuantity =(Label) ap.lookup("#productQuantity"+(i+1));
                     Label productPrice =(Label)ap.lookup("#productPrice"+(i+1));
                     Button productDetailBtn= (Button) ap.lookup("#btnProductDetails"+(i+1));
+                    Label productName = (Label)ap.lookup("#productName"+(i+1));
                     String img  = rs.getString("THUMBNAIL");
                     if(img!=null) {
                         Image image1 = new Image(String.valueOf(img));
                         productThumbnail.setImage(image1);
 
                     }
+                    productName.setText(rs.getString("PRODUCTNAME"));
                     productDetailBtn.setUserData(rs.getString("PID"));
                     productQuantity.setText(rs.getString("SELLINGPRICE"));
                     productPrice.setText(rs.getString("COSTPRICE"));
@@ -166,6 +174,31 @@ public class ProductController implements Initializable {
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        }
+
+    }
+
+    @Override
+    protected void clearData() {
+        for (int i=0;i<8;i++){
+                AnchorPane ap = (AnchorPane) pane_Product.lookup("#productBox"+(i+1));
+
+                ImageView productThumbnail =(ImageView) ap.lookup("#productThumbnail"+(i+1));
+                Label productQuantity =(Label) ap.lookup("#productQuantity"+(i+1));
+                Label productPrice =(Label)ap.lookup("#productPrice"+(i+1));
+                Button productDetailBtn= (Button) ap.lookup("#btnProductDetails"+(i+1));
+                Label productName = (Label)ap.lookup("#productName"+(i+1));
+                String img  = "D:/java/ManageGroceryStore/src/main/resources/Controller/image/empty.png";
+                if(img!=null) {
+                    Image image1 = new Image(String.valueOf(img));
+                    productThumbnail.setImage(image1);
+
+                }
+                productName.setText("");
+                productDetailBtn.setUserData("");
+                productQuantity.setText("");
+                productPrice.setText("");
+
         }
     }
 }

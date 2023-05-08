@@ -105,11 +105,11 @@ public class ProductDAO extends AlertAndVerifyController implements DaoInterface
     }
 
     @Override
-    public ResultSet selectALL() {
+    public ResultSet selectALL(int Limit, int offSet) {
 
         ArrayList<Product> result= new ArrayList<Product>();
         try {
-            String selectAllProduct = "SELECT * FROM PRODUCTS ORDER BY pid ASC LIMIT 10;";
+            String selectAllProduct = "SELECT * FROM PRODUCTS ORDER BY pid ASC LIMIT "+Limit+" OFFSET "+offSet;
             pstmt= con.prepareStatement(selectAllProduct);
             rs = pstmt.executeQuery();
         }catch (SQLException e){
@@ -193,5 +193,18 @@ public class ProductDAO extends AlertAndVerifyController implements DaoInterface
             throw new RuntimeException(e);
         }
 
+    }
+    public int getNumProuduct(){
+        String query="SELECT COUNT(pid) as numberProduct FROM products";
+        int numberProduct=0;
+        try {
+            pstmt = con.prepareStatement(query);
+            rs = pstmt.executeQuery();
+            if(rs.next())
+                numberProduct=rs.getInt("numberProduct");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return numberProduct;
     }
 }

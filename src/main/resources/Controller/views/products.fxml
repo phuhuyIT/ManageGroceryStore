@@ -392,6 +392,8 @@
                   <Image url="@../image/more.png" />
                </image>
             </ImageView>
+            <Button fx:id="btn_previousPage" layoutX="347.0" layoutY="667.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="58.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
+            <Button fx:id="btn_nextPage" layoutX="599.0" layoutY="667.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="58.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
          </children>
       </AnchorPane>
    </children>

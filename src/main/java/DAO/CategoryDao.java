@@ -114,7 +114,7 @@ public class CategoryDao implements DaoInterface <Category> {
 
     @Override
     // Lấy danh sách tất cả các danh mục sản phẩm từ cơ sở dữ liệu
-    public ResultSet selectALL() {
+    public ResultSet selectALL(int Limit, int offSet) {
         String sql = "SELECT * FROM categories";
         ArrayList<Category> categories = new ArrayList<>();
         try {

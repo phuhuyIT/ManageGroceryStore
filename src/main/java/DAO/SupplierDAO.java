@@ -112,7 +112,7 @@ public class SupplierDAO extends AlertAndVerifyController implements DaoInterfac
     }//end of method editCustomerDTO
 
     @Override
-    public ResultSet selectALL() {
+    public ResultSet selectALL(int Limit, int offSet) {
         ArrayList<Supplier> result= new ArrayList<Supplier>();
         try {
             String selectAllProduct = "SELECT * FROM SUPPLIER";
