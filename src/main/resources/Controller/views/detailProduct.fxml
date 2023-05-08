@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="pane" prefHeight="1000.0" prefWidth="1000.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DetailProductController">
+<AnchorPane fx:id="pane" prefHeight="900.0" prefWidth="1000.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DetailProductController">
    <children>
       <Label layoutX="538.0" layoutY="153.0" prefHeight="160.0" prefWidth="172.0" style="-fx-border-color: black; -fx-border-radius: 20px; -fx-border-style: dashed;" />
       <Label alignment="CENTER" layoutY="6.0" prefHeight="53.0" prefWidth="1000.0" style="-fx-font-weight: bold;" text="DETAIL PRODUCT">
@@ -25,7 +25,7 @@
             <InnerShadow />
          </effect>
       </Label>
-      <Button fx:id="btn_update" alignment="CENTER" layoutX="406.0" layoutY="869.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="153.0" style="-fx-cursor: hand;" stylesheets="@css/test.css" text="  Update" textAlignment="RIGHT" textFill="WHITE">
+      <Button fx:id="btn_update" alignment="CENTER" layoutX="410.0" layoutY="844.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="153.0" style="-fx-cursor: hand;" stylesheets="@css/test.css" text="  Update" textAlignment="RIGHT" textFill="WHITE">
          <font>
             <Font name="System Bold" size="28.0" />
          </font>
@@ -33,7 +33,7 @@
             <Insets left="25.0" right="9.0" />
          </padding></Button>
       <Line endX="499.99993896484375" endY="-8.0" layoutX="500.0" layoutY="67.0" startX="-500.0" startY="-8.0" strokeWidth="3.0" />
-      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="413.0" layoutY="881.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="415.0" layoutY="856.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../image/confirm.png" />
          </image>
