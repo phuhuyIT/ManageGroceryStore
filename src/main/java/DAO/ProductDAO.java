@@ -117,11 +117,6 @@ public class ProductDAO extends AlertAndVerifyController implements DaoInterface
     }
 
     @Override
-    public ResultSet selectALL() {
-        return null;
-    }
-
-    @Override
     public ResultSet selectByID(int ID) {
         ResultSet rs;
         try {
