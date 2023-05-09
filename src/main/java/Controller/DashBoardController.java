@@ -1,5 +1,8 @@
 package Controller;
 
+import DAO.CategoryDao;
+import DAO.ProductDAO;
+import DAO.StaffDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -12,18 +15,19 @@ public class DashBoardController implements Initializable {
     private Label title;
 
     @FXML
-    private Label num_customer;
+    private Label lb_numberStaff;
     @FXML
-    private Label num_product;
+    private Label lb_numberCategory;
     @FXML
-    private Label num_category;
+    private Label lb_numberProduct;
     @FXML
-    private Label num_revenue;
-
-
+    private Label lb_numberRevenue;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        lb_numberProduct.setText(String.valueOf(new ProductDAO().getNumProuduct()));
+        lb_numberCategory.setText(String.valueOf(new CategoryDao().getNumCategory()));
+        lb_numberStaff.setText(String.valueOf(new StaffDAO().getNumStaff()));
 
     }
 }

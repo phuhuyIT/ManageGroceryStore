@@ -141,12 +141,12 @@ public class SupplierDAO extends AlertAndVerifyController implements DaoInterfac
         return rs;
     }
     @Override
-    public int delete(String supplierCode){
+    public int delete(int supplierCode){
         int affectedRows=0;
         try{
             String query="delete from suppliers where suppliercode=?";
             pstmt=con.prepareStatement(query);
-            pstmt.setString(1,supplierCode);
+            pstmt.setInt(1,supplierCode);
             affectedRows=pstmt.executeUpdate();
             System.out.println("Deleted..");
         }catch(SQLException  e){

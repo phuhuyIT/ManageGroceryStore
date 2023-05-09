@@ -67,12 +67,12 @@ public class CategoryDao implements DaoInterface <Category> {
 
     @Override
     // Xóa một danh mục sản phẩm khỏi cơ sở dữ liệu
-    public int delete(String categoryCode) {
+    public int delete(int categoryCode) {
         String sql = "DELETE FROM categories WHERE CategoryCode=?";
         int affectedRows = 0;
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1, categoryCode);
+            stmt.setInt(1, categoryCode);
             affectedRows = stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -178,5 +178,18 @@ public class CategoryDao implements DaoInterface <Category> {
             throw new RuntimeException(e);
         }
         return name;
+    }
+    public int getNumCategory(){
+        String query="SELECT COUNT(categoryid) as numberCategory FROM product_categories";
+        int numberProduct=0;
+        try {
+            pstmt = con.prepareStatement(query);
+            rs = pstmt.executeQuery();
+            if(rs.next())
+                numberProduct=rs.getInt("numberCategory");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return numberProduct;
     }
 }

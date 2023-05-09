@@ -47,12 +47,12 @@ public class CustomerDAO extends AlertAndVerifyController implements DaoInterfac
     }
 
     @Override
-    public int delete(String customerCode) {
-        String deleteCustomerDetails= "DELETE FROM CUSTOMERS WHERE CUSTOMERCODE= ?";
+    public int delete(int cid) {
+        String deleteCustomerDetails= "DELETE FROM CUSTOMERS WHERE cid= ?";
         int result;
         try {
             pstmt = con.prepareStatement(deleteCustomerDetails);
-            pstmt.setString(1,customerCode);
+            pstmt.setInt(1,cid);
             result=pstmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -90,11 +90,6 @@ public class CustomerDAO extends AlertAndVerifyController implements DaoInterfac
             throw new RuntimeException(e);
         }
         return rs;
-    }
-
-    @Override
-    public ResultSet selectALL() {
-        return null;
     }
 
     @Override
