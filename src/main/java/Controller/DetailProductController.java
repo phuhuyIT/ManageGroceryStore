@@ -114,7 +114,7 @@ public class DetailProductController extends AlertAndVerifyController implements
                 tf_detailProductCostPrice.setText(String.valueOf(rs.getDouble("COSTPRICE")));
                 tf_detailProductSellingPrice.setText(String.valueOf(rs.getDouble("SELLINGPRICE")));
                 lb_detailProductUPC.setText(rs.getString("PRODUCTBARCODE"));
-                dp_detailProductManufractureDate.setValue(rs.getDate("manufractureDate").toLocalDate());
+                dp_detailProductManufractureDate.setValue(rs.getDate("manufactureDate").toLocalDate());
                 dp_detailProductExpireDate.setValue(rs.getDate("expirationDate").toLocalDate());
                 String thumbnailLink = rs.getString("THUMBNAIL");
                 if(thumbnailLink!=null){
