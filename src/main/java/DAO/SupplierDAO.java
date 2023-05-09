@@ -124,10 +124,7 @@ public class SupplierDAO extends AlertAndVerifyController implements DaoInterfac
         return  rs;
     }
 
-    @Override
-    public ResultSet selectALL() {
-        return null;
-    }
+
 
     @Override
     public ResultSet selectByID(int ID) {

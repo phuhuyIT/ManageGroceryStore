@@ -89,11 +89,11 @@ public class ProductController extends Pagination implements Initializable {
             loadFXML(fxmlPath);
         };
 
-        for (int i=0;i<8;i++){
-            AnchorPane ap = (AnchorPane) pane_Product.lookup("#productBox"+(i+1));
-            Button btnDetailsProduct = (Button) ap.lookup("#btnProductDetails"+(i+1));
-            btnDetailsProduct.setOnAction(linktoDetailProduct);
-        }
+//        for (int i=0;i<8;i++){
+//            AnchorPane ap = (AnchorPane) pane_Product.lookup("#productBox"+(i+1));
+//            Button btnDetailsProduct = (Button) ap.lookup("#btnProductDetails"+(i+1));
+//            btnDetailsProduct.setOnAction(linktoDetailProduct);
+//        }
     btn_addProduct.setOnAction(new EventHandler<ActionEvent>() {
         @Override
         public void handle(ActionEvent actionEvent) {
@@ -129,6 +129,52 @@ public class ProductController extends Pagination implements Initializable {
     showData(Limit,offSet);
     setActionForBtn();
 
+        //xử lý sự kiện chuột phải
+        ContextMenu contextMenu  = new ContextMenu();
+
+        // Thêm các MenuItem vào ContextMenu
+        MenuItem delete = new MenuItem("Delete");
+        ImageView iconDelete = new ImageView(new Image(getClass().getResourceAsStream("image/delete.png")));
+        iconDelete.setFitHeight(30);
+        iconDelete.setFitWidth(30);
+        delete.setGraphic(iconDelete);
+        delete.setText("Delete");
+        delete.setStyle("-fx-font-size : 20px ; -fx-padding : 0px 0px 0px 70px;");
+
+        MenuItem detail = new MenuItem("Detail");
+        ImageView iconDetail = new ImageView(new Image(getClass().getResourceAsStream("image/list.png")));
+        iconDetail.setFitHeight(30);
+        iconDetail.setFitWidth(30);
+        detail.setGraphic(iconDetail);
+        detail.setText("Detail");
+        detail.setStyle("-fx-font-size : 20px ; -fx-padding : 0px 0px 0px 70px;");
+
+        MenuItem cancel = new MenuItem("Cancel");
+        ImageView iconCancel = new ImageView(new Image(getClass().getResourceAsStream("image/cancel.png")));
+        iconCancel.setFitHeight(30);
+        iconCancel.setFitWidth(30);
+        cancel.setGraphic(iconCancel);
+        cancel.setText("Cancel");
+        cancel.setStyle("-fx-font-size : 20px ; -fx-text-fill : #FF0000 ; -fx-padding : 0px 0px 0px 70px; -fx-font-weight:bold;");
+
+        //Định dạng contextMenu
+        contextMenu.setStyle("-fx-pref-width: 200px; -fx-pref-height: 130px; -fx-padding : 7px 0px 0px 0px;");
+        contextMenu.getItems().addAll(detail,delete,cancel);
+
+        // Thiết lập sự kiện chuột phải cho anchorPane_customer
+        pane_Product.setOnContextMenuRequested(event -> {
+            contextMenu.show(pane_Product, event.getScreenX(), event.getScreenY());
+            event.consume(); // đánh dấu sự kiện này đã được xử lý
+        });
+
+        //xử lý sự kiện MenuItem Chuột phải
+        delete.setOnAction(event -> {
+            System.out.println("Dã xoá");
+        });
+        cancel.setOnAction(actionEvent -> {
+            contextMenu.hide();
+        });
+
     }
     private void loadFXML(String fxmlPath) {
 
@@ -155,7 +201,7 @@ public class ProductController extends Pagination implements Initializable {
                     ImageView productThumbnail =(ImageView) ap.lookup("#productThumbnail"+(i+1));
                     Label productQuantity =(Label) ap.lookup("#productQuantity"+(i+1));
                     Label productPrice =(Label)ap.lookup("#productPrice"+(i+1));
-                    Button productDetailBtn= (Button) ap.lookup("#btnProductDetails"+(i+1));
+                 //   Button productDetailBtn= (Button) ap.lookup("#btnProductDetails"+(i+1));
                     Label productName = (Label)ap.lookup("#productName"+(i+1));
                     String img  = rs.getString("THUMBNAIL");
                     if(img!=null) {
@@ -164,7 +210,7 @@ public class ProductController extends Pagination implements Initializable {
 
                     }
                     productName.setText(rs.getString("PRODUCTNAME"));
-                    productDetailBtn.setUserData(rs.getString("PID"));
+                   // productDetailBtn.setUserData(rs.getString("PID"));
                     productQuantity.setText(rs.getString("SELLINGPRICE"));
                     productPrice.setText(rs.getString("COSTPRICE"));
                 }
@@ -186,7 +232,7 @@ public class ProductController extends Pagination implements Initializable {
                 ImageView productThumbnail =(ImageView) ap.lookup("#productThumbnail"+(i+1));
                 Label productQuantity =(Label) ap.lookup("#productQuantity"+(i+1));
                 Label productPrice =(Label)ap.lookup("#productPrice"+(i+1));
-                Button productDetailBtn= (Button) ap.lookup("#btnProductDetails"+(i+1));
+               // Button productDetailBtn= (Button) ap.lookup("#btnProductDetails"+(i+1));
                 Label productName = (Label)ap.lookup("#productName"+(i+1));
                 String img  = "D:/java/ManageGroceryStore/src/main/resources/Controller/image/empty.png";
                 if(img!=null) {
@@ -195,7 +241,7 @@ public class ProductController extends Pagination implements Initializable {
 
                 }
                 productName.setText("");
-                productDetailBtn.setUserData("");
+               // productDetailBtn.setUserData("");
                 productQuantity.setText("");
                 productPrice.setText("");
 

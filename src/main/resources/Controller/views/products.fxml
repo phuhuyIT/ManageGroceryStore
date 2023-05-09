@@ -49,11 +49,6 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="35.0" fitWidth="30.0" layoutX="173.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../image/information%20(1).png" />
-                     </image>
-                  </ImageView>
                   <Label fx:id="productQuantity1" alignment="CENTER" layoutX="89.0" layoutY="168.0" prefHeight="27.0" prefWidth="111.0" text="Number">
                      <font>
                         <Font size="18.0" />
@@ -64,7 +59,6 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnProductDetails1" layoutX="167.0" layoutY="2.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="38.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
                   <Label fx:id="productName1" alignment="CENTER" layoutX="6.0" layoutY="122.0" prefHeight="39.0" prefWidth="195.0" text="Hamburger">
                      <font>
                         <Font name="System Bold" size="20.0" />
@@ -86,11 +80,6 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="35.0" fitWidth="30.0" layoutX="173.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../image/information%20(1).png" />
-                     </image>
-                  </ImageView>
                   <Label fx:id="productQuantity2" alignment="CENTER" layoutX="90.0" layoutY="170.0" prefHeight="27.0" prefWidth="111.0" text="Number">
                      <font>
                         <Font size="18.0" />
@@ -101,7 +90,6 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnProductDetails2" layoutX="167.0" layoutY="2.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="38.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
                   <Label fx:id="productName2" alignment="CENTER" layoutX="6.0" layoutY="122.0" prefHeight="39.0" prefWidth="195.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
@@ -123,11 +111,6 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="35.0" fitWidth="30.0" layoutX="173.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../image/information%20(1).png" />
-                     </image>
-                  </ImageView>
                   <Label fx:id="productPrice3" alignment="CENTER" layoutX="89.0" layoutY="168.0" prefHeight="27.0" prefWidth="111.0" text="Number">
                      <font>
                         <Font size="18.0" />
@@ -138,7 +121,6 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnProductDetails3" layoutX="167.0" layoutY="2.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="38.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
                   <Label fx:id="productName3" alignment="CENTER" layoutX="6.0" layoutY="122.0" prefHeight="39.0" prefWidth="195.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
@@ -160,11 +142,6 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="35.0" fitWidth="30.0" layoutX="173.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../image/information%20(1).png" />
-                     </image>
-                  </ImageView>
                   <Label fx:id="productQuantity4" alignment="CENTER" layoutX="89.0" layoutY="168.0" prefHeight="27.0" prefWidth="111.0" text="Number">
                      <font>
                         <Font size="18.0" />
@@ -175,7 +152,6 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnProductDetails4" layoutX="167.0" layoutY="2.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="38.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
                   <Label fx:id="productName4" alignment="CENTER" layoutX="6.0" layoutY="122.0" prefHeight="39.0" prefWidth="195.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
@@ -197,11 +173,6 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="35.0" fitWidth="30.0" layoutX="173.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../image/information%20(1).png" />
-                     </image>
-                  </ImageView>
                   <Label fx:id="productQuantity5" alignment="CENTER" layoutX="89.0" layoutY="168.0" prefHeight="27.0" prefWidth="111.0" text="Number">
                      <font>
                         <Font size="18.0" />
@@ -212,7 +183,6 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnProductDetails5" layoutX="167.0" layoutY="2.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="38.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
                   <Label fx:id="productName5" alignment="CENTER" layoutX="6.0" layoutY="122.0" prefHeight="39.0" prefWidth="195.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
@@ -234,11 +204,6 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="35.0" fitWidth="30.0" layoutX="173.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../image/information%20(1).png" />
-                     </image>
-                  </ImageView>
                   <Label fx:id="productQuantity6" alignment="CENTER" layoutX="89.0" layoutY="168.0" prefHeight="27.0" prefWidth="111.0" text="Number">
                      <font>
                         <Font size="18.0" />
@@ -249,7 +214,6 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnProductDetails6" layoutX="167.0" layoutY="2.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="38.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
                   <Label fx:id="productName6" alignment="CENTER" layoutX="6.0" layoutY="122.0" prefHeight="39.0" prefWidth="195.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
@@ -271,11 +235,6 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="35.0" fitWidth="30.0" layoutX="173.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../image/information%20(1).png" />
-                     </image>
-                  </ImageView>
                   <Label fx:id="productQuantity7" alignment="CENTER" layoutX="89.0" layoutY="168.0" prefHeight="27.0" prefWidth="111.0" text="Number">
                      <font>
                         <Font size="18.0" />
@@ -286,7 +245,6 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnProductDetails7" layoutX="167.0" layoutY="2.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="38.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
                   <Label fx:id="productName7" alignment="CENTER" layoutX="6.0" layoutY="122.0" prefHeight="39.0" prefWidth="195.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
@@ -308,11 +266,6 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="35.0" fitWidth="30.0" layoutX="173.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../image/information%20(1).png" />
-                     </image>
-                  </ImageView>
                   <Label fx:id="productQuantity8" alignment="CENTER" layoutX="89.0" layoutY="168.0" prefHeight="27.0" prefWidth="111.0" text="Number">
                      <font>
                         <Font size="18.0" />
@@ -323,7 +276,6 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnProductDetails8" layoutX="167.0" layoutY="2.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="38.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
                   <Label fx:id="productName8" alignment="CENTER" layoutX="6.0" layoutY="122.0" prefHeight="39.0" prefWidth="195.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
