@@ -30,12 +30,10 @@ public class CustomerDAO extends AlertAndVerifyController implements DaoInterfac
 
     @Override
     public int insert(Customer cus) {
-        String findCustomerByNameLocatePhone = "SELECT * FROM CUSTOMER WHERE FULLNAME=? AND LOCATION=? AND PHONE=?";
+        String findCustomerByNameLocatePhone = "SELECT cid FROM CUSTOMERs WHERE citizenIDNumber =?";
         try {
             pstmt = con.prepareStatement(findCustomerByNameLocatePhone);
-            pstmt.setString(1,cus.getFullName());
-            pstmt.setString(2,cus.getLocation());
-            pstmt.setString(3,cus.getPhone());
+            pstmt.setString(1,cus.getCitizenIDNumber());
             rs= pstmt.executeQuery();
             if(rs.next()){
                 errorAlert("Error","THIS CUSTOMER HAS BEEN ADDED");
@@ -50,7 +48,7 @@ public class CustomerDAO extends AlertAndVerifyController implements DaoInterfac
 
     @Override
     public int delete(String customerCode) {
-        String deleteCustomerDetails= "DELETE FROM CUSTOMER WHERE CUSTOMERCODE= ?";
+        String deleteCustomerDetails= "DELETE FROM CUSTOMERS WHERE CUSTOMERCODE= ?";
         int result;
         try {
             pstmt = con.prepareStatement(deleteCustomerDetails);
@@ -64,18 +62,18 @@ public class CustomerDAO extends AlertAndVerifyController implements DaoInterfac
 
     @Override
     public int update(Customer customer) {
-        String updateCustomerDetails= "UPDATE CUSTOMER SET FULLNAME=?, LOCATION=?, PHONE=?, DEBIT=?, CREDIT=?, EMAIL=? WHERE  CUSTOMERID= ?";
+        String updateCustomerDetails= "UPDATE CUSTOMERS SET location=?, phone=?, EMAIL=?, avatarLink=? WHERE  cid= ?";
         int result;
         try {
-            pstmt = (PreparedStatement) con.prepareStatement(updateCustomerDetails);
-            pstmt.setString(1,customer.getFullName());
-            pstmt.setString(2,customer.getLocation());
-            pstmt.setString(3,customer.getPhone());
-            pstmt.setString(4,customer.getDebit());
-            pstmt.setString(5,customer.getCredit());
-            pstmt.setString(6,customer.getEmail());
-            pstmt.setInt(7,customer.getCustomersId());
+            pstmt = con.prepareStatement(updateCustomerDetails);
+            pstmt.setString(1, customer.getLocation());
+            pstmt.setString(2, customer.getPhone());
+            pstmt.setString(3, customer.getEmail());
+            pstmt.setString(4, customer.getAvatarLink());
+            pstmt.setInt(5,customer.getCustomersId());
             result=pstmt.executeUpdate();
+            if(result>0)
+                AlertAndVerifyController.informationAlert("Sucessful","THIS CUSTOMER INFORMATION HAS BEEN UPDATED SUCCESSFULLY");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -97,7 +95,7 @@ public class CustomerDAO extends AlertAndVerifyController implements DaoInterfac
     @Override
     public ResultSet selectByID(int ID) {
         try {
-            String selectByID_query = "SELECT * FROM CUSTOMER WHERE CUSTOMERID =?";
+            String selectByID_query = "SELECT * FROM CUSTOMERS WHERE cid =?";
             pstmt= con.prepareStatement(selectByID_query);
             pstmt.setInt(1,ID);
             rs = pstmt.executeQuery();
@@ -111,34 +109,26 @@ public class CustomerDAO extends AlertAndVerifyController implements DaoInterfac
     public int addFunction(Customer customer) {
         int result = 0;
         try {
-            String customerCode = null;
-            String oldCustomerCode = null;
-            String getAllCustomers = "SELECT * FROM customers";
-            rs = stmt.executeQuery(getAllCustomers);
-            if (!rs.next()) {
-                customerCode = "cus" + "1";
-            } else {
-                String getAllCustomersInDescOrder = "SELECT * FROM customers ORDER by customerID DESC";
-                rs = stmt.executeQuery(getAllCustomersInDescOrder);
-                if (rs.next()) {
-                    oldCustomerCode = rs.getString("customercode");
-                    Integer scode = Integer.parseInt(oldCustomerCode.substring(3));
-                    scode++;
-                    customerCode = "cus" + scode;
-                }
-            }
-            String url = "insert into CUSTOMER (CUSTOMERID, FULLNAME, LOCATION, EMAIL, DEBIT, CREDIT, PHONE)"
-                    + "values (?,?,?,?,?,?,?)";
+            String url = "insert into CUSTOMERS (citizenIDNumber, gender, fullname, location, phone, EMAIL, avatarLink, Birthdate)"
+                    + "values (?,?,?,?,?,?,?,?)";
             pstmt = con.prepareStatement(url);
-            pstmt.setInt(1, customer.getCustomersId());
-            pstmt.setString(2, customer.getFullName());
-            pstmt.setString(3, customer.getLocation());
-            pstmt.setString(4, customer.getEmail());
-            pstmt.setString(5, customer.getDebit());
-            pstmt.setString(6, customer.getCredit());
-            pstmt.setString(7, customer.getPhone());
+            pstmt.setString(1, customer.getCitizenIDNumber());
+            System.out.println("");
+            System.out.println("Gender:"+customer.getGender());
+            if(customer.getGender().equals("Nam"))
+                pstmt.setInt(2,0);
+            else if (customer.getGender().equals("Nữ"))
+                pstmt.setInt(2,1);
+            else pstmt.setInt(2,2);
+            pstmt.setString(3, customer.getFullName());
+            pstmt.setString(4, customer.getLocation());
+            pstmt.setString(5, customer.getPhone());
+            pstmt.setString(6, customer.getEmail());
+            pstmt.setString(7, customer.getAvatarLink());
+            pstmt.setString(8,customer.getBirthDate());
             result = pstmt.executeUpdate();
-
+            if(result>0)
+                AlertAndVerifyController.informationAlert("Sucessful","THIS CUSTOMER HAS BEEN ADDED SUCCESSFULLY");
         } catch (Exception e) {
             e.printStackTrace();
         }

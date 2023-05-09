@@ -11,6 +11,8 @@ public abstract class Pagination {
     protected abstract void showData(int limit, int offSet);
     protected abstract void clearData();
     @FXML
+    private Button btn_refresh;
+    @FXML
     private Button btn_previousPage;
     @FXML
     private Button btn_nextPage;
@@ -44,6 +46,14 @@ public abstract class Pagination {
 
             }
         });
-
+        btn_refresh.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                offSet=0;
+                Limit=8;
+                clearData();
+                showData(Limit,offSet);
+            }
+        });
     }
 }
