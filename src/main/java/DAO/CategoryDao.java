@@ -127,7 +127,6 @@ public class CategoryDao implements DaoInterface <Category> {
     }
 
 
-
     // Lấy danh sách các sản phẩm trong một danh mục sản phẩm từ cơ sở dữ liệu theo id
     private List<Product> getProductsByCategoryId(int categoryId) {
         List<Product> products = new ArrayList<>();

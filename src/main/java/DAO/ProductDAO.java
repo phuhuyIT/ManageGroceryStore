@@ -206,4 +206,13 @@ public class ProductDAO extends AlertAndVerifyController implements DaoInterface
         }
         return numberProduct;
     }
+    public ResultSet getTopProducts(){
+        try {
+            CallableStatement cstmt = con.prepareCall("{ CALL getTopProducts() }");
+            rs = cstmt.executeQuery();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return rs;
+    }
 }

@@ -9,14 +9,8 @@ import Model.Supplier;
 import java.sql.*;
 import java.util.ArrayList;
 
-/*
- **
- * Refactoring name: PULL UP METHOD
- * To remove duplication of code for the method buildTableModel() in both classes UserDAO.java and SupplierDAO.java,
- * Pull up method refactoring is performed and method is pulled from both classes and is kept in the new class BuildTableModel.java class
- * The class BuildTableModel.java is then extended to two classes UserDAO.java and SupplierDAO.java.
 
- */
+
 
 public class SupplierDAO extends AlertAndVerifyController implements DaoInterface <Supplier> {
     Connection con = null;
@@ -123,8 +117,6 @@ public class SupplierDAO extends AlertAndVerifyController implements DaoInterfac
         }
         return  rs;
     }
-
-
 
     @Override
     public ResultSet selectByID(int ID) {

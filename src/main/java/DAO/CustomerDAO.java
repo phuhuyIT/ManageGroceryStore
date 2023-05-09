@@ -148,4 +148,13 @@ public class CustomerDAO extends AlertAndVerifyController implements DaoInterfac
         }
         return numberCustomer;
     }
+    public ResultSet getTop5CustomerRevenues(){
+        try {
+            CallableStatement cstmt = con.prepareCall("{ CALL top5CustomersRevenues() }");
+            rs = cstmt.executeQuery();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return rs;
+    }
 }
