@@ -192,7 +192,7 @@ public class AddProductController extends DetailProductController implements Ini
             public void handle(ActionEvent actionEvent) {
                 try {
                     CameraApp barCodeScanner= new CameraApp();
-                    barCodeScanner.getTextField(tf_addProductUPC);
+                    barCodeScanner.setTextField(tf_addProductUPC);
                     barCodeScanner.start();
                 } catch (Exception e) {
                     throw new RuntimeException(e);
@@ -220,7 +220,7 @@ public class AddProductController extends DetailProductController implements Ini
         if(tf_addProductName.getText().isEmpty()||cb_addProductCategory.getValue()==null||tf_addProductQuantity.getText().isEmpty()||
         tf_addProductUPC.getText().isEmpty()||dp_addProductManufractureDate.getValue()==null||dp_addProductExpireDate.getValue()==null||
                 tf_addProductCostPrice.getText().isEmpty()||tf_addProductSellingPrice.getText().isEmpty()){
-            errorAlert("Empty field","PLEASE FILL IN ALL INFORMATION!");
+            errorAlert("Empty field","PLEASE FILL IN ALL NECESSARY INFORMATION!");
         }else{
             Supplier supplier = new Supplier(tf_addProductSupplierName.getText(),tf_addProductSupplierLocation.getText(),tf_addProductSupplierPhone.getText());
             SupplierDAO supplierDAO = new SupplierDAO();
