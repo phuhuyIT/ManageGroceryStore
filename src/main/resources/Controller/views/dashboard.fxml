@@ -22,7 +22,7 @@
       <Line endX="756.0" layoutX="244.0" layoutY="60.0" startX="-244.0" strokeWidth="3.0" />
       <AnchorPane layoutX="15.0" layoutY="89.0" prefHeight="136.0" prefWidth="971.0" style="-fx-border-color: #FF9900; -fx-border-width: 4px; -fx-border-radius: 20px;">
          <children>
-            <Label fx:id="num_customer" layoutX="45.0" layoutY="53.0" text="Number">
+            <Label fx:id="lb_numberStaff" layoutX="45.0" layoutY="53.0" text="Number">
                <font>
                   <Font size="17.0" />
                </font>
@@ -37,7 +37,7 @@
                   <Image url="@../image/customer-satisfaction.png" />
                </image>
             </ImageView>
-            <Label fx:id="num_category" layoutX="268.0" layoutY="53.0" text="Number">
+            <Label fx:id="lb_numberCategory" layoutX="268.0" layoutY="53.0" text="Number">
                <font>
                   <Font size="17.0" />
                </font>
@@ -52,7 +52,7 @@
                   <Image url="@../image/app.png" />
                </image>
             </ImageView>
-            <Label fx:id="num_product" layoutX="506.0" layoutY="53.0" text="Number">
+            <Label fx:id="lb_numberProduct" layoutX="506.0" layoutY="53.0" text="Number">
                <font>
                   <Font size="17.0" />
                </font>
@@ -67,7 +67,7 @@
                   <Image url="@../image/dairy-products.png" />
                </image>
             </ImageView>
-            <Label fx:id="num_revenue" layoutX="746.0" layoutY="53.0" text="Number">
+            <Label fx:id="lb_numberRevenue" layoutX="746.0" layoutY="53.0" text="Number">
                <font>
                   <Font size="17.0" />
                </font>

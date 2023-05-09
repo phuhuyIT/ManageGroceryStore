@@ -1,139 +1,111 @@
 package DAO;
 
+import Controller.AlertAndVerifyController;
+import DatabaseConnection.ConnectionFactory;
 import Model.Bill;
+import Model.CameraApp;
 
 import java.sql.*;
 import java.util.ArrayList;
 
 public class BillDao implements DaoInterface <Bill> {
-    private final Connection connection;
-    PreparedStatement pstmt = null;
-    Statement stmt = null;
-    ResultSet rs1=null;
-    ResultSet rs = null;
-    public BillDao(Connection connection) {
-        this.connection = connection;
+    private Connection con = null;
+    private PreparedStatement pstmt = null;
+    private Statement stmt = null;
+    private ResultSet rs1=null;
+    private Statement stmt1=null;
+    private ResultSet rs = null;
+    public BillDao() {
+        try {
+            con = new ConnectionFactory().getConnection();
+            stmt = con.createStatement();
+            stmt1=con.createStatement();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     @Override
     public int insert(Bill bill)  {
-        String sql = "INSERT INTO bills (name, amount, due_date) VALUES (?, ?, ?)";
-        try {
-            pstmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            pstmt.setString(1, bill.getName());
-            pstmt.setBigDecimal(2, bill.getAmount());
-            pstmt.setDate(3, bill.getDueDate());
-
-            int affectedRows = pstmt.executeUpdate();
-
-            if (affectedRows == 0) {
-                throw new SQLException("Creating bill failed, no rows affected.");
-            }
-
-            try (ResultSet generatedKeys = pstmt.getGeneratedKeys()) {
-                if (generatedKeys.next()) {
-                    bill.setId(generatedKeys.getInt(1));
-                } else {
-                    throw new SQLException("Creating bill failed, no ID obtained.");
-                }
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-        return 0;
+        addFunction(bill);
+        return 1;
     }
 
     @Override
-    public int delete(String t) throws SQLException {
-        return 0;
-    }
-
-    public int update(Bill bill) {
-        String sql = "UPDATE bills SET name = ?, amount = ?, due_date = ?, paid = ? WHERE id = ?";
+    public int delete(int billID) throws SQLException {
+        String deleteProduct= "DELETE FROM PRODUCTS WHERE billID= ?";
+        int result;
         try {
-            pstmt = connection.prepareStatement(sql);
-            pstmt.setString(1, bill.getName());
-            pstmt.setBigDecimal(2, bill.getAmount());
-            pstmt.setDate(3, bill.getDueDate());
-            pstmt.setBoolean(4, bill.isPaid());
-            pstmt.setInt(5, bill.getId());
-
-            return  pstmt.executeUpdate();
+            pstmt = con.prepareStatement(deleteProduct);
+            pstmt.setInt(1,billID);
+            result=pstmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        return result;
+    }
+    @Override
+    public int update(Bill bill) {
+        return 0;
     }
 
 
     @Override
     public int addFunction(Bill bill) {
-        return 0;
-    }
+        int result=0;
 
-    public int delete(Bill bill) throws SQLException {
-        String sql = "DELETE FROM bills WHERE id = ?";
-        pstmt = connection.prepareStatement(sql);
+        try {
+            String addBill="INSERT INTO bill (billcode)"+"VALUE(?)";
+            pstmt = con.prepareStatement(addBill);
+            pstmt.setString(1,bill.getBillCode());
+            pstmt.executeUpdate();
+            String getBillID ="SELECT LAST_INSERT_ID()";
+            rs=pstmt.executeQuery(getBillID);
+            int billID=0;
+            if(rs.next()) {
+                billID = rs.getInt("LAST_INSERT_ID()");
+            }
+            String addDetailBill= "INSERT INTO detailBill (billID, productID, customerID, staffID, quantity)"
+                    +"VALUE(?,?,?,?,?)";
+            pstmt = con.prepareStatement(addDetailBill);
+            pstmt.setInt(1,billID);
+            pstmt.setInt(2,bill.getProductID());
+            pstmt.setInt(3,bill.getCustomerID());
+            pstmt.setInt(4,bill.getStaffID());
+            pstmt.setInt(5,bill.getPurchaseQuantity());
+            result=pstmt.executeUpdate();
+            if(result>1)
+                AlertAndVerifyController.informationAlert("Addition","SUCCESSFULLY ADDED NEW BILL");
 
-        pstmt.setInt(1, bill.getId());
-
-        int affectedRows = pstmt.executeUpdate();
-        return affectedRows;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
     }
     @Override
-    public ResultSet selectALL() {
-        String sql = "SELECT * FROM bills";
+    public ResultSet selectALL(int Limit, int offSet) {
         try {
-            pstmt = connection.prepareStatement(sql);
+            String selectAllProduct = "SELECT b.billCode, b.purchaseDate, b.revenue, SUM(d.quantity) AS totalQuantity\n" +
+                    "FROM bill AS b\n" +
+                    "JOIN detailBill AS d ON b.billCode = d.billCode\n" +
+                    "GROUP BY b.billCode\n" +
+                    "LIMIT "+Limit+" OFFSET "+offSet;
+            pstmt= con.prepareStatement(selectAllProduct);
             rs = pstmt.executeQuery();
-
-            ArrayList<Bill> bills = new ArrayList<>();
-
-            while (rs.next()) {
-                Bill bill = new Bill();
-
-                bill.setId(rs.getInt("id"));
-                bill.setName(rs.getString("name"));
-                bill.setAmount(rs.getBigDecimal("amount"));
-                bill.setDueDate(rs.getDate("due_date"));
-                bill.setPaid(rs.getBoolean("paid"));
-                bill.setCreatedAt(rs.getTimestamp("created_at"));
-                bill.setUpdatedAt(rs.getTimestamp("updated_at"));
-
-                bills.add(bill);
-            }
-            return (ResultSet) bills;
-        } catch (SQLException e) {
+        }catch (SQLException e){
             throw new RuntimeException(e);
         }
-
-
+        return  rs;
     }
     @Override
     public ResultSet selectByID(int ID) {
-        String sql = "SELECT * FROM bills WHERE id = ?";
         try {
-            pstmt = connection.prepareStatement(sql);
-            pstmt.setInt(1, ID);
-
+            String selectByID_query = "SELECT * FROM CUSTOMERS WHERE billID =?";
+            pstmt= con.prepareStatement(selectByID_query);
+            pstmt.setInt(1,ID);
             rs = pstmt.executeQuery();
-            if (rs.next()) {
-                Bill bill = new Bill();
-
-                bill.setId(rs.getInt("id"));
-                bill.setName(rs.getString("name"));
-                bill.setAmount(rs.getBigDecimal("amount"));
-                bill.setDueDate(rs.getDate("due_date"));
-                bill.setPaid(rs.getBoolean("paid"));
-                bill.setCreatedAt(rs.getTimestamp("created_at"));
-                bill.setUpdatedAt(rs.getTimestamp("updated_at"));
-
-                return (ResultSet) bill;
-            } else {
-                return null;
-            }
-        } catch (SQLException e) {
+        }catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
+        return rs;
     }
 }

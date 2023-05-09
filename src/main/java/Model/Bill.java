@@ -5,77 +5,76 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 public class Bill {
-    private int id;
-    private String name;
-    private BigDecimal amount;
-    private Date dueDate;
-    private boolean paid;
-    private Timestamp createdAt;
-    private Timestamp updatedAt;
+    private String billCode;
+    private Timestamp purchaseDate;
+    private float revenue;
+    private int detailBillID;
+    private int productID;
+    private int customerID;
+    private int staffID;
+    private int purchaseQuantity;
 
-    public Bill() {}
-
-    public Bill(String name, BigDecimal amount, Date dueDate) {
-        this.name = name;
-        this.amount = amount;
-        this.dueDate = dueDate;
+    public String getBillCode() {
+        return billCode;
     }
 
-    // getters and setters for all fields
-
-    public int getId() {
-        return id;
+    public void setBillCode(String billCode) {
+        this.billCode = billCode;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public Timestamp getPurchaseDate() {
+        return purchaseDate;
     }
 
-    public String getName() {
-        return name;
+    public void setPurchaseDate(Timestamp purchaseDate) {
+        this.purchaseDate = purchaseDate;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public float getRevenue() {
+        return revenue;
     }
 
-    public BigDecimal getAmount() {
-        return amount;
+    public void setRevenue(float revenue) {
+        this.revenue = revenue;
     }
 
-    public void setAmount(BigDecimal amount) {
-        this.amount = amount;
+    public int getDetailBillID() {
+        return detailBillID;
     }
 
-    public Date getDueDate() {
-        return dueDate;
+    public void setDetailBillID(int detailBillID) {
+        this.detailBillID = detailBillID;
     }
 
-    public void setDueDate(Date dueDate) {
-        this.dueDate = dueDate;
+    public int getProductID() {
+        return productID;
     }
 
-    public boolean isPaid() {
-        return paid;
+    public void setProductID(int productID) {
+        this.productID = productID;
     }
 
-    public void setPaid(boolean paid) {
-        this.paid = paid;
+    public int getCustomerID() {
+        return customerID;
     }
 
-    public Timestamp getCreatedAt() {
-        return createdAt;
+    public void setCustomerID(int customerID) {
+        this.customerID = customerID;
     }
 
-    public void setCreatedAt(Timestamp createdAt) {
-        this.createdAt = createdAt;
+    public int getStaffID() {
+        return staffID;
     }
 
-    public Timestamp getUpdatedAt() {
-        return updatedAt;
+    public void setStaffID(int staffID) {
+        this.staffID = staffID;
     }
 
-    public void setUpdatedAt(Timestamp updatedAt) {
-        this.updatedAt = updatedAt;
+    public int getPurchaseQuantity() {
+        return purchaseQuantity;
+    }
+
+    public void setPurchaseQuantity(int purchaseQuantity) {
+        this.purchaseQuantity = purchaseQuantity;
     }
 }

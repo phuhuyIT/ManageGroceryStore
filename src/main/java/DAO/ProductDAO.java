@@ -51,12 +51,12 @@ public class ProductDAO extends AlertAndVerifyController implements DaoInterface
     }
 
     @Override
-    public int delete(String productCode) {
-        String deleteProduct= "DELETE FROM PRODUCTS WHERE PRODUCTBARCODE= ?";
+    public int delete(int pid) {
+        String deleteProduct= "DELETE FROM PRODUCTS WHERE pid= ?";
         int result;
         try {
             pstmt = con.prepareStatement(deleteProduct);
-            pstmt.setString(1,productCode);
+            pstmt.setInt(1,pid);
             result=pstmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -106,8 +106,6 @@ public class ProductDAO extends AlertAndVerifyController implements DaoInterface
 
     @Override
     public ResultSet selectALL(int Limit, int offSet) {
-
-        ArrayList<Product> result= new ArrayList<Product>();
         try {
             String selectAllProduct = "SELECT * FROM PRODUCTS ORDER BY pid ASC LIMIT "+Limit+" OFFSET "+offSet;
             pstmt= con.prepareStatement(selectAllProduct);
