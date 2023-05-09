@@ -93,6 +93,11 @@ public class CustomerDAO extends AlertAndVerifyController implements DaoInterfac
     }
 
     @Override
+    public ResultSet selectALL() {
+        return null;
+    }
+
+    @Override
     public ResultSet selectByID(int ID) {
         try {
             String selectByID_query = "SELECT * FROM CUSTOMERS WHERE cid =?";

@@ -48,6 +48,11 @@ public class BillDao implements DaoInterface <Bill> {
         return 0;
     }
 
+    @Override
+    public ResultSet selectALL(int Limit, int offSet) {
+        return null;
+    }
+
 
     @Override
     public int addFunction(Bill bill) {

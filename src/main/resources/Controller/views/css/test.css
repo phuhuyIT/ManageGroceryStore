@@ -174,4 +174,38 @@
      -fx-background-color: #559EFC;
 }
 
+//Staff
+#StaffBox_1:hover{
+     -fx-background-radius :20;
+     -fx-background-color: #559EFC;
+}
+#StaffBox_2:hover{
+     -fx-background-radius :20;
+     -fx-background-color: #559EFC;
+}
+#StaffBox_3:hover{
+     -fx-background-radius :20;
+     -fx-background-color: #559EFC;
+}
+#StaffBox_4:hover{
+     -fx-background-radius :20;
+     -fx-background-color: #559EFC;
+}
+#StaffBox_5:hover{
+     -fx-background-radius :20;
+     -fx-background-color: #559EFC;
+}
+#StaffBox_6:hover{
+     -fx-background-radius :20;
+     -fx-background-color: #559EFC;
+}
+#StaffBox_7:hover{
+     -fx-background-radius :20;
+     -fx-background-color: #559EFC;
+}
+#StaffBox_8:hover{
+     -fx-background-radius :20;
+     -fx-background-color: #559EFC;
+}
+
 

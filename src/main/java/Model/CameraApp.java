@@ -53,7 +53,7 @@ public class CameraApp extends Thread{
     public void run() {
 
         isRunning.set(true);
-        OpenCVFrameGrabber grabber = new OpenCVFrameGrabber(1); // truy cập camera laptop
+        OpenCVFrameGrabber grabber = new OpenCVFrameGrabber(0); // truy cập camera laptop
         try {
             grabber.start();
 
