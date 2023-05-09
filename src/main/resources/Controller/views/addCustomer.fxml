@@ -75,7 +75,7 @@
                 <Image url="@../image/back.png" />
             </image>
         </ImageView>
-        <Button fx:id="btn_addThumnail" layoutX="724.0" layoutY="340.0" mnemonicParsing="false" onAction="#chooseImageProduct" prefHeight="44.0" prefWidth="173.0" style="-fx-cursor: hand;" stylesheets="@css/test.css" text="Add Thumnail" underline="true">
+        <Button fx:id="btn_addThumnail" layoutX="724.0" layoutY="340.0" mnemonicParsing="false" onAction="#chooseImageCustomer" prefHeight="44.0" prefWidth="173.0" style="-fx-cursor: hand;" stylesheets="@css/test.css" text="Add Thumnail" underline="true">
             <font>
                 <Font size="20.0" />
             </font>

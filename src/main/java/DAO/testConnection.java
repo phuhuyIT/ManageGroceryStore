@@ -10,7 +10,7 @@ public class    testConnection {
 //        for (Customer cus: customersList){
 //            System.out.println(cus.toString());
 //        }
-        Customer a= new Customer(1,"abc","cc","cc","cc","cc","cc","cc");
-        System.out.println(a.hashCode());
+//        Customer a= new Customer(1,"abc","cc","cc","cc","cc","cc","cc");
+//        System.out.println(a.hashCode());
     }
 }

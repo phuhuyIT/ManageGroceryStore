@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="900.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.views.Sell">
+   <children>
+      <Label layoutX="14.0" layoutY="6.0" prefHeight="57.0" prefWidth="457.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20PX;" />
+      <TextField layoutX="28.0" layoutY="11.0" prefHeight="46.0" prefWidth="428.0" promptText="Search Product ......." style="-fx-background-color: transparent;">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </TextField>
+      <Label layoutX="524.0" layoutY="6.0" prefHeight="57.0" prefWidth="443.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20PX;" />
+      <TextField layoutX="537.0" layoutY="11.0" prefHeight="46.0" prefWidth="417.0" promptText="Search Customer...." style="-fx-background-color: transparent;">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </TextField>
+      <ScrollPane layoutX="14.0" layoutY="115.0" prefHeight="198.0" prefWidth="457.0">
+         <content>
+            <VBox prefHeight="203.0" prefWidth="436.0">
+               <children>
+                  <HBox prefHeight="38.0" prefWidth="437.0">
+                     <children>
+                        <Label text="#">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                           <padding>
+                              <Insets left="40.0" />
+                           </padding>
+                        </Label>
+                        <Label text="TÊN SẢN PHẨM ">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                           <padding>
+                              <Insets left="40.0" />
+                           </padding>
+                        </Label>
+                        <Label text="ĐƠN GIÁ">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                           <padding>
+                              <Insets left="40.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="10.0" prefHeight="38.0" prefWidth="437.0">
+                     <children>
+                        <Label text="1">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                           <padding>
+                              <Insets left="40.0" />
+                           </padding>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="35.0" prefWidth="258.0" text="Product 1">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                           <padding>
+                              <Insets left="40.0" right="100.0" />
+                           </padding>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="35.0" prefWidth="80.0" text="2$" textAlignment="RIGHT">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                           <padding>
+                              <Insets left="40.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

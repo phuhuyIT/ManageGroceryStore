@@ -59,7 +59,7 @@ public class AddCustomerController implements Initializable {
     private String[] gender = {"Nam" , "Nữ" , "Khác"};
 
     @FXML
-    public void chooseImageProduct(ActionEvent event) throws IOException {
+    public void chooseImageCustomer(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         fileChooser = new FileChooser();
