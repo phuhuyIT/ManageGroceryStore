@@ -87,7 +87,6 @@ public class CameraApp extends Thread{
                 barCode= result.getText();
                 Result finalResult = result;
                 Platform.runLater(() -> {
-
                     String[] parts =splitString(finalResult.getText());
                     txt_fullNameCustomer.setText(parts[1]);
                     txt_IndentifierCustomer.setText(parts[0]);

@@ -217,24 +217,30 @@ CREATE TABLE bill (
   billid INT(11) NOT NULL AUTO_INCREMENT,
   billCode VARCHAR(50) NOT NULL,
   purchaseDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  revenue FLOAT(10,1) DEFAULT null,
+  revenue FLOAT(10,1) DEFAULT 0,
   PRIMARY KEY (billID)
 )ENGINE=InnoDB;
 INSERT INTO bill (billCode, purchaseDate)
 VALUES
-  ('1', '2022-01-01'),
-  ('2', '2022-01-02'),
-  ('3', '2022-01-03'),
-  ('4', '2022-01-04'),
-  ('5', '2022-01-05');
-DELIMITER //
-CREATE TRIGGER delete_bill
-AFTER INSERT ON bill
-FOR EACH ROW
-BEGIN
-    DELETE FROM bill WHERE purchaseDate < DATE_SUB(NOW(), INTERVAL 30 DAY);
-END //
-DELIMITER ;
+  ('1', '2023-05-01'),
+  ('2', '2023-05-02'),
+  ('3', '2023-05-03'),
+  ('4', '2023-05-04'),
+  ('5', '2023-05-05');
+  INSERT INTO bill (billCode)
+VALUES
+  ('6'),
+  ('7');
+-- tạo event để xóa bill sau 30 ngày
+SET GLOBAL event_scheduler = ON;
+CREATE EVENT delete_old_bills
+ON SCHEDULE
+EVERY 1 DAY
+STARTS '2023-05-09 03:00:00'
+DO
+DELETE FROM bill WHERE purchaseDate < DATE_SUB(NOW(), INTERVAL 30 DAY);
+SHOW EVENTS;
+
 
 CREATE TABLE detailBill (
   id INT(11) NOT NULL AUTO_INCREMENT,
@@ -252,27 +258,23 @@ CREATE TABLE detailBill (
 -- trigger xóa detailBill khi 1 bill bị xóa
 DELIMITER //
 CREATE TRIGGER delete_detailBill
-AFTER DELETE ON bill
+BEFORE DELETE ON bill
 FOR EACH ROW
 BEGIN
     DELETE FROM detailBill WHERE billID = OLD.billID;
 END //
 DELIMITER ;
--- trigger tự động tính tổng doanh thu của bill sau khi tạo detailbill tương ứng
-DELIMITER //
+-- trigger tự động tính tổng doanh thu của bill sau khi tạo detailbill tương
+DELIMITER $$
 CREATE TRIGGER calculate_revenue
 AFTER INSERT ON detailBill
 FOR EACH ROW
 BEGIN
-  UPDATE bill
-  SET revenue = (
-    SELECT SUM(quantity * sellingPrice)
-    FROM detailBill
-    JOIN products ON detailBill.productID = products.PID
-    WHERE detailBill.billID = NEW.billID
-  )
-  WHERE bill.billID = NEW.billID;
-END //
+    UPDATE bill SET revenue = (SELECT SUM(sellingPrice * quantity)
+                               FROM products JOIN detailBill ON products.PID = detailBill.productID
+                               WHERE detailBill.billID = bill.billID)
+    WHERE bill.billID = NEW.billID;
+END $$
 DELIMITER ;
 -- Thêm dữ liệu cho bảng detailBill
 INSERT INTO detailBill(billID, productID, customerID, staffID, quantity) VALUES
@@ -280,7 +282,55 @@ INSERT INTO detailBill(billID, productID, customerID, staffID, quantity) VALUES
 ('1', 3, '1', 1, 2),
 ('2', 1, '2', 2, 3),
 ('3', 4, '3', 3, 1),
-('4', 2, '4', 2, 4),
-('4', 3, '4', 2, 2);
+('4', 2, '4', 4, 4),
+('4', 3, '4', 4, 2),
+('5', 5, '5', 5, 2);
 
 -- test query
+SELECT DATE_FORMAT(purchaseDate, '%Y-%m') AS month, SUM(revenue) AS total_revenue
+FROM bill
+GROUP BY month;
+SELECT YEAR(purchaseDate) AS year, SUM(revenue) AS total_revenue
+FROM bill
+GROUP BY year;
+DROP PROCEDURE IF EXISTS getTopStaffRevenue;
+
+DELIMITER //
+CREATE PROCEDURE getTop5StaffRevenues()
+BEGIN
+  SELECT STAFF.fullname, SUM(bill.revenue) as total_revenue
+  FROM detailBill
+  JOIN bill ON detailBill.billID = bill.billID
+  JOIN STAFF ON detailBill.staffID = STAFF.ID
+  WHERE MONTH(bill.purchaseDate) = MONTH(CURDATE()) AND YEAR(bill.purchaseDate) = YEAR(CURDATE())
+  GROUP BY detailBill.staffID
+  ORDER BY total_revenue DESC
+  LIMIT 5;
+END//
+DELIMITER ;
+CALL getTop5StaffRevenues();
+
+DELIMITER //
+CREATE PROCEDURE top5CustomersRevenues()
+BEGIN
+  SELECT CUSTOMERS.FULLNAME, SUM(bill.revenue) AS revenue
+  FROM detailBill
+  JOIN CUSTOMERS ON CUSTOMERS.CID = detailBill.customerID
+  JOIN bill ON bill.billID = detailBill.billID
+  WHERE MONTH(bill.purchaseDate) = MONTH(CURDATE()) AND YEAR(bill.purchaseDate) = YEAR(CURDATE())
+  GROUP BY detailBill.customerID
+  ORDER BY revenue DESC
+  LIMIT 5;
+END//
+DELIMITER ;
+CALL top5CustomersRevenues();
+
+CREATE VIEW detailBillView AS
+SELECT b.billCode, b.purchaseDate, c.cid as customerID, s.ID as staffID, p.pID as productID, db.quantity, b.revenue
+FROM detailBill db
+INNER JOIN bill b ON db.billID = b.billID
+INNER JOIN customers c ON db.customerID = c.CID
+INNER JOIN staff s ON db.staffID = s.ID
+INNER JOIN products p ON db.productID = p.PID;
+
+

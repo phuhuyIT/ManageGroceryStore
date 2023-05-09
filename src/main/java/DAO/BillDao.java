@@ -107,4 +107,31 @@ public class BillDao implements DaoInterface <Bill> {
         }
         return rs;
     }
+    public ResultSet getRevenueByMonth(){
+        //Câu truy vấn này sử dụng hàm DATE_FORMAT để định dạng cột purchaseDate thành chuỗi có định dạng 'YYYY-MM' để lấy thông tin theo tháng,
+        // sau đó sử dụng hàm SUM để tính tổng doanh thu và nhóm kết quả theo tháng. Kết quả sẽ trả về một bảng với hai cột: "month" chứa tháng
+        // (dưới dạng chuỗi 'YYYY-MM') và "total_revenue" chứa tổng doanh thu của tháng đó.
+        String query="SELECT DATE_FORMAT(purchaseDate, '%Y-%m') AS month, SUM(revenue) AS totalRevenue  FROM bill GROUP BY month";
+        try {
+            pstmt=con.prepareStatement(query);
+            rs= pstmt.executeQuery();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return rs;
+    }
+    public float totalRevenueByMonth(){
+        float totalRevenue=0;
+        String query="SELECT SUM(revenue) AS totalRevenue FROM bill WHERE YEAR(purchaseDate) = YEAR(CURRENT_TIMESTAMP) AND MONTH(purchaseDate) = MONTH(CURRENT_TIMESTAMP)\n" +
+                "GROUP BY MONTH(purchaseDate);\n";
+        try {
+            pstmt=con.prepareStatement(query);
+            rs= pstmt.executeQuery();
+            if(rs.next())
+                totalRevenue=rs.getFloat("totalRevenue");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return totalRevenue;
+    }
 }

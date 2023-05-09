@@ -14,6 +14,7 @@ public class StaffDAO implements DaoInterface<Staff>{
     ResultSet rs1=null;
     Statement stmt1=null;
     ResultSet rs = null;
+
     public static StaffDAO getInstance(){
         return new StaffDAO();
     }
@@ -189,5 +190,14 @@ public class StaffDAO implements DaoInterface<Staff>{
             throw new RuntimeException(e);
         }
         return numberProduct;
+    }
+    public ResultSet getTop5StaffRevenues(){
+        try {
+            CallableStatement cstmt = con.prepareCall("{ CALL getTop5StaffRevenues() }");
+            rs = cstmt.executeQuery();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return rs;
     }
 }
