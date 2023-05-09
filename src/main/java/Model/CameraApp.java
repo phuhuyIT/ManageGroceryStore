@@ -7,6 +7,9 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -27,6 +30,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import org.bytedeco.javacv.*;
 import org.bytedeco.javacv.Frame;
@@ -35,6 +40,11 @@ import org.bytedeco.javacv.Frame;
 public class CameraApp extends Thread{
     private  String barCode;
     private TextField tf_addProductUPC;
+    private TextField txt_fullNameCustomer;
+    private TextField txt_IndentifierCustomer;
+    private ChoiceBox cb_customerGender;
+    private  DatePicker dp_customerBirthdate;
+    private TextField txt_locationCustomer;
     private final AtomicBoolean isRunning = new AtomicBoolean(false);
     public String getBarcode() {
         return barCode;
@@ -54,7 +64,8 @@ public class CameraApp extends Thread{
                     isRunning.set(false);
                     canvasFrame.dispose();
                     try {
-                        grabber.close();
+                        grabber.release();
+                        interrupt();
                     } catch (FrameGrabber.Exception ex) {
                         throw new RuntimeException(ex);
                     }
@@ -62,21 +73,33 @@ public class CameraApp extends Thread{
             });
         Result result = null;
         boolean isNotHasBarCode=true;
-        while (isRunning.get()) {
+        while (isNotHasBarCode) {
             Frame frame = grabber.grab();
             BufferedImage image = convertFrameToImage(frame);
             result = scanBarcode(image);
-            if (result != null) {
+            if(result!=null && tf_addProductUPC !=null){
+                Result finalResult = result;
+                tf_addProductUPC.setText(finalResult.getText());
+                result=null;
+            }
+            if (result != null ) {
+                isNotHasBarCode=false;
                 barCode= result.getText();
                 Result finalResult = result;
                 Platform.runLater(() -> {
-                    tf_addProductUPC.setText(finalResult.getText());
+
+                    String[] parts =splitString(finalResult.getText());
+                    txt_fullNameCustomer.setText(parts[1]);
+                    txt_IndentifierCustomer.setText(parts[0]);
+                    cb_customerGender.setValue(parts[3]);
+                    dp_customerBirthdate.setValue(LocalDate.parse(parts[2]));
+                    txt_locationCustomer.setText(parts[4]);
                 });
                 Thread.sleep(3000);
                 System.out.println("Barcode: " + finalResult.getText());
-
             }
             canvasFrame.showImage(frame);
+
         }
         } catch (FrameGrabber.Exception e) {
             throw new RuntimeException(e);
@@ -142,9 +165,36 @@ public class CameraApp extends Thread{
     }
 
 
-    public void getTextField(TextField tf_addProductUPC) {
+    public void setTextField(TextField tf_addProductUPC) {
         this.tf_addProductUPC=tf_addProductUPC;
     }
+    public void setTextFieldForCustomer(TextField txt_fullNameCustomer, TextField txt_IndentifierCustomer, ChoiceBox cb_customerGender,
+                                        DatePicker dp_customerBirthdate, TextField txt_locationCustomer){
+        this.txt_fullNameCustomer = txt_fullNameCustomer;
+        this.txt_IndentifierCustomer = txt_IndentifierCustomer;
+        this.cb_customerGender = cb_customerGender;
+        this.dp_customerBirthdate =dp_customerBirthdate;
+        this.txt_locationCustomer = txt_locationCustomer;
+    }
+    private String[] splitString(String customerInfo){
 
+        String[] parts = customerInfo.split("\\|");
+        String citizenIDNumber = parts[0].replaceAll("I", "");
+        String fullname = parts[2].replaceAll("I", "");
+        String birthdate = parts[3].replaceAll("I", "");
+        //định dạng lại chuỗi birthdate
+        DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("ddMMyyyy");
+        DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        try {
+            LocalDate date = LocalDate.parse(birthdate, inputFormatter);
+            birthdate = date.toString();
+        } catch (DateTimeParseException e) {
+            e.printStackTrace();
+        }
+        String gender = parts[4].replaceAll("I", "");
+        String location = parts[5].replaceAll("I", "");
+        String[] result = {citizenIDNumber, fullname, birthdate, gender, location};
+        return result;
+    }
 }
 

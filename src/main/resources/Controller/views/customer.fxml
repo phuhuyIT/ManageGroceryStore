@@ -13,6 +13,11 @@
 
 <AnchorPane fx:id="anchorPane_customer" prefHeight="900.0" prefWidth="1000.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CustomerController">
    <children>
+      <ImageView fitHeight="35.0" fitWidth="30.0" layoutX="838.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/refresh.png" />
+         </image>
+      </ImageView>
       <AnchorPane fx:id="CustomerBox_4" layoutX="758.0" layoutY="182.0" prefHeight="259.0" prefWidth="200.0" style="-fx-border-radius: 20; -fx-border-color: #CCCCCC; -fx-cursor: hand;">
          <children>
             <ImageView fx:id="imageCustomer4" fitHeight="108.0" fitWidth="112.0" layoutX="42.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" />
@@ -143,12 +148,7 @@
             <Image url="@../image/add-user.png" />
          </image>
       </ImageView>
-      <Button fx:id="btn_refesh" layoutX="556.0" layoutY="100.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="79.0" style="-fx-cursor: hand; -fx-background-color: transparent;" />
-      <ImageView fitHeight="35.0" fitWidth="30.0" layoutX="578.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../image/refresh.png" />
-         </image>
-      </ImageView>
+      <Button fx:id="btn_refresh" layoutX="814.0" layoutY="42.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="79.0" style="-fx-cursor: hand; -fx-background-color: transparent;" />
       <AnchorPane fx:id="CustomerBox_1" layoutX="19.0" layoutY="182.0" prefHeight="259.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-cursor: hand; -fx-border-radius: 20;">
          <children>
             <ImageView fx:id="imageCustomer1" fitHeight="108.0" fitWidth="112.0" layoutX="47.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">

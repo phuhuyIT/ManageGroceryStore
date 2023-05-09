@@ -2,30 +2,65 @@ package Model;
 
 public class Customer {
     private int customersId;
-    private String customerCode;
+    private String citizenIDNumber;
     private String fullName;
     private String location;
     private String phone;
     private String debit;
     private String credit;
     private String email;
+    private String avatarLink;
+    private String gender;
+    private String birthDate;
 
-    public Customer(int customersId, String customerCode, String fullName, String location, String phone, String debit, String credit, String email) {
-        this.customersId = customersId;
-        this.customerCode = customerCode;
+    public String getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getAvatarLink() {
+        return avatarLink;
+    }
+
+    public void setAvatarLink(String avatarLink) {
+        this.avatarLink = avatarLink;
+    }
+
+    public Customer(String fullName, String citizenIDNumber, String gender, String location, String phone, String email, String avatarLink, String birthDate) {
+        this.citizenIDNumber = citizenIDNumber;
         this.fullName = fullName;
         this.location = location;
         this.phone = phone;
-        this.debit = debit;
-        this.credit = credit;
+        this.gender = gender;
         this.email = email;
+        this.avatarLink = avatarLink;
+        this.birthDate=birthDate;
+    }
+
+    public Customer(int customersId,String phone, String email,String location, String avatarLink) {
+        this.customersId=customersId;
+        this.location = location;
+        this.phone = phone;
+        this.email = email;
+        this.avatarLink = avatarLink;
     }
 
     @Override
     public String toString() {
         return "Customer{" +
                 "customersId=" + customersId +
-                ", customerCode='" + customerCode + '\'' +
+                ", citizenIDNumber='" + citizenIDNumber + '\'' +
                 ", fullName='" + fullName + '\'' +
                 ", location='" + location + '\'' +
                 ", phone='" + phone + '\'' +
@@ -51,12 +86,12 @@ public class Customer {
         this.customersId = customersId;
     }
 
-    public String getCustomerCode() {
-        return customerCode;
+    public String getCitizenIDNumber() {
+        return citizenIDNumber;
     }
 
-    public void setCustomerCode(String customerCode) {
-        this.customerCode = customerCode;
+    public void setCitizenIDNumber(String citizenIDNumber) {
+        this.citizenIDNumber = citizenIDNumber;
     }
 
     public String getFullName() {

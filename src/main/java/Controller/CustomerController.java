@@ -42,6 +42,10 @@ public class CustomerController extends Pagination implements Initializable {
     private AnchorPane anchorPane_customer;
     private static int currentCustomerID;
 
+    public static int getCurrentCustomerID() {
+        return currentCustomerID;
+    }
+
     private String[] choice = {"A->Z" , "Z->A"};
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
