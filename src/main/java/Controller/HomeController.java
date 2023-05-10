@@ -38,6 +38,8 @@ public class HomeController implements Initializable {
     private Button btn_Product;
     @FXML
     private Button btn_Staff;
+    @FXML
+    private Button btn_Caculator;
 
     @FXML
     private Button btn_Bill;
@@ -124,6 +126,21 @@ public class HomeController implements Initializable {
             @Override
             public void handle(ActionEvent actionEvent) {
                 FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("views/staff.fxml"));
+                Node node = null;
+                try {
+                    node = loader.load();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                paneRight.getChildren().set(0, node);
+            }
+        });
+
+        //set sự kiện cho btn_Caculator
+        btn_Caculator.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("views/sell.fxml"));
                 Node node = null;
                 try {
                     node = loader.load();

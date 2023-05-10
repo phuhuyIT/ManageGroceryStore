@@ -208,4 +208,22 @@
      -fx-background-color: #559EFC;
 }
 
+//Sell
+#btn_cancel{
+      -fx-background-color:#2596be;
+      -fx-text-fill  : #FFFFFF;
+}
+#btn_cancel:hover{
+       -fx-background-color:linear-gradient(to top right, #FF99FF, #9999FF);
+}
+
+#btn_print{
+      -fx-background-color:#2596be;
+      -fx-text-fill  : #FFFFFF;
+}
+#btn_print:hover{
+       -fx-background-color:linear-gradient(to top right, #FF99FF, #9999FF);
+}
+
+
 
