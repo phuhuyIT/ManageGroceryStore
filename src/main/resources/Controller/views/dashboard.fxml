@@ -248,12 +248,12 @@
                </children>
             </VBox>
          </children></AnchorPane>
-      <TableView layoutX="20.0" layoutY="610.0" prefHeight="277.0" prefWidth="516.0">
+      <TableView fx:id="tv_dashBoardTopProduct" layoutX="20.0" layoutY="610.0" prefHeight="277.0" prefWidth="516.0">
         <columns>
-          <TableColumn prefWidth="35.0" text="STT" />
-          <TableColumn prefWidth="235.0" text="Tên sản phẩm" />
-            <TableColumn prefWidth="100.0" text="Số lượng bán ra" />
-            <TableColumn prefWidth="145.0" text="Tổng doanh thu" />
+          <TableColumn id="productId" fx:id="tc_productID" editable="false" prefWidth="35.0" text="STT" />
+          <TableColumn id="productName" fx:id="tx_productName" editable="false" prefWidth="235.0" text="Tên sản phẩm" />
+          <TableColumn id="quantity" fx:id="tx_productQuantitySold" editable="false" prefWidth="100.0" text="Số lượng bán ra" />
+          <TableColumn fx:id="tc_productRevenue" editable="false" prefWidth="145.0" text="Tổng doanh thu" />
         </columns>
       </TableView>
       <AnchorPane fx:id="pane_Customer" layoutX="561.0" layoutY="610.0" prefHeight="262.0" prefWidth="427.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20px;">

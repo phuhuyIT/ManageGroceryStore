@@ -3,13 +3,13 @@ package Model;
 import java.time.LocalDate;
 import java.util.Date;
 public class Product {
-    private int productId;
+    private Integer productId;
     private String productBarCode;
     private LocalDate MFGDate;
     private LocalDate EXPDate;
     private int supplierID;
     private String productName;
-    private int quantity;
+    private Integer quantity;
     private double costPrice;
     private double sellingPrice;
     private int categoryID;
@@ -20,7 +20,24 @@ public class Product {
     private String SKUCode;
     private String thumbnailLink;
 
-    public Product(String productName, int productId,int categoryID, int quantity,  String thumbnailLink,LocalDate MFGDate, LocalDate EXPDate, double costPrice, double sellingPrice) {
+    public Product(int STT, String productName, int quantity, Double totalRevenue) {
+        this.productId=STT;
+        this.productName = productName;
+        this.quantity = quantity;
+        this.totalRevenue = totalRevenue;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "productId=" + productId +
+                ", productName='" + productName + '\'' +
+                ", quantity=" + quantity +
+                ", totalRevenue=" + totalRevenue +
+                '}';
+    }
+
+    public Product(String productName, int productId, int categoryID, int quantity, String thumbnailLink, LocalDate MFGDate, LocalDate EXPDate, double costPrice, double sellingPrice) {
         this.productName = productName;
         this.productId = productId;
         this.MFGDate = MFGDate;
