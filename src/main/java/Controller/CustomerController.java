@@ -78,7 +78,8 @@ public class CustomerController extends ItemController implements Initializable 
         anchorPane_customer.getChildren().add(node);
     }
 
-    protected void setRightLickAction(ContextMenu contextMenu, MenuItem delete, MenuItem detail, MenuItem cancel) {
+
+    protected void setRightLickAction(ContextMenu contextMenu, MenuItem delete, MenuItem detail) {
         for (int i=0;i<8;i++){
             AnchorPane ap = (AnchorPane) anchorPane_customer.lookup("#CustomerBox_"+(i+1));
             ap.setOnContextMenuRequested(event -> {
@@ -90,12 +91,12 @@ public class CustomerController extends ItemController implements Initializable 
             });
         }
 
+
+        //Định dạng contextMenu
+        contextMenu.setStyle("-fx-pref-width: 150px; -fx-pref-height: 90px; -fx-padding : 7px 0px 0px 0px;");
         //xử lý sự kiện MenuItem Chuột phải
         delete.setOnAction(event -> {
             System.out.println("Dã xoá");
-        });
-        cancel.setOnAction(actionEvent -> {
-            contextMenu.hide();
         });
         detail.setOnAction(actionEvent -> {
             String fxmlPath = "views/detailCustomer.fxml";

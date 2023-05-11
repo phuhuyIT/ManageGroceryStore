@@ -21,7 +21,7 @@ public abstract class ItemController extends Pagination {
         iconDelete.setFitWidth(30);
         delete.setGraphic(iconDelete);
         delete.setText("Delete");
-        delete.setStyle("-fx-font-size : 20px ; -fx-padding : 0px 0px 0px 70px;");
+        delete.setStyle("-fx-font-size : 16px ; -fx-padding : 0px 0px 0px 50px;");
 
         MenuItem detail = new MenuItem("Detail");
         ImageView iconDetail = new ImageView(new Image(getClass().getResourceAsStream("image/list.png")));
@@ -29,22 +29,13 @@ public abstract class ItemController extends Pagination {
         iconDetail.setFitWidth(30);
         detail.setGraphic(iconDetail);
         detail.setText("Detail");
-        detail.setStyle("-fx-font-size : 20px ; -fx-padding : 0px 0px 0px 70px;");
+        detail.setStyle("-fx-font-size : 16px ; -fx-padding : 0px 0px 0px 50px;");
 
-        MenuItem cancel = new MenuItem("Cancel");
-        ImageView iconCancel = new ImageView(new Image(getClass().getResourceAsStream("image/cancel.png")));
-        iconCancel.setFitHeight(30);
-        iconCancel.setFitWidth(30);
-        cancel.setGraphic(iconCancel);
-        cancel.setText("Cancel");
-        cancel.setStyle("-fx-font-size : 20px ; -fx-text-fill : #FF0000 ; -fx-padding : 0px 0px 0px 70px; -fx-font-weight:bold;");
 
-        //Định dạng contextMenu
-        contextMenu.setStyle("-fx-pref-width: 200px; -fx-pref-height: 130px; -fx-padding : 7px 0px 0px 0px;");
-        contextMenu.getItems().addAll(detail,delete,cancel);
+        contextMenu.getItems().addAll(detail,delete);
 
-        setRightLickAction(contextMenu,delete,detail,cancel);
+        setRightLickAction(contextMenu,delete,detail);
 
     }
-    protected abstract void setRightLickAction(ContextMenu contextMenu, MenuItem delete,MenuItem detail ,MenuItem cancel);
+    protected abstract void setRightLickAction(ContextMenu contextMenu, MenuItem delete,MenuItem detail);
 }

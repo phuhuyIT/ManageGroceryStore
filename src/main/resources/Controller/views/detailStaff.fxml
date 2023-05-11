@@ -127,7 +127,7 @@
                 <Font name="System Bold" size="24.0" />
             </font>
         </Label>
-        <Label layoutX="531.0" layoutY="447.0" prefHeight="267.0" prefWidth="399.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 7px;" />
+        <Label layoutX="531.0" layoutY="447.0" prefHeight="283.0" prefWidth="399.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 7px;" />
         <TextField fx:id="txt_staffBasicSalary" layoutX="549.0" layoutY="488.0" prefHeight="39.0" prefWidth="350.0">
             <font>
                 <Font size="18.0" />

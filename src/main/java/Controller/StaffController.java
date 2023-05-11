@@ -25,6 +25,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+
 public class StaffController extends ItemController implements Initializable {
     @FXML
     private Button btn_add_user;
@@ -68,7 +69,16 @@ public class StaffController extends ItemController implements Initializable {
     }
 
     @Override
-    protected void setRightLickAction(ContextMenu contextMenu, MenuItem delete, MenuItem detail, MenuItem cancel) {
+    protected void setRightLickAction(ContextMenu contextMenu, MenuItem delete, MenuItem detail) {
+        MenuItem salary = new MenuItem("Salary Manage" );
+        ImageView iconSalary = new ImageView(new Image(getClass().getResourceAsStream("image/salary.png")));
+        iconSalary.setFitHeight(30);
+        iconSalary.setFitWidth(30);
+        salary.setGraphic(iconSalary);
+        salary.setText("Salary Manage");
+        salary.setStyle("-fx-font-size : 16px ; -fx-padding : 0px 0px 0px 50px;");
+
+        contextMenu.getItems().add(1,salary);
         for (int i=0;i<8;i++){
             AnchorPane ap = (AnchorPane) anchorPane_staff.lookup("#StaffBox_"+(i+1));
             ap.setOnContextMenuRequested(event -> {
@@ -80,15 +90,19 @@ public class StaffController extends ItemController implements Initializable {
             });
         }
 
+        //Định dạng contextMenu
+        contextMenu.setStyle("-fx-pref-width: 200px; -fx-pref-height: 130px; -fx-padding : 5px 0px 5px 0px;");
+
         //xử lý sự kiện MenuItem Chuột phải
         delete.setOnAction(event -> {
             System.out.println("Dã xoá");
         });
-        cancel.setOnAction(actionEvent -> {
-            contextMenu.hide();
-        });
         detail.setOnAction(actionEvent -> {
             String fxmlPath = "views/detailStaff.fxml";
+            loadFXML(fxmlPath);
+        });
+        salary.setOnAction(actionEvent ->{
+            String fxmlPath = "views/salaryManage.fxml";
             loadFXML(fxmlPath);
         });
     }

@@ -84,7 +84,7 @@
          </font>
       </Label>
       <Line endX="756.0" layoutX="244.0" layoutY="88.0" startX="-244.0" strokeWidth="3.0" />
-      <Label fx:id="lb_Search" layoutX="17.0" layoutY="101.0" prefHeight="37.0" prefWidth="299.0" style="-fx-border-width: 3px; -fx-border-color: black; -fx-border-radius: 20px;" />
+      <Label fx:id="lb_Search" layoutX="17.0" layoutY="101.0" prefHeight="37.0" prefWidth="299.0" style="-fx-border-width: 3px; -fx-border-color: black; -fx-border-radius: 7px;" />
       <TextField fx:id="txt_search" layoutX="63.0" layoutY="102.0" prefHeight="35.0" prefWidth="252.0" promptText="Search here...." style="-fx-background-color: transparent; -fx-font-weight: bold;">
          <font>
             <Font size="16.0" />
@@ -95,7 +95,7 @@
             <Image url="@../image/search.png" />
          </image>
       </ImageView>
-      <Label layoutX="325.0" layoutY="101.0" prefHeight="37.0" prefWidth="228.0" style="-fx-border-color: black; -fx-font-weight: bold; -fx-border-width: 3px; -fx-border-radius: 20px;" text="Sort by">
+      <Label layoutX="325.0" layoutY="101.0" prefHeight="37.0" prefWidth="228.0" style="-fx-border-color: black; -fx-font-weight: bold; -fx-border-width: 3px; -fx-border-radius: 7px;" text="Sort by">
          <font>
             <Font size="16.0" />
          </font>
@@ -120,7 +120,7 @@
             <Image url="@../image/next.png" />
          </image>
       </ImageView>
-      <Button fx:id="btn_add_user" alignment="CENTER_RIGHT" layoutX="841.0" layoutY="101.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="108.0" style="-fx-cursor: hand; -fx-border-color: black; -fx-border-width: 3px; -fx-border-radius: 5px;" stylesheets="@css/test.css" text="Add">
+      <Button fx:id="btn_add_user" alignment="CENTER_RIGHT" layoutX="841.0" layoutY="101.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="108.0" style="-fx-cursor: hand; -fx-border-color: black; -fx-border-width: 3px; -fx-border-radius: 5px; -fx-background-radius: 7px;" stylesheets="@css/test.css" text="Add">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>

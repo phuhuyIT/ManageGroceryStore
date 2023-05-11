@@ -20,6 +20,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -83,6 +84,7 @@ public class ProductController extends ItemController implements Initializable {
         pane_Product.getChildren().set(0,node);
     }
 
+
     @Override
     protected void showData(int limit, int offSet) {
         ProductDAO pdao=new ProductDAO();
@@ -139,7 +141,55 @@ public class ProductController extends ItemController implements Initializable {
 
         }
     }
-    protected void setRightLickAction(ContextMenu contextMenu, MenuItem delete,MenuItem detail ,MenuItem cancel){
+    protected void setRightLickAction(ContextMenu contextMenu, MenuItem delete,MenuItem detail){
+        Menu addLots = new Menu("Add Lots" );
+        ImageView iconaddLots = new ImageView(new Image(getClass().getResourceAsStream("image/add-product.png")));
+        iconaddLots.setFitHeight(30);
+        iconaddLots.setFitWidth(30);
+        addLots.setGraphic(iconaddLots);
+        addLots.setText("Add Lots");
+        addLots.setStyle("-fx-font-size : 16px ; -fx-padding : 0px 0px 0px 50px;");
+        contextMenu.getItems().add(1,addLots);
+
+        MenuItem addNewLot = new MenuItem("Add New Lot");
+        MenuItem addOldLot = new MenuItem("Add Old Lot");
+        addNewLot.setStyle("-fx-font-size : 16px");
+        addOldLot.setStyle("-fx-font-size : 16px");
+
+        addLots.getItems().addAll(addNewLot,addOldLot);
+
+        //set sự kiện cho menu cấp2
+        addNewLot.setOnAction(actionEvent -> {
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("views/addNewLot.fxml"));
+            Stage stage = new Stage();
+            Scene scene = null;
+            try {
+                scene = new Scene(fxmlLoader.load(),422, 334);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            stage.setTitle("Log In");
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.show();
+        });
+
+        addOldLot.setOnAction(actionEvent -> {
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("views/addOldLot.fxml"));
+            Stage stage = new Stage();
+            Scene scene = null;
+            try {
+                scene = new Scene(fxmlLoader.load(),473, 288);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            stage.setTitle("Log In");
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.show();
+        });
+
+
         // Thiết lập sự kiện chuột phải cho productBox
         for (int i=0;i<8;i++){
             AnchorPane ap = (AnchorPane) pane_Product.lookup("#productBox"+(i+1));
@@ -151,13 +201,12 @@ public class ProductController extends ItemController implements Initializable {
                 event.consume(); // đánh dấu sự kiện này đã được xử lý
             });
         }
+        //Định dạng contextMenu
+        contextMenu.setStyle("-fx-pref-width: 180px; -fx-pref-height: 130px; -fx-padding : 7px 0px 0px 0px;");
 
         //xử lý sự kiện MenuItem Chuột phải
         delete.setOnAction(event -> {
             System.out.println("Dã xoá");
-        });
-        cancel.setOnAction(actionEvent -> {
-            contextMenu.hide();
         });
         detail.setOnAction(actionEvent -> {
             String fxmlPath = "views/detailProduct.fxml";

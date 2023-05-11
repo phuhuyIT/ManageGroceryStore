@@ -318,7 +318,7 @@
                </padding>
             </Label>
             <ChoiceBox fx:id="choiceBox_list" layoutX="822.5" layoutY="89.0" prefHeight="35.0" prefWidth="138.0" style="-fx-background-color: transparent;" />
-            <Button fx:id="btn_addProduct" alignment="CENTER_RIGHT" layoutX="860.0" layoutY="151.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="101.0" style="-fx-cursor: hand; -fx-border-width: 3px; -fx-border-color: black; -fx-border-radius: 5px;" stylesheets="@css/test.css" text="Add">
+            <Button fx:id="btn_addProduct" alignment="CENTER_RIGHT" layoutX="860.0" layoutY="151.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="101.0" style="-fx-cursor: hand; -fx-border-width: 3px; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 7px;" stylesheets="@css/test.css" text="Add">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>
