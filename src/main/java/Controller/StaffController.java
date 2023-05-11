@@ -61,6 +61,14 @@ public class StaffController implements Initializable {
         detail.setText("Detail");
         detail.setStyle("-fx-font-size : 20px ; -fx-padding : 0px 0px 0px 70px;");
 
+        MenuItem salary = new MenuItem("Salary Detail");
+        ImageView iconSalary = new ImageView(new Image(getClass().getResourceAsStream("image/salary.png")));
+        iconSalary.setFitHeight(30);
+        iconSalary.setFitWidth(30);
+        salary.setGraphic(iconSalary);
+        salary.setText("Salary Detail");
+        salary.setStyle("-fx-font-size : 20px ; -fx-padding : 0px 0px 0px 70px;");
+
         MenuItem cancel = new MenuItem("Cancel");
         ImageView iconCancel = new ImageView(new Image(getClass().getResourceAsStream("image/cancel.png")));
         iconCancel.setFitHeight(30);
@@ -70,8 +78,8 @@ public class StaffController implements Initializable {
         cancel.setStyle("-fx-font-size : 20px ; -fx-text-fill : #FF0000 ; -fx-padding : 0px 0px 0px 70px; -fx-font-weight:bold;");
 
         //Định dạng contextMenu
-        contextMenu.setStyle("-fx-pref-width: 200px; -fx-pref-height: 130px; -fx-padding : 7px 0px 0px 0px;");
-        contextMenu.getItems().addAll(detail,delete,cancel);
+        contextMenu.setStyle("-fx-pref-width: 200px; -fx-pref-height: 130px; -fx-padding : 9px 0px 0px 0px;");
+        contextMenu.getItems().addAll(detail,salary,delete,cancel);
 
         // Thiết lập sự kiện chuột phải cho anchorPane_customer
         anchorPane_staff.setOnContextMenuRequested(event -> {
