@@ -68,10 +68,8 @@ public class AddCustomerController implements Initializable {
         String userDirectoryString = System.getProperty("user.home");
         File userDirectory = new File(userDirectoryString);
 
-
         fileChooser.setInitialDirectory(userDirectory);
         filePath = fileChooser.showOpenDialog(stage);
-
 
         //cập nhật ảnh mới
         Image image = new Image(String.valueOf(filePath));
