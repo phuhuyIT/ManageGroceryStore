@@ -3,12 +3,14 @@ package Controller;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -20,6 +22,8 @@ import java.util.ResourceBundle;
 public class AddStaffController extends DetailStaffController implements Initializable {
     @FXML
     private Button btn_back;
+    @FXML
+    private AnchorPane pane;
     private File filePath;
     private FileChooser fileChooser;
     @FXML
@@ -57,5 +61,21 @@ public class AddStaffController extends DetailStaffController implements Initial
         cb_staffGender.getItems().addAll(gender);
         cb_staffPosition.getItems().addAll(position);
         setBtnBackAction();
+    }
+
+    protected void setBtnBackAction() {
+        btn_back.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("views/staff.fxml"));
+                Node node = null;
+                try {
+                    node = loader.load();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                pane.getChildren().add(node);
+            }
+        });
     }
 }

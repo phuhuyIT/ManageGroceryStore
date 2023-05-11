@@ -7,8 +7,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,12 +22,34 @@ public class DetailStaffController implements Initializable {
     @FXML
     private Button btn_back;
     @FXML
-    private AnchorPane pane;
+    private AnchorPane pane_detailStaff;
+    private File filePath;
+    private FileChooser fileChooser;
+    @FXML
+    private ImageView iv_staffImage;
+
+    @FXML
+    public void chooseImageStaff(ActionEvent event) throws IOException {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        fileChooser = new FileChooser();
+        fileChooser.setTitle("Open image");
+
+        String userDirectoryString = System.getProperty("user.home");
+        File userDirectory = new File(userDirectoryString);
+
+
+        fileChooser.setInitialDirectory(userDirectory);
+        filePath = fileChooser.showOpenDialog(stage);
+
+        //cập nhật ảnh mới
+        Image image = new Image(String.valueOf(filePath));
+        iv_staffImage.setImage(image);
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setBtnBackAction();
-
 
     }
 
@@ -37,7 +64,7 @@ public class DetailStaffController implements Initializable {
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-                pane.getChildren().add(node);
+                pane_detailStaff.getChildren().add(node);
             }
         });
     }
