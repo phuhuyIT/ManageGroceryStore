@@ -92,46 +92,7 @@ public class DetailProductController extends AlertAndVerifyController implements
                 updateDetailProduct();
             }
         });
-
-        ProductDAO product=new ProductDAO();
-        System.out.println("CUR productID: "+ProductController.getCurrentProductID());
-        ResultSet rs = product.selectByID(ProductController.getCurrentProductID());
-
-        CategoryDao categoryDao = new CategoryDao();
-
-        try {
-            if(rs.next()){
-                String img  = rs.getString("THUMBNAIL");
-                if(img!=null) {
-                    Image image1 = new Image(String.valueOf(img));
-                    iv_productThumbnail.setImage(image1);
-                }
-                lb_detailProductName.setText(rs.getString("PRODUCTNAME"));
-                int categoryID=rs.getInt("Categoryid");
-
-                cb_detailProductCategory.setValue(categoryDao.getNameByCategoryID(categoryID));
-                tf_detailProductQuantity.setText(String.valueOf(product.getQuantity(rs.getInt("Pid"))));
-                tf_detailProductCostPrice.setText(String.valueOf(rs.getDouble("COSTPRICE")));
-                tf_detailProductSellingPrice.setText(String.valueOf(rs.getDouble("SELLINGPRICE")));
-                lb_detailProductUPC.setText(rs.getString("PRODUCTBARCODE"));
-                dp_detailProductManufractureDate.setValue(rs.getDate("manufactureDate").toLocalDate());
-                dp_detailProductExpireDate.setValue(rs.getDate("expirationDate").toLocalDate());
-                String thumbnailLink = rs.getString("THUMBNAIL");
-                if(thumbnailLink!=null){
-                    Image productThumnail = new Image(String.valueOf(thumbnailLink));
-                    iv_productThumbnail.setImage(productThumnail);
-                    filePath=new File(thumbnailLink);
-                }
-                ResultSet rs2 = new SupplierDAO().selectByID(rs.getInt("SID"));
-                if(rs2.next()){
-                    lb_detailProductSupplierName.setText(rs2.getString("FULLNAME"));
-                    lb_detailProductSupplierLocation.setText(rs2.getString("LOCATION"));
-                    lb_detailProductSupplierPhone.setText(rs2.getString("PHONE"));
-                }
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        showProduct();
     }
     protected void setBtnBackAction(){
         btn_back.setOnAction(new EventHandler<ActionEvent>() {
@@ -150,9 +111,50 @@ public class DetailProductController extends AlertAndVerifyController implements
     }
     private void updateDetailProduct(){
         int categoryID=new CategoryDao().getCategoryIDByName(cb_detailProductCategory.getValue().toString());
-        Product product=new Product(lb_detailProductName.getText(),ProductController.getCurrentProductID(),categoryID,Integer.parseInt(tf_detailProductQuantity.getText()),
+        Product product=new Product(lb_detailProductName.getText(),ProductController.getCurrentItemID(),categoryID,Integer.parseInt(tf_detailProductQuantity.getText()),
                 filePath.toString(),dp_detailProductManufractureDate.getValue(),dp_detailProductExpireDate.getValue(),
                 Double.parseDouble(tf_detailProductCostPrice.getText()),Double.parseDouble(tf_detailProductSellingPrice.getText()));
         new ProductDAO().update(product);
+    }
+    protected void showProduct(){
+        ProductDAO product=new ProductDAO();
+        System.out.println("CUR productID: "+ProductController.getCurrentItemID());
+        ResultSet rs = product.selectByID(ProductController.getCurrentItemID());
+
+        CategoryDao categoryDao = new CategoryDao();
+
+        try {
+            if(rs.next()){
+                String img  = rs.getString("THUMBNAIL");
+                if(img!=null) {
+                    Image image1 = new Image(String.valueOf(img));
+                    iv_productThumbnail.setImage(image1);
+                }
+                lb_detailProductName.setText(rs.getString("PRODUCTNAME"));
+                int categoryID=rs.getInt("Categoryid");
+
+                cb_detailProductCategory.setValue(categoryDao.getNameByCategoryID(categoryID));
+                tf_detailProductQuantity.setText(String.valueOf(product.getQuantity(rs.getInt("Pid"))));
+                tf_detailProductCostPrice.setText(String.valueOf(rs.getDouble("COSTPRICE")));
+                tf_detailProductSellingPrice.setText(String.valueOf(rs.getDouble("SELLINGPRICE")));
+                lb_detailProductUPC.setText(rs.getString("PRODUCTBARCODE"));
+                dp_detailProductManufractureDate.setValue(rs.getDate("manufractureDate").toLocalDate());
+                dp_detailProductExpireDate.setValue(rs.getDate("expirationDate").toLocalDate());
+                String thumbnailLink = rs.getString("THUMBNAIL");
+                if(thumbnailLink!=null){
+                    Image productThumnail = new Image(String.valueOf(thumbnailLink));
+                    iv_productThumbnail.setImage(productThumnail);
+                    filePath=new File(thumbnailLink);
+                }
+                ResultSet rs2 = new SupplierDAO().selectByID(rs.getInt("SID"));
+                if(rs2.next()){
+                    lb_detailProductSupplierName.setText(rs2.getString("FULLNAME"));
+                    lb_detailProductSupplierLocation.setText(rs2.getString("LOCATION"));
+                    lb_detailProductSupplierPhone.setText(rs2.getString("PHONE"));
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

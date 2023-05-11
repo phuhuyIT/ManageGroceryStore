@@ -1,4 +1,5 @@
 module com.example.btl_demo {
+    exports Model;
     requires javafx.controls;
     requires javafx.fxml;
 

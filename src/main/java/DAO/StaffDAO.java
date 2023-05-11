@@ -87,7 +87,7 @@ public class StaffDAO implements DaoInterface<Staff>{
     @Override
     public ResultSet selectALL(int Limit, int offSet) {
         try {
-            String selectAllProduct = "SELECT fullname, position, joinDate FROM staff ORDER BY id ASC LIMIT "+Limit+" OFFSET "+offSet;
+            String selectAllProduct = "SELECT ID, fullname, position, joinDate, avatarLink FROM staff ORDER BY id ASC LIMIT "+Limit+" OFFSET "+offSet;
             pstmt= con.prepareStatement(selectAllProduct);
             rs = pstmt.executeQuery();
         }catch (SQLException e){
