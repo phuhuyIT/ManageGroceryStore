@@ -333,4 +333,43 @@ INNER JOIN customers c ON db.customerID = c.CID
 INNER JOIN staff s ON db.staffID = s.ID
 INNER JOIN products p ON db.productID = p.PID;
 
+--
+SELECT
+  p.productName AS Product_Name,
+  SUM(d.quantity * p.sellingPrice) AS Revenue,
+  SUM(d.quantity) AS Quantity_Sold
+FROM
+  detailBill d
+  JOIN products p ON d.productID = p.PID
+  JOIN bill b ON d.billID = b.billID
+WHERE MONTH(b.purchaseDate) = MONTH(CURDATE()) AND YEAR(b.purchaseDate) = YEAR(CURDATE())
+GROUP BY
+  Product_Name
+ORDER BY
+  Revenue DESC
+LIMIT 5;
+
+DELIMITER //
+CREATE PROCEDURE getTopProducts()
+BEGIN
+  SELECT p.productName,SUM(d.quantity * p.sellingPrice) AS revenue, SUM(d.quantity) AS totalSold
+  FROM detailBill d
+  JOIN products p ON d.productID = p.PID
+  JOIN BILL b ON d.billID = b.billID
+  WHERE MONTH(b.purchaseDate) = MONTH(CURDATE()) AND YEAR(b.purchaseDate) = YEAR(CURDATE())
+  GROUP BY p.productName
+  ORDER BY revenue DESC
+  LIMIT 5;
+END //
+DELIMITER ;product_details
+CALL getTopProducts()
+
+
+
+DELIMITER //
+CREATE VIEW product_details AS
+SELECT p.pid, p.productBarCode, p.productname, pb.importDate, pb.manufractureDate, pb.expirationDate, pb.quantity
+FROM products p
+INNER JOIN productBatch pb ON p.pid = pb.pid;
+DELIMITER ;
 

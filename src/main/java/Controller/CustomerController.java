@@ -23,7 +23,7 @@ import java.sql.SQLException;
 import java.util.PrimitiveIterator;
 import java.util.ResourceBundle;
 
-public class CustomerController extends Pagination implements Initializable {
+public class CustomerController extends ItemController implements Initializable {
 
     @FXML
     private TextField txt_search;
@@ -37,11 +37,6 @@ public class CustomerController extends Pagination implements Initializable {
     private Button btn_add_user;
     @FXML
     private AnchorPane anchorPane_customer;
-    private static int currentCustomerID;
-
-    public static int getCurrentCustomerID() {
-        return currentCustomerID;
-    }
 
     private String[] choice = {"A->Z" , "Z->A"};
     @Override
@@ -49,20 +44,6 @@ public class CustomerController extends Pagination implements Initializable {
         Limit=8;
         offSet=0;
         numberData = new CustomerDAO().getNumCustomer();
-        //set sự kiện cho btn_detailUser
-        EventHandler<ActionEvent> linktoDetailProduct =event -> {
-            String fxmlPath = "views/detailCustomer.fxml";
-            Button btn= (Button) event.getSource();
-            String id= (String)btn.getUserData();
-            currentCustomerID = Integer.parseInt(id);
-            loadFXML(fxmlPath);
-        };
-
-//        for (int i=0;i<8;i++){
-//            AnchorPane ap1 = (AnchorPane) anchorPane_customer.lookup("#CustomerBox_"+(i+1));
-//            Button btnDetailsUser = (Button) ap1.lookup("#btn_detailUser"+(i+1));
-//            btnDetailsUser.setOnAction(linktoDetailProduct);
-//        }
 
         showData(Limit,offSet);
 
@@ -80,55 +61,12 @@ public class CustomerController extends Pagination implements Initializable {
             }
         });
         setActionForBtn();
+        setRightLick();
 
-        //xử lý sự kiện chuột phải
-        ContextMenu contextMenu  = new ContextMenu();
-
-        // Thêm các MenuItem vào ContextMenu
-        MenuItem delete = new MenuItem("Delete");
-        ImageView iconDelete = new ImageView(new Image(getClass().getResourceAsStream("image/delete.png")));
-        iconDelete.setFitHeight(30);
-        iconDelete.setFitWidth(30);
-        delete.setGraphic(iconDelete);
-        delete.setText("Delete");
-        delete.setStyle("-fx-font-size : 20px ; -fx-padding : 0px 0px 0px 70px;");
-
-        MenuItem detail = new MenuItem("Detail");
-        ImageView iconDetail = new ImageView(new Image(getClass().getResourceAsStream("image/list.png")));
-        iconDetail.setFitHeight(30);
-        iconDetail.setFitWidth(30);
-        detail.setGraphic(iconDetail);
-        detail.setText("Detail");
-        detail.setStyle("-fx-font-size : 20px ; -fx-padding : 0px 0px 0px 70px;");
-
-        MenuItem cancel = new MenuItem("Cancel");
-        ImageView iconCancel = new ImageView(new Image(getClass().getResourceAsStream("image/cancel.png")));
-        iconCancel.setFitHeight(30);
-        iconCancel.setFitWidth(30);
-        cancel.setGraphic(iconCancel);
-        cancel.setText("Cancel");
-        cancel.setStyle("-fx-font-size : 20px ; -fx-text-fill : #FF0000 ; -fx-padding : 0px 0px 0px 70px; -fx-font-weight:bold;");
-
-        //Định dạng contextMenu
-        contextMenu.setStyle("-fx-pref-width: 200px; -fx-pref-height: 130px; -fx-padding : 7px 0px 0px 0px;");
-        contextMenu.getItems().addAll(detail,delete,cancel);
-
-        // Thiết lập sự kiện chuột phải cho anchorPane_customer
-        anchorPane_customer.setOnContextMenuRequested(event -> {
-            contextMenu.show(anchorPane_customer, event.getScreenX(), event.getScreenY());
-            event.consume(); // đánh dấu sự kiện này đã được xử lý
-        });
-
-        //xử lý sự kiện MenuItem Chuột phải
-        delete.setOnAction(event -> {
-            System.out.println("Dã xoá");
-        });
-        cancel.setOnAction(actionEvent -> {
-            contextMenu.hide();
-        });
 
     }
-    private void loadFXML(String fxmlPath) {
+    @Override
+    public void loadFXML(String fxmlPath) {
 
         FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource(fxmlPath));
         Node node = null;
@@ -139,6 +77,32 @@ public class CustomerController extends Pagination implements Initializable {
         }
         anchorPane_customer.getChildren().add(node);
     }
+
+    protected void setRightLickAction(ContextMenu contextMenu, MenuItem delete, MenuItem detail, MenuItem cancel) {
+        for (int i=0;i<8;i++){
+            AnchorPane ap = (AnchorPane) anchorPane_customer.lookup("#CustomerBox_"+(i+1));
+            ap.setOnContextMenuRequested(event -> {
+                AnchorPane btn= (AnchorPane) event.getSource();
+                String id= (String)btn.getUserData();
+                currentItemID = Integer.parseInt(id);
+                contextMenu.show(ap, event.getScreenX(), event.getScreenY());
+                event.consume(); // đánh dấu sự kiện này đã được xử lý
+            });
+        }
+
+        //xử lý sự kiện MenuItem Chuột phải
+        delete.setOnAction(event -> {
+            System.out.println("Dã xoá");
+        });
+        cancel.setOnAction(actionEvent -> {
+            contextMenu.hide();
+        });
+        detail.setOnAction(actionEvent -> {
+            String fxmlPath = "views/detailCustomer.fxml";
+            loadFXML(fxmlPath);
+        });
+    }
+
     @Override
     public void showData(int limit, int offSet){
         choiceBox.getItems().addAll(choice);
@@ -150,12 +114,10 @@ public class CustomerController extends Pagination implements Initializable {
                 if(rs.next()){
                     AnchorPane anchorPane = (AnchorPane) anchorPane_customer.lookup("#CustomerBox_"+(i+1));
                     Label customerName =(Label) anchorPane.lookup("#nameCustomer"+(i+1));
-                   // Button btnDetailCustomer= (Button) anchorPane.lookup("#btn_detailUser"+(i+1));
                     ImageView customerAvatar =(ImageView) anchorPane.lookup("#imageCustomer"+(i+1));
                     Label customerGender =(Label) anchorPane.lookup("#genderCustomer"+(i+1));
                     Label customerPhone =(Label) anchorPane.lookup("#phoneCustomer"+(i+1));
-
-                  //  btnDetailCustomer.setUserData(String.valueOf(rs.getInt("cid")));
+                    anchorPane.setUserData(rs.getString("CID"));
                     String img  = rs.getString("AVATARLINK");
                     if(img!=null) {
                         Image image1 = new Image(String.valueOf(img));
@@ -180,12 +142,10 @@ public class CustomerController extends Pagination implements Initializable {
             for (int i=0;i<8;i++){
                     AnchorPane anchorPane = (AnchorPane) anchorPane_customer.lookup("#CustomerBox_"+(i+1));
                     Label customerName =(Label) anchorPane.lookup("#nameCustomer"+(i+1));
-                    Button btnDetailCustomer= (Button) anchorPane.lookup("#btn_detailUser"+(i+1));
                     ImageView customerAvatar =(ImageView) anchorPane.lookup("#imageCustomer"+(i+1));
                     Label customerGender =(Label) anchorPane.lookup("#genderCustomer"+(i+1));
                     Label customerPhone =(Label) anchorPane.lookup("#phoneCustomer"+(i+1));
 
-                    btnDetailCustomer.setUserData(null);
                     String img  = "D:\\java\\ManageGroceryStore\\src\\main\\resources\\Controller\\image\\gamer.png";
                     if(img!=null) {
                         Image image1 = new Image(String.valueOf(img));

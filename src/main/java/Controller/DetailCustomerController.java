@@ -94,7 +94,7 @@ public class DetailCustomerController implements Initializable {
         showData();
      }
     private void showData(){
-        ResultSet rs=new CustomerDAO().selectByID(CustomerController.getCurrentCustomerID());
+        ResultSet rs=new CustomerDAO().selectByID(CustomerController.getCurrentItemID());
         try {
             if(rs.next()){
                 lb_detailCustomerName.setText(rs.getString("fullname"));
@@ -122,7 +122,7 @@ public class DetailCustomerController implements Initializable {
         }
     }
     private void updateDetailCustomer(){
-        new CustomerDAO().update(new Customer(CustomerController.getCurrentCustomerID(),txt_phoneNumberCustomer.getText(),txt_emailCustomer.getText(),txt_locationCustomer.getText()
+        new CustomerDAO().update(new Customer(CustomerController.getCurrentItemID(),txt_phoneNumberCustomer.getText(),txt_emailCustomer.getText(),txt_locationCustomer.getText()
         ,filePath.toString()));
     }
 }
