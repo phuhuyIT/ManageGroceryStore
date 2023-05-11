@@ -168,7 +168,7 @@ public class ProductController extends ItemController implements Initializable {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            stage.setTitle("Log In");
+            stage.setTitle("Add New Lot");
             stage.setScene(scene);
             stage.setResizable(false);
             stage.show();
@@ -183,7 +183,7 @@ public class ProductController extends ItemController implements Initializable {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            stage.setTitle("Log In");
+            stage.setTitle("Add Old Lot");
             stage.setScene(scene);
             stage.setResizable(false);
             stage.show();
