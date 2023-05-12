@@ -112,11 +112,11 @@ public class SalaryController implements Initializable {
             Stage stage = new Stage();
             Scene scene = null;
             try {
-                scene = new Scene(fxmlLoader.load(), 316, 95);
+                scene = new Scene(fxmlLoader.load(), 316, 146);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            stage.setTitle("Salary Management");
+            stage.setTitle("Enter Password");
             stage.setScene(scene);
             stage.setResizable(false);
             stage.show();

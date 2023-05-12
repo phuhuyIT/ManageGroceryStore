@@ -225,5 +225,15 @@
        -fx-background-color:linear-gradient(to top right, #FF99FF, #9999FF);
 }
 
+//EnterPassWord
+#btn_confirm{
+ -fx-background-color:#2596be;
+  -fx-text-fill: #FFFFFF;
+}
+
+#btn_confirm:hover{
+     -fx-background-color:linear-gradient(to top right, #FF99FF, #9999FF);
+}
+
 
 
