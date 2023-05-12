@@ -26,7 +26,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
-public class AddProduct extends DetailProduct implements Initializable {
+public class AddProductController extends DetailProductController implements Initializable {
     @FXML
     private MenuButton mbCategory;
     @FXML

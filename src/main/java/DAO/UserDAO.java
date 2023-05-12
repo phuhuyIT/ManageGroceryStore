@@ -1,8 +1,8 @@
 package DAO;
 
 import Model.InventoryAlert;
-import Controller.Login;
-import Controller.UserProfile;
+import Controller.LoginController;
+import Controller.UserProfileController;
 import DatabaseConnection.ConnectionFactory;
 import Model.User;
 
@@ -64,7 +64,7 @@ public class UserDAO extends InventoryAlert {
             String encPass=null;
             String query1="SELECT username, password FROM users";
             rs=pstmt.executeQuery(query1);
-            encPass=new UserProfile().encryptPassword(password);
+            encPass=new UserProfileController().encryptPassword(password);
             String queryTemp = "INSERT INTO users (username, password) VALUES(?,?)";
             pstmt = con.prepareStatement(queryTemp);
             pstmt.setString(1, username);
@@ -119,7 +119,7 @@ public class UserDAO extends InventoryAlert {
                 pstmt.setString(4, userdto.getCategory());
                 pstmt.setString(5,userdto.getImageLink());
                 pstmt.setString(6, userdto.getEmail());
-                pstmt.setString(7, Login.getLoggedInUsername());
+                pstmt.setString(7, LoginController.getLoggedInUsername());
                 pstmt.executeUpdate();
                 informationAlert("Update","UPDATED");
             }
@@ -179,7 +179,7 @@ public class UserDAO extends InventoryAlert {
 
     public ResultSet getPassword(String user, String pass){
         try {
-            String encPass = new UserProfile().encryptPassword(pass);
+            String encPass = new UserProfileController().encryptPassword(pass);
             String query = "SELECT password FROM users WHERE username='"+user+"' AND password='"+encPass+"'";
             rs = stmt.executeQuery(query);
         } catch (SQLException e) {
@@ -202,7 +202,7 @@ public class UserDAO extends InventoryAlert {
         try{
             String query="UPDATE users SET password=? WHERE username=?";
             pstmt=con.prepareStatement(query);
-            String encPass = new UserProfile().encryptPassword(pass);
+            String encPass = new UserProfileController().encryptPassword(pass);
             pstmt.setString(1, encPass);
             pstmt.setString(2, user);
             pstmt.executeUpdate();

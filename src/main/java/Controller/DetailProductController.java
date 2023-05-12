@@ -27,10 +27,9 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
-public class DetailProduct extends InventoryAlert implements Initializable {
+public class DetailProductController extends InventoryAlert implements Initializable {
     @FXML
     private AnchorPane pane;
     @FXML

@@ -14,14 +14,14 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.*;
 
-public class Login extends InventoryAlert {
+public class LoginController extends InventoryAlert {
     private static String loggedInUsername =null;
     public static void changeScence(ActionEvent event , String fxmlFile , String title , String username){
         Parent root = null;
 
         if(username !=null){
             try {
-                FXMLLoader loader = new FXMLLoader(Login.class.getResource("views/" + fxmlFile));
+                FXMLLoader loader = new FXMLLoader(LoginController.class.getResource("views/" + fxmlFile));
                 root = loader.load();
                 HomeController homeController = loader.getController();
                 homeController.setUserInformation(username);
@@ -31,7 +31,7 @@ public class Login extends InventoryAlert {
             }
         }else{
             try{
-                root = FXMLLoader.load(Login.class.getResource("views/" + fxmlFile));
+                root = FXMLLoader.load(LoginController.class.getResource("views/" + fxmlFile));
 
             }catch (IOException e){
                 e.printStackTrace();
@@ -52,7 +52,7 @@ public class Login extends InventoryAlert {
 
         if(username !=null){
             try {
-                FXMLLoader loader = new FXMLLoader(Login.class.getResource("views/" + fxmlFile));
+                FXMLLoader loader = new FXMLLoader(LoginController.class.getResource("views/" + fxmlFile));
                 root = loader.load();
                 HomeController homeController = loader.getController();
                 homeController.setUserInformation(username);
@@ -62,7 +62,7 @@ public class Login extends InventoryAlert {
             }
         }else{
             try{
-                root = FXMLLoader.load(Login.class.getResource(fxmlFile));
+                root = FXMLLoader.load(LoginController.class.getResource(fxmlFile));
 
             }catch (IOException e){
                 e.printStackTrace();
@@ -84,7 +84,7 @@ public class Login extends InventoryAlert {
 
         if(username !=null){
             try {
-                FXMLLoader loader = new FXMLLoader(Login.class.getResource("views/" + fxmlFile));
+                FXMLLoader loader = new FXMLLoader(LoginController.class.getResource("views/" + fxmlFile));
                 root = loader.load();
                 HomeController homeController = loader.getController();
                 homeController.setUserInformation(username);
@@ -94,7 +94,7 @@ public class Login extends InventoryAlert {
             }
         }else{
             try{
-                root = FXMLLoader.load(Login.class.getResource("views/" + fxmlFile));
+                root = FXMLLoader.load(LoginController.class.getResource("views/" + fxmlFile));
 
             }catch (IOException e){
                 e.printStackTrace();
@@ -124,7 +124,7 @@ public class Login extends InventoryAlert {
     }
 
     public static void LogInUser(ActionEvent event , String username , String password){
-        String encrp= UserProfile.encryptPassword(password);
+        String encrp= UserProfileController.encryptPassword(password);
         if(new ConnectionFactory().checkLogin(username,encrp)==true){
             changeScence(event, "homePage.fxml", "Welcome",username);
             loggedInUsername=username;

@@ -24,7 +24,7 @@ import java.security.MessageDigest;
 import java.sql.*;
 import java.util.ResourceBundle;
 
-public class UserProfile extends InventoryAlert implements Initializable {
+public class UserProfileController extends InventoryAlert implements Initializable {
 
     @FXML
     private Label title;
@@ -95,7 +95,7 @@ public class UserProfile extends InventoryAlert implements Initializable {
         // Lấy thông tin từ database hiện lên
         try {
             UserDAO userData = new UserDAO();
-            ResultSet rs = userData.getQueryResult1(Login.getLoggedInUsername());
+            ResultSet rs = userData.getQueryResult1(LoginController.getLoggedInUsername());
             while (rs.next()) {
                 String img = rs.getString("IMAGE");
                 if (img != null) {
@@ -137,7 +137,7 @@ public class UserProfile extends InventoryAlert implements Initializable {
                 if (!txt_fullname.getText().trim().isEmpty() && !txt_phone.getText().trim().isEmpty() && !txt_location.getText().trim().isEmpty() && !cb_category.getValue().toString().trim().isEmpty()&& !txt_email.getText().trim().isEmpty()) {
                     User user=new User(txt_fullname.getText(),txt_location.getText(), txt_phone.getText(), txt_email.getText(), (String) cb_category.getValue(), filePath.toString());
                     try {
-                        Login.Update_Infor(actionEvent,user);
+                        LoginController.Update_Infor(actionEvent,user);
                     } catch (SQLException e) {
                         throw new RuntimeException(e);
                     }

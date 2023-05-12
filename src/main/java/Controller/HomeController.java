@@ -179,7 +179,7 @@ public class HomeController implements Initializable {
         btn_logout.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                Login.changeScence1(actionEvent, "views/hello-view.fxml", "Log In", null);
+                LoginController.changeScence1(actionEvent, "views/hello-view.fxml", "Log In", null);
             }
         });
         //thiết lập đồng hồ hiển thị thời gian trên máy
