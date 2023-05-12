@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
@@ -17,6 +18,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
@@ -70,12 +72,12 @@ public class StaffController extends ItemController implements Initializable {
 
     @Override
     protected void setRightLickAction(ContextMenu contextMenu, MenuItem delete, MenuItem detail) {
-        MenuItem salary = new MenuItem("Salary Manage" );
+        MenuItem salary = new MenuItem("Salary Management" );
         ImageView iconSalary = new ImageView(new Image(getClass().getResourceAsStream("image/salary.png")));
         iconSalary.setFitHeight(30);
         iconSalary.setFitWidth(30);
         salary.setGraphic(iconSalary);
-        salary.setText("Salary Manage");
+        salary.setText("Salary Management");
         salary.setStyle("-fx-font-size : 16px ; -fx-padding : 0px 0px 0px 50px;");
 
         contextMenu.getItems().add(1,salary);
@@ -102,8 +104,18 @@ public class StaffController extends ItemController implements Initializable {
             loadFXML(fxmlPath);
         });
         salary.setOnAction(actionEvent ->{
-            String fxmlPath = "views/salaryManage.fxml";
-            loadFXML(fxmlPath);
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("views/salaryManage.fxml"));
+            Stage stage = new Stage();
+            Scene scene = null;
+            try {
+                scene = new Scene(fxmlLoader.load(),993, 682);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            stage.setTitle("Salary Management");
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.show();
         });
     }
 
