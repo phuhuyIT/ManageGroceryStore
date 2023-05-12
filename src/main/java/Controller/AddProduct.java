@@ -9,7 +9,6 @@ import Model.Supplier;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
@@ -27,7 +26,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
-public class AddProductController extends DetailProductController implements Initializable {
+public class AddProduct extends DetailProduct implements Initializable {
     @FXML
     private MenuButton mbCategory;
     @FXML

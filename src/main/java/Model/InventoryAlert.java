@@ -1,19 +1,17 @@
-package Controller;
+package Model;
 
-import javafx.scene.control.Alert;
-
-public class AlertAndVerifyController {
-    private AlertAndVerifyController alert;
+public class InventoryAlert {
+    private InventoryAlert inventoryAlert;
 
     public static void errorAlert(String title, String contentText){
-        Alert alert = new Alert(Alert.AlertType.ERROR);
+        javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.ERROR);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(contentText);
         alert.showAndWait();
     }
     public static void informationAlert(String title, String contentText){
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(contentText);

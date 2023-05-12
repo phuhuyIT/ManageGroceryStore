@@ -28,7 +28,7 @@ public class HelloController implements Initializable {
         btn_login.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                LoginController.LogInUser(event , tf_username.getText(), tf_password.getText());
+                Login.LogInUser(event , tf_username.getText(), tf_password.getText());
 
             }
         });
@@ -36,7 +36,7 @@ public class HelloController implements Initializable {
         btn_signup.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                LoginController.changeScence1(event , "views/RegisForm.fxml", "Sign Up", null);
+                Login.changeScence1(event , "views/RegisForm.fxml", "Sign Up", null);
             }
         });
     }

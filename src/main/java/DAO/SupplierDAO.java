@@ -1,9 +1,8 @@
 package DAO;
 
 
-import Controller.AlertAndVerifyController;
+import Model.InventoryAlert;
 import DatabaseConnection.ConnectionFactory;
-import Model.Product;
 import Model.Supplier;
 
 import java.sql.*;
@@ -12,7 +11,7 @@ import java.util.ArrayList;
 
 
 
-public class SupplierDAO extends AlertAndVerifyController implements DaoInterface <Supplier> {
+public class SupplierDAO extends InventoryAlert implements DaoInterface <Supplier> {
     Connection con = null;
     PreparedStatement pstmt = null;
     Statement stmt = null;

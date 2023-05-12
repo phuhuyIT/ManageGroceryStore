@@ -1,7 +1,6 @@
 package Model;
 
-import java.sql.Date;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class Staff {
     private int id;
@@ -9,26 +8,50 @@ public class Staff {
     private String staffIDCard;
     private String position;
     private String phone;
-    private Date joinDate;
+    private LocalDate joinDate;
     private float basicSalary;
     private int workingHours;
     private float totalSalary;
     private String gender;
     private String Email;
-    private Date birthDate;
+    private LocalDate birthDate;
     private String avatarLink;
     private String location;
     private int overtimeHours;
     private float allowance;
     private float deduction;
     private float salary;
-    private Date monthSalary;
+    private LocalDate monthSalary;
 
-    public Date getMonthSalary() {
+    public Staff(int id, String location, String phone, String email, String avatarLink, float basicSalary, String position) {
+        this.id = id;
+        this.position = position;
+        this.phone = phone;
+        this.basicSalary = basicSalary;
+        Email = email;
+        this.location = location;
+        this.avatarLink=avatarLink;
+    }
+
+    public Staff(String fullName, String staffIDCard, String gender, String location, String phone, String email, String avatarLink, LocalDate birthDate, float basicSalary, String position, LocalDate joinDate) {
+        this.fullName = fullName;
+        this.staffIDCard = staffIDCard;
+        this.position = position;
+        this.phone = phone;
+        this.joinDate = joinDate;
+        this.basicSalary = basicSalary;
+        this.gender = gender;
+        Email = email;
+        this.birthDate = birthDate;
+        this.avatarLink = avatarLink;
+        this.location = location;
+    }
+
+    public LocalDate getMonthSalary() {
         return monthSalary;
     }
 
-    public void setMonthSalary(Date monthSalary) {
+    public void setMonthSalary(LocalDate monthSalary) {
         this.monthSalary = monthSalary;
     }
 
@@ -80,19 +103,19 @@ public class Staff {
         this.avatarLink = avatarLink;
     }
 
-    public Date getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 
-    public Date getJoinDate() {
+    public LocalDate getJoinDate() {
         return joinDate;
     }
 
-    public void setJoinDate(Date joinDate) {
+    public void setJoinDate(LocalDate joinDate) {
         this.joinDate = joinDate;
     }
 

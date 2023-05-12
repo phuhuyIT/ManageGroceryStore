@@ -42,14 +42,7 @@ public class StaffController extends ItemController implements Initializable {
         btn_add_user.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("views/addStaff.fxml"));
-                Node node = null;
-                try {
-                    node = loader.load();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                anchorPane_staff.getChildren().add(node);
+                loadFXML("views/addStaff.fxml");
             }
         });
 

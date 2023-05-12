@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="pane" prefHeight="900.0" prefWidth="1000.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AddStaffController">
+<AnchorPane fx:id="pane_addStaff" prefHeight="900.0" prefWidth="1000.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AddStaffController">
     <children>
         <Label layoutX="19.0" layoutY="704.0" prefHeight="94.0" prefWidth="427.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 7px;" />
         <Label layoutX="18.0" layoutY="449.0" prefHeight="195.0" prefWidth="427.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 7px;" />
@@ -172,5 +172,6 @@
             <Font size="20.0" />
          </font>
       </Label>
+      <Label layoutX="119.0" layoutY="293.0" text="*" textFill="RED" />
     </children>
 </AnchorPane>

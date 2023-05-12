@@ -12,7 +12,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -38,11 +37,11 @@ public class ChangePassController implements Initializable {
             public void handle(ActionEvent actionEvent) {
                 UserDAO user = new UserDAO();
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                ResultSet rs =user.getPassword(LoginController.getLoggedInUsername(),tf_oldPassword.getText());
+                ResultSet rs =user.getPassword(Login.getLoggedInUsername(),tf_oldPassword.getText());
                 try {
                     if(tf_newPassword.getText().equals(tf_confirmPassword.getText()) && rs.next()){
 
-                        user.changePassword(LoginController.getLoggedInUsername(),tf_newPassword.getText());
+                        user.changePassword(Login.getLoggedInUsername(),tf_newPassword.getText());
                         FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("views/user_profile.fxml"));
                         Node node = null;
                         try {

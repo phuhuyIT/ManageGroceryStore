@@ -20,4 +20,5 @@ module com.example.btl_demo {
 
     opens Controller to javafx.fxml;
     exports Controller;
+    opens Model to javafx.fxml;
 }

@@ -1,8 +1,7 @@
 package DAO;
 
-import Controller.AlertAndVerifyController;
+import Model.InventoryAlert;
 import DatabaseConnection.ConnectionFactory;
-import Model.CameraApp;
 import Model.Staff;
 
 import java.sql.*;
@@ -36,7 +35,7 @@ public class StaffDAO implements DaoInterface<Staff>{
             pstmt.setString(1, staff.getStaffIDCard());
             rs=pstmt.executeQuery();
             if(rs.next()){
-                AlertAndVerifyController.errorAlert("ERROR","THIS PRODUCT HAS BEEN ADDED!");
+                InventoryAlert.errorAlert("ERROR","THIS PRODUCT HAS BEEN ADDED!");
                 return 0;
             }else{
                 addFunction(staff);
@@ -76,7 +75,7 @@ public class StaffDAO implements DaoInterface<Staff>{
             pstmt.setFloat(7, staff.getId());
             result=pstmt.executeUpdate();
             if(result>0)
-                AlertAndVerifyController.informationAlert("Sucessful","THIS CUSTOMER INFORMATION HAS BEEN UPDATED SUCCESSFULLY");
+                InventoryAlert.informationAlert("Sucessful","THIS CUSTOMER INFORMATION HAS BEEN UPDATED SUCCESSFULLY");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -98,15 +97,24 @@ public class StaffDAO implements DaoInterface<Staff>{
 
     @Override
     public ResultSet selectByID(int ID) {
-        return null;
+        ResultSet rs;
+        try {
+            String selectByID_query = "SELECT * FROM staff WHERE id =? ";
+            pstmt= con.prepareStatement(selectByID_query);
+            pstmt.setInt(1,ID);
+            rs =pstmt.executeQuery();
+        }catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return rs;
     }
 
     @Override
     public int addFunction(Staff staff) {
         int result = 0;
         try {
-            String url = "insert into staff (fullname, gender, staffIDCard, position , phone, joinDate, EMAIL, avatarLink, Birthdate)"
-                    + "values (?,?,?,?,?,?,?,?,?)";
+            String url = "insert into staff (fullname, gender, staffIDCard, position , phone, joinDate, EMAIL, avatarLink, Birthdate, basicSalary, location)"
+                    + "values (?,?,?,?,?,?,?,?,?,?,?)";
             pstmt = con.prepareStatement(url);
             pstmt.setString(1, staff.getFullName());
             if(staff.getGender().equals("Nam"))
@@ -117,14 +125,16 @@ public class StaffDAO implements DaoInterface<Staff>{
             pstmt.setString(3, staff.getStaffIDCard());
             pstmt.setString(4, staff.getPosition());
             pstmt.setString(5, staff.getPhone());
-            pstmt.setDate(6, staff.getJoinDate());
+            pstmt.setDate(6, Date.valueOf(staff.getJoinDate()));
             pstmt.setString(7, staff.getEmail());
             pstmt.setString(8, staff.getAvatarLink());
-            pstmt.setDate(9,staff.getBirthDate());
+            pstmt.setDate(9, Date.valueOf(staff.getBirthDate()));
+            pstmt.setDate(9, Date.valueOf(staff.getBirthDate()));
+            pstmt.setFloat(10,staff.getBasicSalary());
+            pstmt.setString(11,staff.getLocation());
             result = pstmt.executeUpdate();
             if(result>0)
-                AlertAndVerifyController.informationAlert("Sucessful","THIS STAFF HAS BEEN ADDED SUCCESSFULLY");
-            addMonthlySalary(staff);
+                InventoryAlert.informationAlert("Sucessful","THIS STAFF HAS BEEN ADDED SUCCESSFULLY");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -136,14 +146,14 @@ public class StaffDAO implements DaoInterface<Staff>{
         try {
             pstmt = con.prepareStatement(checkSalary);
             pstmt.setInt(1,staff.getId());
-            pstmt.setDate(2,staff.getMonthSalary());
+            pstmt.setDate(2, Date.valueOf(staff.getMonthSalary()));
             rs=pstmt.executeQuery();
             if(rs.next()){
                 String sql = "UPDATE monthly_salary SET monthSalary=?, workingHours=?, overtimeHours=?, allowance=?, deduction=? WHERE id=?";
                 pstmt = con.prepareStatement(sql);
 
                 // Thiết lập các tham số truy vấn
-                pstmt.setDate(1, staff.getMonthSalary());
+                pstmt.setDate(1, Date.valueOf(staff.getMonthSalary()));
                 pstmt.setInt(2, staff.getWorkingHours());
                 pstmt.setInt(3, staff.getOvertimeHours());
                 pstmt.setFloat(4, staff.getAllowance());
@@ -152,14 +162,14 @@ public class StaffDAO implements DaoInterface<Staff>{
                 // Thực thi truy vấn
                 int rowsAffected = pstmt.executeUpdate();
                 if(rowsAffected>0)
-                    AlertAndVerifyController.informationAlert("Success","SUCCESSFULLY UPDATE MONTHLY SALARY"+staff.getMonthSalary());
+                    InventoryAlert.informationAlert("Success","SUCCESSFULLY UPDATE MONTHLY SALARY"+staff.getMonthSalary());
             }else{
-                String sql = "INSERT INTO monthly_salary (staffid, monthSalary,workingHours, overtimeHours, allowance, deduction) VALUES (?, ?, ?, ?, ?, ?)";
+                String sql = "INSERT INTO monthly_salary (staffid,workingHours, overtimeHours, allowance, deduction) VALUES (?, ?, ?, ?, ?, ?)";
                 try {
                     pstmt = con.prepareStatement(sql);
                     // Thiết lập các tham số truy vấn
                     pstmt.setInt(1, staff.getId());
-                    pstmt.setDate(2, staff.getMonthSalary());
+                    pstmt.setDate(2, Date.valueOf(staff.getMonthSalary()));
                     pstmt.setInt(3, staff.getWorkingHours());
                     pstmt.setInt(4, staff.getOvertimeHours());
                     pstmt.setFloat(5, staff.getAllowance());
@@ -168,7 +178,7 @@ public class StaffDAO implements DaoInterface<Staff>{
                     // Thực thi truy vấn
                     int rowsAffected = pstmt.executeUpdate();
                     if(rowsAffected>0)
-                        AlertAndVerifyController.informationAlert("Success","SUCCESSFULLY CREATE NEW MONTHLY SALARY"+staff.getMonthSalary());
+                        InventoryAlert.informationAlert("Success","SUCCESSFULLY CREATE NEW MONTHLY SALARY"+staff.getMonthSalary());
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }

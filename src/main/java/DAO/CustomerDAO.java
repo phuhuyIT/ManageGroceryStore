@@ -1,12 +1,11 @@
 package DAO;
-import Controller.AlertAndVerifyController;
+import Model.InventoryAlert;
 import Model.Customer;
 import DatabaseConnection.ConnectionFactory;
-import javafx.scene.control.Alert;
 
 import java.sql.*;
-import java.util.ArrayList;
-public class CustomerDAO extends AlertAndVerifyController implements DaoInterface <Customer>{
+
+public class CustomerDAO extends InventoryAlert implements DaoInterface <Customer>{
     Connection con = null;
     PreparedStatement pstmt = null;
     Statement stmt = null;
@@ -73,7 +72,7 @@ public class CustomerDAO extends AlertAndVerifyController implements DaoInterfac
             pstmt.setInt(5,customer.getCustomersId());
             result=pstmt.executeUpdate();
             if(result>0)
-                AlertAndVerifyController.informationAlert("Sucessful","THIS CUSTOMER INFORMATION HAS BEEN UPDATED SUCCESSFULLY");
+                InventoryAlert.informationAlert("Sucessful","THIS CUSTOMER INFORMATION HAS BEEN UPDATED SUCCESSFULLY");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -128,7 +127,7 @@ public class CustomerDAO extends AlertAndVerifyController implements DaoInterfac
             pstmt.setString(8,customer.getBirthDate());
             result = pstmt.executeUpdate();
             if(result>0)
-                AlertAndVerifyController.informationAlert("Sucessful","THIS CUSTOMER HAS BEEN ADDED SUCCESSFULLY");
+                InventoryAlert.informationAlert("Sucessful","THIS CUSTOMER HAS BEEN ADDED SUCCESSFULLY");
         } catch (Exception e) {
             e.printStackTrace();
         }

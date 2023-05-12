@@ -1,6 +1,7 @@
 package Controller;
 
 import DAO.UserDAO;
+import Model.InventoryAlert;
 import Model.User;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -23,7 +24,7 @@ import java.security.MessageDigest;
 import java.sql.*;
 import java.util.ResourceBundle;
 
-public class UserProfileController extends AlertAndVerifyController implements Initializable {
+public class UserProfile extends InventoryAlert implements Initializable {
 
     @FXML
     private Label title;
@@ -94,7 +95,7 @@ public class UserProfileController extends AlertAndVerifyController implements I
         // Lấy thông tin từ database hiện lên
         try {
             UserDAO userData = new UserDAO();
-            ResultSet rs = userData.getQueryResult1(LoginController.getLoggedInUsername());
+            ResultSet rs = userData.getQueryResult1(Login.getLoggedInUsername());
             while (rs.next()) {
                 String img = rs.getString("IMAGE");
                 if (img != null) {
@@ -136,7 +137,7 @@ public class UserProfileController extends AlertAndVerifyController implements I
                 if (!txt_fullname.getText().trim().isEmpty() && !txt_phone.getText().trim().isEmpty() && !txt_location.getText().trim().isEmpty() && !cb_category.getValue().toString().trim().isEmpty()&& !txt_email.getText().trim().isEmpty()) {
                     User user=new User(txt_fullname.getText(),txt_location.getText(), txt_phone.getText(), txt_email.getText(), (String) cb_category.getValue(), filePath.toString());
                     try {
-                        LoginController.Update_Infor(actionEvent,user);
+                        Login.Update_Infor(actionEvent,user);
                     } catch (SQLException e) {
                         throw new RuntimeException(e);
                     }

@@ -1,17 +1,13 @@
 package DAO;
 
-import Controller.AlertAndVerifyController;
+import Model.InventoryAlert;
 import DatabaseConnection.ConnectionFactory;
 import Model.CameraApp;
-import Model.Customer;
 import Model.Product;
-import javafx.scene.control.Alert;
 
 import java.sql.*;
-import java.time.LocalDate;
-import java.util.ArrayList;
 
-public class ProductDAO extends AlertAndVerifyController implements DaoInterface<Product> {
+public class ProductDAO extends InventoryAlert implements DaoInterface<Product> {
     Connection con = null;
     PreparedStatement pstmt = null;
     Statement stmt = null;
@@ -120,6 +116,7 @@ public class ProductDAO extends AlertAndVerifyController implements DaoInterface
     public ResultSet selectByID(int ID) {
         ResultSet rs;
         try {
+
             String selectByID_query = "SELECT * FROM PRODUCTS P INNER JOIN PRODUCTBATCH PB ON P.PID = PB.PID WHERE P.Pid =? ";
             pstmt= con.prepareStatement(selectByID_query);
             pstmt.setInt(1,ID);

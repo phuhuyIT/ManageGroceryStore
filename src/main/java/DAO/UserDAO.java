@@ -1,15 +1,11 @@
 package DAO;
 
-import Controller.AlertAndVerifyController;
-import Controller.LoginController;
-import Controller.UserProfileController;
+import Model.InventoryAlert;
+import Controller.Login;
+import Controller.UserProfile;
 import DatabaseConnection.ConnectionFactory;
-import Model.Customer;
 import Model.User;
-import javafx.scene.control.Alert;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,7 +20,7 @@ import java.util.ArrayList;
  * The class BuildTableModel.java is then extended to two classes UserDAO.java and SupplierDAO.java.*/
 
 
-public class UserDAO extends AlertAndVerifyController {
+public class UserDAO extends InventoryAlert {
 
     Connection con = null;
     PreparedStatement pstmt = null;
@@ -47,7 +43,7 @@ public class UserDAO extends AlertAndVerifyController {
             pstmt.setString(1, userdto.getUsername());
             rs=pstmt.executeQuery();
             if(rs.next()){
-                Alert alert = new Alert(Alert.AlertType.WARNING);
+                javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.WARNING);
                 alert.setTitle("Duplicate User");
                 alert.setHeaderText(null);
                 alert.setContentText("Same User has already been added!");
@@ -68,7 +64,7 @@ public class UserDAO extends AlertAndVerifyController {
             String encPass=null;
             String query1="SELECT username, password FROM users";
             rs=pstmt.executeQuery(query1);
-            encPass=new UserProfileController().encryptPassword(password);
+            encPass=new UserProfile().encryptPassword(password);
             String queryTemp = "INSERT INTO users (username, password) VALUES(?,?)";
             pstmt = con.prepareStatement(queryTemp);
             pstmt.setString(1, username);
@@ -97,7 +93,7 @@ public class UserDAO extends AlertAndVerifyController {
             pstmt.setString(4, userdto.getCategory());
             pstmt.setString(5, userdto.getUsername());
             pstmt.executeUpdate();
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
             alert.setTitle("Update");
             alert.setHeaderText(null);
             alert.setContentText("Updated");
@@ -123,7 +119,7 @@ public class UserDAO extends AlertAndVerifyController {
                 pstmt.setString(4, userdto.getCategory());
                 pstmt.setString(5,userdto.getImageLink());
                 pstmt.setString(6, userdto.getEmail());
-                pstmt.setString(7, LoginController.getLoggedInUsername());
+                pstmt.setString(7, Login.getLoggedInUsername());
                 pstmt.executeUpdate();
                 informationAlert("Update","UPDATED");
             }
@@ -139,7 +135,7 @@ public class UserDAO extends AlertAndVerifyController {
             pstmt=con.prepareStatement(query);
             pstmt.setString(1,value);
             pstmt.executeUpdate();
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
             alert.setTitle("Delete status");
             alert.setHeaderText(null);
             alert.setContentText("Deleted...");
@@ -183,7 +179,7 @@ public class UserDAO extends AlertAndVerifyController {
 
     public ResultSet getPassword(String user, String pass){
         try {
-            String encPass = new UserProfileController().encryptPassword(pass);
+            String encPass = new UserProfile().encryptPassword(pass);
             String query = "SELECT password FROM users WHERE username='"+user+"' AND password='"+encPass+"'";
             rs = stmt.executeQuery(query);
         } catch (SQLException e) {
@@ -206,7 +202,7 @@ public class UserDAO extends AlertAndVerifyController {
         try{
             String query="UPDATE users SET password=? WHERE username=?";
             pstmt=con.prepareStatement(query);
-            String encPass = new UserProfileController().encryptPassword(pass);
+            String encPass = new UserProfile().encryptPassword(pass);
             pstmt.setString(1, encPass);
             pstmt.setString(2, user);
             pstmt.executeUpdate();

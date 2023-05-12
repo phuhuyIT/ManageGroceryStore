@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.InventoryAlert;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -22,7 +23,7 @@ public abstract class Pagination {
             @Override
             public void handle(ActionEvent actionEvent) {
                 if(offSet<=0){
-                    AlertAndVerifyController.errorAlert("Error","This is the first page");
+                    InventoryAlert.errorAlert("Error","This is the first page");
                 }
                 else{
                     offSet-=8;
@@ -38,7 +39,7 @@ public abstract class Pagination {
                 offSet+=8;
                 Limit+=8;
                 if(offSet>numberData){
-                    AlertAndVerifyController.errorAlert("Error","This is the last page");
+                    InventoryAlert.errorAlert("Error","This is the last page");
                 }else {
                     clearData();
                     showData(Limit,offSet);

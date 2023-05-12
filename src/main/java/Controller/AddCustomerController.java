@@ -19,12 +19,9 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.ResourceBundle;
 
-import static Controller.AlertAndVerifyController.errorAlert;
+import static Model.InventoryAlert.errorAlert;
 
 public class AddCustomerController implements Initializable {
     @FXML
@@ -112,8 +109,10 @@ public class AddCustomerController implements Initializable {
         dp_customerBirthdate.equals(null)||txt_phoneNumberCustomer.equals(null)){
             errorAlert("Empty field","PLEASE FILL IN ALL NECESSARY INFORMATION!");
         }else{
-            if(filePath.toString()==null){
-                filePath = new File("");
+            if(cb_customerGender.getValue()=="Nam"&&filePath.toString()==null){
+                filePath = new File("D:/java/ManageGroceryStore/src/main/resources/Controller/image/woman1.jpg");
+            } else if (cb_customerGender.getValue()=="Nữ"&&filePath.toString()==null) {
+                filePath = new File("D:/java/ManageGroceryStore/src/main/resources/Controller/image/man.jpg");
             }
             if(txt_IndentifierCustomer.getText()==null)
                 txt_IndentifierCustomer.setText("");

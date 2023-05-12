@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.InventoryAlert;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -10,7 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class SignUpController extends AlertAndVerifyController implements Initializable {
+public class SignUp extends InventoryAlert implements Initializable {
 
     @FXML
     private AnchorPane pane;
@@ -36,7 +37,7 @@ public class SignUpController extends AlertAndVerifyController implements Initia
             @Override
             public void handle(ActionEvent event) {
                 if (!tf_username.getText().trim().isEmpty() && !tf_password.getText().trim().isEmpty() && !tf_confirmpass.getText().trim().isEmpty()){
-                    LoginController.SignUpUser(event,tf_username.getText(), tf_password.getText(),tf_confirmpass.getText());
+                    Login.SignUpUser(event,tf_username.getText(), tf_password.getText(),tf_confirmpass.getText());
                 }else{
                     errorAlert("ERROR","Please fill in all information!");
                 }
@@ -46,7 +47,7 @@ public class SignUpController extends AlertAndVerifyController implements Initia
         btn_log_in.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                LoginController.changeScence1(event, "views/hello-view.fxml", "Log In", null);
+                Login.changeScence1(event, "views/hello-view.fxml", "Log In", null);
             }
         });
     }

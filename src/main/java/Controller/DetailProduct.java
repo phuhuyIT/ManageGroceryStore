@@ -3,6 +3,7 @@ package Controller;
 import DAO.CategoryDao;
 import DAO.ProductDAO;
 import DAO.SupplierDAO;
+import Model.InventoryAlert;
 import Model.Product;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -20,15 +21,16 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
-public class DetailProductController extends AlertAndVerifyController implements Initializable {
+public class DetailProduct extends InventoryAlert implements Initializable {
     @FXML
     private AnchorPane pane;
     @FXML
@@ -113,8 +115,8 @@ public class DetailProductController extends AlertAndVerifyController implements
     }
     private void updateDetailProduct(){
         int categoryID=new CategoryDao().getCategoryIDByName(cb_detailProductCategory.getValue().toString());
-        Product product=new Product(lb_detailProductName.getText(),ProductController.getCurrentItemID(),categoryID,Integer.parseInt(tf_detailProductQuantity.getText()),
-                filePath.toString(),cb_mfgDate.getValue(),lb_expDate.getValue(),
+        Product product=new Product(lb_detailProductName.getText(),ProductController.getCurrentItemID(),categoryID,Integer.parseInt(lb_detailProductQuantity.getText()),
+                filePath.toString(), LocalDate.parse(cb_mfgDate.getValue().toString()),LocalDate.parse(lb_expDate.getText()),
                 Double.parseDouble(tf_detailProductCostPrice.getText()),Double.parseDouble(tf_detailProductSellingPrice.getText()));
         new ProductDAO().update(product);
     }
@@ -141,7 +143,7 @@ public class DetailProductController extends AlertAndVerifyController implements
                 tf_detailProductSellingPrice.setText(String.valueOf(rs.getDouble("SELLINGPRICE")));
                 lb_detailProductUPC.setText(rs.getString("PRODUCTBARCODE"));
                 cb_mfgDate.setValue(rs.getDate("manufractureDate").toLocalDate());
-                lb_expDate.setValue(rs.getDate("expirationDate").toLocalDate());
+                lb_expDate.setText(String.valueOf(rs.getDate("expirationDate")));
                 String thumbnailLink = rs.getString("THUMBNAIL");
                 if(thumbnailLink!=null){
                     Image productThumnail = new Image(String.valueOf(thumbnailLink));

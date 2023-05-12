@@ -10,7 +10,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -19,10 +18,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.sql.*;
-import java.util.Set;
 
 public class HomeController implements Initializable {
 
@@ -182,7 +179,7 @@ public class HomeController implements Initializable {
         btn_logout.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                LoginController.changeScence1(actionEvent, "views/hello-view.fxml", "Log In", null);
+                Login.changeScence1(actionEvent, "views/hello-view.fxml", "Log In", null);
             }
         });
         //thiết lập đồng hồ hiển thị thời gian trên máy
