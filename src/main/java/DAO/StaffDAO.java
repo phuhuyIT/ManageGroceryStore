@@ -141,13 +141,16 @@ public class StaffDAO implements DaoInterface<Staff>{
 
         return result;
     }
-    private void addMonthlySalary(Staff staff){
-        String checkSalary ="Select id FROM monthly_salary WHERE staffid=? AND monthSalary=?";
+    public void addMonthlySalary(Staff staff){
+        /*String checkSalary ="Select id FROM monthly_salary WHERE staffid=? AND monthSalary=?";*/
+        int affectedRow=0;
         try {
-            pstmt = con.prepareStatement(checkSalary);
+            /*pstmt = con.prepareStatement(checkSalary);
             pstmt.setInt(1,staff.getId());
+            System.out.println("Date: "+ staff.getMonthSalary().toString());
             pstmt.setDate(2, Date.valueOf(staff.getMonthSalary()));
-            rs=pstmt.executeQuery();
+            rs=pstmt.executeQuery();*/
+            rs= isHasThisMonthSalary(staff.getId());
             if(rs.next()){
                 String sql = "UPDATE monthly_salary SET monthSalary=?, workingHours=?, overtimeHours=?, allowance=?, deduction=? WHERE id=?";
                 pstmt = con.prepareStatement(sql);
@@ -160,24 +163,23 @@ public class StaffDAO implements DaoInterface<Staff>{
                 pstmt.setFloat(5, staff.getDeduction());
                 pstmt.setInt(6, staff.getId());
                 // Thực thi truy vấn
-                int rowsAffected = pstmt.executeUpdate();
-                if(rowsAffected>0)
+                affectedRow = pstmt.executeUpdate();
+                if(affectedRow>0)
                     InventoryAlert.informationAlert("Success","SUCCESSFULLY UPDATE MONTHLY SALARY"+staff.getMonthSalary());
             }else{
-                String sql = "INSERT INTO monthly_salary (staffid,workingHours, overtimeHours, allowance, deduction) VALUES (?, ?, ?, ?, ?, ?)";
+                String sql = "INSERT INTO monthly_salary (staffid, workingHours, overtimeHours, allowance, deduction,monthSalary) VALUES (?, ?, ?, ?, ?, ?)";
                 try {
                     pstmt = con.prepareStatement(sql);
                     // Thiết lập các tham số truy vấn
                     pstmt.setInt(1, staff.getId());
-                    pstmt.setDate(2, Date.valueOf(staff.getMonthSalary()));
-                    pstmt.setInt(3, staff.getWorkingHours());
-                    pstmt.setInt(4, staff.getOvertimeHours());
-                    pstmt.setFloat(5, staff.getAllowance());
-                    pstmt.setFloat(6, staff.getDeduction());
-
+                    pstmt.setInt(2, staff.getWorkingHours());
+                    pstmt.setInt(3, staff.getOvertimeHours());
+                    pstmt.setFloat(4, staff.getAllowance());
+                    pstmt.setFloat(5, staff.getDeduction());
+                    pstmt.setDate(6, Date.valueOf(staff.getMonthSalary()));
                     // Thực thi truy vấn
-                    int rowsAffected = pstmt.executeUpdate();
-                    if(rowsAffected>0)
+                    affectedRow = pstmt.executeUpdate();
+                    if(affectedRow>0)
                         InventoryAlert.informationAlert("Success","SUCCESSFULLY CREATE NEW MONTHLY SALARY"+staff.getMonthSalary());
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
@@ -205,6 +207,20 @@ public class StaffDAO implements DaoInterface<Staff>{
         try {
             CallableStatement cstmt = con.prepareCall("{ CALL getTop5StaffRevenues() }");
             rs = cstmt.executeQuery();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return rs;
+    }
+    public ResultSet isHasThisMonthSalary(int ID){
+        String checkSalary ="SELECT * FROM monthly_salary\n" +
+                "WHERE staffid = ? \n" +
+                "AND MONTH(monthSalary) = MONTH(NOW()) \n" +
+                "AND YEAR(monthSalary) = YEAR(NOW())\n";
+        try {
+            pstmt = con.prepareStatement(checkSalary);
+            pstmt.setInt(1,ID);
+            rs=pstmt.executeQuery();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

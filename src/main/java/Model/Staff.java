@@ -33,6 +33,16 @@ public class Staff {
         this.avatarLink=avatarLink;
     }
 
+    public Staff(int ID,LocalDate monthSalary, int workingHours, int overtimeHours, float allowance, float deduction, float salary) {
+        this.id=ID;
+        this.workingHours = workingHours;
+        this.overtimeHours = overtimeHours;
+        this.allowance = allowance;
+        this.deduction = deduction;
+        this.salary = salary;
+        this.monthSalary = monthSalary;
+    }
+
     public Staff(String fullName, String staffIDCard, String gender, String location, String phone, String email, String avatarLink, LocalDate birthDate, float basicSalary, String position, LocalDate joinDate) {
         this.fullName = fullName;
         this.staffIDCard = staffIDCard;
