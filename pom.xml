@@ -12,6 +12,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>5.9.1</junit.version>
+
     </properties>
 
     <dependencies>
@@ -119,10 +120,26 @@
             <artifactId>jasperreports</artifactId>
             <version>6.20.4</version>
         </dependency>
+        <dependency>
+            <groupId>io.github.dzmitry-lakisau</groupId>
+            <artifactId>month-year-picker-dialog</artifactId>
+            <version>1.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.dzmitry-lakisau</groupId>
+            <artifactId>month-year-picker-dialog</artifactId>
+            <version>1.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.dzmitry-lakisau</groupId>
+            <artifactId>month-year-picker-dialog</artifactId>
+            <version>1.1.0</version>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
