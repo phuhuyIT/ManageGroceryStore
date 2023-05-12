@@ -42,15 +42,15 @@ public class DetailProductController extends AlertAndVerifyController implements
     @FXML
     private ChoiceBox cb_detailProductCategory;
     @FXML
-    private TextField tf_detailProductQuantity;
+    private Label lb_detailProductQuantity;
     @FXML
     private Label lb_detailProductUPC;
     @FXML
     private ImageView iv_productThumbnail;
     @FXML
-    private DatePicker dp_detailProductManufractureDate;
+    private ChoiceBox cb_mfgDate;
     @FXML
-    private DatePicker dp_detailProductExpireDate;
+    private Label lb_expDate;
     @FXML
     private TextField tf_detailProductCostPrice;
     @FXML
@@ -61,6 +61,7 @@ public class DetailProductController extends AlertAndVerifyController implements
     private Button btn_update;
     private File filePath;
     private FileChooser fileChooser;
+
     @FXML
     public void chooseImageProduct(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -82,6 +83,7 @@ public class DetailProductController extends AlertAndVerifyController implements
 
     @Override
     public void initialize (URL url, ResourceBundle resourceBundle)  {
+        cb_mfgDate.setStyle("-fx-font-size  :18px");
         cb_detailProductCategory.getItems().addAll("Thực phẩm tươi sống","Thực phẩm chế biến sẵn","Hàng gia dụng", "Đồ dùng cá nhân","Vật dụng học tập và văn phòng phẩm",
                 "Hóa phẩm và chất tẩy rửa","Đồ chơi và quà tặng","Thuốc và vật dụng y tế");
         setBtnBackAction();
@@ -112,7 +114,7 @@ public class DetailProductController extends AlertAndVerifyController implements
     private void updateDetailProduct(){
         int categoryID=new CategoryDao().getCategoryIDByName(cb_detailProductCategory.getValue().toString());
         Product product=new Product(lb_detailProductName.getText(),ProductController.getCurrentItemID(),categoryID,Integer.parseInt(tf_detailProductQuantity.getText()),
-                filePath.toString(),dp_detailProductManufractureDate.getValue(),dp_detailProductExpireDate.getValue(),
+                filePath.toString(),cb_mfgDate.getValue(),lb_expDate.getValue(),
                 Double.parseDouble(tf_detailProductCostPrice.getText()),Double.parseDouble(tf_detailProductSellingPrice.getText()));
         new ProductDAO().update(product);
     }
@@ -134,12 +136,12 @@ public class DetailProductController extends AlertAndVerifyController implements
                 int categoryID=rs.getInt("Categoryid");
 
                 cb_detailProductCategory.setValue(categoryDao.getNameByCategoryID(categoryID));
-                tf_detailProductQuantity.setText(String.valueOf(product.getQuantity(rs.getInt("Pid"))));
+                lb_detailProductQuantity.setText(String.valueOf(product.getQuantity(rs.getInt("Pid"))));
                 tf_detailProductCostPrice.setText(String.valueOf(rs.getDouble("COSTPRICE")));
                 tf_detailProductSellingPrice.setText(String.valueOf(rs.getDouble("SELLINGPRICE")));
                 lb_detailProductUPC.setText(rs.getString("PRODUCTBARCODE"));
-                dp_detailProductManufractureDate.setValue(rs.getDate("manufractureDate").toLocalDate());
-                dp_detailProductExpireDate.setValue(rs.getDate("expirationDate").toLocalDate());
+                cb_mfgDate.setValue(rs.getDate("manufractureDate").toLocalDate());
+                lb_expDate.setValue(rs.getDate("expirationDate").toLocalDate());
                 String thumbnailLink = rs.getString("THUMBNAIL");
                 if(thumbnailLink!=null){
                     Image productThumnail = new Image(String.valueOf(thumbnailLink));
