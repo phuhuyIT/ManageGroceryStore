@@ -1,6 +1,6 @@
 package DAO;
 
-import Controller.AlertAndVerifyController;
+//import Controller.AlertAndVerifyController;
 import DatabaseConnection.ConnectionFactory;
 import Model.Bill;
 import Model.CameraApp;
@@ -72,8 +72,8 @@ public class BillDao implements DaoInterface <Bill> {
             pstmt.setInt(4,bill.getStaffID());
             pstmt.setInt(5,bill.getPurchaseQuantity());
             result=pstmt.executeUpdate();
-            if(result>1)
-                AlertAndVerifyController.informationAlert("Addition","SUCCESSFULLY ADDED NEW BILL");
+            //if(result>1)
+                //AlertAndVerifyController.informationAlert("Addition","SUCCESSFULLY ADDED NEW BILL");
 
         } catch (Exception e) {
             e.printStackTrace();

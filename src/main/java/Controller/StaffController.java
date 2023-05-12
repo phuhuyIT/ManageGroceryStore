@@ -101,7 +101,7 @@ public class StaffController extends ItemController implements Initializable {
             Stage stage = new Stage();
             Scene scene = null;
             try {
-                scene = new Scene(fxmlLoader.load(),993, 682);
+                scene = new Scene(fxmlLoader.load(),800, 564);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
