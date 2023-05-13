@@ -70,14 +70,16 @@ public class SalaryController implements Initializable {
     private Button btn_caculateTotalSalary;
     float result;
     @FXML
-    private Button btn_editMonthSalary;
+    private Label lb_notificationEditSalary;
+    @FXML
+    private Button btn_confirmPassword;
     @FXML
     private TextField tf_enterPassword;
-    DecimalFormat formatter = new DecimalFormat("#,###");
+    private Staff staffSalary;
+    DecimalFormat formatter = new DecimalFormat("#.###");
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         showData();
-        btn_caculateTotalSalary.setOnAction(e -> caculateSalary());
         dp_MonthSalary.setConverter(new StringConverter<LocalDate>() {
             final String pattern = "MM/yyyy";
             final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(pattern);
@@ -107,57 +109,57 @@ public class SalaryController implements Initializable {
                 updateSalary();
             }
         });
-        btn_editMonthSalary.setOnAction(ActionEvent -> {
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("views/enterPassword.fxml"));
-            Stage stage = new Stage();
-            Scene scene = null;
-            try {
-                scene = new Scene(fxmlLoader.load(), 316, 146);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            stage.setTitle("Enter Password");
-            stage.setScene(scene);
-            stage.setResizable(false);
-            stage.show();
-
-            Boolean isCorrectPassword = new ConnectionFactory().checkLogin(LoginController.getLoggedInUsername(), tf_enterPassword.getText());
-            if (isCorrectPassword) {
-                txt_deduction.setEditable(true);
-                tf_allowance.setEditable(true);
-                tf_overTime.setEditable(true);
-                tf_workingHours.setEditable(true);
-                dp_MonthSalary.setEditable(true);
-            } else {
-                errorAlert("Incorrect password", "YOU ENTER THE WRONG PASSWORD");
+        btn_caculateTotalSalary.setOnAction(e -> caculateSalary());
+        btn_confirmPassword.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                Boolean isCorrect = new ConnectionFactory().checkLogin(LoginController.getLoggedInUsername(), new UserProfileController().encryptPassword(tf_enterPassword.getText()) );
+                if(isCorrect){
+                    informationAlert("Success","NOW YOU CAN EDIT SALARY");
+                    tf_workingHours.setEditable(true);
+                    tf_overTime.setEditable(true);
+                    tf_allowance.setEditable(true);
+                    txt_deduction.setEditable(true);
+                    dp_MonthSalary.setEditable(true);
+                    lb_notificationEditSalary.setVisible(false);
+                    btn_confirmPassword.setVisible(false);
+                    tf_enterPassword.setVisible(false);
+                }else errorAlert("Incorrect","YOU ENTER THE WRONG PASSWORD");
             }
         });
     }
-
     private void showData(){
         ResultSet rs = new StaffDAO().selectByID(StaffController.getCurrentItemID());
         try {
             if(rs.next()){
                 lb_fullnameStaff.setText(rs.getString("fullname"));
                 lb_positionStaff.setText(rs.getString("position"));
-                lb_basicSalaryStaff.setText(rs.getString("basicSalary"));
+                lb_basicSalaryStaff.setText(formatter.format(Float.parseFloat(rs.getString("basicSalary"))));
                 String img  = rs.getString("avatarLink");
                 if(img!=null) {
                     Image image1 = new Image(String.valueOf(img));
                     iv_staffImage.setImage(image1);
                 }
                 rs=new StaffDAO().isHasThisMonthSalary(StaffController.getCurrentItemID());
+
                 if(rs.next()){
-                    tf_workingHours.setText(String.valueOf(rs.getInt("workingHours")));
+                    staffSalary=new Staff(StaffController.getCurrentItemID(),rs.getDate("monthSalary").toLocalDate(),rs.getInt("workingHours"),
+                            rs.getInt("overtimeHours"),rs.getFloat("allowance"),
+                            rs.getFloat("deduction"),0);
+                    tf_workingHours.setText(String.valueOf(staffSalary.getWorkingHours()));
                     tf_workingHours.setEditable(false);
-                    tf_overTime.setText(String.valueOf(rs.getInt("overtimeHours")));
+                    tf_overTime.setText(String.valueOf(staffSalary.getOvertimeHours()));
                     tf_overTime.setEditable(false);
-                    tf_allowance.setText(formatter.format(rs.getFloat("allowance")));
+                    tf_allowance.setText(formatter.format(staffSalary.getAllowance()));
                     tf_allowance.setEditable(false);
-                    txt_deduction.setText(formatter.format(rs.getFloat("deduction")));
+                    txt_deduction.setText(formatter.format(staffSalary.getDeduction()));
                     txt_deduction.setEditable(false);
-                    dp_MonthSalary.setValue(rs.getDate("monthSalary").toLocalDate());
+                    dp_MonthSalary.setValue(staffSalary.getMonthSalary());
                     dp_MonthSalary.setEditable(false);
+                }else {
+                    lb_notificationEditSalary.setVisible(false);
+                    btn_confirmPassword.setVisible(false);
+                    tf_enterPassword.setVisible(false);
                 }
             }
         } catch (SQLException e) {

@@ -18,13 +18,13 @@
             <Image url="@../image/PHMart.jpg" />
          </image>
       </ImageView>
-      <TableView layoutX="6.0" layoutY="142.0" prefHeight="614.0" prefWidth="528.0">
+      <TableView fx:id="tv_showBill" layoutX="6.0" layoutY="142.0" prefHeight="614.0" prefWidth="528.0">
         <columns>
-          <TableColumn prefWidth="46.0" />
-          <TableColumn prefWidth="90.0" text="SHĐ" />
-            <TableColumn prefWidth="118.0" text="NGÀY TẠO" />
-            <TableColumn prefWidth="134.0" text="TỔNG SỐ LƯỢNG" />
-            <TableColumn prefWidth="132.0" text="TỔNG DOANH THU" />
+          <TableColumn fx:id="tc_STT" prefWidth="46.0" text="STT" />
+          <TableColumn fx:id="tc_billNumber" prefWidth="90.0" text="SHĐ" />
+            <TableColumn fx:id="tc_createDate" prefWidth="118.0" text="NGÀY TẠO" />
+            <TableColumn fx:id="tc_totalQuantity" prefWidth="134.0" text="TỔNG SỐ LƯỢNG" />
+            <TableColumn fx:id="tc_revenue" prefWidth="139.0" text="DOANH THU" />
         </columns>
       </TableView>
       <Button fx:id="btn_prBill" alignment="CENTER" layoutX="172.0" layoutY="797.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="150.0" style="-fx-cursor: hand;" stylesheets="@css/test.css" text="Print">

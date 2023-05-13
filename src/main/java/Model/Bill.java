@@ -1,18 +1,33 @@
 package Model;
 
-import java.math.BigDecimal;
-import java.sql.Date;
-import java.sql.Timestamp;
+import java.time.LocalDate;
 
 public class Bill {
+    private int billID;
     private String billCode;
-    private Timestamp purchaseDate;
+    private LocalDate purchaseDate;
     private float revenue;
     private int detailBillID;
     private int productID;
     private int customerID;
     private int staffID;
     private int purchaseQuantity;
+
+    public int getBillID() {
+        return billID;
+    }
+
+    public void setBillID(int billID) {
+        this.billID = billID;
+    }
+
+    public Bill(int billID, String billCode, LocalDate purchaseDate, float revenue, int totalQuantity) {
+        this.billID = billID;
+        this.billCode = billCode;
+        this.purchaseDate = purchaseDate;
+        this.revenue = revenue;
+        this.purchaseQuantity=totalQuantity;
+    }
 
     public String getBillCode() {
         return billCode;
@@ -22,11 +37,11 @@ public class Bill {
         this.billCode = billCode;
     }
 
-    public Timestamp getPurchaseDate() {
+    public LocalDate getPurchaseDate() {
         return purchaseDate;
     }
 
-    public void setPurchaseDate(Timestamp purchaseDate) {
+    public void setPurchaseDate(LocalDate purchaseDate) {
         this.purchaseDate = purchaseDate;
     }
 

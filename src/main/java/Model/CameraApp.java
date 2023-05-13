@@ -6,18 +6,15 @@ import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.ResourceBundle;
 import java.util.concurrent.atomic.AtomicBoolean;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-//import Controller.AlertAndVerifyController;
 import com.google.zxing.*;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
@@ -25,11 +22,6 @@ import com.google.zxing.common.HybridBinarizer;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.oned.Code128Writer;
 import javafx.application.Platform;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -53,12 +45,12 @@ public class CameraApp extends Thread{
     public void run() {
 
         isRunning.set(true);
-        OpenCVFrameGrabber grabber = new OpenCVFrameGrabber(0); // truy cập camera laptop
+        OpenCVFrameGrabber grabber = new OpenCVFrameGrabber(1); // truy cập camera laptop
         try {
             grabber.start();
 
         CanvasFrame canvasFrame = new CanvasFrame("Barcode Scanner");
-        //canvasFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        canvasFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             addWindowListener(new WindowAdapter() {
                 public void windowClosing(WindowEvent e) {
                     isRunning.set(false);
@@ -175,6 +167,7 @@ public class CameraApp extends Thread{
         this.dp_customerBirthdate =dp_customerBirthdate;
         this.txt_locationCustomer = txt_locationCustomer;
     }
+
     private String[] splitString(String customerInfo){
 
         String[] parts = customerInfo.split("\\|");

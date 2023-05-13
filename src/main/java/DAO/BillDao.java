@@ -1,12 +1,10 @@
 package DAO;
 
-//import Controller.AlertAndVerifyController;
+import Model.InventoryAlert;
 import DatabaseConnection.ConnectionFactory;
 import Model.Bill;
-import Model.CameraApp;
 
 import java.sql.*;
-import java.util.ArrayList;
 
 public class BillDao implements DaoInterface <Bill> {
     private Connection con = null;
@@ -72,8 +70,8 @@ public class BillDao implements DaoInterface <Bill> {
             pstmt.setInt(4,bill.getStaffID());
             pstmt.setInt(5,bill.getPurchaseQuantity());
             result=pstmt.executeUpdate();
-            //if(result>1)
-                //AlertAndVerifyController.informationAlert("Addition","SUCCESSFULLY ADDED NEW BILL");
+            if(result>1)
+                InventoryAlert.informationAlert("Addition","SUCCESSFULLY ADDED NEW BILL");
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -85,8 +83,8 @@ public class BillDao implements DaoInterface <Bill> {
         try {
             String selectAllProduct = "SELECT b.billCode, b.purchaseDate, b.revenue, SUM(d.quantity) AS totalQuantity\n" +
                     "FROM bill AS b\n" +
-                    "JOIN detailBill AS d ON b.billCode = d.billCode\n" +
-                    "GROUP BY b.billCode\n" +
+                    "JOIN detailBill AS d ON b.billID = d.billID\n" +
+                    "GROUP BY b.billID\n" +
                     "LIMIT "+Limit+" OFFSET "+offSet;
             pstmt= con.prepareStatement(selectAllProduct);
             rs = pstmt.executeQuery();

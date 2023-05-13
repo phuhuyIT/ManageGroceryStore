@@ -14,7 +14,7 @@
     <children>
       <Label layoutX="388.0" layoutY="326.0" prefHeight="141.0" prefWidth="391.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 7px;" />
       <Label layoutX="17.0" layoutY="324.0" prefHeight="206.0" prefWidth="351.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 7px;" />
-        <Label layoutX="16.0" layoutY="45.0" prefHeight="246.0" prefWidth="391.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 7px;" />
+        <Label layoutX="16.0" layoutY="45.0" prefHeight="246.0" prefWidth="351.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 7px;" />
         <Button fx:id="btn_save" alignment="CENTER" layoutX="304.0" layoutY="564.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="153.0" style="-fx-cursor: hand;" stylesheets="@css/test.css" text="  Save" textAlignment="RIGHT" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="28.0" />
@@ -27,13 +27,13 @@
                 <Image url="@../image/confirm.png" />
             </image>
         </ImageView>
-        <Label layoutX="441.0" layoutY="45.0" prefHeight="188.0" prefWidth="234.0" style="-fx-border-color: #2596be; -fx-border-radius: 20px; -fx-border-style: dashed;" />
-        <Label layoutX="28.0" layoutY="48.0" prefHeight="30.0" prefWidth="108.0" text="Full Name">
+        <Label layoutX="457.0" layoutY="45.0" prefHeight="147.0" prefWidth="167.0" style="-fx-border-color: #2596be; -fx-border-radius: 20px; -fx-border-style: dashed;" />
+        <Label layoutX="34.0" layoutY="48.0" prefHeight="30.0" prefWidth="108.0" text="Full Name">
             <font>
                 <Font size="20.0" />
             </font>
         </Label>
-        <ImageView fx:id="iv_staffImage" fitHeight="176.0" fitWidth="214.0" layoutX="453.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="iv_staffImage" fitHeight="133.0" fitWidth="141.0" layoutX="469.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true" />
         <Label layoutX="18.0" layoutY="10.0" prefHeight="35.0" prefWidth="141.0" text="Information">
             <font>
                 <Font name="System Bold" size="24.0" />
@@ -44,27 +44,27 @@
                 <Font size="18.0" />
             </font>
         </TextField>
-        <Label alignment="CENTER" layoutX="24.0" layoutY="345.0" prefHeight="30.0" prefWidth="108.0" text="Basic Salary">
+        <Label alignment="CENTER" layoutX="31.0" layoutY="345.0" prefHeight="30.0" prefWidth="108.0" text="Basic Salary">
             <font>
                 <Font size="20.0" />
             </font>
         </Label>
-        <Label layoutX="26.0" layoutY="124.0" prefHeight="30.0" prefWidth="83.0" text="Position">
+        <Label layoutX="32.0" layoutY="124.0" prefHeight="30.0" prefWidth="83.0" text="Position">
             <font>
                 <Font size="20.0" />
             </font>
         </Label>
-        <Label fx:id="lb_fullnameStaff" alignment="CENTER" contentDisplay="CENTER" layoutX="26.0" layoutY="78.0" prefHeight="44.0" prefWidth="367.0" style="-fx-border-color: #ebebeb; -fx-border-radius: 7px;">
+        <Label fx:id="lb_fullnameStaff" alignment="CENTER" contentDisplay="CENTER" layoutX="32.0" layoutY="78.0" prefHeight="44.0" prefWidth="314.0" style="-fx-border-color: #ebebeb; -fx-border-radius: 7px;">
             <font>
                 <Font size="18.0" />
             </font>
         </Label>
-      <Label fx:id="lb_positionStaff" alignment="CENTER" contentDisplay="CENTER" layoutX="26.0" layoutY="154.0" prefHeight="44.0" prefWidth="367.0" style="-fx-border-color: #ebebeb; -fx-border-radius: 7px;">
+      <Label fx:id="lb_positionStaff" alignment="CENTER" contentDisplay="CENTER" layoutX="32.0" layoutY="154.0" prefHeight="44.0" prefWidth="314.0" style="-fx-border-color: #ebebeb; -fx-border-radius: 7px;">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="17.0" layoutY="415.0" prefHeight="30.0" prefWidth="153.0" text="Working Hours">
+      <Label alignment="CENTER" layoutX="24.0" layoutY="415.0" prefHeight="30.0" prefWidth="153.0" text="Working Hours">
          <font>
             <Font size="20.0" />
          </font>
@@ -74,7 +74,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="26.0" layoutY="485.0" prefHeight="30.0" prefWidth="93.0" text="Over Time">
+      <Label alignment="CENTER" layoutX="33.0" layoutY="485.0" prefHeight="30.0" prefWidth="93.0" text="Over Time">
          <font>
             <Font size="20.0" />
          </font>
@@ -84,11 +84,11 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="tf_workingHours" alignment="CENTER" layoutX="167.0" layoutY="408.0" prefHeight="44.0" prefWidth="173.0">
+      <TextField fx:id="tf_workingHours" alignment="CENTER" layoutX="174.0" layoutY="408.0" prefHeight="44.0" prefWidth="173.0">
          <font>
             <Font size="18.0" />
          </font></TextField>
-      <TextField fx:id="tf_overTime" alignment="CENTER" layoutX="167.0" layoutY="478.0" prefHeight="44.0" prefWidth="173.0">
+      <TextField fx:id="tf_overTime" alignment="CENTER" layoutX="174.0" layoutY="478.0" prefHeight="44.0" prefWidth="173.0">
          <font>
             <Font size="18.0" />
          </font></TextField>
@@ -101,11 +101,11 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="lb_totalSalary" layoutX="605.0" layoutY="479.0" prefHeight="44.0" prefWidth="174.0" style="-fx-border-color: #ebebeb; -fx-border-radius: 7px;">
+      <Label fx:id="lb_totalSalary" alignment="CENTER" contentDisplay="CENTER" layoutX="605.0" layoutY="479.0" prefHeight="44.0" prefWidth="174.0" style="-fx-border-color: #ebebeb; -fx-border-radius: 7px;">
          <font>
             <Font size="18.0" />
          </font></Label>
-      <Label fx:id="lb_basicSalaryStaff" layoutX="167.0" layoutY="338.0" prefHeight="44.0" prefWidth="173.0" style="-fx-border-color: #ebebeb; -fx-border-radius: 7px;">
+      <Label fx:id="lb_basicSalaryStaff" alignment="CENTER" contentDisplay="CENTER" layoutX="174.0" layoutY="338.0" prefHeight="44.0" prefWidth="173.0" style="-fx-border-color: #ebebeb; -fx-border-radius: 7px;">
          <font>
             <Font size="18.0" />
          </font>
@@ -116,7 +116,7 @@
          </font>
       </Label>
       <Label layoutX="17.0" layoutY="541.0" text="Lưu ý: sau khi nhập hết các thông tin về lương vui lòng nhấn Caculate Total Salary để tính tổng lương" textFill="#dd0f32" />
-      <Label layoutX="27.0" layoutY="206.0" prefHeight="30.0" prefWidth="120.0" text="Month salary">
+      <Label layoutX="33.0" layoutY="206.0" prefHeight="30.0" prefWidth="120.0" text="Month salary">
          <font>
             <Font size="20.0" />
          </font>
@@ -126,11 +126,17 @@
             <Font name="System Bold Italic" size="18.0" />
          </font>
       </Button>
-      <DatePicker fx:id="dp_MonthSalary" layoutX="27.0" layoutY="232.0" prefHeight="44.0" prefWidth="367.0" />
-      <Button fx:id="btn_editMonthSalary" layoutX="506.0" layoutY="247.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="120.0" style="-fx-background-color: #2596be;" text="Edit salary" textFill="WHITE">
+      <DatePicker fx:id="dp_MonthSalary" layoutX="33.0" layoutY="232.0" prefHeight="44.0" prefWidth="314.0" />
+      <Button fx:id="btn_confirmPassword" layoutX="390.0" layoutY="221.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="93.0" style="-fx-background-color: #2596be;" text="Confirm" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
       </Button>
+      <TextField fx:id="tf_enterPassword" alignment="CENTER" layoutX="500.0" layoutY="220.0" prefHeight="44.0" prefWidth="241.0" promptText="Your password">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <Label fx:id="lb_notificationEditSalary" layoutX="390.0" layoutY="268.0" prefHeight="17.0" prefWidth="241.0" text="Nhập mật khẩu để sửa đổi lương" textFill="#dd0f32" />
     </children>
 </AnchorPane>

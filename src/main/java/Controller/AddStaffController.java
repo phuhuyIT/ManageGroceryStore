@@ -108,7 +108,7 @@ public class AddStaffController implements Initializable {
         btn_back.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("views/customer.fxml"));
+                FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("views/staff.fxml"));
                 Node node = null;
                 try {
                     node = loader.load();
