@@ -212,4 +212,15 @@ public class ProductDAO extends InventoryAlert implements DaoInterface<Product> 
         }
         return rs;
     }
+    public ResultSet getAllProductBatchByID(int ID){
+        String query = "SELECT manufractureDate, quantity FROM  productbatch WHERE QUANTITY>0 AND PID=?";
+        try {
+            pstmt = con.prepareStatement(query);
+            pstmt.setInt(1,ID);
+            rs=pstmt.executeQuery();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return rs;
+    }
 }

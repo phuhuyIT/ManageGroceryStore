@@ -17,7 +17,7 @@
                 <Font name="System Bold" size="18.0" />
             </font>
         </Label>
-        <TextField layoutX="222.0" layoutY="52.0" prefHeight="41.0" prefWidth="202.0" />
+        <TextField fx:id="tf_quantity" layoutX="220.0" layoutY="52.0" prefHeight="41.0" prefWidth="202.0" />
         <Button fx:id="btn_save" layoutX="178.0" layoutY="215.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="118.0" style="-fx-cursor: hand;" stylesheets="@css/test.css" text="Save">
             <font>
                 <Font name="System Bold" size="20.0" />
@@ -31,11 +31,11 @@
                 <Image url="@../image/confirm.png" />
             </image>
         </ImageView>
-      <Label layoutX="92.0" layoutY="132.0" prefHeight="41.0" prefWidth="88.0" text="Select Lot">
+      <Label layoutX="92.0" layoutY="132.0" prefHeight="42.0" prefWidth="110.0" text="Select Batch">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <ChoiceBox layoutX="220.0" layoutY="132.0" prefHeight="41.0" prefWidth="202.0" />
+      <ChoiceBox fx:id="cb_selectBatch" layoutX="220.0" layoutY="132.0" prefHeight="41.0" prefWidth="202.0" />
     </children>
 </AnchorPane>
