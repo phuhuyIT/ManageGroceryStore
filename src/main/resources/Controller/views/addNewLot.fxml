@@ -17,7 +17,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TextField layoutX="188.0" layoutY="40.0" prefHeight="41.0" prefWidth="202.0" />
+      <TextField fx:id="tf_newQty" alignment="CENTER" layoutX="296.0" layoutY="40.0" prefHeight="41.0" prefWidth="94.0" />
       <DatePicker layoutX="188.0" layoutY="110.0" prefHeight="41.0" prefWidth="202.0" />
       <Label layoutX="51.0" layoutY="110.0" prefHeight="41.0" prefWidth="104.0" text="MFG.DATE">
          <font>
@@ -43,5 +43,6 @@
             <Image url="@../image/confirm.png" />
          </image>
       </ImageView>
+      <Label fx:id="lb_oldQty" alignment="CENTER" layoutX="188.0" layoutY="40.0" prefHeight="41.0" prefWidth="94.0" style="-fx-border-color: #AAAAAA; -fx-border-radius: 3px;" />
    </children>
 </AnchorPane>
