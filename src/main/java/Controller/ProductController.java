@@ -179,7 +179,7 @@ public class ProductController extends ItemController implements Initializable {
             Stage stage = new Stage();
             Scene scene = null;
             try {
-                scene = new Scene(fxmlLoader.load(),473, 288);
+                scene = new Scene(fxmlLoader.load(),435, 205);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

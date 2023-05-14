@@ -81,10 +81,17 @@ public class BillDao implements DaoInterface <Bill> {
     @Override
     public ResultSet selectALL(int Limit, int offSet) {
         try {
-            String selectAllProduct = "SELECT b.billCode, b.purchaseDate, b.revenue, SUM(d.quantity) AS totalQuantity\n" +
-                    "FROM bill AS b\n" +
-                    "JOIN detailBill AS d ON b.billID = d.billID\n" +
+            String selectAllProduct = "SELECT \n" +
+                    "  b.billID, \n" +
+                    "  b.billCode, \n" +
+                    "  b.revenue, \n" +
+                    "  b.staffName,\n" +
+                    "  b.customerName,\n" +
+                    "  b.purchaseDate,\n" +
+                    "  GROUP_CONCAT(DISTINCT CONCAT(productName,'|', quantity,'|',productRevenue ) SEPARATOR ', ') AS productList\n" +
+                    "FROM billdetails b\n" +
                     "GROUP BY b.billID\n" +
+                    "ORDER BY b.billID ASC\n" +
                     "LIMIT "+Limit+" OFFSET "+offSet;
             pstmt= con.prepareStatement(selectAllProduct);
             rs = pstmt.executeQuery();
@@ -92,6 +99,16 @@ public class BillDao implements DaoInterface <Bill> {
             throw new RuntimeException(e);
         }
         return  rs;
+    }
+    public ResultSet getAllBill(){
+        String query = "SELECT * FROM BILLDETAILS";
+        try {
+            pstmt = con.prepareStatement(query);
+            rs = pstmt.executeQuery();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return rs;
     }
     @Override
     public ResultSet selectByID(int ID) {
@@ -109,7 +126,7 @@ public class BillDao implements DaoInterface <Bill> {
         //Câu truy vấn này sử dụng hàm DATE_FORMAT để định dạng cột purchaseDate thành chuỗi có định dạng 'YYYY-MM' để lấy thông tin theo tháng,
         // sau đó sử dụng hàm SUM để tính tổng doanh thu và nhóm kết quả theo tháng. Kết quả sẽ trả về một bảng với hai cột: "month" chứa tháng
         // (dưới dạng chuỗi 'YYYY-MM') và "total_revenue" chứa tổng doanh thu của tháng đó.
-        String query="SELECT DATE_FORMAT(purchaseDate, '%Y-%m') AS month, SUM(revenue) AS totalRevenue  FROM bill GROUP BY month";
+        String query="SELECT DATE_FORMAT(purchaseDate, '%Y-%m') AS month, SUM(revenue) AS totalRevenue  FROM bill GROUP BY month ORDER BY MONTH";
         try {
             pstmt=con.prepareStatement(query);
             rs= pstmt.executeQuery();

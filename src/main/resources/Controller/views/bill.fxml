@@ -9,6 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="900.0" prefWidth="1000.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.BillController">
@@ -21,10 +22,14 @@
       <TableView fx:id="tv_showBill" layoutX="6.0" layoutY="142.0" prefHeight="614.0" prefWidth="528.0">
         <columns>
           <TableColumn fx:id="tc_STT" prefWidth="46.0" text="STT" />
-          <TableColumn fx:id="tc_billNumber" prefWidth="90.0" text="SHĐ" />
-            <TableColumn fx:id="tc_createDate" prefWidth="118.0" text="NGÀY TẠO" />
-            <TableColumn fx:id="tc_totalQuantity" prefWidth="134.0" text="TỔNG SỐ LƯỢNG" />
-            <TableColumn fx:id="tc_revenue" prefWidth="139.0" text="DOANH THU" />
+          <TableColumn fx:id="tc_billNumber" prefWidth="117.0" text="SHĐ" />
+            <TableColumn fx:id="tc_createDate" prefWidth="171.0" text="NGÀY TẠO" />
+            <TableColumn fx:id="tc_revenue" prefWidth="193.0" text="DOANH THU" />
+            <TableColumn fx:id="tc_billID" minWidth="0.0" prefWidth="0.0" text="DOANH THU" />
+            <TableColumn fx:id="tc_StaffName" minWidth="0.0" prefWidth="0.0" text="DOANH THU" />
+            <TableColumn fx:id="tc_productName" minWidth="0.0" prefWidth="0.0" text="DOANH THU" />
+            <TableColumn fx:id="tc_customerName" minWidth="0.0" prefWidth="0.0" text="DOANH THU" />
+            <TableColumn fx:id="tc_ProductList" minWidth="0.0" prefWidth="0.0" text="DOANH THU" />
         </columns>
       </TableView>
       <Button fx:id="btn_prBill" alignment="CENTER" layoutX="172.0" layoutY="797.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="150.0" style="-fx-cursor: hand;" stylesheets="@css/test.css" text="Print">
@@ -48,6 +53,88 @@
                </font>
             </Label>
             <AnchorPane fx:id="pane_bill" prefHeight="679.0" prefWidth="419.0" />
+            <AnchorPane fx:id="pane_DetailBill" prefHeight="679.0" prefWidth="419.0" style="-fx-background-color: #FFFFFF;">
+               <children>
+                  <ImageView fitHeight="113.0" fitWidth="129.0" layoutX="147.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/PHMart.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="47.0" layoutY="113.0" prefHeight="21.0" prefWidth="339.0" text="THU DUC DISTRICT-HO CHI MINH CITY-VIET NAM">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="30.0" layoutY="150.0" text="Số HĐ" />
+                  <Label layoutX="30.0" layoutY="170.0" text="NGÀY HĐ" />
+                  <Label layoutX="30.0" layoutY="190.0" text="NHÂN VIÊN " />
+                  <Line endX="254.0" layoutX="142.0" layoutY="244.0" startX="-123.0" />
+                  <Label layoutX="234.0" layoutY="555.0" text="Total">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="237.0" layoutY="587.0" text="Pay ">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Line endX="208.0" layoutX="190.0" layoutY="525.0" startX="-169.0" />
+                  <Line endX="276.0" layoutX="121.0" layoutY="618.0" startX="-100.0" />
+                  <Label layoutX="156.0" layoutY="626.0" text="Good Luck !">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="25.0" layoutY="555.0" text="Discount">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="218.0" layoutY="587.0">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lb_billCode" layoutX="140.0" layoutY="148.0" prefHeight="21.0" prefWidth="246.0" />
+                  <Label fx:id="lb_purchaseDate" layoutX="140.0" layoutY="168.0" prefHeight="21.0" prefWidth="246.0" />
+                  <Label fx:id="lb_staffName" layoutX="140.0" layoutY="188.0" prefHeight="21.0" prefWidth="246.0" />
+                  <Label layoutX="30.0" layoutY="210.0" prefHeight="21.0" prefWidth="102.0" text="KHÁCH HÀNG" />
+                  <Label fx:id="lb_customerName" layoutX="140.0" layoutY="212.0" prefHeight="17.0" prefWidth="246.0" />
+                  <Label fx:id="lb_discount" layoutX="100.0" layoutY="555.0" prefHeight="21.0" prefWidth="113.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="284.0" layoutY="468.0" prefHeight="21.0" prefWidth="113.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lb_totalRevenue" layoutX="284.0" layoutY="555.0" prefHeight="21.0" prefWidth="113.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="292.0" layoutY="587.0" prefHeight="21.0" prefWidth="113.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lb_pay" layoutX="292.0" layoutY="587.0" prefHeight="21.0" prefWidth="113.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <TableView fx:id="tv_productList" layoutX="20.0" layoutY="245.0" prefHeight="280.0" prefWidth="378.0">
+                    <columns>
+                      <TableColumn fx:id="tc_productName" prefWidth="199.0" text="Tên sản phẩm" />
+                      <TableColumn fx:id="tc_productQuantity" prefWidth="73.0" text="Số lượng" />
+                        <TableColumn fx:id="tc_productRevenue" prefWidth="105.0" text="Thành tiền" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
          </children>
       </VBox>
    </children>

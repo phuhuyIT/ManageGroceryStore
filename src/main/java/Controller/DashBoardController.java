@@ -20,6 +20,7 @@ import javafx.scene.layout.VBox;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
 public class DashBoardController implements Initializable {
@@ -48,12 +49,13 @@ public class DashBoardController implements Initializable {
     private TableColumn tx_productQuantitySold;
     @FXML
     private TableColumn tc_productRevenue;
+    DecimalFormat formattera = new DecimalFormat("#,###");
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         lb_numberProduct.setText(String.valueOf(new ProductDAO().getNumProuduct()));
         lb_numberCategory.setText(String.valueOf(new CategoryDao().getNumCategory()));
         lb_numberStaff.setText(String.valueOf(new StaffDAO().getNumStaff()));
-        lb_numberRevenue.setText(String.valueOf(new BillDao().totalRevenueByMonth()));
+        lb_numberRevenue.setText(String.valueOf(formattera.format(new BillDao().totalRevenueByMonth())));
         drawChart();
         showTop5Staff();
         showTop5Customer();
@@ -119,7 +121,7 @@ public class DashBoardController implements Initializable {
 
         tx_productQuantitySold.setCellValueFactory(new PropertyValueFactory<>("quantity"));
 
-        tc_productRevenue.setCellValueFactory(new PropertyValueFactory<>("totalRevenue"));
+        tc_productRevenue.setCellValueFactory(new PropertyValueFactory<>("productBarCode"));
         ResultSet rs = new ProductDAO().getTopProducts();
         try {
             int i = 1;
@@ -128,9 +130,8 @@ public class DashBoardController implements Initializable {
                 int sequence = i;i++;
                 String productName = rs.getString("productName");
                 int totalSold = rs.getInt("totalSold");
-                Double revenue = rs.getDouble("revenue");
-                topProduct.add( new Product(sequence,productName,totalSold,revenue));
-
+                Double revenue = Double.valueOf(rs.getDouble("revenue"));
+                topProduct.add( new Product(sequence,productName,totalSold, formattera.format(revenue)));
             }
             tv_dashBoardTopProduct.setItems(topProduct);
         } catch (SQLException e) {

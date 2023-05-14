@@ -20,11 +20,30 @@ public class Product {
     private String SKUCode;
     private String thumbnailLink;
 
-    public Product(int STT, String productName, int quantity, Double totalRevenue) {
-        this.productId=STT;
+    public Product(String productName, Integer quantity, Double totalRevenue) {
         this.productName = productName;
         this.quantity = quantity;
         this.totalRevenue = totalRevenue;
+    }
+
+    public Product(Integer productId, LocalDate MFGDate, Integer quantity) {
+        this.productId = productId;
+        this.MFGDate = MFGDate;
+        this.quantity = quantity;
+    }
+
+    public Product(Integer productId, LocalDate MFGDate, LocalDate EXPDate, Integer quantity) {
+        this.productId = productId;
+        this.MFGDate = MFGDate;
+        this.EXPDate = EXPDate;
+        this.quantity = quantity;
+    }
+
+    public Product(int STT, String productName, int quantity, String totalRevenue) {
+        this.productId=STT;
+        this.productName = productName;
+        this.quantity = quantity;
+        this.productBarCode = totalRevenue;
     }
 
     @Override

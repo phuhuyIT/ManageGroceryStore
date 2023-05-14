@@ -27,6 +27,8 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class DetailProductController extends InventoryAlert implements Initializable {
@@ -62,6 +64,7 @@ public class DetailProductController extends InventoryAlert implements Initializ
     private Button btn_update;
     private File filePath;
     private FileChooser fileChooser;
+    private Map<LocalDate, LocalDate> batchList = new HashMap<>();
 
     @FXML
     public void chooseImageProduct(ActionEvent event) throws IOException {
@@ -128,21 +131,16 @@ public class DetailProductController extends InventoryAlert implements Initializ
 
         try {
             if(rs.next()){
-                String img  = rs.getString("THUMBNAIL");
-                if(img!=null) {
-                    Image image1 = new Image(String.valueOf(img));
-                    iv_productThumbnail.setImage(image1);
-                }
                 lb_detailProductName.setText(rs.getString("PRODUCTNAME"));
                 int categoryID=rs.getInt("Categoryid");
 
                 cb_detailProductCategory.setValue(categoryDao.getNameByCategoryID(categoryID));
-                lb_detailProductQuantity.setText(String.valueOf(product.getQuantity(rs.getInt("Pid"))));
+                lb_detailProductQuantity.setText(String.valueOf(product.getQuantity(rs.getInt("P.Pid"))));
                 tf_detailProductCostPrice.setText(String.valueOf(rs.getDouble("COSTPRICE")));
                 tf_detailProductSellingPrice.setText(String.valueOf(rs.getDouble("SELLINGPRICE")));
                 lb_detailProductUPC.setText(rs.getString("PRODUCTBARCODE"));
-                cb_mfgDate.setValue(rs.getDate("manufractureDate").toLocalDate());
-                lb_expDate.setText(String.valueOf(rs.getDate("expirationDate")));
+                cb_mfgDate.setValue("Chọn nsx để xem hsd");
+
                 String thumbnailLink = rs.getString("THUMBNAIL");
                 if(thumbnailLink!=null){
                     Image productThumnail = new Image(String.valueOf(thumbnailLink));
@@ -159,5 +157,25 @@ public class DetailProductController extends InventoryAlert implements Initializ
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
+        //Cho tất cả ngày sản xuất vào choiceBox
+        ResultSet rs1 = new ProductDAO().getAllDateByID(ProductController.getCurrentItemID());
+        try {
+            while(rs1.next()) {
+                cb_mfgDate.getItems().add(rs1.getString("manufractureDate"));
+                batchList.put(rs1.getDate("manufractureDate").toLocalDate(), rs1.getDate("expirationDate").toLocalDate());
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        //SetAction chọn ngày sản xuất thì hiển thị hạn sử dụng tương ứng
+        cb_mfgDate.setOnAction(ActionEvent -> {
+            for (LocalDate key : batchList.keySet()) {
+                if (key.equals(LocalDate.parse(cb_mfgDate.getValue().toString()))) {
+                    lb_expDate.setText(String.valueOf(batchList.get(key)));
+                    break;
+                }
+            }
+        });
     }
 }

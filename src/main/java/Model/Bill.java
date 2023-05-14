@@ -1,17 +1,72 @@
 package Model;
 
-import java.time.LocalDate;
+import java.sql.Timestamp;
+import java.util.Objects;
 
 public class Bill {
     private int billID;
     private String billCode;
-    private LocalDate purchaseDate;
+    private Timestamp purchaseDate;
     private float revenue;
     private int detailBillID;
     private int productID;
     private int customerID;
     private int staffID;
+    private String productList;
+    private String customerName;
+    private String staffName;
+    private int sequence;
+
+    public int getPurchaseQuantity() {
+        return purchaseQuantity;
+    }
+
+    public void setPurchaseQuantity(int purchaseQuantity) {
+        this.purchaseQuantity = purchaseQuantity;
+    }
+
     private int purchaseQuantity;
+    public String getProduct() {
+        return productList;
+    }
+
+    public void setProduct(String product) {
+        this.productList = product;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Bill bill = (Bill) o;
+        return billID == bill.billID;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(billID);
+    }
+
+    public Bill(int sequence, int billID, String billCode, Timestamp purchaseDate, String staffName, String customerName, Float revenue , String product) {
+        this.billID = billID;
+        this.billCode = billCode;
+        this.purchaseDate = purchaseDate;
+        this.customerName = customerName;
+        this.staffName = staffName;
+        this.productList = product;
+        this.revenue=revenue;
+        this.sequence=sequence;
+    }
+
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public String getStaffName() {
+        return staffName;
+    }
+
 
     public int getBillID() {
         return billID;
@@ -21,12 +76,12 @@ public class Bill {
         this.billID = billID;
     }
 
-    public Bill(int billID, String billCode, LocalDate purchaseDate, float revenue, int totalQuantity) {
+    public Bill(int sequence, String billCode, Timestamp purchaseDate, float revenue, int billID) {
         this.billID = billID;
         this.billCode = billCode;
         this.purchaseDate = purchaseDate;
         this.revenue = revenue;
-        this.purchaseQuantity=totalQuantity;
+        this.sequence=sequence;
     }
 
     public String getBillCode() {
@@ -37,11 +92,11 @@ public class Bill {
         this.billCode = billCode;
     }
 
-    public LocalDate getPurchaseDate() {
+    public Timestamp getPurchaseDate() {
         return purchaseDate;
     }
 
-    public void setPurchaseDate(LocalDate purchaseDate) {
+    public void setPurchaseDate(Timestamp purchaseDate) {
         this.purchaseDate = purchaseDate;
     }
 
@@ -85,11 +140,11 @@ public class Bill {
         this.staffID = staffID;
     }
 
-    public int getPurchaseQuantity() {
-        return purchaseQuantity;
+    public int getSequence() {
+        return sequence;
     }
 
-    public void setPurchaseQuantity(int purchaseQuantity) {
-        this.purchaseQuantity = purchaseQuantity;
+    public void setSequence(int sequence) {
+        this.sequence = sequence;
     }
 }

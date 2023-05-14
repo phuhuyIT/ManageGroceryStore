@@ -91,7 +91,7 @@ public class ProductDAO extends InventoryAlert implements DaoInterface<Product> 
                 affectedRow+=pstmt.executeUpdate();
                 informationAlert("Update","THE BATCH OF PRODUCT "+product.getProductName().toUpperCase()+" PRODUCED ON "+product.getMFGDate()+" HAS BEEN UPDATED WITH THE QUANTITY");
             }else{
-                addProductBatch(product,product.getProductId());
+                addProductBatch(product);
                 informationAlert("Addition","SUCCESSFULLY ADDED NEW BATCH FOR PRODUCT "+product.getProductName().toUpperCase());
             }
         } catch (SQLException e) {
@@ -117,7 +117,7 @@ public class ProductDAO extends InventoryAlert implements DaoInterface<Product> 
         ResultSet rs;
         try {
 
-            String selectByID_query = "SELECT * FROM PRODUCTS P INNER JOIN PRODUCTBATCH PB ON P.PID = PB.PID WHERE P.Pid =? ";
+            String selectByID_query = "SELECT THUMBNAIL, PRODUCTNAME, Categoryid,P.Pid, COSTPRICE, SELLINGPRICE, PRODUCTBARCODE, manufractureDate, expirationDate,SID  FROM PRODUCTS P INNER JOIN PRODUCTBATCH PB ON P.PID = PB.PID WHERE P.Pid =? ";
             pstmt= con.prepareStatement(selectByID_query);
             pstmt.setInt(1,ID);
             rs =pstmt.executeQuery();
@@ -154,7 +154,7 @@ public class ProductDAO extends InventoryAlert implements DaoInterface<Product> 
             if(rs.next()) {
                 pid = rs.getInt("LAST_INSERT_ID()");
             }
-            addProductBatch(product, pid);
+            addProductBatch(product);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -174,17 +174,19 @@ public class ProductDAO extends InventoryAlert implements DaoInterface<Product> 
         }
         return totalQuantity;
     }
-    private void addProductBatch(Product product, int pid){
+    public void addProductBatch(Product product){
 
         try {
             String addProductBatch= "INSERT INTO PRODUCTBATCH (pid, expirationDate, manufractureDate, quantity)"
                     +"VALUE(?,?,?,?)";
             pstmt = con.prepareStatement(addProductBatch);
-            pstmt.setInt(1,pid);
+            pstmt.setInt(1,product.getProductId());
             pstmt.setDate(2, Date.valueOf(product.getEXPDate()));
             pstmt.setDate(3,Date.valueOf(product.getMFGDate()));
             pstmt.setInt(4,product.getQuantity());
-            pstmt.executeUpdate();
+            int affectedRows = pstmt.executeUpdate();
+            if(affectedRows>0)
+                errorAlert("Success","ADDED NEW BATCH SUCCESSFUL");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -214,6 +216,31 @@ public class ProductDAO extends InventoryAlert implements DaoInterface<Product> 
     }
     public ResultSet getAllProductBatchByID(int ID){
         String query = "SELECT manufractureDate, quantity FROM  productbatch WHERE QUANTITY>0 AND PID=?";
+        try {
+            pstmt = con.prepareStatement(query);
+            pstmt.setInt(1,ID);
+            rs=pstmt.executeQuery();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return rs;
+    }
+    public void updateOldBatch(Product product){
+        String updateProductBatch = "UPDATE PRODUCTBATCH SET Quantity=?,importDate=CURRENT_TIMESTAMP WHERE manufractureDate=? AND PID =?";
+        try {
+            pstmt = con.prepareStatement(updateProductBatch);
+            pstmt.setInt(1, product.getQuantity());
+            pstmt.setDate(2,Date.valueOf(product.getMFGDate()));
+            pstmt.setInt(3,product.getProductId());
+            int affectedRow = pstmt.executeUpdate();
+            if(affectedRow>0)
+                informationAlert("Update","THE BATCH OF PRODUCT "+product.getProductId()+" PRODUCED ON "+product.getMFGDate()+" HAS BEEN UPDATED WITH THE QUANTITY");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public ResultSet getAllDateByID(int ID){
+        String query = "SELECT manufractureDate, expirationDate FROM  productbatch WHERE QUANTITY>0 AND PID=?";
         try {
             pstmt = con.prepareStatement(query);
             pstmt.setInt(1,ID);
