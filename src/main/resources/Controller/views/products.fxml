@@ -107,12 +107,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="productPrice3" alignment="CENTER" layoutX="89.0" layoutY="168.0" prefHeight="27.0" prefWidth="111.0" text="Number">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="productQuantity3" alignment="CENTER" layoutX="89.0" layoutY="203.0" prefHeight="27.0" prefWidth="111.0" text="\$">
+                  <Label fx:id="productQuantity3" alignment="CENTER" layoutX="90.0" layoutY="168.0" prefHeight="27.0" prefWidth="111.0" text="\$">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -120,6 +115,11 @@
                   <Label fx:id="productName3" alignment="CENTER" layoutX="6.0" layoutY="122.0" prefHeight="39.0" prefWidth="195.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="productPrice3" alignment="CENTER" layoutX="89.0" layoutY="209.0" prefHeight="27.0" prefWidth="111.0" text="Number">
+                     <font>
+                        <Font size="18.0" />
                      </font>
                   </Label>
                </children>

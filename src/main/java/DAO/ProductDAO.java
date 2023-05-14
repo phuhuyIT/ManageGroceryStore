@@ -48,12 +48,18 @@ public class ProductDAO extends InventoryAlert implements DaoInterface<Product> 
 
     @Override
     public int delete(int pid) {
-        String deleteProduct= "DELETE FROM PRODUCTS WHERE pid= ?";
+        String deleteProduct= "DELETE FROM products\n" +
+                "WHERE pid = ?\n" +
+                "AND PID NOT IN (SELECT DISTINCT productID FROM detailbill);";
         int result;
         try {
             pstmt = con.prepareStatement(deleteProduct);
             pstmt.setInt(1,pid);
             result=pstmt.executeUpdate();
+            if(result==0)
+                errorAlert("Error","YOU CANNOT REMOVE THIS PRODUCT BECAUSE THE INVOICE DETAILS IS REFERRED TO");
+            else
+                informationAlert("Success","DELETE SUCCESSFUL");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -103,7 +109,7 @@ public class ProductDAO extends InventoryAlert implements DaoInterface<Product> 
     @Override
     public ResultSet selectALL(int Limit, int offSet) {
         try {
-            String selectAllProduct = "SELECT * FROM PRODUCTS ORDER BY pid ASC LIMIT "+Limit+" OFFSET "+offSet;
+            String selectAllProduct = "SELECT * FROM productList ORDER BY pid ASC LIMIT "+Limit+" OFFSET "+offSet;
             pstmt= con.prepareStatement(selectAllProduct);
             rs = pstmt.executeQuery();
         }catch (SQLException e){
@@ -193,7 +199,7 @@ public class ProductDAO extends InventoryAlert implements DaoInterface<Product> 
 
     }
     public int getNumProuduct(){
-        String query="SELECT COUNT(pid) as numberProduct FROM products";
+        String query="SELECT COUNT(pid) as numberProduct FROM productList";
         int numberProduct=0;
         try {
             pstmt = con.prepareStatement(query);

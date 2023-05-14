@@ -41,8 +41,7 @@ public abstract class Pagination {
             public void handle(ActionEvent actionEvent) {
                 offSet+=8;
                 Limit+=8;
-
-                if(offSet>numberData){
+                if(offSet>=numberData){
                     InventoryAlert.errorAlert("Error","This is the last page");
                 }else {
                     clearData();

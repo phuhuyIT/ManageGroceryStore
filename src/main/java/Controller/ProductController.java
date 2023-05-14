@@ -108,7 +108,7 @@ public class ProductController extends ItemController implements Initializable {
                     }
                     productName.setText(rs.getString("PRODUCTNAME"));
                     ap.setUserData(rs.getString("PID"));
-                    productQuantity.setText(rs.getString("SELLINGPRICE"));
+                    productQuantity.setText(String.valueOf(new ProductDAO().getQuantity((rs.getInt("pid")))));
                     productPrice.setText(rs.getString("COSTPRICE"));
                 }
                 else
@@ -209,7 +209,7 @@ public class ProductController extends ItemController implements Initializable {
 
         //xử lý sự kiện MenuItem Chuột phải
         delete.setOnAction(event -> {
-            System.out.println("Dã xoá");
+            new ProductDAO().delete(currentItemID);
         });
         detail.setOnAction(actionEvent -> {
             String fxmlPath = "views/detailProduct.fxml";

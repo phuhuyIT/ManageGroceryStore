@@ -1,7 +1,7 @@
 package Model;
 
 import java.time.LocalDate;
-import java.util.Date;
+
 public class Product {
     private Integer productId;
     private String productBarCode;
@@ -16,11 +16,11 @@ public class Product {
     private int userId;
     private String customerCode;
     private Double totalCost;
-    private Double totalRevenue;
+    private String totalRevenue;
     private String SKUCode;
     private String thumbnailLink;
 
-    public Product(String productName, Integer quantity, Double totalRevenue) {
+    public Product(String productName, Integer quantity, String totalRevenue) {
         this.productName = productName;
         this.quantity = quantity;
         this.totalRevenue = totalRevenue;
@@ -89,7 +89,7 @@ public class Product {
         this.thumbnailLink = thumbnailLink;
     }
 
-    public Product(int productId, String productBarCode, LocalDate MFGDate, LocalDate EXPDate, int supplierID, String productName, int quantity, double costPrice, double sellingPrice, int categoryID, int userId, String customerCode, Double totalCost, Double totalRevenue, String SKUCode) {
+    public Product(int productId, String productBarCode, LocalDate MFGDate, LocalDate EXPDate, int supplierID, String productName, int quantity, double costPrice, double sellingPrice, int categoryID, int userId, String customerCode, Double totalCost, String totalRevenue, String SKUCode) {
         this.productId = productId;
         this.productBarCode = productBarCode;
         this.MFGDate = MFGDate;
@@ -226,11 +226,11 @@ public class Product {
         this.totalCost = totalCost;
     }
 
-    public Double getTotalRevenue() {
+    public String getTotalRevenue() {
         return totalRevenue;
     }
 
-    public void setTotalRevenue(Double totalRevenue) {
+    public void setTotalRevenue(String totalRevenue) {
         this.totalRevenue = totalRevenue;
     }
 

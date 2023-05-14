@@ -47,12 +47,18 @@ public class CustomerDAO extends InventoryAlert implements DaoInterface <Custome
 
     @Override
     public int delete(int cid) {
-        String deleteCustomerDetails= "DELETE FROM CUSTOMERS WHERE cid= ?";
+        String deleteCustomerDetails= "DELETE FROM customers\n" +
+                "WHERE cid = ?\n" +
+                "AND cid NOT IN (SELECT DISTINCT customerID FROM detailbill);";
         int result;
         try {
             pstmt = con.prepareStatement(deleteCustomerDetails);
             pstmt.setInt(1,cid);
             result=pstmt.executeUpdate();
+            if(result==0)
+                errorAlert("Error","YOU CANNOT REMOVE THIS CUSTOMER BECAUSE THE INVOICE DETAILS IS REFERRED TO");
+            else
+                informationAlert("Success","DELETE SUCCESSFUL");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

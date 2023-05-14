@@ -7,7 +7,7 @@ public class Bill {
     private int billID;
     private String billCode;
     private Timestamp purchaseDate;
-    private float revenue;
+    private String revenue;
     private int detailBillID;
     private int productID;
     private int customerID;
@@ -47,7 +47,7 @@ public class Bill {
         return Objects.hash(billID);
     }
 
-    public Bill(int sequence, int billID, String billCode, Timestamp purchaseDate, String staffName, String customerName, Float revenue , String product) {
+    public Bill(int sequence, int billID, String billCode, Timestamp purchaseDate, String staffName, String customerName, String revenue , String product) {
         this.billID = billID;
         this.billCode = billCode;
         this.purchaseDate = purchaseDate;
@@ -76,7 +76,7 @@ public class Bill {
         this.billID = billID;
     }
 
-    public Bill(int sequence, String billCode, Timestamp purchaseDate, float revenue, int billID) {
+    public Bill(int sequence, String billCode, Timestamp purchaseDate, String revenue, int billID) {
         this.billID = billID;
         this.billCode = billCode;
         this.purchaseDate = purchaseDate;
@@ -100,11 +100,11 @@ public class Bill {
         this.purchaseDate = purchaseDate;
     }
 
-    public float getRevenue() {
+    public String getRevenue() {
         return revenue;
     }
 
-    public void setRevenue(float revenue) {
+    public void setRevenue(String revenue) {
         this.revenue = revenue;
     }
 

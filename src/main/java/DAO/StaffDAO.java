@@ -6,6 +6,9 @@ import Model.Staff;
 
 import java.sql.*;
 
+import static Model.InventoryAlert.errorAlert;
+import static Model.InventoryAlert.informationAlert;
+
 public class StaffDAO implements DaoInterface<Staff>{
     Connection con = null;
     PreparedStatement pstmt = null;
@@ -35,7 +38,7 @@ public class StaffDAO implements DaoInterface<Staff>{
             pstmt.setString(1, staff.getStaffIDCard());
             rs=pstmt.executeQuery();
             if(rs.next()){
-                InventoryAlert.errorAlert("ERROR","THIS PRODUCT HAS BEEN ADDED!");
+                errorAlert("ERROR","THIS PRODUCT HAS BEEN ADDED!");
                 return 0;
             }else{
                 addFunction(staff);
@@ -48,12 +51,18 @@ public class StaffDAO implements DaoInterface<Staff>{
 
     @Override
     public int delete(int id) throws SQLException {
-        String deleteProduct= "DELETE FROM staff WHERE id= ?";
+        String deleteProduct= "DELETE FROM staff\n" +
+                "WHERE id = ?\n" +
+                "AND id NOT IN (SELECT DISTINCT staffID FROM detailbill);";
         int result;
         try {
             pstmt = con.prepareStatement(deleteProduct);
             pstmt.setInt(1,id);
             result=pstmt.executeUpdate();
+            if(result==0)
+                errorAlert("Error","YOU CANNOT REMOVE THIS STAFF BECAUSE THE INVOICE DETAILS IS REFERRED TO");
+            else
+                informationAlert("Success","DELETE SUCCESSFUL");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -75,7 +84,7 @@ public class StaffDAO implements DaoInterface<Staff>{
             pstmt.setFloat(7, staff.getId());
             result=pstmt.executeUpdate();
             if(result>0)
-                InventoryAlert.informationAlert("Sucessful","THIS CUSTOMER INFORMATION HAS BEEN UPDATED SUCCESSFULLY");
+                informationAlert("Sucessful","THIS CUSTOMER INFORMATION HAS BEEN UPDATED SUCCESSFULLY");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -134,7 +143,7 @@ public class StaffDAO implements DaoInterface<Staff>{
             pstmt.setString(11,staff.getLocation());
             result = pstmt.executeUpdate();
             if(result>0)
-                InventoryAlert.informationAlert("Sucessful","THIS STAFF HAS BEEN ADDED SUCCESSFULLY");
+                informationAlert("Sucessful","THIS STAFF HAS BEEN ADDED SUCCESSFULLY");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -165,7 +174,7 @@ public class StaffDAO implements DaoInterface<Staff>{
                 // Thực thi truy vấn
                 affectedRow = pstmt.executeUpdate();
                 if(affectedRow>0)
-                    InventoryAlert.informationAlert("Success","SUCCESSFULLY UPDATE MONTHLY SALARY"+staff.getMonthSalary());
+                    informationAlert("Success","SUCCESSFULLY UPDATE MONTHLY SALARY"+staff.getMonthSalary());
             }else{
                 String sql = "INSERT INTO monthly_salary (staffid, workingHours, overtimeHours, allowance, deduction,monthSalary) VALUES (?, ?, ?, ?, ?, ?)";
                 try {
@@ -180,7 +189,7 @@ public class StaffDAO implements DaoInterface<Staff>{
                     // Thực thi truy vấn
                     affectedRow = pstmt.executeUpdate();
                     if(affectedRow>0)
-                        InventoryAlert.informationAlert("Success","SUCCESSFULLY CREATE NEW MONTHLY SALARY"+staff.getMonthSalary());
+                        informationAlert("Success","SUCCESSFULLY CREATE NEW MONTHLY SALARY"+staff.getMonthSalary());
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }

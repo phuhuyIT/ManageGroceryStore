@@ -92,7 +92,7 @@ public class CustomerController extends ItemController implements Initializable 
         contextMenu.setStyle("-fx-pref-width: 150px; -fx-pref-height: 90px; -fx-padding : 7px 0px 0px 0px;");
         //xử lý sự kiện MenuItem Chuột phải
         delete.setOnAction(event -> {
-            System.out.println("Dã xoá");
+            new CustomerDAO().delete(currentItemID);
         });
         detail.setOnAction(actionEvent -> {
             String fxmlPath = "views/detailCustomer.fxml";

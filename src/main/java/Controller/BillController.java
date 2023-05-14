@@ -23,6 +23,7 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -99,6 +100,7 @@ public class BillController implements Initializable {
     private TableView<Bill> tv_showBill;
 
     private ObservableList<Bill> billALLList;
+    DecimalFormat formattera = new DecimalFormat("#,###");
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         btn_prBill.setOnAction(new EventHandler<ActionEvent>() {
@@ -141,7 +143,7 @@ public class BillController implements Initializable {
                     String staffName = rs.getString("staffName");
                     String customerName=rs.getString("customerName");
                     String product = rs.getString("productList");
-                    billALLList.add( new Bill(sequence,billID,billCode,createdDate, staffName,customerName,revenue,product));
+                    billALLList.add( new Bill(sequence,billID,billCode,createdDate, staffName,customerName,formattera.format(revenue),product));
                 }
                 tv_showBill.setItems(billALLList);
             }
@@ -175,7 +177,7 @@ public class BillController implements Initializable {
         lb_staffName.setText(bill.getStaffName());
         lb_customerName.setText(bill.getCustomerName());
         lb_discount.setText("0%");
-        lb_totalRevenue.setText(String.valueOf(bill.getRevenue()));
+        lb_totalRevenue.setText(bill.getRevenue());
         lb_pay.setText(String.valueOf(bill.getRevenue()));
         productList = FXCollections.observableArrayList(splitProductListString(bill.getProduct()));
         tv_productList.setItems(productList);
@@ -187,10 +189,7 @@ public class BillController implements Initializable {
             String[] productParts = oneProduct.split("\\|");
             String productName = productParts[0].replace("'", "").trim();
             int productQuantity = Integer.parseInt(productParts[1]);
-            Double productRevenue = Double.parseDouble(productParts[2]);
-            System.out.println("Product Name: " + productName);
-            System.out.println("Product Quantity: " + productQuantity);
-            System.out.println("Product Price: " + productRevenue);
+            String productRevenue = formattera.format(Double.parseDouble(productParts[2]));
             products.add(new Product(productName,productQuantity,productRevenue));
         }
         return products;

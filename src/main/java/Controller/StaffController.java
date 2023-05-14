@@ -92,7 +92,11 @@ public class StaffController extends ItemController implements Initializable {
 
         //xử lý sự kiện MenuItem Chuột phải
         delete.setOnAction(event -> {
-            System.out.println("Dã xoá");
+            try {
+                new StaffDAO().delete(currentItemID);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         });
         detail.setOnAction(actionEvent -> {
             String fxmlPath = "views/detailStaff.fxml";

@@ -52,7 +52,7 @@ public class CategoryDao implements DaoInterface <Category> {
     @Override
     // Cập nhật thông tin của một danh mục sản phẩm trong cơ sở dữ liệu
     public int update(Category category) {
-        String sql = "UPDATE categories SET name=? WHERE id=?";
+        String sql = "UPDATE productCategories SET name=? WHERE id=?";
         int affectedRows = 0;
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
@@ -68,7 +68,7 @@ public class CategoryDao implements DaoInterface <Category> {
     @Override
     // Xóa một danh mục sản phẩm khỏi cơ sở dữ liệu
     public int delete(int categoryCode) {
-        String sql = "DELETE FROM categories WHERE CategoryCode=?";
+        String sql = "DELETE FROM productCategories WHERE CategoryCode=?";
         int affectedRows = 0;
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
@@ -83,7 +83,7 @@ public class CategoryDao implements DaoInterface <Category> {
     @Override
     // Lấy danh mục sản phẩm từ cơ sở dữ liệu theo id
     public ResultSet selectByID(int ID) {
-        String sql = "SELECT * FROM categories WHERE ID=?";
+        String sql = "SELECT * FROM productCategories WHERE ID=?";
         try {
             pstmt = con.prepareStatement(sql);
             pstmt.setInt(1, ID);
@@ -97,7 +97,7 @@ public class CategoryDao implements DaoInterface <Category> {
     @Override
     public int addFunction(Category category) {
         int result;
-        String url="insert into Category (ID, NAME, description, productList)"
+        String url="insert into productCategories (ID, NAME, description, productList)"
                 + "values (?,?,?,?)";
         try {
             pstmt = con.prepareStatement(url);
@@ -115,7 +115,7 @@ public class CategoryDao implements DaoInterface <Category> {
     @Override
     // Lấy danh sách tất cả các danh mục sản phẩm từ cơ sở dữ liệu
     public ResultSet selectALL(int Limit, int offSet) {
-        String sql = "SELECT * FROM categories";
+        String sql = "SELECT * FROM productCategories";
         ArrayList<Category> categories = new ArrayList<>();
         try {
             pstmt = con.prepareStatement(sql);
@@ -130,7 +130,7 @@ public class CategoryDao implements DaoInterface <Category> {
     // Lấy danh sách các sản phẩm trong một danh mục sản phẩm từ cơ sở dữ liệu theo id
     private List<Product> getProductsByCategoryId(int categoryId) {
         List<Product> products = new ArrayList<>();
-        String sql = "SELECT * FROM product_categories cp JOIN products p ON cp.pid=p.pid WHERE cp.category_id=?";
+        String sql = "SELECT * FROM productCategories cp JOIN products p ON cp.pid=p.pid WHERE cp.category_id=?";
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setInt(1, categoryId);
@@ -146,7 +146,7 @@ public class CategoryDao implements DaoInterface <Category> {
 
     }
     public int getCategoryIDByName(String name){
-        String query = "SELECT categoryid FROM product_categories WHERE name = ?";
+        String query = "SELECT categoryid FROM productCategories WHERE name = ?";
         int categoryId=0;
         try {
             pstmt =con.prepareStatement(query);
@@ -161,7 +161,7 @@ public class CategoryDao implements DaoInterface <Category> {
         return categoryId;
     }
     public String getNameByCategoryID(int ID){
-        String query = "SELECT name FROM product_categories WHERE categoryid = ?";
+        String query = "SELECT name FROM productCategories WHERE categoryid = ?";
         String name=null;
         try {
             pstmt =con.prepareStatement(query);
@@ -176,7 +176,7 @@ public class CategoryDao implements DaoInterface <Category> {
         return name;
     }
     public int getNumCategory(){
-        String query="SELECT COUNT(categoryid) as numberCategory FROM product_categories";
+        String query="SELECT COUNT(categoryid) as numberCategory FROM productCategories";
         int numberProduct=0;
         try {
             pstmt = con.prepareStatement(query);
