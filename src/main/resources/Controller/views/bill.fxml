@@ -27,7 +27,6 @@
             <TableColumn fx:id="tc_revenue" prefWidth="193.0" text="DOANH THU" />
             <TableColumn fx:id="tc_billID" minWidth="0.0" prefWidth="0.0" text="DOANH THU" />
             <TableColumn fx:id="tc_StaffName" minWidth="0.0" prefWidth="0.0" text="DOANH THU" />
-            <TableColumn fx:id="tc_productName" minWidth="0.0" prefWidth="0.0" text="DOANH THU" />
             <TableColumn fx:id="tc_customerName" minWidth="0.0" prefWidth="0.0" text="DOANH THU" />
             <TableColumn fx:id="tc_ProductList" minWidth="0.0" prefWidth="0.0" text="DOANH THU" />
         </columns>

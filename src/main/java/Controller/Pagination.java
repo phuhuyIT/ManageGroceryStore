@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 
 public abstract class Pagination {
     protected int Limit;
@@ -17,7 +18,9 @@ public abstract class Pagination {
     private Button btn_previousPage;
     @FXML
     private Button btn_nextPage;
+    protected int pageNumber;
     protected int numberData;
+
     protected void setActionForBtn(){
         btn_previousPage.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -38,6 +41,7 @@ public abstract class Pagination {
             public void handle(ActionEvent actionEvent) {
                 offSet+=8;
                 Limit+=8;
+
                 if(offSet>numberData){
                     InventoryAlert.errorAlert("Error","This is the last page");
                 }else {

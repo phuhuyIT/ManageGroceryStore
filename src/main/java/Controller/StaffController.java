@@ -34,6 +34,8 @@ public class StaffController extends ItemController implements Initializable {
 
     @FXML
     private AnchorPane anchorPane_staff;
+    @FXML
+    private Label lb_pageNumber;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         numberData = new StaffDAO().getNumStaff();
@@ -143,6 +145,8 @@ public class StaffController extends ItemController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        pageNumber= (offSet+8)/8;
+        lb_pageNumber.setText(String.valueOf(pageNumber));
     }
 
     @Override

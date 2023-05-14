@@ -37,7 +37,8 @@ public class ProductController extends ItemController implements Initializable {
     @FXML
     private Button btn_addProduct;
 
-
+    @FXML
+    private Label lb_pageNumber;
     @FXML
     private ChoiceBox<String> choiceBox_sort;
 
@@ -117,6 +118,8 @@ public class ProductController extends ItemController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        pageNumber= (offSet+8)/8;
+        lb_pageNumber.setText(String.valueOf(pageNumber));
 
     }
 

@@ -232,5 +232,10 @@
       </AnchorPane>
       <Button fx:id="btn_previousPage" layoutX="313.0" layoutY="770.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="59.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
       <Button fx:id="btn_nextPage" layoutX="606.0" layoutY="771.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="59.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
+      <Label fx:id="lb_pageNumber" layoutX="472.0" layoutY="783.0" text="Number of page">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

@@ -32,7 +32,8 @@ public class CustomerController extends ItemController implements Initializable 
     private Button btn_add_user;
     @FXML
     private AnchorPane anchorPane_customer;
-
+    @FXML
+    private Label lb_pageNumber;
     private String[] choice = {"A->Z" , "Z->A"};
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -132,6 +133,8 @@ public class CustomerController extends ItemController implements Initializable 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        pageNumber= (offSet+8)/8;
+        lb_pageNumber.setText(String.valueOf(pageNumber));
     }
     @Override
     public void clearData(){

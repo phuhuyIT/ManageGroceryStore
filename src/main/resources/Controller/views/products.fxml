@@ -20,17 +20,17 @@
                   <Image url="@../image/refresh.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="53.0" fitWidth="52.0" layoutX="602.0" layoutY="753.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 5,0,0,0); -fx-cursor: hand;">
+            <ImageView fitHeight="53.0" fitWidth="52.0" layoutX="602.0" layoutY="824.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 5,0,0,0); -fx-cursor: hand;">
                <image>
                   <Image url="@../image/next.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="52.0" fitWidth="52.0" layoutX="351.0" layoutY="753.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 5,0,0,0); -fx-cursor: hand;">
+            <ImageView fitHeight="52.0" fitWidth="52.0" layoutX="351.0" layoutY="824.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 5,0,0,0); -fx-cursor: hand;">
                <image>
                   <Image url="@../image/previous.png" />
                </image>
             </ImageView>
-            <AnchorPane fx:id="productBox1" layoutX="33.5" layoutY="224.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20px; -fx-cursor: hand;" styleClass="custom-anchopane" stylesheets="@css/test.css">
+            <AnchorPane fx:id="productBox1" layoutX="33.5" layoutY="273.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20px; -fx-cursor: hand;" styleClass="custom-anchopane" stylesheets="@css/test.css">
                <children>
                   <ImageView fx:id="productThumbnail1" fitHeight="104.0" fitWidth="101.0" layoutX="53.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -64,7 +64,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="productBox2" layoutX="277.5" layoutY="224.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20; -fx-cursor: hand;" stylesheets="@css/test.css">
+            <AnchorPane fx:id="productBox2" layoutX="277.5" layoutY="273.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20; -fx-cursor: hand;" stylesheets="@css/test.css">
                <children>
                   <ImageView fx:id="productThumbnail2" fitHeight="104.0" fitWidth="101.0" layoutX="53.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
                   <Label layoutX="22.0" layoutY="170.0" text="Số lượng:">
@@ -94,7 +94,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="productBox3" layoutX="516.5" layoutY="224.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20; -fx-cursor: hand;" stylesheets="@css/test.css">
+            <AnchorPane fx:id="productBox3" layoutX="516.5" layoutY="273.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20; -fx-cursor: hand;" stylesheets="@css/test.css">
                <children>
                   <ImageView fx:id="productThumbnail3" fitHeight="104.0" fitWidth="101.0" layoutX="53.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" />
                   <Label layoutX="22.0" layoutY="168.0" text="Số lượng:">
@@ -124,7 +124,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="productBox4" layoutX="756.5" layoutY="224.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20; -fx-cursor: hand;" stylesheets="@css/test.css">
+            <AnchorPane fx:id="productBox4" layoutX="756.5" layoutY="273.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20; -fx-cursor: hand;" stylesheets="@css/test.css">
                <children>
                   <ImageView fx:id="productThumbnail4" fitHeight="104.0" fitWidth="101.0" layoutX="53.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
                   <Label layoutX="22.0" layoutY="168.0" text="Số lượng: ">
@@ -154,7 +154,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="productBox5" layoutX="33.5" layoutY="480.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20; -fx-cursor: hand;" stylesheets="@css/test.css">
+            <AnchorPane fx:id="productBox5" layoutX="33.5" layoutY="551.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20; -fx-cursor: hand;" stylesheets="@css/test.css">
                <children>
                   <ImageView fx:id="productThumbnail5" fitHeight="104.0" fitWidth="101.0" layoutX="53.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
                   <Label layoutX="22.0" layoutY="168.0" text="Số lượng:">
@@ -184,7 +184,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="productBox6" layoutX="277.5" layoutY="480.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20; -fx-cursor: hand;" stylesheets="@css/test.css">
+            <AnchorPane fx:id="productBox6" layoutX="277.5" layoutY="551.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20; -fx-cursor: hand;" stylesheets="@css/test.css">
                <children>
                   <ImageView fx:id="productThumbnail6" fitHeight="104.0" fitWidth="101.0" layoutX="53.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
                   <Label layoutX="22.0" layoutY="168.0" text="Số lượng:">
@@ -214,7 +214,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="productBox7" layoutX="516.5" layoutY="480.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20; -fx-cursor: hand;" stylesheets="@css/test.css">
+            <AnchorPane fx:id="productBox7" layoutX="516.5" layoutY="551.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20; -fx-cursor: hand;" stylesheets="@css/test.css">
                <children>
                   <ImageView fx:id="productThumbnail7" fitHeight="104.0" fitWidth="101.0" layoutX="53.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
                   <Label layoutX="22.0" layoutY="168.0" text="Số lượng:">
@@ -244,7 +244,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="productBox8" layoutX="756.5" layoutY="480.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20; -fx-cursor: hand;" stylesheets="@css/test.css">
+            <AnchorPane fx:id="productBox8" layoutX="756.5" layoutY="551.0" prefHeight="230.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20; -fx-cursor: hand;" stylesheets="@css/test.css">
                <children>
                   <ImageView fx:id="productThumbnail8" fitHeight="104.0" fitWidth="101.0" layoutX="53.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true" />
                   <Label layoutX="22.0" layoutY="168.0" text="Số lượng:">
@@ -281,18 +281,18 @@
                </font>
             </Label>
             <Line endX="1000.0" layoutX="18.0" layoutY="71.5" startX="-244.0" strokeWidth="3.0" />
-            <Label fx:id="lb_Search" layoutX="33.5" layoutY="88.0" prefHeight="37.0" prefWidth="299.0" style="-fx-border-width: 3px; -fx-border-radius: 7px; -fx-border-color: black;" />
-            <TextField fx:id="txt_search" layoutX="88.0" layoutY="89.0" prefHeight="35.0" prefWidth="244.0" promptText="Search here...." style="-fx-font-weight: bold; -fx-background-color: transparent;">
+            <Label fx:id="lb_Search" layoutX="33.5" layoutY="137.0" prefHeight="37.0" prefWidth="299.0" style="-fx-border-width: 3px; -fx-border-radius: 7px; -fx-border-color: black;" />
+            <TextField fx:id="txt_search" layoutX="88.0" layoutY="138.0" prefHeight="35.0" prefWidth="244.0" promptText="Search here...." style="-fx-font-weight: bold; -fx-background-color: transparent;">
                <font>
                   <Font size="16.0" />
                </font>
             </TextField>
-            <ImageView fitHeight="37.0" fitWidth="30.0" layoutX="45.5" layoutY="92.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="37.0" fitWidth="30.0" layoutX="45.5" layoutY="141.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../image/search.png" />
                </image>
             </ImageView>
-            <Label layoutX="342.5" layoutY="89.0" prefHeight="37.0" prefWidth="232.0" style="-fx-border-color: black; -fx-border-width: 3px; -fx-font-weight: bold; -fx-border-radius: 7px;" text="Sort by">
+            <Label layoutX="342.5" layoutY="138.0" prefHeight="37.0" prefWidth="232.0" style="-fx-border-color: black; -fx-border-width: 3px; -fx-font-weight: bold; -fx-border-radius: 7px;" text="Sort by">
                <font>
                   <Font size="16.0" />
                </font>
@@ -303,13 +303,13 @@
                   <Insets left="5.0" />
                </padding>
             </Label>
-            <ChoiceBox fx:id="choiceBox_sort" layoutX="439.5" layoutY="90.0" prefHeight="35.0" prefWidth="132.0" style="-fx-background-color: transparent;" />
-            <ImageView fitHeight="37.0" fitWidth="30.0" layoutX="411.5" layoutY="92.0" pickOnBounds="true" preserveRatio="true">
+            <ChoiceBox fx:id="choiceBox_sort" layoutX="439.5" layoutY="139.0" prefHeight="35.0" prefWidth="132.0" style="-fx-background-color: transparent;" />
+            <ImageView fitHeight="37.0" fitWidth="30.0" layoutX="411.5" layoutY="141.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../image/sort.png" />
                </image>
             </ImageView>
-            <Label layoutX="720.5" layoutY="88.0" prefHeight="37.0" prefWidth="244.0" style="-fx-border-color: black; -fx-font-weight: bold; -fx-border-width: 3px; -fx-border-radius: 7px;" text="List Product ">
+            <Label layoutX="720.5" layoutY="137.0" prefHeight="37.0" prefWidth="244.0" style="-fx-border-color: black; -fx-font-weight: bold; -fx-border-width: 3px; -fx-border-radius: 7px;" text="List Product ">
                <font>
                   <Font size="16.0" />
                </font>
@@ -317,19 +317,24 @@
                   <Insets left="5.0" />
                </padding>
             </Label>
-            <ChoiceBox fx:id="choiceBox_list" layoutX="822.5" layoutY="89.0" prefHeight="35.0" prefWidth="138.0" style="-fx-background-color: transparent;" />
-            <Button fx:id="btn_addProduct" alignment="CENTER_RIGHT" layoutX="860.0" layoutY="151.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="101.0" style="-fx-cursor: hand; -fx-border-width: 3px; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 7px;" stylesheets="@css/test.css" text="Add">
+            <ChoiceBox fx:id="choiceBox_list" layoutX="822.5" layoutY="138.0" prefHeight="35.0" prefWidth="138.0" style="-fx-background-color: transparent;" />
+            <Button fx:id="btn_addProduct" alignment="CENTER_RIGHT" layoutX="860.0" layoutY="200.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="101.0" style="-fx-cursor: hand; -fx-border-width: 3px; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 7px;" stylesheets="@css/test.css" text="Add">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>
             </Button>
-            <ImageView fitHeight="27.0" fitWidth="30.0" layoutX="873.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="27.0" fitWidth="30.0" layoutX="873.0" layoutY="207.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../image/more.png" />
                </image>
             </ImageView>
-            <Button fx:id="btn_previousPage" layoutX="348.0" layoutY="747.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="62.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
-            <Button fx:id="btn_nextPage" layoutX="597.0" layoutY="748.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="62.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
+            <Button fx:id="btn_previousPage" layoutX="348.0" layoutY="818.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="62.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
+            <Button fx:id="btn_nextPage" layoutX="597.0" layoutY="819.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="62.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
+            <Label fx:id="lb_pageNumber" layoutX="487.0" layoutY="832.0" text="Number of page">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>
