@@ -25,6 +25,7 @@ public class ForgotPasswordController extends Application {
     public TextField confirmPassword;
     public Button btnOk;
     public TextField otp;
+    public Button back_button;
     public class EmailValidator {
         private static final String EMAIL_REGEX =
                 "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
