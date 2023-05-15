@@ -127,6 +127,8 @@ public class StaffController extends ItemController implements Initializable {
     @Override
     protected void showData(int limit, int offSet) {
         //choiceBox.getItems().addAll(choice);
+        pageNumber= (offSet+8)/8;
+        lb_pageNumber.setText(String.valueOf(pageNumber));
         ResultSet rs=new StaffDAO().selectALL(limit,offSet);
         try {
             for (int i=0;i<8;i++){
@@ -155,8 +157,7 @@ public class StaffController extends ItemController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        pageNumber= (offSet+8)/8;
-        lb_pageNumber.setText(String.valueOf(pageNumber));
+
     }
 
     @Override
@@ -167,7 +168,7 @@ public class StaffController extends ItemController implements Initializable {
             ImageView staffAvatar =(ImageView) anchorPane.lookup("#imageStaff_"+(i+1));
             Label staffPosition =(Label) anchorPane.lookup("#positionStaff_"+(i+1));
             Label staffJoinDate =(Label) anchorPane.lookup("#fwd_Staff"+(i+1));
-
+            anchorPane.setUserData(null);
             String img  = "D:\\java\\ManageGroceryStore\\src\\main\\resources\\Controller\\image\\gamer.png";
             if(img!=null) {
                 Image image1 = new Image(String.valueOf(img));
