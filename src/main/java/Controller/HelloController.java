@@ -20,6 +20,8 @@ public class HelloController implements Initializable {
     @FXML
     private Button btn_loginFB;
     @FXML
+    private Button btn_forgotpassword;
+    @FXML
     public TextField tf_username;
     @FXML
     public PasswordField tf_password;
@@ -37,6 +39,12 @@ public class HelloController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 LoginController.changeScence1(event , "views/RegisForm.fxml", "Sign Up", null);
+            }
+        });
+        btn_forgotpassword.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                LoginController.changeScence1(event, "views/forgot-password.fxml", "Forgot pasword", null);
             }
         });
     }

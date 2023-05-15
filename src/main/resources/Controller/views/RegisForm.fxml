@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
@@ -10,7 +9,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="669.0" prefWidth="607.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SignUpController">
@@ -28,22 +26,23 @@
    <center>
       <AnchorPane fx:id="pane" prefHeight="670.0" prefWidth="328.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="29.0" layoutY="337.0" prefHeight="55.0" prefWidth="294.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 10PX;" />
-            <Label layoutX="29.0" layoutY="265.0" prefHeight="55.0" prefWidth="294.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 10PX;" />
-            <Label layoutX="29.0" layoutY="197.0" prefHeight="55.0" prefWidth="294.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 10PX;" />
-            <TextField fx:id="tf_username" layoutX="81.0" layoutY="206.0" prefHeight="37.0" prefWidth="235.0" promptText="Username" style="-fx-background-color: transparent;">
+            <Label layoutX="27.0" layoutY="178.0" prefHeight="55.0" prefWidth="294.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 10PX;" />
+            <Label layoutX="29.0" layoutY="418.0" prefHeight="55.0" prefWidth="294.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 10PX;" />
+            <Label layoutX="29.0" layoutY="335.0" prefHeight="55.0" prefWidth="294.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 10PX;" />
+            <Label layoutX="29.0" layoutY="251.0" prefHeight="55.0" prefWidth="294.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 10PX;" />
+            <TextField fx:id="tf_username" layoutX="85.0" layoutY="260.0" prefHeight="37.0" prefWidth="235.0" promptText="Username" style="-fx-background-color: transparent;">
                <font>
                   <Font size="13.0" />
                </font></TextField>
-            <PasswordField fx:id="tf_password" layoutX="81.0" layoutY="277.0" prefHeight="37.0" prefWidth="235.0" promptText="Password" style="-fx-background-color: transparent;">
+            <PasswordField fx:id="tf_password" layoutX="78.0" layoutY="344.0" prefHeight="37.0" prefWidth="235.0" promptText="Password" style="-fx-background-color: transparent;">
                <font>
                   <Font size="13.0" />
                </font></PasswordField>
-            <PasswordField fx:id="tf_confirmpass" layoutX="81.0" layoutY="348.0" prefHeight="37.0" prefWidth="235.0" promptText="Confirm Password" style="-fx-background-color: transparent;">
+            <PasswordField fx:id="tf_confirmpass" layoutX="81.0" layoutY="427.0" prefHeight="37.0" prefWidth="235.0" promptText="Confirm Password" style="-fx-background-color: transparent;">
                <font>
                   <Font size="13.0" />
                </font></PasswordField>
-            <Button fx:id="btn_signup" layoutX="31.0" layoutY="411.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="294.0" style="-fx-background-color: #FF9933; -fx-cursor: hand;" text="Sign Up">
+            <Button fx:id="btn_signup" layoutX="27.0" layoutY="517.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="294.0" style="-fx-background-color: #FF9933; -fx-cursor: hand;" text="Sign Up">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font></Button>
@@ -57,17 +56,17 @@
                   <Font size="17.0" />
                </font>
             </Hyperlink>
-            <ImageView fitHeight="29.0" fitWidth="32.0" layoutX="42.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="29.0" fitWidth="32.0" layoutX="43.0" layoutY="264.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../image/user_2.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="24.0" fitWidth="30.0" layoutX="44.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="24.0" fitWidth="30.0" layoutX="45.0" layoutY="351.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../image/key_1.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="30.0" fitWidth="27.0" layoutX="43.0" layoutY="353.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="30.0" fitWidth="27.0" layoutX="43.0" layoutY="432.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../image/padlock_1.png" />
                </image>
@@ -76,37 +75,14 @@
                <image>
                   <Image url="@../image/PHMart.jpg" />
                </image></ImageView>
-            <Line endX="14.0" layoutX="132.0" layoutY="484.0" startX="-100.0" />
-            <Label layoutX="169.0" layoutY="473.0" prefHeight="21.0" prefWidth="27.0" text="OR">
+            <TextField fx:id="email" layoutX="78.0" layoutY="187.0" prefHeight="37.0" prefWidth="235.0" promptText="Email" style="-fx-background-color: transparent;">
                <font>
-                  <Font name="System Bold" size="15.0" />
+                  <Font size="13.0" />
                </font>
-            </Label>
-            <Line endX="36.0" layoutX="286.0" layoutY="484.0" startX="-78.0" />
-            <Button fx:id="btn_loginGoogle" layoutX="31.0" layoutY="503.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="297.0" style="-fx-background-color: #E8ADAA; -fx-cursor: hand;" text="Continue with Google">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-               <padding>
-                  <Insets left="25.0" />
-               </padding>
-            </Button>
-            <Button fx:id="btn_loginFB" layoutX="29.0" layoutY="565.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="301.0" style="-fx-background-color: #E8ADAA; -fx-cursor: hand;" text="Continue with Facebook">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-               <padding>
-                  <Insets left="43.0" />
-               </padding>
-            </Button>
-            <ImageView fitHeight="33.0" fitWidth="35.0" layoutX="65.0" layoutY="508.0" pickOnBounds="true" preserveRatio="true">
+            </TextField>
+            <ImageView fitHeight="32.0" fitWidth="35.0" layoutX="41.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../image/google.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="33.0" fitWidth="35.0" layoutX="64.0" layoutY="570.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../image/facebook.png" />
                </image>
             </ImageView>
          </children>
