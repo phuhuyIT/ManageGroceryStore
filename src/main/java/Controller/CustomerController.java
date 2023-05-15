@@ -7,10 +7,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -95,8 +97,18 @@ public class CustomerController extends ItemController implements Initializable 
             new CustomerDAO().delete(currentItemID);
         });
         detail.setOnAction(actionEvent -> {
-            String fxmlPath = "views/detailCustomer.fxml";
-            loadFXML(fxmlPath);
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("views/detailCustomer.fxml"));
+            Stage stage = new Stage();
+            Scene scene = null;
+            try {
+                scene = new Scene(fxmlLoader.load(),961, 767);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            stage.setTitle("Detail Customer");
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.show();
         });
     }
 

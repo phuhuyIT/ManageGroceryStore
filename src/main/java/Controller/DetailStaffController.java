@@ -1,17 +1,16 @@
 package Controller;
 
-import DAO.CategoryDao;
-import DAO.ProductDAO;
 import DAO.StaffDAO;
-import Model.Product;
 import Model.Staff;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -23,8 +22,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
@@ -32,9 +29,6 @@ import java.util.ResourceBundle;
 public class DetailStaffController implements Initializable {
     @FXML
     private Button btn_addThumnail;
-
-    @FXML
-    private Button btn_back;
 
     @FXML
     private Button btn_save;
@@ -96,24 +90,11 @@ public class DetailStaffController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        setBtnBackAction();
+        setBtnSaveAction();
         showData();
     }
 
-    protected void setBtnBackAction() {
-        btn_back.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("views/staff.fxml"));
-                Node node = null;
-                try {
-                    node = loader.load();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                pane_detailStaff.getChildren().add(node);
-            }
-        });
+    protected void setBtnSaveAction() {
         btn_save.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {

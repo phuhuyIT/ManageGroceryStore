@@ -38,17 +38,11 @@
          </image>
       </ImageView>
       <ImageView fx:id="iv_productThumbnail" fitHeight="141.0" fitWidth="141.0" layoutX="553.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="14.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../image/back.png" />
-         </image>
-      </ImageView>
       <Button fx:id="btn_addThumnail" layoutX="730.0" layoutY="191.0" mnemonicParsing="false" onAction="#chooseImageProduct" style="-fx-cursor: hand;" stylesheets="@css/test.css" text="Add Thumnail" underline="true">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="btn_back" layoutX="4.0" layoutY="61.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="80.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
       <Label layoutX="533.0" layoutY="94.0" text="Product Image">
          <font>
             <Font size="26.0" />

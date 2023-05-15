@@ -11,8 +11,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -90,7 +90,7 @@ public class DetailProductController extends InventoryAlert implements Initializ
         cb_mfgDate.setStyle("-fx-font-size  :18px");
         cb_detailProductCategory.getItems().addAll("Thực phẩm tươi sống","Thực phẩm chế biến sẵn","Hàng gia dụng", "Đồ dùng cá nhân","Vật dụng học tập và văn phòng phẩm",
                 "Hóa phẩm và chất tẩy rửa","Đồ chơi và quà tặng","Thuốc và vật dụng y tế");
-        setBtnBackAction();
+       // setBtnBackAction();
 
         btn_update.setOnAction(new EventHandler<ActionEvent>() {
             @Override

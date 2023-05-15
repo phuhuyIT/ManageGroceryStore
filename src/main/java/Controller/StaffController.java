@@ -1,7 +1,5 @@
 package Controller;
 
-import DAO.CustomerDAO;
-import DAO.ProductDAO;
 import DAO.StaffDAO;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -17,10 +15,8 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -99,8 +95,18 @@ public class StaffController extends ItemController implements Initializable {
             }
         });
         detail.setOnAction(actionEvent -> {
-            String fxmlPath = "views/detailStaff.fxml";
-            loadFXML(fxmlPath);
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("views/detailStaff.fxml"));
+            Stage stage = new Stage();
+            Scene scene = null;
+            try {
+                scene = new Scene(fxmlLoader.load(),954, 862);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            stage.setTitle("Detail Staff");
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.show();
         });
         salary.setOnAction(actionEvent ->{
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("views/salaryManage.fxml"));
