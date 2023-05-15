@@ -12,6 +12,7 @@ public abstract class Pagination {
     protected int offSet;
     protected abstract void showData(int limit, int offSet);
     protected abstract void clearData();
+    protected abstract void showSearchDate(int limit, int offSet);
     @FXML
     private Button btn_refresh;
     @FXML
@@ -30,7 +31,6 @@ public abstract class Pagination {
                 }
                 else{
                     offSet-=8;
-                    Limit-=8;
                     clearData();
                     showData(Limit,offSet);
                 }
@@ -40,7 +40,7 @@ public abstract class Pagination {
             @Override
             public void handle(ActionEvent actionEvent) {
                 offSet+=8;
-                Limit+=8;
+                System.out.println("offset: "+offSet+" numberData: "+numberData);
                 if(offSet>=numberData){
                     InventoryAlert.errorAlert("Error","This is the last page");
                 }else {

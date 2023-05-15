@@ -335,6 +335,7 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
+            <Button fx:id="btn_search" layoutX="31.0" layoutY="140.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="52.0" style="-fx-background-color: transparent;" />
          </children>
       </AnchorPane>
    </children>

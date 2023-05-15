@@ -124,21 +124,21 @@ public class DetailProductController extends InventoryAlert implements Initializ
     }
     protected void showProduct(){
         ProductDAO product=new ProductDAO();
-        System.out.println("CUR productID: "+ProductController.getCurrentItemID());
+
         ResultSet rs = product.selectByID(ProductController.getCurrentItemID());
 
         CategoryDao categoryDao = new CategoryDao();
 
         try {
             if(rs.next()){
+                System.out.println("CUR productID: "+ProductController.getCurrentItemID());
                 lb_detailProductName.setText(rs.getString("PRODUCTNAME"));
                 int categoryID=rs.getInt("Categoryid");
-
                 cb_detailProductCategory.setValue(categoryDao.getNameByCategoryID(categoryID));
                 lb_detailProductQuantity.setText(String.valueOf(product.getQuantity(rs.getInt("P.Pid"))));
                 tf_detailProductCostPrice.setText(String.valueOf(rs.getDouble("COSTPRICE")));
                 tf_detailProductSellingPrice.setText(String.valueOf(rs.getDouble("SELLINGPRICE")));
-                lb_detailProductUPC.setText(rs.getString("PRODUCTBARCODE"));
+                lb_detailProductUPC.setText(rs.getString("PRODUCTSKU"));
                 cb_mfgDate.setValue("Chọn nsx để xem hsd");
 
                 String thumbnailLink = rs.getString("THUMBNAIL");
