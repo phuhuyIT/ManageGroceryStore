@@ -44,15 +44,15 @@ INSERT INTO `suppliers` (`sid`, `suppliercode`, `fullname`, `location`, `phone`)
 (1, 'sup5', 'manish', 'ktm', '4123372'),
 (2, 'sup4', 'sia', 'US', '11623231');
 
-CREATE TABLE product_categories (
+CREATE TABLE productCategories (
     categoryid INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     parent_id INT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (parent_id) REFERENCES product_categories(categoryid) ON DELETE CASCADE ON UPDATE CASCADE
+    FOREIGN KEY (parent_id) REFERENCES productCategories(categoryid) ON DELETE CASCADE ON UPDATE CASCADE
 );
-INSERT INTO product_categories (name,parent_id) VALUES
+INSERT INTO productCategories (name,parent_id) VALUES
 ('Thực phẩm', NULL),
 ('Thực phẩm tươi sống', 1),
 ('Thực phẩm chế biến sẵn', 1),
@@ -67,35 +67,38 @@ INSERT INTO product_categories (name,parent_id) VALUES
 ('Thực phẩm đóng hộp', 3),
 ('Thực phẩm đóng túi', 3);
 
+
+
 CREATE TABLE `products` (
 	`pid` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `productBarCode` varchar(100) NOT NULL,
   `productname` varchar(50) NOT NULL,
-  `costprice` double NOT NULL,
-  `sellingprice` double NOT NULL,
   sid INT,
   categoryid INT DEFAULT NULL,
   productSKU varchar(100) DEFAULT NULL,
   thumbnail varchar(200) DEFAULT NULL,
-  CONSTRAINT `fk_products_category` FOREIGN KEY (`categoryid`) REFERENCES `product_categories`(`categoryid`) ON DELETE SET NULL ON UPDATE CASCADE,
-  CONSTRAINT `fk_products_suppliers` FOREIGN KEY (sid) REFERENCES `suppliers`(`sid`) ON DELETE SET NULL ON UPDATE CASCADE
+  CONSTRAINT `fk_products_category` FOREIGN KEY (`categoryid`) REFERENCES `productCategories`(`categoryid`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_products_suppliers` FOREIGN KEY (sid) REFERENCES `suppliers`(`sid`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB;
-SELECT COUNT(pid) as numberProduct FROM products;
+-- bảng lưu lịch sử thay đổi giá của sản phẩm
+CREATE TABLE productPrices (
+  id INT NOT NULL AUTO_INCREMENT,
+  costPrice DECIMAL(10, 2) NOT NULL,
+  `sellingprice` DECIMAL(10, 2) DEFAULT NULL,
+  createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  discountRate DECIMAL(5,2) DEFAULT 0.00,
+  pid INT not null,
+  FOREIGN KEY (`pid`) REFERENCES `products`(`pid`) ON DELETE CASCADE ON UPDATE CASCADE,
+  PRIMARY KEY (id)
+);
+DELIMITER //
+CREATE TRIGGER update_selling_price
+BEFORE INSERT ON productPrices
+FOR EACH ROW
+SET NEW.sellingprice = NEW.costPrice * 1.1 * (1 - NEW.discountRate)
+//
+DELIMITER ;
 
-INSERT INTO `products` (`productbarcode`, `productname`, `costprice`, `sellingprice`, `SID`) VALUES
-('prod6', 'qq', 3, 2, 1),
-('prod7', 'pen', 20, 30, 2),
-('prod8', 'wai wai', 400, 450, 1),
-('prod9', 'wai wai', 400, 450, 1),
-('prod10', 'Mobile', 500, 700, 2),
-('prod11', 'qq', 3, 2, 2),
-('prod12', 'pen', 20, 30, 1),
-('prod13', 'wai wai', 400, 450, 1),
-('prod14', 'wai wai', 400, 450, 2),
-('prod15', 'Mobile', 500, 700, 1);
-INSERT INTO `products` (`productbarcode`, `productname`, `costprice`, `sellingprice`, `SID`) VALUES
-('prod16', 'qq', 3, 2, 1);
-SELECT LAST_INSERT_ID();
 CREATE TABLE PRODUCTBATCH(
 	BATCHID	int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	`pid`  int(11),
@@ -105,17 +108,7 @@ CREATE TABLE PRODUCTBATCH(
     quantity INT DEFAULT 11,
     FOREIGN KEY (pid) REFERENCES products(pid)
 ) ENGINE=InnoDB;
-INSERT INTO PRODUCTBATCH (pid, manufractureDate, expirationDate, quantity)
-VALUES ('1', '2022-01-01', '2022-12-31', 100),
-('2', '2022-01-15', '2023-01-14', 50),
-('3','2022-02-01', '2023-01-31', 80),
-('4', '2022-02-15', '2023-02-14', 60),
-('5', '2022-03-01', '2023-02-28', 120),
-('6', '2022-01-01', '2022-12-31', 100),
-('7', '2022-01-15', '2023-01-14', 50),
-('8','2022-02-01', '2023-01-31', 80),
-('1', '2022-02-15', '2023-02-14', 60),
-('1', '2022-03-01', '2023-02-28', 120);
+
 
 
 CREATE TABLE `users` (
@@ -149,10 +142,12 @@ CREATE TABLE staff (
     avatarLink VARCHAR(150) DEFAULT NULL,
     gender TINYINT DEFAULT 0,
     BIRTHDATE DATE DEFAULT '1990-01-01',
+	`username` varchar(20) DEFAULT NULL,
+    `password` varchar(256) DEFAULT NULL,
     PRIMARY KEY (id)
 );
 DELIMITER //
-CREATE TRIGGER delete_monthly_salary
+CREATE TRIGGER delete_monthly_salary 
 BEFORE DELETE ON staff
 FOR EACH ROW
 BEGIN
@@ -182,27 +177,27 @@ CREATE TABLE monthly_salary (
     overtimeHours INT(11) NOT NULL,
     allowance FLOAT NOT NULL,
     deduction FLOAT NOT NULL,
-    salary FLOAT NOT NULL,
+    salary FLOAT,
     PRIMARY KEY (id),
     FOREIGN KEY (staffid) REFERENCES staff(id) ON DELETE CASCADE
 );
 DELIMITER //
-CREATE TRIGGER calculate_salary
-BEFORE INSERT ON monthly_salary
+CREATE TRIGGER calculate_salary 
+BEFORE INSERT ON monthly_salary 
 FOR EACH ROW
 BEGIN
   DECLARE _basicSalary FLOAT;
   DECLARE _totalSalary FLOAT;
-
+  
   -- Lấy giá trị basicSalary từ bảng staff
   SELECT basicSalary INTO _basicSalary FROM staff WHERE id = NEW.staffid;
-
+  
   -- Tính toán lương từ các thông tin trong bảng monthly_salary và bảng staff
-  SET _totalSalary = (_basicSalary * NEW.workingHours)
+  SET _totalSalary = (_basicSalary * NEW.workingHours) 
                      + (_basicSalary * NEW.overtimeHours * 1.5)
                      + NEW.allowance
                      - NEW.deduction;
-
+                     
   -- Gán giá trị tính toán vào cột salary của bản ghi đó
   SET NEW.salary = _totalSalary;
 END //
@@ -212,7 +207,7 @@ INSERT INTO monthly_salary (staffid, monthSalary, workingHours, overtimeHours, a
 VALUES (1, '2022-01-01', 176, 8, 1000000, 500000),
        (2, '2022-01-01', 150, 6, 800000, 200000),
        (3, '2022-01-01', 120, 5, 500000, 100000);
-
+       
 CREATE TABLE bill (
   billid INT(11) NOT NULL AUTO_INCREMENT,
   billCode VARCHAR(50) NOT NULL,
@@ -236,10 +231,16 @@ SET GLOBAL event_scheduler = ON;
 CREATE EVENT delete_old_bills
 ON SCHEDULE
 EVERY 1 DAY
-STARTS '2023-05-09 03:00:00'
+STARTS '2023-05-09 00:00:00'
 DO
 DELETE FROM bill WHERE purchaseDate < DATE_SUB(NOW(), INTERVAL 30 DAY);
 SHOW EVENTS;
+
+CREATE VIEW productList AS 
+SELECT p.pid, p.productBarCode, p.productname,  p.sid, p.categoryid, p.productSKU, p.thumbnail, pp.costPrice, pp.sellingprice
+FROM products p
+INNER JOIN (SELECT pid, MAX(id) AS latestPriceId FROM productPrices GROUP BY pid) AS lp ON p.pid = lp.pid
+INNER JOIN productPrices pp ON lp.latestPriceId = pp.id;
 
 
 CREATE TABLE detailBill (
@@ -264,27 +265,19 @@ BEGIN
     DELETE FROM detailBill WHERE billID = OLD.billID;
 END //
 DELIMITER ;
--- trigger tự động tính tổng doanh thu của bill sau khi tạo detailbill tương
+-- trigger tự động tính tổng doanh thu của bill sau khi tạo detailbill tương 
 DELIMITER $$
-CREATE TRIGGER calculate_revenue
+CREATE TRIGGER calculate_revenue 
 AFTER INSERT ON detailBill
-FOR EACH ROW
-BEGIN
-    UPDATE bill SET revenue = (SELECT SUM(sellingPrice * quantity)
-                               FROM products JOIN detailBill ON products.PID = detailBill.productID
-                               WHERE detailBill.billID = bill.billID)
+FOR EACH ROW 
+BEGIN 
+    UPDATE bill SET revenue = (SELECT SUM(sellingPrice * quantity) 
+                               FROM productList JOIN detailBill ON productList.PID = detailBill.productID 
+                               WHERE detailBill.billID = bill.billID) 
     WHERE bill.billID = NEW.billID;
 END $$
 DELIMITER ;
--- Thêm dữ liệu cho bảng detailBill
-INSERT INTO detailBill(billID, productID, customerID, staffID, quantity) VALUES
-('1', 2, '1', 1, 5),
-('1', 3, '1', 1, 2),
-('2', 1, '2', 2, 3),
-('3', 4, '3', 3, 1),
-('4', 2, '4', 4, 4),
-('4', 3, '4', 4, 2),
-('5', 5, '5', 5, 2);
+
 
 -- test query
 SELECT DATE_FORMAT(purchaseDate, '%Y-%m') AS month, SUM(revenue) AS total_revenue
@@ -310,6 +303,7 @@ END//
 DELIMITER ;
 CALL getTop5StaffRevenues();
 
+
 DELIMITER //
 CREATE PROCEDURE top5CustomersRevenues()
 BEGIN
@@ -325,51 +319,67 @@ END//
 DELIMITER ;
 CALL top5CustomersRevenues();
 
-CREATE VIEW detailBillView AS
-SELECT b.billCode, b.purchaseDate, c.cid as customerID, s.ID as staffID, p.pID as productID, db.quantity, b.revenue
-FROM detailBill db
-INNER JOIN bill b ON db.billID = b.billID
-INNER JOIN customers c ON db.customerID = c.CID
-INNER JOIN staff s ON db.staffID = s.ID
-INNER JOIN products p ON db.productID = p.PID;
-
 --
-SELECT
+SELECT 
   p.productName AS Product_Name,
   SUM(d.quantity * p.sellingPrice) AS Revenue,
   SUM(d.quantity) AS Quantity_Sold
-FROM
+FROM 
   detailBill d
-  JOIN products p ON d.productID = p.PID
+  JOIN productList p ON d.productID = p.PID
   JOIN bill b ON d.billID = b.billID
 WHERE MONTH(b.purchaseDate) = MONTH(CURDATE()) AND YEAR(b.purchaseDate) = YEAR(CURDATE())
-GROUP BY
+GROUP BY 
   Product_Name
-ORDER BY
+ORDER BY 
   Revenue DESC
 LIMIT 5;
+
+
+
+
 
 DELIMITER //
 CREATE PROCEDURE getTopProducts()
 BEGIN
   SELECT p.productName,SUM(d.quantity * p.sellingPrice) AS revenue, SUM(d.quantity) AS totalSold
   FROM detailBill d
-  JOIN products p ON d.productID = p.PID
+  JOIN productList p ON d.productID = p.PID
   JOIN BILL b ON d.billID = b.billID
   WHERE MONTH(b.purchaseDate) = MONTH(CURDATE()) AND YEAR(b.purchaseDate) = YEAR(CURDATE())
   GROUP BY p.productName
   ORDER BY revenue DESC
   LIMIT 5;
 END //
-DELIMITER ;product_details
-CALL getTopProducts()
-
-
-
-DELIMITER //
-CREATE VIEW product_details AS
-SELECT p.pid, p.productBarCode, p.productname, pb.importDate, pb.manufractureDate, pb.expirationDate, pb.quantity
-FROM products p
-INNER JOIN productBatch pb ON p.pid = pb.pid;
 DELIMITER ;
+CALL getTopProducts();
+
+
+
+CREATE VIEW billDetails AS
+SELECT b.revenue, b.billid, b.billCode, b.purchaseDate, 
+       s.fullname AS staffName, 
+       c.fullname AS customerName, 
+       p.productName, db.quantity, 
+       (db.quantity * p.sellingPrice) AS productRevenue
+FROM bill b 
+JOIN detailBill db ON b.billID = db.billID
+JOIN productList p ON db.productID = p.PID
+JOIN customers c ON db.customerID = c.CID
+JOIN staff s ON db.staffID = s.ID;
+
+SELECT 
+  b.billID, 
+  b.billCode, 
+  b.revenue, 
+  b.staffName,
+  b.customerName,
+  b.purchaseDate,
+  GROUP_CONCAT(DISTINCT CONCAT(productName,'|', quantity,'|',productRevenue ) SEPARATOR ', ') AS productList
+FROM billDetails b
+GROUP BY b.billID
+ORDER BY b.billID ASC;
+
+
+
 
