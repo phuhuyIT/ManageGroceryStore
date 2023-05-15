@@ -1,13 +1,9 @@
 package Controller;
 
 import DAO.ProductDAO;
-import Model.Category;
 import Model.Product;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -18,18 +14,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import org.controlsfx.control.textfield.TextFields;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.text.ParsePosition;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ProductController extends ItemController implements Initializable {
@@ -213,8 +202,19 @@ public class ProductController extends ItemController implements Initializable {
             new ProductDAO().delete(currentItemID);
         });
         detail.setOnAction(actionEvent -> {
-            String fxmlPath = "views/detailProduct.fxml";
-            loadFXML(fxmlPath);
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("views/detailProduct.fxml"));
+            Stage stage = new Stage();
+            Scene scene = null;
+            try {
+                scene = new Scene(fxmlLoader.load(),1000, 900);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            stage.setTitle("Detail Product");
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.show();
+
         });
     }
 }
