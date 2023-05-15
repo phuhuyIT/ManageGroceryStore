@@ -381,5 +381,12 @@ GROUP BY b.billID
 ORDER BY b.billID ASC;
 
 
+create table verify_mail(
+	id INT auto_increment primary key,
+    mail VARCHAR(100) NOT NULL,
+    otp VARCHAR(10) NOT NULL,
+	created_at timestamp default current_timestamp
+);
+
 
 
