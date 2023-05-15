@@ -102,6 +102,9 @@ public class CustomerController extends ItemController implements Initializable 
 
     @Override
     public void showData(int limit, int offSet){
+        pageNumber= (offSet+8)/8;
+        System.out.println("offset: "+offSet+" pn: "+pageNumber );
+        lb_pageNumber.setText(String.valueOf(pageNumber));
         choiceBox.getItems().addAll(choice);
         CustomerDAO customers= new CustomerDAO();
         ResultSet rs=customers.selectALL(Limit,offSet);
@@ -133,8 +136,7 @@ public class CustomerController extends ItemController implements Initializable 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        pageNumber= (offSet+8)/8;
-        lb_pageNumber.setText(String.valueOf(pageNumber));
+
     }
     @Override
     public void clearData(){
@@ -144,7 +146,7 @@ public class CustomerController extends ItemController implements Initializable 
                     ImageView customerAvatar =(ImageView) anchorPane.lookup("#imageCustomer"+(i+1));
                     Label customerGender =(Label) anchorPane.lookup("#genderCustomer"+(i+1));
                     Label customerPhone =(Label) anchorPane.lookup("#phoneCustomer"+(i+1));
-
+                    anchorPane.setUserData("");
                     String img  = "D:\\java\\ManageGroceryStore\\src\\main\\resources\\Controller\\image\\gamer.png";
                     if(img!=null) {
                         Image image1 = new Image(String.valueOf(img));

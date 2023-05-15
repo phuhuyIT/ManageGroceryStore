@@ -6,6 +6,7 @@ import Model.CameraApp;
 import Model.Product;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class ProductDAO extends InventoryAlert implements DaoInterface<Product> {
     Connection con = null;
@@ -69,37 +70,15 @@ public class ProductDAO extends InventoryAlert implements DaoInterface<Product> 
     @Override
     public int update(Product product) {
         int affectedRow=0;
-        String updateProduct = "UPDATE products SET categoryid = ?, costPrice = ?, sellingPrice = ?, thumbnail =? WHERE pid=?";
+        String updateProduct = "UPDATE products SET categoryid = ? thumbnail =? WHERE pid=?";
         try {
             pstmt = con.prepareStatement(updateProduct);
             pstmt.setInt(1,product.getCategoryID());
-            pstmt.setDouble(2,product.getCostPrice());
-            pstmt.setDouble(3,product.getSellingPrice());
-            pstmt.setString(4, product.getThumbnailLink());
-            pstmt.setInt(5,product.getProductId());
+            pstmt.setString(2, product.getThumbnailLink());
+            pstmt.setInt(3,product.getProductId());
             affectedRow+=pstmt.executeUpdate();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-        try {
-            String checkProductBatch = "Select BATCHID FROM PRODUCTBATCH WHERE manufractureDate=? AND PID =?";
-            pstmt = con.prepareStatement(checkProductBatch);
-            pstmt.setDate(1,Date.valueOf(product.getMFGDate()));
-            pstmt.setInt(2,product.getProductId());
-            rs=pstmt.executeQuery();
-            if(rs.next()){
-                String updateProductBatch = "UPDATE PRODUCTBATCH SET Quantity=?,importDate=CURRENT_TIMESTAMP WHERE manufractureDate=? AND PID =?";
-                pstmt = con.prepareStatement(updateProductBatch);
-                pstmt.setInt(1, product.getQuantity());
-                pstmt.setDate(2,Date.valueOf(product.getMFGDate()));
-                pstmt.setInt(3,product.getProductId());
-                affectedRow+=pstmt.executeUpdate();
-                informationAlert("Update","THE BATCH OF PRODUCT "+product.getProductName().toUpperCase()+" PRODUCED ON "+product.getMFGDate()+" HAS BEEN UPDATED WITH THE QUANTITY");
-            }else{
-                addProductBatch(product);
-                informationAlert("Addition","SUCCESSFULLY ADDED NEW BATCH FOR PRODUCT "+product.getProductName().toUpperCase());
-            }
+            if(affectedRow>0)
+                addProductPrices(product);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -109,7 +88,7 @@ public class ProductDAO extends InventoryAlert implements DaoInterface<Product> 
     @Override
     public ResultSet selectALL(int Limit, int offSet) {
         try {
-            String selectAllProduct = "SELECT * FROM productList ORDER BY pid ASC LIMIT "+Limit+" OFFSET "+offSet;
+            String selectAllProduct = "SELECT * FROM productList ORDER BY pid ASC ";
             pstmt= con.prepareStatement(selectAllProduct);
             rs = pstmt.executeQuery();
         }catch (SQLException e){
@@ -118,12 +97,25 @@ public class ProductDAO extends InventoryAlert implements DaoInterface<Product> 
         return  rs;
     }
 
+    public ArrayList<Product> selectALL1() {
+        ArrayList<Product> productList = new ArrayList<>();
+        try {
+            String selectAllProduct = "SELECT * FROM products ORDER BY productName ASC ";
+            pstmt= con.prepareStatement(selectAllProduct);
+            rs = pstmt.executeQuery();
+            while (rs.next())
+                productList.add(new Product(rs.getString("PRODUCTNAME"), rs.getString("PRODUCTBARCODE"), rs.getInt("PID"),rs.getString("THUMBNAIL")));
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+        return  productList;
+    }
     @Override
     public ResultSet selectByID(int ID) {
         ResultSet rs;
         try {
 
-            String selectByID_query = "SELECT THUMBNAIL, PRODUCTNAME, Categoryid,P.Pid, COSTPRICE, SELLINGPRICE, PRODUCTBARCODE, manufractureDate, expirationDate,SID  FROM PRODUCTS P INNER JOIN PRODUCTBATCH PB ON P.PID = PB.PID WHERE P.Pid =? ";
+            String selectByID_query = "SELECT THUMBNAIL, PRODUCTNAME, Categoryid,P.Pid, COSTPRICE, SELLINGPRICE, PRODUCTBARCODE, manufractureDate, expirationDate,SID  FROM productList WHERE P.Pid =? ";
             pstmt= con.prepareStatement(selectByID_query);
             pstmt.setInt(1,ID);
             rs =pstmt.executeQuery();
@@ -140,17 +132,15 @@ public class ProductDAO extends InventoryAlert implements DaoInterface<Product> 
         try {
             String productSKUCode = null;
             productSKUCode = product.getProductBarCode()+" "+product.getMFGDate();
-            String addProduct= "INSERT INTO PRODUCTS (productBarCode, productname, costprice, sellingprice, sid,categoryid,productSKU,thumbnail)"
+            String addProduct= "INSERT INTO PRODUCTS (productBarCode, productname,sid,categoryid,productSKU,thumbnail)"
                     +"VALUE(?,?,?,?,?,?,?,?)";
             pstmt = con.prepareStatement(addProduct);
             pstmt.setString(1,product.getProductBarCode());
             pstmt.setString(2, product.getProductName());
-            pstmt.setDouble(3,product.getCostPrice());
-            pstmt.setDouble(4,product.getSellingPrice());
-            pstmt.setInt(5,product.getSupplierID());
-            pstmt.setInt(6,product.getCategoryID());
-            pstmt.setString(7,productSKUCode);
-            pstmt.setString(8,product.getThumbnailLink());
+            pstmt.setInt(3,product.getSupplierID());
+            pstmt.setInt(4,product.getCategoryID());
+            pstmt.setString(5,productSKUCode);
+            pstmt.setString(6,product.getThumbnailLink());
             pstmt.executeUpdate();
             String skuFileName=product.getProductName()+product.getMFGDate();
             CameraApp.skuGenerate(productSKUCode,skuFileName+".png");
@@ -160,6 +150,8 @@ public class ProductDAO extends InventoryAlert implements DaoInterface<Product> 
             if(rs.next()) {
                 pid = rs.getInt("LAST_INSERT_ID()");
             }
+            product.setProductId(pid);
+            addProductPrices(product);
             addProductBatch(product);
         } catch (Exception e) {
             e.printStackTrace();
@@ -199,7 +191,7 @@ public class ProductDAO extends InventoryAlert implements DaoInterface<Product> 
 
     }
     public int getNumProuduct(){
-        String query="SELECT COUNT(pid) as numberProduct FROM productList";
+        String query="SELECT COUNT(pid) as numberProduct FROM products";
         int numberProduct=0;
         try {
             pstmt = con.prepareStatement(query);
@@ -255,5 +247,40 @@ public class ProductDAO extends InventoryAlert implements DaoInterface<Product> 
             throw new RuntimeException(e);
         }
         return rs;
+    }
+    private void addProductPrices(Product product){
+        String query = "SELECT ID FROM productprices WHERE PID =? AND costPrice = ?";
+        try {
+            pstmt = con.prepareStatement(query);
+            pstmt.setInt(1,product.getProductId());
+            pstmt.setDouble(2,product.getCostPrice());
+            if(rs.next()){
+            }else {
+                String query2= "INSERT INTO productPrices (costPrice, discountRate, pid)\n" +
+                        "VALUES (?,?,?)";
+                pstmt = con.prepareStatement(query2);
+                pstmt.setDouble(1,product.getCostPrice());
+                pstmt.setFloat(2,0);
+                pstmt.setInt(3, product.getProductId());
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public ArrayList<Product> searchName(String searchValue){
+        ArrayList<Product> productSearchList= new ArrayList<>();
+        String fullTextSearches="SELECT *\n" +
+                "FROM productlist\n" +
+                "WHERE MATCH(productname) AGAINST (?);\n";
+        try {
+            pstmt = con.prepareStatement(fullTextSearches);
+            pstmt.setString(1,searchValue);
+            rs = pstmt.executeQuery();
+            while (rs.next())
+                productSearchList.add(new Product(rs.getString("PRODUCTNAME"), rs.getString("PRODUCTBARCODE"), rs.getInt("PID"),rs.getDouble("COSTPRICE"),rs.getString("THUMBNAIL")));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return productSearchList;
     }
 }

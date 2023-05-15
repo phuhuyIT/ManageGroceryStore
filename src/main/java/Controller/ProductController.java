@@ -7,6 +7,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -21,11 +22,13 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import org.controlsfx.control.textfield.TextFields;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParsePosition;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -46,17 +49,17 @@ public class ProductController extends ItemController implements Initializable {
     private ChoiceBox<String> choiceBox_list;
     @FXML
     private AnchorPane pane_Product;
-    private String[] choice = {"Tăng theo giá ", "Giảm theo giá" , "A->Z" , "Z->A"};
+    private String[] searchFilter = {"Tăng theo tên ", "Giảm theo tên" , "Tìm theo Barcode"};
 
     private String[] list = {"Cake", "Noodle" , "Fast Food" , "Drinking" , "Ice Cream" , "Vegetable"};
-
+    private ObservableList <Product> productList;
+    private ObservableList <Product> productSearchList;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         numberData = new ProductDAO().getNumProuduct();
         Limit=8;
         offSet=0;
-
-        choiceBox_sort.getItems().addAll(choice);
+        choiceBox_sort.getItems().addAll(searchFilter);
         choiceBox_sort.setStyle("-fx-font-size:15px ; -fx-background-color:transparent ; -fx-alignment:Center ; -fx-padding: 0px 5px 5px -2px");
         choiceBox_list.setStyle("-fx-font-size:20px ; -fx-background-color:transparent ; -fx-alignment:Center ; -fx-padding: 0px 5px 5px -2px");
         choiceBox_list.getItems().addAll(list);
@@ -71,6 +74,7 @@ public class ProductController extends ItemController implements Initializable {
     showData(Limit,offSet);
     setActionForBtn();
     setRightLick();
+    search();
     }
     @Override
     protected void loadFXML(String fxmlPath) {
@@ -89,40 +93,36 @@ public class ProductController extends ItemController implements Initializable {
     @Override
     protected void showData(int limit, int offSet) {
         ProductDAO pdao=new ProductDAO();
-        ResultSet rs=pdao.selectALL(limit,offSet);
-        try {
-            for (int i=0;i<8;i++){
-
-                if(rs.next()){
-                    AnchorPane ap = (AnchorPane) pane_Product.lookup("#productBox"+(i+1));
-
-                    ImageView productThumbnail =(ImageView) ap.lookup("#productThumbnail"+(i+1));
-                    Label productQuantity =(Label) ap.lookup("#productQuantity"+(i+1));
-                    Label productPrice =(Label)ap.lookup("#productPrice"+(i+1));
-                    Label productName = (Label)ap.lookup("#productName"+(i+1));
-                    String img  = rs.getString("THUMBNAIL");
+        pageNumber= (offSet+8)/8;
+        lb_pageNumber.setText(String.valueOf(pageNumber));
+        productList = FXCollections.observableArrayList(pdao.selectALL1());
+        if(offSet+8>=numberData)
+            limit=numberData-offSet;
+        int numberProduct=offSet+limit;
+        for (int i=offSet, z=0;i<numberProduct;i++,z++){
+                    AnchorPane ap = (AnchorPane) pane_Product.lookup("#productBox"+(z+1));
+                    ImageView productThumbnail =(ImageView) ap.lookup("#productThumbnail"+(z+1));
+                    Label productQuantity =(Label) ap.lookup("#productQuantity"+(z+1));
+                    Label productPrice =(Label)ap.lookup("#productPrice"+(z+1));
+                    Label productName = (Label)ap.lookup("#productName"+(z+1));
+                    String img  = productList.get(i).getThumbnailLink();
                     if(img!=null) {
                         Image image1 = new Image(String.valueOf(img));
                         productThumbnail.setImage(image1);
 
                     }
-                    productName.setText(rs.getString("PRODUCTNAME"));
-                    ap.setUserData(rs.getString("PID"));
-                    productQuantity.setText(String.valueOf(new ProductDAO().getQuantity((rs.getInt("pid")))));
-                    productPrice.setText(rs.getString("COSTPRICE"));
-                }
-                else
-                    return;
-
+                    productName.setText(productList.get(i).getProductName());
+                    ap.setUserData(productList.get(i).getProductId());
+                    productQuantity.setText(String.valueOf(new ProductDAO().getQuantity((productList.get(i).getProductId()))));
+                    productPrice.setText(String.valueOf(productList.get(i).getCostPrice()));
             }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        pageNumber= (offSet+8)/8;
-        lb_pageNumber.setText(String.valueOf(pageNumber));
-
     }
-
+    public void search(){
+        productList.clear();
+        productSearchList = FXCollections.observableArrayList(new ProductDAO().searchName(txt_search.getText()));
+        clearData();
+        showData(0,8);
+    }
     @Override
     protected void clearData() {
         for (int i=0;i<8;i++){
@@ -138,6 +138,7 @@ public class ProductController extends ItemController implements Initializable {
                     productThumbnail.setImage(image1);
 
                 }
+                ap.setUserData(null);
                 productName.setText("");
                 productQuantity.setText("");
                 productPrice.setText("");

@@ -20,6 +20,20 @@ public class Product {
     private String SKUCode;
     private String thumbnailLink;
 
+    public Product( String productName,String productBarCode, int pid,  String thumbnailLink) {
+        this.productBarCode = productBarCode;
+        this.productName = productName;
+        this.productId=pid;
+        this.thumbnailLink=thumbnailLink;
+    }
+    public Product( String productName,String productBarCode, int pid, double costPrice, String thumbnailLink) {
+        this.productBarCode = productBarCode;
+        this.productName = productName;
+        this.productId=pid;
+        this.costPrice=costPrice;
+        this.thumbnailLink=thumbnailLink;
+    }
+
     public Product(String productName, Integer quantity, String totalRevenue) {
         this.productName = productName;
         this.quantity = quantity;
