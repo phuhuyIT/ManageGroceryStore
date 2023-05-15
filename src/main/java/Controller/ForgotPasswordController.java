@@ -51,7 +51,6 @@ public class ForgotPasswordController extends Application {
         btnOk.setOnAction(actionEvent -> {
             UserDAO userDAO = new UserDAO();
             Alert alert =  new Alert(Alert.AlertType.ERROR);
-
             User user = userDAO.getUserByEmail(email.getText());
             boolean isValid = EmailValidator.isValidEmail(email.getText());
             if (isValid) {

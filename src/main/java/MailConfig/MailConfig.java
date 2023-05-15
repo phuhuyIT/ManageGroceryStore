@@ -23,7 +23,7 @@ public class MailConfig {
 
     public static final String APP_EMAIL = "nvvinvla1.2019@gmail.com"; // your email
 
-    public static final String APP_PASSWORD = "jqqwedanyawfhbsh"; // your password
+    public static final String APP_PASSWORD = "dkhszgdgwtbqxfeu"; // your password
 
     private static final String LIST_OTP = "0123456789";
 
@@ -118,6 +118,9 @@ public class MailConfig {
 
     public static boolean verifyOTP(String email, String otp) {
         VerifyEmail verifyEmail = getVerifyEmailByEmail(email);
+        if(verifyEmail == null) {
+            return  false;
+        }
         System.out.println(verifyEmail.getOtp() + " " + otp);
         return verifyEmail.getOtp().equals(otp);
     }

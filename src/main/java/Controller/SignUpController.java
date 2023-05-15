@@ -35,6 +35,7 @@ public class SignUpController implements Initializable {
     private PasswordField tf_password;
     @FXML
     private PasswordField tf_confirmpass;
+
     public class EmailValidator {
         private static final String EMAIL_REGEX =
                 "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
@@ -55,12 +56,12 @@ public class SignUpController implements Initializable {
             public void handle(ActionEvent event) {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 boolean isValid = ForgotPasswordController.EmailValidator.isValidEmail(email.getText());
-                if(email.getText().equals("")) {
+                if (email.getText().equals("")) {
                     System.out.println("Email");
                     alert.setTitle("Warning");
                     alert.setContentText("Warning:Trường email của bạn đang trông!Vui lòng nhập email");
                     alert.showAndWait();
-                }else {
+                } else {
                     if (isValid) {
                         System.out.println("Email is valid.");
                     } else {
@@ -68,10 +69,9 @@ public class SignUpController implements Initializable {
                         alert.setContentText("Warning:Email của bạn không hợp lệ !");
                         alert.showAndWait();
                     }
-                    return;
                 }
 
-                if(tf_username.getText().equals("")) {
+                if (tf_username.getText().equals("")) {
                     System.out.println("username");
                     alert.setTitle("Warning");
                     alert.setContentText("Warning:Trường username của bạn đang trông!Vui lòng nhập username");
@@ -79,7 +79,7 @@ public class SignUpController implements Initializable {
                     return;
                 }
 
-                if(tf_password.getText().equals("")) {
+                if (tf_password.getText().equals("")) {
                     System.out.println("password");
                     alert.setTitle("Warning");
                     alert.setContentText("Warning:Trường password của bạn đang trông!Vui lòng nhập password");
@@ -87,7 +87,7 @@ public class SignUpController implements Initializable {
                     return;
                 }
 
-                if(!tf_confirmpass.getText().equals(tf_password.getText())) {
+                if (!tf_confirmpass.getText().equals(tf_password.getText())) {
                     System.out.println("Confirm");
                     alert.setTitle("Warning");
                     alert.setContentText("Warning:Trường confirm của bạn đang trông!Vui lòng nhập lại mật khẩu");
@@ -104,16 +104,16 @@ public class SignUpController implements Initializable {
 
                 Optional<String> result = dialog.showAndWait();
                 String otp = result.get();
-                if(!MailConfig.verifyOTP(email.getText(),otp)) {
+                if (!MailConfig.verifyOTP(email.getText(), otp)) {
                     alert.showAndWait();
                     return;
                 }
-                if (!tf_username.getText().trim().isEmpty() && !tf_password.getText().trim().isEmpty() && !tf_confirmpass.getText().trim().isEmpty()){
-                    LoginController.SignUpUser(event,tf_username.getText(), tf_password.getText(),tf_confirmpass.getText(), email.getText());
+                if (!tf_username.getText().trim().isEmpty() && !tf_password.getText().trim().isEmpty() && !tf_confirmpass.getText().trim().isEmpty()) {
+                    LoginController.SignUpUser(event, email.getText(), tf_username.getText(), tf_password.getText(), tf_confirmpass.getText());
                     return;
                 }
 
-                errorAlert("ERROR","Please fill in all information!");
+                errorAlert("ERROR", "Please fill in all information!");
 
             }
         });

@@ -16,7 +16,6 @@ import java.sql.*;
 
 public class LoginController extends InventoryAlert {
     private static String loggedInUsername =null;
-    private static String email;
 
     public static void changeScence(ActionEvent event , String fxmlFile , String title , String username){
         Parent root = null;
@@ -114,7 +113,7 @@ public class LoginController extends InventoryAlert {
         stage.show();
     }
 
-    public static void SignUpUser(ActionEvent event , String text, String username, String password, String confirmPass) {
+    public static void SignUpUser(ActionEvent event , String email, String username, String password, String confirmPass) {
         User userdto=new User();
         userdto.setUsername(username);
         userdto.setPassword(password);
