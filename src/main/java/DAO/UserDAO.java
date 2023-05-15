@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+
 /***
  * Refactoring name: PULL UP METHOD
  * To remove duplication of code for the method buildTableModel() in both classes UserDAO.java and SupplierDAO.java,
@@ -36,6 +37,7 @@ public class UserDAO extends InventoryAlert {
         }
     }
 
+
     public void addUserDAO(User userdto) {
         try{
             String query = "SELECT username, password FROM users WHERE USERNAME=?";
@@ -58,6 +60,7 @@ public class UserDAO extends InventoryAlert {
 
     public void addFunction(User userdto){
         try{
+            String email = userdto.getEmail();
             String username = userdto.getUsername();
             String password = userdto.getPassword();
             //String oldUsername = null;
@@ -65,10 +68,12 @@ public class UserDAO extends InventoryAlert {
             String query1="SELECT username, password FROM users";
             rs=pstmt.executeQuery(query1);
             encPass=new UserProfileController().encryptPassword(password);
-            String queryTemp = "INSERT INTO users (username, password) VALUES(?,?)";
+            String queryTemp = "INSERT INTO users (username, password, email) VALUES(?,?, ?)";
             pstmt = con.prepareStatement(queryTemp);
             pstmt.setString(1, username);
             pstmt.setString(2, encPass);
+            pstmt.setString(3, email);
+
             pstmt.executeUpdate();
             if("ADMINISTRATOR".equals("ADMINISTRATOR")){
                 informationAlert("AdministratorAdded","NEW ADMINISTRATOR ADDED");
@@ -211,6 +216,22 @@ public class UserDAO extends InventoryAlert {
         }catch(Exception e){
             e.printStackTrace();
         }
+    }
+
+    public User getUserByEmail(String email) {
+        User user =null;
+        try {
+            String query = "SELECT * FROM users WHERE email='"+email+"'";
+            rs = stmt.executeQuery(query);
+            while(rs.next()) {
+                user = new User();
+                user.setUsername(rs.getString("username"));
+            }
+            return user;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return user;
     }
 
 

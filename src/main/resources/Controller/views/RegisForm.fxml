@@ -109,6 +109,11 @@
                   <Image url="@../image/facebook.png" />
                </image>
             </ImageView>
+            <TextField fx:id="email" layoutX="78.0" layoutY="159.0" prefHeight="37.0" prefWidth="235.0" promptText="Email" style="-fx-background-color: transparent;">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </TextField>
          </children>
       </AnchorPane>
    </center>

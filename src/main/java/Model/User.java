@@ -13,6 +13,9 @@ public class User {
     private String category;
     private String imgLink;
 
+    public User() {
+    }
+
     public String getEmail() {
         return email;
     }
