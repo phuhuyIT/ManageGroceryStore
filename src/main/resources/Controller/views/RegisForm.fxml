@@ -15,7 +15,7 @@
    <left>
       <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="658.0" prefWidth="260.0" style="-fx-background-color: #00FFFF;" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="192.0" fitWidth="188.0" layoutX="33.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="192.0" fitWidth="188.0" layoutX="36.0" layoutY="227.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../image/shopping.png" />
                </image>
@@ -26,25 +26,25 @@
    <center>
       <AnchorPane fx:id="pane" prefHeight="670.0" prefWidth="328.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="27.0" layoutY="178.0" prefHeight="55.0" prefWidth="294.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 10PX;" />
-            <Label layoutX="29.0" layoutY="418.0" prefHeight="55.0" prefWidth="294.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 10PX;" />
-            <Label layoutX="29.0" layoutY="335.0" prefHeight="55.0" prefWidth="294.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 10PX;" />
-            <Label layoutX="29.0" layoutY="251.0" prefHeight="55.0" prefWidth="294.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 10PX;" />
-            <TextField fx:id="tf_username" layoutX="85.0" layoutY="260.0" prefHeight="37.0" prefWidth="235.0" promptText="Username" style="-fx-background-color: transparent;">
+            <Label layoutX="11.0" layoutY="203.0" prefHeight="55.0" prefWidth="325.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 10PX;" />
+            <Label layoutX="15.0" layoutY="443.0" prefHeight="55.0" prefWidth="319.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 10PX;" />
+            <Label layoutX="13.0" layoutY="360.0" prefHeight="55.0" prefWidth="321.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 10PX;" />
+            <Label layoutX="12.0" layoutY="276.0" prefHeight="55.0" prefWidth="321.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 10PX;" />
+            <TextField fx:id="tf_username" layoutX="61.0" layoutY="285.0" prefHeight="37.0" prefWidth="262.0" promptText="Username" style="-fx-background-color: transparent;">
                <font>
                   <Font size="13.0" />
                </font></TextField>
-            <PasswordField fx:id="tf_password" layoutX="78.0" layoutY="344.0" prefHeight="37.0" prefWidth="235.0" promptText="Password" style="-fx-background-color: transparent;">
+            <PasswordField fx:id="tf_password" layoutX="60.0" layoutY="369.0" prefHeight="37.0" prefWidth="230.0" promptText="Password" style="-fx-background-color: transparent;">
                <font>
                   <Font size="13.0" />
                </font></PasswordField>
-            <PasswordField fx:id="tf_confirmpass" layoutX="81.0" layoutY="427.0" prefHeight="37.0" prefWidth="235.0" promptText="Confirm Password" style="-fx-background-color: transparent;">
+            <PasswordField fx:id="tf_confirmpass" layoutX="64.0" layoutY="452.0" prefHeight="37.0" prefWidth="222.0" promptText="Confirm Password" style="-fx-background-color: transparent;">
                <font>
                   <Font size="13.0" />
                </font></PasswordField>
-            <Button fx:id="btn_signup" layoutX="27.0" layoutY="517.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="294.0" style="-fx-background-color: #FF9933; -fx-cursor: hand;" text="Sign Up">
+            <Button fx:id="btn_signup" layoutX="28.0" layoutY="543.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="293.0" style="-fx-background-color: #FF9933; -fx-cursor: hand; -fx-background-radius: 10px;" text="Sign Up" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="16.0" />
+                  <Font name="System Bold" size="22.0" />
                </font></Button>
             <Label layoutX="65.0" layoutY="625.0" prefHeight="27.0" prefWidth="148.0" text="Have an account ? " textFill="#e40b0b">
                <font>
@@ -56,17 +56,17 @@
                   <Font size="17.0" />
                </font>
             </Hyperlink>
-            <ImageView fitHeight="29.0" fitWidth="32.0" layoutX="43.0" layoutY="264.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="29.0" fitWidth="32.0" layoutX="28.0" layoutY="289.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../image/user_2.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="24.0" fitWidth="30.0" layoutX="45.0" layoutY="351.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="24.0" fitWidth="30.0" layoutX="30.0" layoutY="376.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../image/key_1.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="30.0" fitWidth="27.0" layoutX="43.0" layoutY="432.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="30.0" fitWidth="27.0" layoutX="29.0" layoutY="457.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../image/padlock_1.png" />
                </image>
@@ -75,12 +75,12 @@
                <image>
                   <Image url="@../image/PHMart.jpg" />
                </image></ImageView>
-            <TextField fx:id="email" layoutX="78.0" layoutY="187.0" prefHeight="37.0" prefWidth="235.0" promptText="Email" style="-fx-background-color: transparent;">
+            <TextField fx:id="email" layoutX="65.0" layoutY="212.0" prefHeight="37.0" prefWidth="259.0" promptText="Email" style="-fx-background-color: transparent;">
                <font>
                   <Font size="13.0" />
                </font>
             </TextField>
-            <ImageView fitHeight="32.0" fitWidth="35.0" layoutX="41.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="32.0" fitWidth="35.0" layoutX="26.0" layoutY="215.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../image/google.png" />
                </image>
