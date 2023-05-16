@@ -48,10 +48,9 @@ public class HelloController implements Initializable {
             }
         });
 
-        Image icon1 = new Image("D:\\workspace\\BTL_demo\\src\\main\\resources\\Controller\\image\\eye.png");
-        Image icon2 = new Image("D:\\workspace\\BTL_demo\\src\\main\\resources\\Controller\\image\\show.png");
+        Image icon1 = new Image(getClass().getResource("image/eye.png").toExternalForm());
+        Image icon2 = new Image(getClass().getResource("image/show.png").toExternalForm());
 
-       // tb_showHidePass = new ToggleButton();
         tb_showHidePass.setGraphic(new ImageView(icon1));
 
         // Đăng ký một bộ lắng nghe sự kiện cho nút
@@ -60,10 +59,12 @@ public class HelloController implements Initializable {
                 tb_showHidePass.setGraphic(new ImageView(icon2));
                 String pass = tf_password.getText();
                 tf_showPass.setText(pass);
+                tf_showPass.setEditable(true);
                 tf_showPass.setVisible(true);
                 tf_password.setVisible(false);
             } else {
                 tb_showHidePass.setGraphic(new ImageView(icon1));
+                tf_password.setEditable(true);
                 tf_showPass.setVisible(false);
                 tf_password.setVisible(true);
             }
