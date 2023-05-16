@@ -57,6 +57,7 @@ public class HelloController implements Initializable {
         tb_showHidePass.setOnAction(event -> {
             if (tb_showHidePass.isSelected()) {
                 tb_showHidePass.setGraphic(new ImageView(icon2));
+                tf_showPass.toFront();
                 String pass = tf_password.getText();
                 tf_showPass.setText(pass);
                 tf_showPass.setEditable(true);
