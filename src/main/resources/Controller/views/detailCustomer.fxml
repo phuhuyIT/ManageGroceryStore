@@ -65,7 +65,7 @@
         </Label>
         <ImageView fx:id="image_customer" fitHeight="142.0" fitWidth="160.0" layoutX="750.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="https://img.freepik.com/free-vector/illustration-user-avatar-icon_53876-5907.jpg?w=740&amp;amp;t=st=1683003422~exp=1683004022~hmac=057b6d420859ea6a49f175db90ae4017350a9aa8ce8e93b8caab5e3f10c16493" />
+            <Image url="@../image/gamer.png" />
          </image></ImageView>
         <Button fx:id="btn_addThumnail" layoutX="737.0" layoutY="282.0" mnemonicParsing="false" onAction="#chooseImageProduct" prefHeight="44.0" prefWidth="173.0" style="-fx-cursor: hand;" stylesheets="@css/test.css" text="Add Thumnail" underline="true">
             <font>
