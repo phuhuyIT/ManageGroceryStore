@@ -179,4 +179,9 @@ public class StaffController extends ItemController implements Initializable {
             staffJoinDate.setText("");
         }
     }
+
+    @Override
+    protected void showSearchDate(int limit, int offSet) {
+
+    }
 }

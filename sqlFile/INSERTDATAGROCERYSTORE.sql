@@ -41,69 +41,104 @@ VALUES
 ('SUP038', 'HIJ Supplier', '321 Oak St, City, State', '321-654-0987'),
 ('SUP039', 'KLM Supplier', '654 Maple St, City, State', '654-987-6543'),
 ('SUP040', 'NOP Supplier', '987 Pine St, City, State', '987-012-3456');
-
+--
+INSERT INTO productCategories (name,parent_id) VALUES
+('Thực phẩm', NULL),
+('Thực phẩm tươi sống', 1),
+('Thực phẩm chế biến sẵn', 1),
+('Hàng gia dụng',NULL),
+('Đồ dùng cá nhân',NULL),
+('Vật dụng học tập và văn phòng phẩm',NULL),
+('Hóa phẩm và chất tẩy rửa',NULL),
+('Đồ chơi và quà tặng',NULL),
+('Thuốc và vật dụng y tế',NULL),
+('Hoa quả', 2),
+('Rau củ', 2),
+('Thực phẩm đóng hộp', 3),
+('Thực phẩm đóng túi', 3);
 -- insert data thêm
-INSERT INTO products (productBarCode, productname, sid, categoryid, productSKU)
+INSERT INTO `products` (`productname`, `sid`, `categoryid`, `costPrice`, `sellingPrice`, `productSKU`)
 VALUES
-(123456789, 'T-Shirt', 1, 5, 'TS001'),
-(987654321, 'Jeans', 2, 4, 'JN002'),
-(246813579, 'Sneakers', 1, 3, 'SK003'),
-(135792468, 'Backpack', 3, 2, 'BP004'),
-(555555555, 'Headphones', 4, 1, 'HD005'),
-(666666666, 'Smartphone', 2, 1, 'SP006'),
-(777777777, 'Watch', 3, 3, 'WT007'),
-(888888888, 'Camera', 4, 2, 'CM008'),
-(999999999, 'Laptop', 1, 1, 'LP009'),
-(111111111, 'Tablet', 2, 1, 'TB010'),
-(222222222, 'Keyboard', 3, 3, 'KB011'),
-(333333333, 'Mouse', 4, 2, 'MS012'),
-(444444444, 'Speaker', 1, 4, 'SP013'),
-(777777777, 'Earbuds', 2, 1, 'EB014'),
-(888888888, 'Printer', 3, 2, 'PR015'),
-(999999999, 'Scanner', 4, 3, 'SC016'),
-(222222222, 'Monitor', 1, 5, 'MN017'),
-(444444444, 'Projector', 2, 4, 'PJ018'),
-(666666666, 'TV', 3, 2, 'TV019'),
-(888888888, 'Gaming Chair', 4, 1, 'GC020'),
-('10001', 'Bánh mì', 1, 1, 'BM041'),
-('10002', 'Phở', 2, 1, 'PH042'),
-('10003', 'Bún chả', 3, 1, 'BC043'),
-('10004', 'Cơm tấm', 4, 1, 'CT044'),
-('10005', 'Bánh cuốn', 5, 1, 'BC045'),
-('10006', 'Bún riêu', 1, 1, 'BR046'),
-('10007', 'Cà phê', 2, 2, 'CP047'),
-('10008', 'Trà đá', 3, 2, 'TD048'),
-('10009', 'Sữa chua', 4, 3, 'SC049'),
-('10010', 'Sinh tố', 5, 3, 'ST050'),
-('10011', 'Gà rán', 1, 4, 'GR051'),
-('10012', 'Bánh khoai tây', 2, 4, 'BKT052'),
-('10013', 'Bánh tráng trộn', 3, 4, 'BTT053'),
-('10014', 'Nem cuốn', 4, 5, 'NC054'),
-('10015', 'Hủ tiếu', 5, 5, 'HT055'),
-('10016', 'Sườn nướng', 1, 4, 'SN056'),
-('10017', 'Mì Quảng', 2, 1, 'MQ057'),
-('10018', 'Cơm rang', 3, 1, 'CR058'),
-('10020', 'Bánh canh', 5, 1, 'BC060'),
-('123456789', 'Thịt gà đóng hộp', 1, 2, 'GH123'),
-('234567890', 'Cá ngừ đóng hộp', 1, 2, 'CN234'),
-('345678901', 'Bánh mỳ đóng hộp', 2, 3, 'BM345'),
-('456789012', 'Mì tôm đóng hộp', 2, 3, 'MT456'),
-('567890123', 'Trái cây đóng hộp', 3, 4, 'TC567'),
-('678901234', 'Súp đóng hộp', 3, 4, 'SD678'),
-('789012345', 'Thịt ba chỉ đóng hộp', 4, 2, 'BC789'),
-('890123456', 'Rau củ đóng hộp', 4, 4, 'RC890'),
-('901234567', 'Cơm rang đóng hộp', 5, 3, 'CR901'),
-('012345678', 'Bò khô đóng hộp', 5, 2, 'BK012'),
-('123456780', 'Sữa đóng hộp', 6, 1, 'SU123'),
-('234567891', 'Khoai tây đóng hộp', 6, 4, 'KT234'),
-('345678902', 'Gà rang muối đóng hộp', 7, 2, 'GR345'),
-('456789013', 'Măng tây đóng hộp', 7, 4, 'MT456'),
-('567890124', 'Nui đóng hộp', 8, 3, 'NU567'),
-('678901235', 'Bánh quy đóng hộp', 8, 3, 'BQ678'),
-('789012346', 'Sữa chua đóng hộp', 9, 1, 'SC789'),
-('890123457', 'Xúc xích đóng hộp', 9, 2, 'XX890'),
-('901234568', 'Bánh kem đóng hộp', 10, 3, 'BK901'),
-('012345679', 'Hành tây đóng hộp', 10, 4, 'HT012');
+    ('Product 1', 1, 1, 100000, 120000, 'SKU001'),
+    ('Product 2', 2, 2, 150000, 180000, 'SKU002'),
+    ('Product 3', 3, 3, 200000, 240000, 'SKU003'),
+    ('Product 4', 4, 4, 120000, 150000, 'SKU004'),
+    ('Product 5', 5, 5, 180000, 210000, 'SKU005'),
+    ('Product 6', 6, 6, 90000, 110000, 'SKU006'),
+    ('Product 7', 7, 7, 160000, 200000, 'SKU007'),
+    ('Product 8', 8, 8, 130000, 160000, 'SKU008'),
+    ('Product 9', 9, 9, 110000, 140000, 'SKU009'),
+    ('Product 10', 10, 10, 170000, 210000, 'SKU010'),
+    ('Product 11', 1, 1, 95000, 120000, 'SKU011'),
+    ('Product 12', 2, 2, 135000, 170000, 'SKU012'),
+    ('Product 13', 3, 3, 190000, 230000, 'SKU013'),
+    ('Product 14', 4, 4, 115000, 140000, 'SKU014'),
+    ('Product 15', 5, 5, 175000, 200000, 'SKU015'),
+    ('Product 16', 6, 6, 85000, 105000, 'SKU016'),
+    ('Product 17', 7, 7, 155000, 190000, 'SKU017'),
+    ('Product 18', 8, 8, 125000, 150000, 'SKU018'),
+    ('Product 19', 9, 9, 105000, 130000, 'SKU019'),
+    ('Product 20', 10, 10, 165000, 200000, 'SKU020'),
+    ('Sardines đóng hộp', 1, 1, 105000, 130000, 'SKU021'),
+    ('Thịt gà đóng hộp', 2, 2, 155000, 190000, 'SKU022'),
+    ('Hoa quả đóng hộp', 3, 3, 125000, 150000, 'SKU023'),
+    ('Khoai tây đóng hộp', 4, 4, 105000, 130000, 'SKU024'),
+    ('Bánh quy đóng hộp', 5, 5, 165000, 200000, 'SKU025'),
+    ('Hạt điều đóng hộp', 6, 6, 100000, 125000, 'SKU026'),
+    ('Gạo nấu sẵn đóng hộp', 7, 7, 150000, 180000, 'SKU027'),
+    ('Sữa đóng hộp', 8, 8, 120000, 145000, 'SKU028'),
+    ('Trà đóng hộp', 9, 9, 100000, 125000, 'SKU029'),
+    ('Cà phê đóng hộp', 10, 10, 160000, 190000, 'SKU030'),
+    ('Măng tây đóng hộp', 1, 1, 110000, 135000, 'SKU031'),
+    ('Bánh mì đóng hộp', 2, 2, 160000, 195000, 'SKU032'),
+    ('Mứt đóng hộp', 3, 3, 130000, 155000, 'SKU033'),
+    ('Nước ép đóng hộp', 4, 4, 110000, 135000, 'SKU034'),
+    ('Thức ăn chó mèo đóng hộp', 5, 5, 170000, 205000, 'SKU035'),
+    ('Sữa chua đóng hộp', 6, 6, 105000, 130000, 'SKU036'),
+    ('Cá viên đóng hộp', 7, 7, 145000, 175000, 'SKU037'),
+    ('Mì ăn liền đóng hộp', 8, 8, 115000, 140000, 'SKU038'),
+    ('Khoai lang đóng hộp', 9, 9, 95000, 120000, 'SKU039'),
+    ('Thức ăn nhanh đóng hộp', 10, 10, 150000, 180000, 'SKU040'),
+    ('Bàn chải đánh răng', 1, 1, 20000, 25000, 'SKU041'),
+    ('Kem đánh răng', 2, 2, 30000, 40000, 'SKU042'),
+    ('Sữa tắm', 3, 3, 50000, 60000, 'SKU043'),
+    ('Dầu gội', 4, 4, 40000, 50000, 'SKU044'),
+    ('Bông tẩy trang', 5, 5, 10000, 15000, 'SKU045'),
+    ('Kem cạo râu', 6, 6, 35000, 45000, 'SKU046'),
+    ('Lược', 7, 7, 15000, 20000, 'SKU047'),
+    ('Bàn chải cạo râu', 8, 8, 25000, 30000, 'SKU048'),
+    ('Kem cắt móng', 9, 9, 20000, 25000, 'SKU049'),
+    ('Kéo cắt móng', 10, 10, 30000, 35000, 'SKU050'),
+    ('Bộ chải đánh răng', 1, 1, 35000, 45000, 'SKU051'),
+    ('Nước hoa', 2, 2, 80000, 100000, 'SKU052'),
+    ('Băng vệ sinh', 3, 3, 25000, 30000, 'SKU053'),
+    ('Bình xịt nước hoa', 4, 4, 50000, 60000, 'SKU054'),
+    ('Găng tay cao su', 5, 5, 10000, 15000, 'SKU055'),
+    ('Chổi đánh răng', 6, 6, 15000, 20000, 'SKU056'),
+    ('Dầu gội cho bé', 7, 7, 30000, 40000, 'SKU057'),
+    ('Xà phòng', 8, 8, 20000, 25000, 'SKU058'),
+    ('Khăn tắm', 9, 9, 15000, 20000, 'SKU059'),
+    ('Kem chống nắng', 10, 10, 35000, 45000, 'SKU060'),
+        ('Nước suối', 1, 1, 5000, 7000, 'SKU061'),
+    ('Nước ngọt Coca Cola', 2, 2, 10000, 12000, 'SKU062'),
+    ('Nước ngọt Pepsi', 3, 2, 8000, 10000, 'SKU063'),
+    ('Nước ngọt Fanta', 4, 2, 9000, 11000, 'SKU064'),
+    ('Nước tăng lực Redbull', 5, 3, 15000, 18000, 'SKU065'),
+    ('Nước ép cam', 6, 4, 12000, 15000, 'SKU066'),
+    ('Nước ép cà rốt', 7, 4, 11000, 14000, 'SKU067'),
+    ('Nước táo', 8, 5, 10000, 12000, 'SKU068'),
+    ('Nước chanh', 9, 5, 9000, 11000, 'SKU069'),
+    ('Nước lọc', 10, 1, 5000, 7000, 'SKU070'),
+    ('Nước ngọt 7Up', 1, 2, 9000, 11000, 'SKU071'),
+    ('Nước ép dưa hấu', 2, 4, 15000, 18000, 'SKU072'),
+    ('Nước cam ép', 3, 4, 12000, 15000, 'SKU073'),
+    ('Nước sữa chua', 4, 5, 10000, 12000, 'SKU074'),
+    ('Nước chanh leo', 5, 6, 15000, 18000, 'SKU075'),
+    ('Nước tăng lực Monster', 6, 3, 20000, 25000, 'SKU076'),
+    ('Nước táo nhập khẩu', 7, 5, 12000, 15000, 'SKU077'),
+    ('Nước ngọt Mirinda', 8, 2, 9000, 11000, 'SKU078'),
+    ('Nước cam nhập khẩu', 9, 4, 15000, 18000, 'SKU079'),
+    ('Nước chanh muối', 10, 6, 10000, 12000, 'SKU080');
 
 INSERT INTO productbatch (BATCHID, pid, importDate, manufractureDate, expirationDate, quantity) 
 VALUES
@@ -147,20 +182,6 @@ VALUES ('1', '2022-01-01', '2022-12-31', 100),
 ('1', '2022-02-15', '2023-02-14', 60),
 ('1', '2022-03-01', '2023-02-28', 120);
 --
-DELIMITER //
-DROP PROCEDURE IF EXISTS insert_product_prices//
-CREATE PROCEDURE insert_product_prices()
-BEGIN
-  DECLARE i INT DEFAULT 1;
-  WHILE i <= 2000 DO
-    INSERT INTO productPrices (costPrice, discountRate, createdAt, pid)
-    VALUES (Floor(RAND() * (5000000 - 30000) + 30000), RAND(), DATE_ADD('2022-01-01', INTERVAL FLOOR(RAND() * DATEDIFF(NOW(), '2022-01-01')) DAY),RAND() * (58) + 1);
-    SET i = i + 1;
-  END WHILE;
-END //
-DELIMITER ;
-
-CALL insert_product_prices();
 
 --
 INSERT INTO customers (citizenIDNumber, gender, fullname, location, birthDate, phone, EMAIL) VALUES
@@ -195,16 +216,29 @@ INSERT INTO customers (citizenIDNumber, gender, fullname, location, birthDate, p
 ('741852963', 1, 'Le Thi O', 'Hanoi', '1988-08-18', '0912345678', 'lethio@gmail.com'),
 ('963852741', 0, 'Tran Van P', 'Ho Chi Minh City', '1994-03-25', '0961234567', 'tranvanp@gmail.com'),
 ('123123123', 1, 'Nguyen Van Q', 'Hai Phong', '1997-11-02', '0977654321', 'nguyenvanq@gmail.com'),
-('789456123', 0, 'Tran Thi R', 'Ha Long', '1993-11-23', '0987654321', 'tranthir@gmail.com'),
+('789456123', 0, 'Tran Thi R', 'Ha Long', '1993-11-23', '0987654321', 'tranthir@gmail.com');
+INSERT INTO customers (citizenIDNumber, gender, fullname, location, birthDate, phone, EMAIL) VALUES
 ('369852147', 1, 'Nguyen Thi S', 'Bac Ninh', '1988-10-15', '0961234567', 'nguyenthis@gmail.com'),
 ('159753456', 0, 'Le Thi T', 'Phu Yen', '1990-02-28', '0977654321', 'lethit@gmail.com'),
-('753951456', 0, 'Pham Thi U', 'Hai Duong', '1995-06-09', '0912345678', 'phamthiu@gmail.com'),
-('456789321', 2, 'Tran Thi V', 'Ninh Binh', '1989-09-01', '0988888888', 'tranthiv@gmail.com'),
+('753951456', 0, 'Pham Thi U', 'Hai Duong', '1995-06-09', '0912345678', 'phamthiu@gmail.com');
+INSERT INTO customers (citizenIDNumber, gender, fullname, location, birthDate, phone, EMAIL) VALUES
+('459789321', 1, 'Tran Thi V', 'Ninh Binh', '1989-09-01', '0981888888', 'tranthiv1@gmail.com'),
 ('123456987', 0, 'Nguyen Thi X', 'Hoa Binh', '1998-04-10', '0976543210', 'nguyenthix@gmail.com'),
 ('789456321', 0, 'Le Thi Y', 'Tien Giang', '1986-03-22', '0987654321', 'lethiy@gmail.com'),
 ('369852147', 0, 'Pham Thi Z', 'Long An', '1991-08-02', '0912345678', 'phamthiz@gmail.com'),
 ('258369147', 0, 'Tran Thi A1', 'Ha Giang', '1994-12-25', '0965432109', 'tranthia1@gmail.com'),
 ('741852963', 0, 'Nguyen Thi B1', 'Ben Tre', '1984-07-07', '0934567890', 'nguyenthib1@gmail.com');
+INSERT INTO `customers` (`citizenIDNumber`, `fullname`, `location`, `phone`) VALUES
+('cus1', 'ram1', 'ktm', '12345678901'),
+('cus2', 'ram2', 'ktm', '12345678901'),
+('cus3', 'ram3', 'ktm', '12345678901'),
+('cus4', 'ram4', 'ktm', '12345678901'),
+('cus5', 'ram5', 'ktm', '12345678901'),
+('cus6', 'ram6', 'ktm', '12345678901');
+INSERT INTO `customers` (`citizenIDNumber`, `fullname`, `location`, `phone`) VALUES
+('cus7', 'abc', 'ktm', '12345678901'),
+('cus8', 'ropd', 'ktm', '12345678901'),
+('cus9', 'emcs', 'ktm', '12345678901');
 --
 INSERT INTO bill (billCode, purchaseDate, revenue)
 VALUES
@@ -292,6 +326,13 @@ VALUES
 ('HDX083', '2023-05-01', 800000.0),
 ('HDX084', '2023-05-01', 3500000.0),
 ('HDX085', '2023-05-01', 700000.0);
+INSERT INTO bill (billCode, purchaseDate)
+VALUES
+  ('1', '2023-05-01'),
+  ('2', '2023-05-02'),
+  ('3', '2023-05-03'),
+  ('4', '2023-05-04'),
+  ('5', '2023-05-05');
 --
 INSERT INTO staff (fullname, staffIDCard, position, phone, email, joinDate, location, basicSalary, gender, BIRTHDATE) VALUES
 ('Nguyễn Văn A', '123456789', 'Nhân viên kinh doanh', '0987654321', 'nva@gmail.com', '2022-01-01 08:00:00', 'Hà Nội', 15000000, 1, '2000-01-01'),
@@ -323,6 +364,21 @@ INSERT INTO staff (fullname, staffIDCard, position, phone, email, joinDate, loca
 ('Phạm Thị B1', '789123456', 'Quản lý sản xuất', '0967891234', 'ptb1@gmail.com', '2024-04-01 08:00:00', 'Hồ Chí Minh', 30000000, 0, '1980-03-01'),
 ('Lê Văn C1', '369258147', 'Chuyên viên kinh doanh', '0912345678', 'lvc1@gmail.com', '2024-05-01 08:00:00', 'Đà Nẵng', 20000000, 1, '1979-04-01'),
 ('Trần Thị D1', '147258369', 'Quản lý nhân sự', '0987654321', 'ttd1@gmail.com', '2024-06-01 08:00:00', 'Hà Nội', 35000000, 0, '1978-05-01');
+
+INSERT INTO staff (fullname, staffIDCard, position, phone, joinDate, basicSalary)
+VALUES
+('Nguyễn Văn A', 'NV001', 'Nhân viên bán hàng', '0901234567', '2022-01-01', 150000),
+('Trần Thị B', 'NV002', 'Quản lý cửa hàng', '0902345678', '2021-07-01', 200000),
+('Lê Văn C', 'NV003', 'Nhân viên bán hàng', '0903456789', '2021-10-01', 120000),
+('Phạm Thị D', 'NV004', 'Nhân viên vệ sinh', '0904567890', '2022-02-01', 90000),
+('Trần Văn E', 'NV005', 'Nhân viên bán hàng', '0905678901', '2022-03-01', 140000),
+('Nguyễn Thị F', 'NV006', 'Nhân viên vệ sinh', '0906789012', '2021-08-01', 90000),
+('Lê Văn G', 'NV007', 'Nhân viên bảo vệ', '0907890123', '2021-12-01', 100000),
+('Phạm Văn H', 'NV008', 'Nhân viên bán hàng', '0908901234', '2021-09-01', 130000),
+('Nguyễn Thị I', 'NV009', 'Nhân viên bán hàng', '0909012345', '2022-04-01', 160000),
+('Trần Văn K', 'NV010', 'Nhân viên vệ sinh', '0900123456', '2021-06-01', 80000),
+('Lê Thị L', 'NV011', 'Nhân viên bảo vệ', '0901234567', '2021-11-01', 110000),
+('Phạm Văn M', 'NV012', 'Nhân viên bán hàng', '0902345678', '2022-05-01', 170000);
 --
 INSERT INTO monthly_salary (staffid, monthSalary, workingHours, overtimeHours, allowance, deduction) VALUES
 (4, '2022-01-01', 160, 60, 500.00, 100.00),
@@ -363,7 +419,10 @@ INSERT INTO monthly_salary (staffid, monthSalary, workingHours, overtimeHours, a
     (39, '2023-04-01', 245, 145, 1250.00, 100.00),
     (40, '2023-01-01', 250, 150, 1300.00, 100.00),
     (41, '2023-02-01', 255, 155, 1350.00, 100.00);
---
+INSERT INTO monthly_salary (staffid, monthSalary, workingHours, overtimeHours, allowance, deduction)
+VALUES (1, '2022-01-01', 176, 8, 1000000, 500000),
+       (2, '2022-01-01', 150, 6, 800000, 200000),
+       (3, '2022-01-01', 120, 5, 500000, 100000);
 -- Thêm 20 bộ dữ liệu vào bảng detailbill
 -- Thêm dữ liệu cho bảng detailBill
 INSERT INTO detailBill(billID, productID, customerID, staffID, quantity) VALUES
@@ -379,14 +438,15 @@ CREATE PROCEDURE insert_detailbill()
 BEGIN
   DECLARE i INT DEFAULT 1;
   
-  WHILE i <= 2000 DO
-    INSERT INTO detailbill (billID, productID, customerID, staffID, quantity) 
+  WHILE i <= 10000 DO
+    INSERT INTO detailbill (billID, productID, customerID, staffID, quantity,currentPrice) 
     VALUES 
-      (FLOOR(RAND() * 89) + 1, FLOOR(RAND() * 25) + 1, FLOOR(RAND() * 50) + 1, FLOOR(RAND() * 41) + 1, FLOOR(RAND() * 10) + 1);
+      (FLOOR(RAND() * 86) + 1, FLOOR(RAND() * 79) + 1, FLOOR(RAND() * 48) + 1, FLOOR(RAND() * 40) + 1, FLOOR(RAND() * 100) + 1,Floor(RAND() * (5000000 - 30000) + 30000));
     SET i = i + 1;
   END WHILE;
 END$$
 DELIMITER ;
+
 Call insert_detailbill();
 -- 
 

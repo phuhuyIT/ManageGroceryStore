@@ -38,6 +38,8 @@ public class ProductController extends ItemController implements Initializable {
     private ChoiceBox<String> choiceBox_list;
     @FXML
     private AnchorPane pane_Product;
+    @FXML
+    private Button btn_search;
     private String[] searchFilter = {"Tăng theo tên ", "Giảm theo tên" , "Tìm theo Barcode"};
 
     private String[] list = {"Cake", "Noodle" , "Fast Food" , "Drinking" , "Ice Cream" , "Vegetable"};
@@ -45,7 +47,6 @@ public class ProductController extends ItemController implements Initializable {
     private ObservableList <Product> productSearchList;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        numberData = new ProductDAO().getNumProuduct();
         Limit=8;
         offSet=0;
         choiceBox_sort.getItems().addAll(searchFilter);
@@ -81,6 +82,7 @@ public class ProductController extends ItemController implements Initializable {
 
     @Override
     protected void showData(int limit, int offSet) {
+        numberData = new ProductDAO().getNumProuduct();
         ProductDAO pdao=new ProductDAO();
         pageNumber= (offSet+8)/8;
         lb_pageNumber.setText(String.valueOf(pageNumber));
@@ -107,10 +109,15 @@ public class ProductController extends ItemController implements Initializable {
             }
     }
     public void search(){
-        productList.clear();
-        productSearchList = FXCollections.observableArrayList(new ProductDAO().searchName(txt_search.getText()));
-        clearData();
-        showData(0,8);
+        btn_search.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                productList.clear();
+                productSearchList = FXCollections.observableArrayList(new ProductDAO().searchName(txt_search.getText()));
+                clearData();
+                showSearchDate(8,0);
+            }
+        });
     }
     @Override
     protected void clearData() {
@@ -134,6 +141,35 @@ public class ProductController extends ItemController implements Initializable {
 
         }
     }
+
+    @Override
+    protected void showSearchDate(int limit, int offSet) {
+        pageNumber= (offSet+8)/8;
+        lb_pageNumber.setText(String.valueOf(pageNumber));
+        productSearchList = FXCollections.observableArrayList(new ProductDAO().searchName(txt_search.getText()));
+        numberData = productSearchList.size();
+        if(offSet+8>=numberData)
+            limit=numberData-offSet;
+        int numberProduct=offSet+limit;
+        for (int i=offSet, z=0;i<numberProduct;i++,z++){
+            AnchorPane ap = (AnchorPane) pane_Product.lookup("#productBox"+(z+1));
+            ImageView productThumbnail =(ImageView) ap.lookup("#productThumbnail"+(z+1));
+            Label productQuantity =(Label) ap.lookup("#productQuantity"+(z+1));
+            Label productPrice =(Label)ap.lookup("#productPrice"+(z+1));
+            Label productName = (Label)ap.lookup("#productName"+(z+1));
+            String img  = productSearchList.get(i).getThumbnailLink();
+            if(img!=null) {
+                Image image1 = new Image(String.valueOf(img));
+                productThumbnail.setImage(image1);
+
+            }
+            productName.setText(productSearchList.get(i).getProductName());
+            ap.setUserData(productSearchList.get(i).getProductId());
+            productQuantity.setText(String.valueOf(new ProductDAO().getQuantity((productSearchList.get(i).getProductId()))));
+            productPrice.setText(String.valueOf(productSearchList.get(i).getCostPrice()));
+        }
+    }
+
     protected void setRightLickAction(ContextMenu contextMenu, MenuItem delete,MenuItem detail){
         Menu addLots = new Menu("Add Lots" );
         ImageView iconaddLots = new ImageView(new Image(getClass().getResourceAsStream("image/add-product.png")));
@@ -188,7 +224,7 @@ public class ProductController extends ItemController implements Initializable {
             AnchorPane ap = (AnchorPane) pane_Product.lookup("#productBox"+(i+1));
             ap.setOnContextMenuRequested(event -> {
                 AnchorPane btn= (AnchorPane) event.getSource();
-                String id= (String)btn.getUserData();
+                String id= String.valueOf(btn.getUserData());
                 currentItemID = Integer.parseInt(id);
                 contextMenu.show(ap, event.getScreenX(), event.getScreenY());
                 event.consume(); // đánh dấu sự kiện này đã được xử lý

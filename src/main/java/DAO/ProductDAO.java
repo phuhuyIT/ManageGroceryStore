@@ -88,7 +88,7 @@ public class ProductDAO extends InventoryAlert implements DaoInterface<Product> 
     @Override
     public ResultSet selectALL(int Limit, int offSet) {
         try {
-            String selectAllProduct = "SELECT * FROM productList ORDER BY pid ASC ";
+            String selectAllProduct = "SELECT * FROM products ORDER BY pid ASC ";
             pstmt= con.prepareStatement(selectAllProduct);
             rs = pstmt.executeQuery();
         }catch (SQLException e){
@@ -104,7 +104,7 @@ public class ProductDAO extends InventoryAlert implements DaoInterface<Product> 
             pstmt= con.prepareStatement(selectAllProduct);
             rs = pstmt.executeQuery();
             while (rs.next())
-                productList.add(new Product(rs.getString("PRODUCTNAME"), rs.getString("PRODUCTBARCODE"), rs.getInt("PID"),rs.getString("THUMBNAIL")));
+                productList.add(new Product(rs.getString("PRODUCTNAME"), rs.getString("PRODUCTSKU"), rs.getInt("PID"),rs.getString("THUMBNAIL")));
         }catch (SQLException e){
             throw new RuntimeException(e);
         }
@@ -114,8 +114,7 @@ public class ProductDAO extends InventoryAlert implements DaoInterface<Product> 
     public ResultSet selectByID(int ID) {
         ResultSet rs;
         try {
-
-            String selectByID_query = "SELECT THUMBNAIL, PRODUCTNAME, Categoryid,P.Pid, COSTPRICE, SELLINGPRICE, PRODUCTBARCODE, manufractureDate, expirationDate,SID  FROM productList WHERE P.Pid =? ";
+            String selectByID_query = "SELECT THUMBNAIL, PRODUCTNAME, Categoryid, p.Pid, COSTPRICE, SELLINGPRICE, PRODUCTSKU, manufractureDate, expirationDate,SID  FROM products p JOIN productbatch pb On p.pid=pb.pid  WHERE p.Pid =? ";
             pstmt= con.prepareStatement(selectByID_query);
             pstmt.setInt(1,ID);
             rs =pstmt.executeQuery();
@@ -269,15 +268,15 @@ public class ProductDAO extends InventoryAlert implements DaoInterface<Product> 
     }
     public ArrayList<Product> searchName(String searchValue){
         ArrayList<Product> productSearchList= new ArrayList<>();
-        String fullTextSearches="SELECT *\n" +
-                "FROM productlist\n" +
+        String fullTextSearches="SELECT PRODUCTNAME,PRODUCTSKU,PID,costPrice,THUMBNAIL\n" +
+                "FROM products\n" +
                 "WHERE MATCH(productname) AGAINST (?);\n";
         try {
             pstmt = con.prepareStatement(fullTextSearches);
             pstmt.setString(1,searchValue);
             rs = pstmt.executeQuery();
             while (rs.next())
-                productSearchList.add(new Product(rs.getString("PRODUCTNAME"), rs.getString("PRODUCTBARCODE"), rs.getInt("PID"),rs.getDouble("COSTPRICE"),rs.getString("THUMBNAIL")));
+                productSearchList.add(new Product(rs.getString("PRODUCTNAME"), rs.getString("PRODUCTSKU"), rs.getInt("PID"),rs.getDouble("costPrice"),rs.getString("THUMBNAIL")));
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

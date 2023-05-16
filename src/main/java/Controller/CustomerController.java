@@ -1,6 +1,7 @@
 package Controller;
 
 import DAO.CustomerDAO;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -168,6 +169,11 @@ public class CustomerController extends ItemController implements Initializable 
                     customerGender.setText("");
                     customerPhone.setText("");
             }
+
+    }
+
+    @Override
+    protected void showSearchDate(int limit, int offSet) {
 
     }
 }

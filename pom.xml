@@ -126,14 +126,14 @@
             <version>1.1.0</version>
         </dependency>
         <dependency>
-            <groupId>io.github.dzmitry-lakisau</groupId>
-            <artifactId>month-year-picker-dialog</artifactId>
-            <version>1.1.0</version>
+            <groupId>org.controlsfx</groupId>
+            <artifactId>controlsfx</artifactId>
+            <version>11.1.2</version>
         </dependency>
         <dependency>
-            <groupId>io.github.dzmitry-lakisau</groupId>
-            <artifactId>month-year-picker-dialog</artifactId>
-            <version>1.1.0</version>
+            <groupId>org.controlsfx</groupId>
+            <artifactId>controlsfx</artifactId>
+            <version>11.1.2</version>
         </dependency>
 
         <!--        Mail-->
