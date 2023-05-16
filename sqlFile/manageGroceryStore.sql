@@ -192,5 +192,12 @@ ORDER BY b.billID ASC;
 SELECT THUMBNAIL, PRODUCTNAME, Categoryid, p.Pid, COSTPRICE, SELLINGPRICE, PRODUCTSKU, manufractureDate, expirationDate,SID  FROM products p JOIN productbatch pb On p.pid=pb.pid;  
 
 SELECT pid FROM products WHERE pid BETWEEN 26 AND 80;
+create table verify_mail(
+	id INT auto_increment primary key,
+    mail VARCHAR(100) NOT NULL,
+    otp VARCHAR(10) NOT NULL,
+	created_at timestamp default current_timestamp
+);
+
 
 
