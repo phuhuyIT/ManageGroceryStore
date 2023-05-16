@@ -74,7 +74,7 @@
                <font>
                   <Font size="15.0" />
                </font></Button>
-            <ToggleButton fx:id="tb_showHidePass" layoutX="268.0" layoutY="256.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="47.0" style="-fx-background-color: transparent;" />
+            <ToggleButton fx:id="tb_showHidePass" layoutX="268.0" layoutY="256.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="47.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
          </children>
       </AnchorPane>
    </center>
