@@ -11,10 +11,11 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -111,15 +112,18 @@ public class BillController implements Initializable {
         btn_prBill.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("views/detail_bill.fxml"));
-                Node node = null;
+                FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("views/detail_bill.fxml"));
+                Stage stage = new Stage();
+                Scene scene = null;
                 try {
-                    node = loader.load();
-                    pane_bill.getChildren().set(0, node);
+                    scene = new Scene(fxmlLoader.load(), 583, 838);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-
+                stage.setTitle("Detail Bill");
+                stage.setScene(scene);
+                stage.setResizable(false);
+                stage.show();
             }
         });
         showData();

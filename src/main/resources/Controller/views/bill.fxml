@@ -28,19 +28,6 @@
             <TableColumn fx:id="tc_ProductList" minWidth="0.0" prefWidth="0.0" text="DOANH THU" />
         </columns>
       </TableView>
-      <Button fx:id="btn_prBill" alignment="CENTER" layoutX="206.0" layoutY="797.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="150.0" style="-fx-cursor: hand;" stylesheets="@css/test.css" text="Print">
-         <font>
-            <Font name="System Bold" size="27.0" />
-         </font>
-         <padding>
-            <Insets left="30.0" />
-         </padding>
-      </Button>
-      <ImageView fitHeight="38.0" fitWidth="45.0" layoutX="217.0" layoutY="811.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../image/printer.png" />
-         </image>
-      </ImageView>
       <VBox layoutX="559.0" layoutY="64.0" prefHeight="820.0" prefWidth="434.0" style="-fx-border-width: 2px; -fx-border-color: Black; -fx-border-style: dashed;">
          <children>
             <Label alignment="CENTER" prefHeight="36.0" prefWidth="432.0" text="Xuất Hoá Đơn" underline="true">
@@ -222,5 +209,18 @@
          </padding>
       </Label>
       <ChoiceBox fx:id="choiceBox_sort" layoutX="392.0" layoutY="95.0" prefHeight="35.0" prefWidth="152.0" style="-fx-background-color: transparent;" />
+      <Button fx:id="btn_prBill" alignment="CENTER" layoutX="385.0" layoutY="21.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="150.0" style="-fx-cursor: hand;" stylesheets="@css/test.css" text="Print">
+         <font>
+            <Font name="System Bold" size="27.0" />
+         </font>
+         <padding>
+            <Insets left="30.0" />
+         </padding>
+      </Button>
+      <ImageView fitHeight="38.0" fitWidth="45.0" layoutX="396.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/printer.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
