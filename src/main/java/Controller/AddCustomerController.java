@@ -110,9 +110,9 @@ public class AddCustomerController implements Initializable {
             errorAlert("Empty field","PLEASE FILL IN ALL NECESSARY INFORMATION!");
         }else{
             if(cb_customerGender.getValue()=="Nam"&&filePath.toString()==null){
-                filePath = new File("D:/java/ManageGroceryStore/src/main/resources/Controller/image/woman1.jpg");
+                filePath = new File(getClass().getResource("image/woman.png").toExternalForm());
             } else if (cb_customerGender.getValue()=="Nữ"&&filePath.toString()==null) {
-                filePath = new File("D:/java/ManageGroceryStore/src/main/resources/Controller/image/man.jpg");
+                filePath = new File(getClass().getResource("image/man.png").toExternalForm());
             }
             if(txt_IndentifierCustomer.getText()==null)
                 txt_IndentifierCustomer.setText("");

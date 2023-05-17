@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="900.0" prefWidth="1000.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.BillController">
+<AnchorPane fx:id="pane_bill" prefHeight="900.0" prefWidth="1000.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.BillController">
    <children>
       <TableView fx:id="tv_showBill" layoutX="8.0" layoutY="61.0" prefHeight="653.0" prefWidth="528.0">
         <columns>
@@ -39,7 +39,7 @@
             <Image url="@../image/printer.png" />
          </image>
       </ImageView>
-      <VBox fx:id="pane_bill" layoutX="559.0" layoutY="64.0" prefHeight="820.0" prefWidth="434.0" style="-fx-border-width: 2px; -fx-border-color: Black; -fx-border-style: dashed;">
+      <VBox layoutX="559.0" layoutY="64.0" prefHeight="820.0" prefWidth="434.0" style="-fx-border-width: 2px; -fx-border-color: Black; -fx-border-style: dashed;">
          <children>
             <Label alignment="CENTER" prefHeight="36.0" prefWidth="432.0" text="Xuất Hoá Đơn" underline="true">
                <font>
