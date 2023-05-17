@@ -17,16 +17,16 @@
 <AnchorPane fx:id="pane_bill" prefHeight="900.0" prefWidth="1000.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.BillController">
    <children>
       <TableView fx:id="tv_showBill" layoutX="17.0" layoutY="134.0" prefHeight="653.0" prefWidth="528.0">
-        <columns>
-          <TableColumn fx:id="tc_STT" prefWidth="46.0" text="STT" />
-          <TableColumn fx:id="tc_billNumber" prefWidth="117.0" text="SHĐ" />
+         <columns>
+            <TableColumn fx:id="tc_STT" prefWidth="46.0" text="STT" />
+            <TableColumn fx:id="tc_billNumber" prefWidth="117.0" text="SHĐ" />
             <TableColumn fx:id="tc_createDate" prefWidth="171.0" text="NGÀY TẠO" />
             <TableColumn fx:id="tc_revenue" prefWidth="193.0" text="DOANH THU" />
             <TableColumn fx:id="tc_billID" minWidth="0.0" prefWidth="0.0" text="DOANH THU" />
             <TableColumn fx:id="tc_StaffName" minWidth="0.0" prefWidth="0.0" text="DOANH THU" />
             <TableColumn fx:id="tc_customerName" minWidth="0.0" prefWidth="0.0" text="DOANH THU" />
             <TableColumn fx:id="tc_ProductList" minWidth="0.0" prefWidth="0.0" text="DOANH THU" />
-        </columns>
+         </columns>
       </TableView>
       <VBox layoutX="559.0" layoutY="64.0" prefHeight="820.0" prefWidth="434.0" style="-fx-border-width: 2px; -fx-border-color: Black; -fx-border-style: dashed;">
          <children>
@@ -133,12 +133,12 @@
                      </font>
                   </Label>
                   <TableView fx:id="tv_productList" layoutX="13.0" layoutY="308.0" prefHeight="348.0" prefWidth="405.0">
-                    <columns>
-                      <TableColumn fx:id="tc_productName" prefWidth="126.0" text="Tên sản phẩm" />
-                      <TableColumn fx:id="tc_productPrice" prefWidth="121.0" text="Đơn giá" />
+                     <columns>
+                        <TableColumn fx:id="tc_productName" prefWidth="126.0" text="Tên sản phẩm" />
+                        <TableColumn fx:id="tc_productPrice" prefWidth="121.0" text="Đơn giá" />
                         <TableColumn fx:id="tc_productQuantity" minWidth="0.0" prefWidth="55.0" text="SL" />
                         <TableColumn fx:id="tc_productRevenue" prefWidth="105.0" text="Thành tiền " />
-                    </columns>
+                     </columns>
                   </TableView>
                   <ImageView fitHeight="121.0" fitWidth="124.0" layoutX="4.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -208,7 +208,7 @@
             <Insets left="5.0" />
          </padding>
       </Label>
-      <ChoiceBox fx:id="choiceBox_sort" layoutX="392.0" layoutY="95.0" prefHeight="35.0" prefWidth="152.0" style="-fx-background-color: transparent;" />
+      <ChoiceBox fx:id="choiceBox_sort" layoutX="393.0" layoutY="65.0" prefHeight="35.0" prefWidth="152.0" style="-fx-background-color: transparent;" />
       <Button fx:id="btn_prBill" alignment="CENTER" layoutX="206.0" layoutY="804.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="150.0" style="-fx-cursor: hand;" stylesheets="@css/test.css" text="Print">
          <font>
             <Font name="System Bold" size="27.0" />
