@@ -192,6 +192,7 @@ public class UserDAO extends InventoryAlert {
         }
         return rs;
     }
+
     public ResultSet getQueryResult1(String username) {
         try {
             String query = "SELECT fullname,location,phone,email,category,IMAGE FROM users Where username=?";

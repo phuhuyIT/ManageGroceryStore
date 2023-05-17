@@ -29,6 +29,7 @@ CREATE TABLE `suppliers` (
 
 
 
+
 CREATE TABLE productCategories (
     categoryid INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
@@ -198,6 +199,7 @@ create table verify_mail(
     otp VARCHAR(10) NOT NULL,
 	created_at timestamp default current_timestamp
 );
+
 
 
 
