@@ -55,6 +55,13 @@ public class Customer {
         this.email = email;
         this.avatarLink = avatarLink;
     }
+    public Customer(String fullName, String gender, int customersId,String phone ,String avatarLink) {
+        this.customersId=customersId;
+        this.gender = gender;
+        this.phone = phone;
+        this.fullName = fullName;
+        this.avatarLink = avatarLink;
+    }
 
     @Override
     public String toString() {

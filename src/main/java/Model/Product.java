@@ -20,8 +20,15 @@ public class Product {
     private String SKUCode;
     private String thumbnailLink;
 
-    public Product( String productName,String productBarCode, int pid,  String thumbnailLink) {
-        this.productBarCode = productBarCode;
+    public Product(String productName, double sellingPrice, int quantity, String totalRevenue) {
+        this.productName = productName;
+        this.sellingPrice = sellingPrice;
+        this.quantity=quantity;
+        this.totalRevenue=totalRevenue;
+    }
+
+    public Product(String productName, int pid,Double costPrice,  String thumbnailLink) {
+        this.costPrice = costPrice;
         this.productName = productName;
         this.productId=pid;
         this.thumbnailLink=thumbnailLink;
@@ -70,11 +77,9 @@ public class Product {
                 '}';
     }
 
-    public Product(String productName, int productId, int categoryID, int quantity, String thumbnailLink, LocalDate MFGDate, LocalDate EXPDate, double costPrice, double sellingPrice) {
+    public Product(String productName, int productId, int categoryID, int quantity, String thumbnailLink,  double costPrice, double sellingPrice) {
         this.productName = productName;
         this.productId = productId;
-        this.MFGDate = MFGDate;
-        this.EXPDate = EXPDate;
         this.quantity = quantity;
         this.costPrice = costPrice;
         this.sellingPrice = sellingPrice;

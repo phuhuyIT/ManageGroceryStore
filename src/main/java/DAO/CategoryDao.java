@@ -4,10 +4,13 @@ import DatabaseConnection.ConnectionFactory;
 import Model.Category;
 import Model.Product;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeView;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.PrimitiveIterator;
 
 public class CategoryDao implements DaoInterface <Category> {
     private Connection con = null;
@@ -116,33 +119,51 @@ public class CategoryDao implements DaoInterface <Category> {
     // Lấy danh sách tất cả các danh mục sản phẩm từ cơ sở dữ liệu
     public ResultSet selectALL(int Limit, int offSet) {
         String sql = "SELECT * FROM productCategories";
-        ArrayList<Category> categories = new ArrayList<>();
         try {
             pstmt = con.prepareStatement(sql);
-            ResultSet rs = pstmt.executeQuery();
+            rs = pstmt.executeQuery();
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return rs;
     }
-
-
-    // Lấy danh sách các sản phẩm trong một danh mục sản phẩm từ cơ sở dữ liệu theo id
-    private List<Product> getProductsByCategoryId(int categoryId) {
-        List<Product> products = new ArrayList<>();
-        String sql = "SELECT * FROM productCategories cp JOIN products p ON cp.pid=p.pid WHERE cp.category_id=?";
+    public ArrayList<Category> selectALL1() {
+        String sql = "SELECT * FROM productCategories";
+        ArrayList<Category> categories = new ArrayList<>();
         try {
-            PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setInt(1, categoryId);
-            ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
-                /*Product product = new Product();
-                products.add(product);*/
+            pstmt = con.prepareStatement(sql);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()){
+                ArrayList<Product> productList = new ArrayList<>();
+                String query ="SELECT * FROM PRODUCTS WHERE categoryid=?";
+                PreparedStatement pstmt2= con.prepareStatement(query);
+                pstmt2.setInt(1,rs.getInt("categoryID"));
+                ResultSet rs2 = pstmt2.executeQuery();
+                while (rs2.next()){
+                    productList.add(new Product(rs2.getString("PRODUCTNAME"), null  , rs2.getInt("PID"),rs2.getDouble("costPrice"),rs2.getString("THUMBNAIL")));
+                }
+                categories.add(new Category(rs.getInt("categoryid"),rs.getString("Name"), productList, rs.getInt("parent_id")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return products;
+        return categories;
+    }
+    // Lấy danh sách các sản phẩm trong một danh mục sản phẩm từ cơ sở dữ liệu theo id
+    private List<Product> getProductsByCategoryId(String categoryName) {
+        String sql = "SELECT * FROM products p join productcategories pc on p.categoryid=pc.categoryid  WHERE MATCH(pc.name) AGAINST(?)";
+        categoryName = "\"" + categoryName.trim() + "\"";
+        try {
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1, categoryName);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Category category = new Category();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
 
     }
     public int getCategoryIDByName(String name){

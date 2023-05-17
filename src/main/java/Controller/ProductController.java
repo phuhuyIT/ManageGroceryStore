@@ -1,7 +1,11 @@
 package Controller;
 
+import DAO.CategoryDao;
 import DAO.ProductDAO;
+import Model.CameraApp;
+import Model.Category;
 import Model.Product;
+import callable.CategoryCallable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -19,13 +23,22 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 public class ProductController extends ItemController implements Initializable {
     @FXML
     private TextField txt_search;
     @FXML
-    private Label lb_search;
+    protected Label lb_search;
     @FXML
     private Button btn_addProduct;
 
@@ -35,29 +48,60 @@ public class ProductController extends ItemController implements Initializable {
     private ChoiceBox<String> choiceBox_sort;
 
     @FXML
-    private ChoiceBox<String> choiceBox_list;
-    @FXML
     private AnchorPane pane_Product;
     @FXML
     private Button btn_search;
-    private String[] searchFilter = {"Tăng theo tên ", "Giảm theo tên" , "Tìm theo Barcode"};
+    @FXML
+    private Button btn_scanSKU;
+    @FXML
+    private ImageView iv_scanSKU;
+    @FXML
+    protected MenuButton mbCategory;
+    @FXML
+    protected Label lb_Category;
+    protected Map<Integer, MenuItem> menuItemMap = new HashMap<>();
+    private String[] searchFilter = {"Tìm theo tên" , "Tìm theo Barcode"};
 
     private String[] list = {"Cake", "Noodle" , "Fast Food" , "Drinking" , "Ice Cream" , "Vegetable"};
-    private ObservableList <Product> productList;
-    private ObservableList <Product> productSearchList;
+    private ArrayList<Product> productList;
+    private ArrayList <Product> productSearchList;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Limit=8;
         offSet=0;
         choiceBox_sort.getItems().addAll(searchFilter);
         choiceBox_sort.setStyle("-fx-font-size:15px ; -fx-background-color:transparent ; -fx-alignment:Center ; -fx-padding: 0px 5px 5px -2px");
-        choiceBox_list.setStyle("-fx-font-size:20px ; -fx-background-color:transparent ; -fx-alignment:Center ; -fx-padding: 0px 5px 5px -2px");
-        choiceBox_list.getItems().addAll(list);
-
+        mbCategory.setStyle("-fx-font-size:20px ; -fx-background-color:transparent ; -fx-alignment:Center ; -fx-padding: 0px 5px 5px -2px");
+    btn_scanSKU.setVisible(false);
+    iv_scanSKU.setVisible(false);
+    choiceBox_sort.setValue("Tìm theo tên");
+        setUpMenu();
     btn_addProduct.setOnAction(new EventHandler<ActionEvent>() {
         @Override
         public void handle(ActionEvent actionEvent) {
             loadFXML("views/addProduct.fxml");
+        }
+    });
+        btn_scanSKU.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                try {
+                    CameraApp barCodeScanner= new CameraApp();
+                    barCodeScanner.setTextField(txt_search);
+                    barCodeScanner.start();
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+    choiceBox_sort.setOnAction(new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(ActionEvent actionEvent) {
+            if(choiceBox_sort.getValue().equals("Tìm theo Barcode")){
+                btn_scanSKU.setVisible(true);
+                iv_scanSKU.setVisible(true);
+            }
+
         }
     });
 
@@ -65,6 +109,7 @@ public class ProductController extends ItemController implements Initializable {
     setActionForBtn();
     setRightLick();
     search();
+
     }
     @Override
     protected void loadFXML(String fxmlPath) {
@@ -79,14 +124,111 @@ public class ProductController extends ItemController implements Initializable {
         pane_Product.getChildren().set(0,node);
     }
 
+    private void setUpMenu(){
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+
+        // Tạo một CategoryCallable
+        CategoryCallable categoryCallable = new CategoryCallable();
+
+        // Thực thi categoryCallable trong luồng riêng
+        Future<ArrayList<Category>> future = executor.submit(categoryCallable);
+        try {
+            // Lấy dữ liệu category từ cơ sở dữ liệu
+            ArrayList<Category> categories = future.get();
+            // Xử lý dữ liệu category để tạo cấu trúc menu nhiều cấp
+            Map<Integer, Menu> menuMap = createCategoryMenuStructure(categories);
+            // set sự kiện cho các menu và menuitem
+            // Thêm các mục menu vào MenuButton
+            for (Menu menu : menuMap.values()) {
+                menu.setOnAction(e -> {
+                    isSearch=true;
+                    productList.clear();
+                    for (Category category : categories) {
+                        if (category.getName().equals(menu.getText())) {
+                            productSearchList = category.getProductList();
+                            break;
+                        }
+                    }
+                    clearData();
+                    showSearchDate(8,0);
+                });
+
+                // Lặp qua các MenuItem trong Menu
+                for (MenuItem menuItem : menu.getItems()) {
+                    // Đặt sự kiện cho MenuItem
+                    menuItem.setOnAction(e -> {
+                        isSearch=true;
+                        productList.clear();
+                        for (Category category : categories) {
+                            if (category.getName().equals(menu.getText())) {
+                                productSearchList = category.getProductList();
+                                break;
+                            }
+                        }
+                        clearData();
+                        showSearchDate(8,0);
+                    });
+                }
+                menu.getItems();
+                mbCategory.getItems().add(menu);
+            }
+
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        executor.shutdown();
+
+
+
+    }
+
+    protected Map<Integer, Menu> createCategoryMenuStructure(ArrayList<Category> categories){
+        Map<Integer, Menu> menuMap = new HashMap<>();
+        // Tạo các MenuItem cho từng category
+
+        for (Category category : categories) {
+            MenuItem menuItem = new MenuItem(category.getName());
+            menuItemMap.put(category.getId(), menuItem);
+        }
+        // Xác định các category con và cha
+        for (Category category : categories) {
+            Integer parentId = category.getParentId();
+            MenuItem menuItem = menuItemMap.get(category.getId());
+
+            if (parentId == null) {
+                // Category là category cha (gốc)
+                Menu menu = new Menu(category.getName());
+                menu.getItems().add(menuItem);
+                menuMap.put(category.getId(), menu);
+            } else {
+                // Category là category con
+                MenuItem parentMenuItem = menuItemMap.get(parentId);
+                if (parentMenuItem instanceof Menu) {
+                    // Category cha đã được tạo trước đó
+                    Menu parentMenu = (Menu) parentMenuItem;
+                    parentMenu.getItems().add(menuItem);
+                } else {
+                    // Tạo menu cho category cha nếu chưa tồn tại
+                    Menu menu = new Menu(category.getName());
+                    menu.getItems().addAll(menuItem);
+                    menuItemMap.put(category.getId(), menu);
+                    menuMap.put(category.getId(), menu);
+                }
+            }
+        }
+
+        return menuMap;
+    }
 
     @Override
     protected void showData(int limit, int offSet) {
+        isSearch=false;
         numberData = new ProductDAO().getNumProuduct();
         ProductDAO pdao=new ProductDAO();
         pageNumber= (offSet+8)/8;
         lb_pageNumber.setText(String.valueOf(pageNumber));
-        productList = FXCollections.observableArrayList(pdao.selectALL1());
+        productList = pdao.selectALL1();
         if(offSet+8>=numberData)
             limit=numberData-offSet;
         int numberProduct=offSet+limit;
@@ -112,8 +254,13 @@ public class ProductController extends ItemController implements Initializable {
         btn_search.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+                isSearch=true;
                 productList.clear();
-                productSearchList = FXCollections.observableArrayList(new ProductDAO().searchName(txt_search.getText()));
+                if(choiceBox_sort.getValue().equals("Tìm theo tên"))
+                    productSearchList = new ProductDAO().search(txt_search.getText(),"productname");
+                else{
+                    productSearchList = new ProductDAO().search(txt_search.getText(), "productSKU");
+                }
                 clearData();
                 showSearchDate(8,0);
             }
@@ -146,7 +293,6 @@ public class ProductController extends ItemController implements Initializable {
     protected void showSearchDate(int limit, int offSet) {
         pageNumber= (offSet+8)/8;
         lb_pageNumber.setText(String.valueOf(pageNumber));
-        productSearchList = FXCollections.observableArrayList(new ProductDAO().searchName(txt_search.getText()));
         numberData = productSearchList.size();
         if(offSet+8>=numberData)
             limit=numberData-offSet;
@@ -252,6 +398,40 @@ public class ProductController extends ItemController implements Initializable {
             stage.show();
 
         });
+    }
+    protected void setUpMenuAdd(){
+        // Lấy dữ liệu category từ cơ sở dữ liệu
+        ResultSet rs = new CategoryDao().selectALL(0,0);
+        ArrayList<Category> categories = new ArrayList<>();
+        try {
+            while (rs.next())
+                categories.add(new Category(rs.getInt("categoryid"),rs.getString("Name"), rs.getInt("parent_id")));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        // Xử lý dữ liệu category để tạo cấu trúc menu nhiều cấp
+        Map<Integer, Menu> menuMap = createCategoryMenuStructure(categories);
+        // set sự kiện cho các menu và menuitem
+        // Thêm các mục menu vào MenuButton
+        for (Menu menu : menuMap.values()) {
+            menu.setOnAction(e -> {
+                lb_Category.setText(menu.getText());
+            });
+
+            // Lặp qua các MenuItem trong Menu
+            for (MenuItem menuItem : menu.getItems()) {
+                // Đặt sự kiện cho MenuItem
+                menuItem.setOnAction(e -> {
+                    // Xử lý sự kiện khi MenuItem được chọn
+                    lb_Category.setText(menuItem.getText());
+                });
+            }
+            menu.getItems();
+            mbCategory.getItems().add(menu);
+        }
+
+
     }
 }
 

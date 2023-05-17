@@ -23,6 +23,14 @@ public class Staff {
     private float salary;
     private LocalDate monthSalary;
 
+    public Staff(String fullName, LocalDate joinDate,int id, String position, String avatarLink) {
+        this.id = id;
+        this.fullName = fullName;
+        this.position = position;
+        this.joinDate = joinDate;
+        this.avatarLink = avatarLink;
+    }
+
     public Staff(int id, String location, String phone, String email, String avatarLink, float basicSalary, String position) {
         this.id = id;
         this.position = position;

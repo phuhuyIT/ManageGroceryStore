@@ -1,5 +1,7 @@
 package Controller;
 
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
@@ -7,9 +9,13 @@ import javafx.scene.image.ImageView;
 
 public abstract class ItemController extends Pagination {
     protected static int currentItemID;
-
+    @FXML
+    protected Button btn_scanSKU;
+    @FXML
+    protected ImageView iv_scanSKU;
     public static int getCurrentItemID() {return currentItemID;}
     protected abstract void loadFXML(String fxmlPath);
+    protected abstract void search();
     protected void setRightLick(){
         //xử lý sự kiện chuột phải
         ContextMenu contextMenu  = new ContextMenu();

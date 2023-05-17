@@ -48,16 +48,13 @@ CREATE TABLE `products` (
   categoryid INT DEFAULT NULL,
   costPrice FLOAT DEFAULT 0 CHECK (`costPrice` >= 0),
   sellingPrice FLOAT DEFAULT 0 CHECK (`sellingPrice` >= 0),
-  productSKU varchar(100) DEFAULT NULL UNIQUE,
   thumbnail varchar(200) DEFAULT NULL,
   CONSTRAINT `fk_products_category` FOREIGN KEY (`categoryid`) REFERENCES `productCategories`(`categoryid`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_products_suppliers` FOREIGN KEY (sid) REFERENCES `suppliers`(`sid`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 
-
-
 CREATE TABLE PRODUCTBATCH(
-	BATCHID int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	productSKU varchar(100) NOT NULL PRIMARY KEY,
 	`pid` int(11),
 	importDate DATETIME DEFAULT CURRENT_TIMESTAMP,
 	manufractureDate DATE NOT NULL,
@@ -121,9 +118,13 @@ CREATE TABLE monthly_salary (
 CREATE TABLE bill (
   billid INT(11) NOT NULL AUTO_INCREMENT,
   billCode VARCHAR(50) NOT NULL UNIQUE,
+customerID INT(11),
   purchaseDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    staffID INT(11),
   revenue FLOAT(10,1) DEFAULT 0,
-  PRIMARY KEY (billID)
+  PRIMARY KEY (billID),
+    FOREIGN KEY (CUSTOMERID) REFERENCES CUSTOMERS(CID),
+  FOREIGN KEY (STAFFID) REFERENCES STAFF(ID)
 )ENGINE=InnoDB;
 -- tạo event để xóa bill sau 30 ngày
 SET GLOBAL event_scheduler = ON;
@@ -141,17 +142,19 @@ CREATE TABLE detailBill (
   id INT(11) NOT NULL AUTO_INCREMENT,
   billID INT(11),
   productID INT(11),
-  customerID INT(11),
   currentPrice INT(11),
-  staffID INT(11),
   quantity INT(11) CHECK( Quantity>0),
   PRIMARY KEY (id),
   FOREIGN KEY (billID) REFERENCES BILL(billID),
-  FOREIGN KEY (PRODUCTID) REFERENCES PRODUCTS(PID),
-  FOREIGN KEY (CUSTOMERID) REFERENCES CUSTOMERS(CID),
-  FOREIGN KEY (STAFFID) REFERENCES STAFF(ID)
+  FOREIGN KEY (PRODUCTID) REFERENCES PRODUCTS(PID)
 )ENGINE=InnoDB;
 
+create table verify_mail(
+	id INT auto_increment primary key,
+    mail VARCHAR(100) NOT NULL,
+    otp VARCHAR(10) NOT NULL,
+	created_at timestamp default current_timestamp
+)ENGINE=InnoDB;
 -- test query
 
 CALL getTop5StaffRevenues();
@@ -192,12 +195,11 @@ ORDER BY b.billID ASC;
 SELECT THUMBNAIL, PRODUCTNAME, Categoryid, p.Pid, COSTPRICE, SELLINGPRICE, PRODUCTSKU, manufractureDate, expirationDate,SID  FROM products p JOIN productbatch pb On p.pid=pb.pid;  
 
 SELECT pid FROM products WHERE pid BETWEEN 26 AND 80;
-create table verify_mail(
-	id INT auto_increment primary key,
-    mail VARCHAR(100) NOT NULL,
-    otp VARCHAR(10) NOT NULL,
-	created_at timestamp default current_timestamp
-);
+SELECT COUNT(*) FROM suppliers;
+select fullname, location, phone from suppliers where sid=?;
+SELECT suppliercode AS SupplierCode, fullname AS Name, location as Address, phone AS Phone FROM suppliers;
+SELECT suppliercode AS SupplierCode, fullname AS Name, location as Address, phone AS Phone FROM suppliers WHERE fullname LIKE searchTxt OR location LIKE searchTxt OR suppliercode LIKE searchTxt OR phone LIKE searchTxt;
 
 
+SELECT * FROM products p join productcategories pc on p.categoryid=pc.categoryid  WHERE MATCH(pc.name) AGAINST('"Thực phẩm đóng hộp"')
 

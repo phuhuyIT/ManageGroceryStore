@@ -1,29 +1,16 @@
 CREATE FULLTEXT INDEX idx_product_name 
 ON products(`productname`);
-CREATE FULLTEXT INDEX idx_product_SKU 
-ON products(`productSKU`);
-
--- trigger xóa lịch sử lương của nhân viên khi người đó cúcs
-DELIMITER //
-CREATE TRIGGER delete_monthly_salary 
-BEFORE DELETE ON staff
-FOR EACH ROW
-BEGIN
-    DELETE FROM monthly_salary WHERE staff_id = OLD.id;
-END //
-DELIMITER ;
-
-
-
--- trigger xóa detailBill khi 1 bill bị xóa
-DELIMITER //
-CREATE TRIGGER delete_detailBill
-BEFORE DELETE ON bill
-FOR EACH ROW
-BEGIN
-    DELETE FROM detailBill WHERE billID = OLD.billID;
-END //
-DELIMITER ;
+CREATE FULLTEXT INDEX idx_fullName 
+ON customers (fullName);
+CREATE FULLTEXT INDEX idx_citizenIDCard 
+ON customers (citizenIDNumber);
+CREATE FULLTEXT INDEX idx_sfullName 
+ON staff (fullName);
+CREATE FULLTEXT INDEX idx_scitizenIDCard 
+ON staff (staffIDCard);
+ALTER TABLE productbatch ADD FULLTEXT INDEX idx_productbatch_sku (productSKU);
+CREATE FULLTEXT INDEX idx_name
+ON productcategories (name);
 
 -- trigger tự động tính tổng doanh thu của bill sau khi tạo detailbill tương ứng
 DELIMITER //

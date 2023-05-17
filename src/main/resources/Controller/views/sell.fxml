@@ -219,5 +219,11 @@
             <Image url="@../image/printer.png" />
          </image>
       </ImageView>
+      <ImageView fx:id="iv_scanSKU" fitHeight="46.0" fitWidth="44.0" layoutX="420.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/barcode-scanner.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btn_scanSKU" layoutX="420.0" layoutY="6.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="44.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
    </children>
 </AnchorPane>

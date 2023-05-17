@@ -237,5 +237,12 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
+      <Button fx:id="btn_search" layoutX="17.0" layoutY="85.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="52.0" style="-fx-background-color: transparent;" />
+      <ImageView fx:id="iv_scanSKU" fitHeight="30.0" fitWidth="37.0" layoutX="285.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/barcode-scanner.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btn_scanSKU" layoutX="284.0" layoutY="85.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="35.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
    </children>
 </AnchorPane>

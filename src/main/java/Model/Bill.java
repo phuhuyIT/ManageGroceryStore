@@ -1,6 +1,8 @@
 package Model;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Bill {
@@ -12,7 +14,7 @@ public class Bill {
     private int productID;
     private int customerID;
     private int staffID;
-    private String productList;
+    private List productList;
     private String customerName;
     private String staffName;
     private int sequence;
@@ -26,11 +28,11 @@ public class Bill {
     }
 
     private int purchaseQuantity;
-    public String getProduct() {
+    public List getProductList() {
         return productList;
     }
 
-    public void setProduct(String product) {
+    public void setProductList(List<Product> product) {
         this.productList = product;
     }
 
@@ -47,7 +49,7 @@ public class Bill {
         return Objects.hash(billID);
     }
 
-    public Bill(int sequence, int billID, String billCode, Timestamp purchaseDate, String staffName, String customerName, String revenue , String product) {
+    public Bill(int sequence, int billID, String billCode, Timestamp purchaseDate, String staffName, String customerName, String revenue , ArrayList<Product> product) {
         this.billID = billID;
         this.billCode = billCode;
         this.purchaseDate = purchaseDate;
@@ -82,6 +84,25 @@ public class Bill {
         this.purchaseDate = purchaseDate;
         this.revenue = revenue;
         this.sequence=sequence;
+    }
+
+    @Override
+    public String toString() {
+        return "Bill{" +
+                "billID=" + billID +
+                ", billCode='" + billCode + '\'' +
+                ", purchaseDate=" + purchaseDate +
+                ", revenue='" + revenue + '\'' +
+                ", detailBillID=" + detailBillID +
+                ", productID=" + productID +
+                ", customerID=" + customerID +
+                ", staffID=" + staffID +
+                ", productList=" + productList +
+                ", customerName='" + customerName + '\'' +
+                ", staffName='" + staffName + '\'' +
+                ", sequence=" + sequence +
+                ", purchaseQuantity=" + purchaseQuantity +
+                '}';
     }
 
     public String getBillCode() {
