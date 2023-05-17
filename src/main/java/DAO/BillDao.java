@@ -1,10 +1,14 @@
 package DAO;
 
+import Model.Category;
 import Model.InventoryAlert;
 import DatabaseConnection.ConnectionFactory;
 import Model.Bill;
+import Model.Product;
 
 import java.sql.*;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 public class BillDao implements DaoInterface <Bill> {
     private Connection con = null;
@@ -13,6 +17,7 @@ public class BillDao implements DaoInterface <Bill> {
     private ResultSet rs1=null;
     private Statement stmt1=null;
     private ResultSet rs = null;
+    DecimalFormat formattera = new DecimalFormat("#,###");
     public BillDao() {
         try {
             con = new ConnectionFactory().getConnection();
@@ -99,6 +104,40 @@ public class BillDao implements DaoInterface <Bill> {
             throw new RuntimeException(e);
         }
         return  rs;
+    }
+    public ArrayList<Bill> selectALL1() {
+        String sql = "SELECT * FROM bill";
+        ArrayList<Bill> billList = new ArrayList<>();
+        try {
+            pstmt = con.prepareStatement(sql);
+            ResultSet rs = pstmt.executeQuery();
+            int i = 1;
+            while (rs.next()){
+                int sequence = i;i++;
+                ArrayList<Product> productList = new ArrayList<>();
+                String query ="SELECT * FROM billdetails where billid=?";
+                PreparedStatement pstmt2= con.prepareStatement(query);
+                pstmt2.setInt(1,rs.getInt("billid"));
+                ResultSet rs2 = pstmt2.executeQuery();
+                if(rs2.next()){
+                    String billCode = rs2.getString("billCode");
+                    Timestamp createdDate = rs2.getTimestamp("purchaseDate");
+                    Float revenue = rs2.getFloat("revenue");
+                    int billID = rs2.getInt("billID");
+                    String staffName = rs2.getString("staffName");
+                    String customerName=rs2.getString("customerName");
+                    productList.add(new Product(rs2.getString("PRODUCTNAME"),rs2.getDouble("currentPrice"),rs2.getInt("Quantity"), rs2.getString("productRevenue")));
+
+                    while (rs2.next()){
+                        productList.add(new Product(rs2.getString("PRODUCTNAME"),rs2.getDouble("currentPrice"),rs2.getInt("Quantity"), rs2.getString("productRevenue")));
+                    }
+                billList.add(new Bill(sequence,billID,billCode,createdDate, staffName,customerName,formattera.format(revenue),productList));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return billList;
     }
     public ResultSet getAllBill(){
         String query = "SELECT * FROM BILLDETAILS";

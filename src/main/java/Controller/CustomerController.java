@@ -1,6 +1,11 @@
 package Controller;
 
 import DAO.CustomerDAO;
+import DAO.ProductDAO;
+import Model.CameraApp;
+import Model.Customer;
+import Model.Product;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -37,15 +42,44 @@ public class CustomerController extends ItemController implements Initializable 
     private AnchorPane anchorPane_customer;
     @FXML
     private Label lb_pageNumber;
-    private String[] choice = {"A->Z" , "Z->A"};
+    @FXML
+    private Button btn_search;
+    private String[] choice = {"Tìm theo tên" , "Tìm theo số cccd"};
+    private ObservableList <Customer> customerSearchList;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Limit=8;
         offSet=0;
-        numberData = new CustomerDAO().getNumCustomer();
-
+        btn_scanSKU.setVisible(false);
+        iv_scanSKU.setVisible(false);
+        choiceBox.setValue("Tìm theo tên");
+        choiceBox.getItems().addAll(choice);
         showData(Limit,offSet);
+        btn_scanSKU.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                try {
+                    CameraApp barCodeScanner= new CameraApp();
+                    barCodeScanner.setTextFieldForCustomer(null,txt_search,null,null, null);
+                    barCodeScanner.start();
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+        choiceBox.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                if(choiceBox.getValue().equals("Tìm theo số cccd")){
+                    btn_scanSKU.setVisible(true);
+                    iv_scanSKU.setVisible(true);
+                }else {
+                    btn_scanSKU.setVisible(false);
+                    iv_scanSKU.setVisible(false);
+                }
 
+            }
+        });
         btn_add_user.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -61,8 +95,7 @@ public class CustomerController extends ItemController implements Initializable 
         });
         setActionForBtn();
         setRightLick();
-
-
+        search();
     }
     @Override
     public void loadFXML(String fxmlPath) {
@@ -83,7 +116,7 @@ public class CustomerController extends ItemController implements Initializable 
             AnchorPane ap = (AnchorPane) anchorPane_customer.lookup("#CustomerBox_"+(i+1));
             ap.setOnContextMenuRequested(event -> {
                 AnchorPane btn= (AnchorPane) event.getSource();
-                String id= (String)btn.getUserData();
+                String id= String.valueOf(btn.getUserData());
                 currentItemID = Integer.parseInt(id);
                 contextMenu.show(ap, event.getScreenX(), event.getScreenY());
                 event.consume(); // đánh dấu sự kiện này đã được xử lý
@@ -115,10 +148,11 @@ public class CustomerController extends ItemController implements Initializable 
 
     @Override
     public void showData(int limit, int offSet){
+        isSearch=false;
+        numberData = new CustomerDAO().getNumCustomer();
         pageNumber= (offSet+8)/8;
-        System.out.println("offset: "+offSet+" pn: "+pageNumber );
         lb_pageNumber.setText(String.valueOf(pageNumber));
-        choiceBox.getItems().addAll(choice);
+
         CustomerDAO customers= new CustomerDAO();
         ResultSet rs=customers.selectALL(Limit,offSet);
         try {
@@ -171,9 +205,46 @@ public class CustomerController extends ItemController implements Initializable 
             }
 
     }
+    public void search(){
+        btn_search.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                //customerList.clear();
+                isSearch=true;
+                if(choiceBox.getValue().equals("Tìm theo tên"))
+                    customerSearchList = FXCollections.observableArrayList(new CustomerDAO().search(txt_search.getText(),"fullname"));
 
+                else {
+                    customerSearchList = FXCollections.observableArrayList(new CustomerDAO().search(txt_search.getText(),"citizenIDNumber"));
+                }
+                clearData();
+                showSearchDate(8,0);
+            }
+        });
+    }
     @Override
     protected void showSearchDate(int limit, int offSet) {
-
+        pageNumber= (offSet+8)/8;
+        lb_pageNumber.setText(String.valueOf(pageNumber));
+        numberData = customerSearchList.size();
+        if(offSet+8>=numberData)
+            limit=numberData-offSet;
+        for (int i=offSet, z=0;i<numberData;i++,z++){
+            AnchorPane anchorPane = (AnchorPane) anchorPane_customer.lookup("#CustomerBox_"+(z+1));
+            Label customerName =(Label) anchorPane.lookup("#nameCustomer"+(z+1));
+            ImageView customerAvatar =(ImageView) anchorPane.lookup("#imageCustomer"+(z+1));
+            Label customerGender =(Label) anchorPane.lookup("#genderCustomer"+(z+1));
+            Label customerPhone =(Label) anchorPane.lookup("#phoneCustomer"+(z+1));
+            String img  = customerSearchList.get(i).getAvatarLink();
+            anchorPane.setUserData(customerSearchList.get(i).getCustomersId());
+            if(img!=null) {
+                Image image1 = new Image(String.valueOf(img));
+                customerAvatar.setImage(image1);
+            }
+            customerName.setText(customerSearchList.get(i).getFullName());
+            anchorPane.setUserData(customerSearchList.get(i).getCustomersId());
+            customerGender.setText(String.valueOf(customerSearchList.get(i).getGender()));
+            customerPhone.setText(String.valueOf(customerSearchList.get(i).getPhone()));
+        }
     }
 }

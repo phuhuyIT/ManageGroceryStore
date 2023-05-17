@@ -21,6 +21,7 @@ public abstract class Pagination {
     private Button btn_nextPage;
     protected int pageNumber;
     protected int numberData;
+    protected boolean isSearch = false;
 
     protected void setActionForBtn(){
         btn_previousPage.setOnAction(new EventHandler<ActionEvent>() {
@@ -31,8 +32,13 @@ public abstract class Pagination {
                 }
                 else{
                     offSet-=8;
-                    clearData();
-                    showData(Limit,offSet);
+                    if(isSearch==true){
+                        clearData();
+                        showSearchDate(Limit,offSet);
+                    }else {
+                        clearData();
+                        showData(Limit,offSet);
+                    }
                 }
             }
         });
@@ -44,8 +50,13 @@ public abstract class Pagination {
                 if(offSet>=numberData){
                     InventoryAlert.errorAlert("Error","This is the last page");
                 }else {
-                    clearData();
-                    showData(Limit,offSet);
+                    if(isSearch==true){
+                        clearData();
+                        showSearchDate(Limit,offSet);
+                    }else {
+                        clearData();
+                        showData(Limit,offSet);
+                    }
                 }
 
             }
@@ -53,6 +64,7 @@ public abstract class Pagination {
         btn_refresh.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+                isSearch=false;
                 offSet=0;
                 Limit=8;
                 clearData();

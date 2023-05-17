@@ -2,9 +2,11 @@ package DAO;
 
 import Model.InventoryAlert;
 import DatabaseConnection.ConnectionFactory;
+import Model.Product;
 import Model.Staff;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 import static Model.InventoryAlert.errorAlert;
 import static Model.InventoryAlert.informationAlert;
@@ -53,7 +55,7 @@ public class StaffDAO implements DaoInterface<Staff>{
     public int delete(int id) throws SQLException {
         String deleteProduct= "DELETE FROM staff\n" +
                 "WHERE id = ?\n" +
-                "AND id NOT IN (SELECT DISTINCT staffID FROM detailbill);";
+                "AND id NOT IN (SELECT DISTINCT staffID FROM bill);";
         int result;
         try {
             pstmt = con.prepareStatement(deleteProduct);
@@ -74,6 +76,7 @@ public class StaffDAO implements DaoInterface<Staff>{
         String updateCustomerDetails= "UPDATE staff SET position=?, phone=?, EMAIL=?,avatarLink=?,location=?,basicSalary=? WHERE  id= ?";
         int result;
         try {
+            System.out.println(staff.getAvatarLink());
             pstmt = con.prepareStatement(updateCustomerDetails);
             pstmt.setString(1, staff.getPosition());
             pstmt.setString(2, staff.getPhone());
@@ -234,5 +237,22 @@ public class StaffDAO implements DaoInterface<Staff>{
             throw new RuntimeException(e);
         }
         return rs;
+    }
+    public ArrayList<Staff> search(String searchValue, String searchFilter){
+        ArrayList<Staff> staffSearchList= new ArrayList<>();
+        String fullTextSearches="SELECT FULLNAME,joinDate,ID,POSITION,avatarLink\n" +
+                "FROM staff\n" +
+                "WHERE MATCH("+searchFilter+") AGAINST (?);\n";
+        searchValue = "\"" + searchValue.trim() + "\"";
+        try {
+            pstmt = con.prepareStatement(fullTextSearches);
+            pstmt.setString(1,searchValue);
+            rs = pstmt.executeQuery();
+            while (rs.next())
+                staffSearchList.add(new Staff(rs.getString("FULLNAME"), rs.getDate("joinDate").toLocalDate(), rs.getInt("ID"),rs.getString("POSITION"),rs.getString("avatarLink")));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return staffSearchList;
     }
 }

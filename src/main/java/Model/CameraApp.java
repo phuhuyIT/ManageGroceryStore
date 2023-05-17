@@ -80,8 +80,8 @@ public class CameraApp extends Thread{
                 Result finalResult = result;
                 Platform.runLater(() -> {
                     String[] parts =splitString(finalResult.getText());
-                    txt_fullNameCustomer.setText(parts[1]);
                     txt_IndentifierCustomer.setText(parts[0]);
+                    txt_fullNameCustomer.setText(parts[1]);
                     cb_customerGender.setValue(parts[3]);
                     dp_customerBirthdate.setValue(LocalDate.parse(parts[2]));
                     txt_locationCustomer.setText(parts[4]);

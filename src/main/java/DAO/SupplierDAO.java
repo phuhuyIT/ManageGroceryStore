@@ -66,7 +66,7 @@ public class SupplierDAO extends InventoryAlert implements DaoInterface <Supplie
                     supplierCode="sup"+scode;
                 }
             }
-            String q = "INSERT INTO suppliers VALUES(null,?,?,?,?)";
+            String q = "INSERT INTO suppliers (suppliercode, fullname, location,phone) VALUES(?,?,?,?)";
             pstmt = con.prepareStatement(q);
             pstmt.setString(1, supplierCode);
             pstmt.setString(2, supplier.getFullName());

@@ -7,12 +7,32 @@ public class Category {
     private int id;
     private String name;
     private String description;
-    private List<Product> productList;
+    private ArrayList<Product> productList;
+    private int parentId;
+
+    public int getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(int parentId) {
+        this.parentId = parentId;
+    }
 
     public Category() {
     }
+    public Category(int ID, String name, int parentId) {
+        this.name=name;
+        this.parentId = parentId;
+        this.id=ID;
+    }
+    public Category(int ID, String name, ArrayList<Product> productList, int parentId) {
+        this.productList = productList;
+        this.name=name;
+        this.parentId = parentId;
+        this.id=ID;
+    }
 
-    public Category(int id, String name, String description, List<Product> productList) {
+    public Category(int id, String name, String description, ArrayList<Product> productList) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -43,11 +63,11 @@ public class Category {
         this.description = description;
     }
 
-    public List<Product> getProductList() {
+    public ArrayList<Product> getProductList() {
         return productList;
     }
 
-    public void setProductList(List<Product> productList) {
+    public void setProductList(ArrayList<Product> productList) {
         this.productList = productList;
     }
 }

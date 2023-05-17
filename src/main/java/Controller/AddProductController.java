@@ -2,13 +2,16 @@ package Controller;
 
 import DAO.CategoryDao;
 import DAO.ProductDAO;
+import DAO.StaffDAO;
 import DAO.SupplierDAO;
 import Model.CameraApp;
+import Model.Category;
 import Model.Product;
 import Model.Supplier;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
@@ -22,15 +25,16 @@ import javafx.util.StringConverter;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ResourceBundle;
+import java.util.*;
 
-public class AddProductController extends DetailProductController implements Initializable {
-    @FXML
-    private MenuButton mbCategory;
-    @FXML
-    private Label lb_Category;
+import static Model.InventoryAlert.errorAlert;
+import static Model.InventoryAlert.informationAlert;
+
+public class AddProductController extends ProductController implements Initializable {
     @FXML
     private DatePicker dp_addProductManufractureDate;
 
@@ -55,9 +59,6 @@ public class AddProductController extends DetailProductController implements Ini
     private TextField tf_addProductSupplierLocation;
     @FXML
     private TextField tf_addProductSupplierPhone;
-
-    @FXML
-    private ChoiceBox cb_addProductCategory;
     @FXML
     private TextField tf_addProductQuantity;
     @FXML
@@ -85,7 +86,6 @@ public class AddProductController extends DetailProductController implements Ini
         fileChooser.setInitialDirectory(userDirectory);
         filePath = fileChooser.showOpenDialog(stage);
 
-
         //cập nhật ảnh mới
         Image image = new Image(String.valueOf(filePath));
         image_product.setImage(image);
@@ -101,85 +101,7 @@ public class AddProductController extends DetailProductController implements Ini
 //                "Hóa phẩm và chất tẩy rửa","Đồ chơi và quà tặng","Thuốc và vật dụng y tế");
         setBtnBackAction();
 
-        //Menu cấp 1
-        Menu foodRefesh = new Menu("Thực phẩm tươi sống");
-        Menu processFood = new Menu("Thực phẩm chế biến sẵn");
-        MenuItem vegestable = new MenuItem("Rau củ quả");
-        Menu drink = new Menu("Đồ uống");
-        Menu icecream = new Menu("Kem");
-        Menu houseHold = new Menu("Hàng gia dụng");
-        Menu personalItem = new Menu("Đồ dùng cá nhân");
-        Menu officeItem = new Menu("Vật dụng học tập và văn phòng phẩm");
-        Menu chemicalItem = new Menu("Hóa phẩm và chất tẩy rửa");
-        Menu toy = new Menu("Đồ chơi và quà tặng");
-        Menu medical = new Menu("Thuốc và vật dụng y tế");
-
-        //set font size
-        foodRefesh.setStyle("-fx-font-size : 18px");
-        processFood.setStyle("-fx-font-size : 18px");
-        houseHold.setStyle("-fx-font-size : 18px");
-        personalItem.setStyle("-fx-font-size : 18px");
-        officeItem.setStyle("-fx-font-size : 18px");
-        chemicalItem.setStyle("-fx-font-size : 18px");
-        toy.setStyle("-fx-font-size : 18px");
-        medical.setStyle("-fx-font-size : 18px");
-        vegestable.setStyle("-fx-font-size : 18px");
-        drink.setStyle("-fx-font-size : 18px");
-        icecream.setStyle("-fx-font-size : 18px");
-
-        //Menu cấp 2
-        MenuItem meat = new MenuItem("Thịt");
-        MenuItem seaFood = new MenuItem("Hải sản");
-        meat.setOnAction(event -> {
-            lb_Category.setText(meat.getText());
-        });
-        seaFood.setOnAction(event -> {
-            lb_Category.setText(seaFood.getText());
-        });
-        meat.setStyle("-fx-font-size : 18px");
-        seaFood.setStyle("-fx-font-size : 18px");
-
-        vegestable.setOnAction(event -> {
-            lb_Category.setText(vegestable.getText());
-        });
-
-
-        MenuItem hotDrink = new MenuItem("Đồ uống nóng");
-        MenuItem coldDrink = new MenuItem("Đồ uống lạnh");
-        //set font size
-        hotDrink.setStyle("-fx-font-size : 18px");
-        coldDrink.setStyle("-fx-font-size : 18px");
-        //set sự kiện
-        hotDrink.setOnAction(event -> {
-            lb_Category.setText(hotDrink.getText());
-        });
-        coldDrink.setOnAction(event -> {
-            lb_Category.setText(coldDrink.getText());
-        });
-
-        MenuItem boxCream = new MenuItem("Kem hộp");
-        MenuItem cupCream = new MenuItem("Kem cốc");
-        //set font size
-        boxCream.setStyle("-fx-font-size : 18px");
-        cupCream.setStyle("-fx-font-size : 18px");
-        //set sự kiện
-        boxCream.setOnAction(event -> {
-            lb_Category.setText(boxCream.getText());
-        });
-        cupCream.setOnAction(event -> {
-            lb_Category.setText(cupCream.getText());
-        });
-
-        mbCategory.getItems().addAll(foodRefesh,processFood,houseHold,personalItem,medical,officeItem,chemicalItem,toy,vegestable,drink,icecream);
-        foodRefesh.getItems().addAll(meat,seaFood);
-        drink.getItems().addAll(hotDrink,coldDrink);
-        icecream.getItems().addAll(boxCream,cupCream);
-
-
-
-
-
-
+        setUpMenuAdd();
         btn_save.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -199,6 +121,25 @@ public class AddProductController extends DetailProductController implements Ini
             }
         });
     }
+    protected void setBtnBackAction(){
+        btn_back.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("views/products.fxml"));
+                Node node = null;
+                try {
+                    node = loader.load();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                pane.getChildren().add(node);
+            }
+        });
+    }
+
+
+
+
     private void setDatePickerConverter(DatePicker datePicker) {
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
@@ -216,7 +157,9 @@ public class AddProductController extends DetailProductController implements Ini
         datePicker.setConverter(converter);
     }
     private void addProduct(){
-        if(tf_addProductName.getText().isEmpty()||cb_addProductCategory.getValue()==null||tf_addProductQuantity.getText().isEmpty()||
+        if(filePath==null)
+            filePath = new File("D:/java/ManageGroceryStore/src/main/resources/Controller/image/PHMart.jpg");
+        if(tf_addProductName.getText().isEmpty()||lb_Category.getText()==null||tf_addProductQuantity.getText().isEmpty()||
         tf_addProductUPC.getText().isEmpty()||dp_addProductManufractureDate.getValue()==null||dp_addProductExpireDate.getValue()==null||
                 tf_addProductCostPrice.getText().isEmpty()||tf_addProductSellingPrice.getText().isEmpty()){
             errorAlert("Empty field","PLEASE FILL IN ALL NECESSARY INFORMATION!");
@@ -226,7 +169,7 @@ public class AddProductController extends DetailProductController implements Ini
             int sid = supplierDAO.insert(supplier);
 
             CategoryDao categoryDao= new CategoryDao();
-            int categoryId =categoryDao.getCategoryIDByName(cb_addProductCategory.getValue().toString());
+            int categoryId =categoryDao.getCategoryIDByName(lb_Category.getText());
             ProductDAO productdao = new ProductDAO();
             Product product = new Product(tf_addProductName.getText(),categoryId,tf_addProductUPC.getText(),filePath.toString(),sid,Double.parseDouble(tf_addProductCostPrice.getText()),Double.parseDouble(tf_addProductSellingPrice.getText()),
                     dp_addProductManufractureDate.getValue(),dp_addProductExpireDate.getValue(),Integer.parseInt(tf_addProductQuantity.getText()));

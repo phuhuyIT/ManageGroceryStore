@@ -31,7 +31,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-public class DetailProductController extends InventoryAlert implements Initializable {
+public class DetailProductController extends ProductController implements Initializable {
     @FXML
     private AnchorPane pane;
     @FXML
@@ -88,8 +88,6 @@ public class DetailProductController extends InventoryAlert implements Initializ
     @Override
     public void initialize (URL url, ResourceBundle resourceBundle)  {
         cb_mfgDate.setStyle("-fx-font-size  :18px");
-        cb_detailProductCategory.getItems().addAll("Thực phẩm tươi sống","Thực phẩm chế biến sẵn","Hàng gia dụng", "Đồ dùng cá nhân","Vật dụng học tập và văn phòng phẩm",
-                "Hóa phẩm và chất tẩy rửa","Đồ chơi và quà tặng","Thuốc và vật dụng y tế");
        // setBtnBackAction();
 
         btn_update.setOnAction(new EventHandler<ActionEvent>() {
@@ -99,27 +97,16 @@ public class DetailProductController extends InventoryAlert implements Initializ
             }
         });
         showProduct();
+        setUpMenuAdd();
     }
-    protected void setBtnBackAction(){
-        btn_back.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("views/products.fxml"));
-                Node node = null;
-                try {
-                    node = loader.load();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                pane.getChildren().add(node);
-            }
-        });
-    }
+
     private void updateDetailProduct(){
         int categoryID=new CategoryDao().getCategoryIDByName(cb_detailProductCategory.getValue().toString());
+        if(filePath==null)
+            filePath = new File("D:/java/ManageGroceryStore/src/main/resources/Controller/image/PHMart.jpg");
+        System.out.println(filePath.toString());
         Product product=new Product(lb_detailProductName.getText(),ProductController.getCurrentItemID(),categoryID,Integer.parseInt(lb_detailProductQuantity.getText()),
-                filePath.toString(), LocalDate.parse(cb_mfgDate.getValue().toString()),LocalDate.parse(lb_expDate.getText()),
-                Double.parseDouble(tf_detailProductCostPrice.getText()),Double.parseDouble(tf_detailProductSellingPrice.getText()));
+                filePath.toString(), Double.parseDouble(tf_detailProductCostPrice.getText()),Double.parseDouble(tf_detailProductSellingPrice.getText()));
         new ProductDAO().update(product);
     }
     protected void showProduct(){
@@ -134,7 +121,7 @@ public class DetailProductController extends InventoryAlert implements Initializ
                 System.out.println("CUR productID: "+ProductController.getCurrentItemID());
                 lb_detailProductName.setText(rs.getString("PRODUCTNAME"));
                 int categoryID=rs.getInt("Categoryid");
-                cb_detailProductCategory.setValue(categoryDao.getNameByCategoryID(categoryID));
+                lb_Category.setText(categoryDao.getNameByCategoryID(categoryID));
                 lb_detailProductQuantity.setText(String.valueOf(product.getQuantity(rs.getInt("P.Pid"))));
                 tf_detailProductCostPrice.setText(String.valueOf(rs.getDouble("COSTPRICE")));
                 tf_detailProductSellingPrice.setText(String.valueOf(rs.getDouble("SELLINGPRICE")));

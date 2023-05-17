@@ -1,12 +1,12 @@
 DELIMITER //
 CREATE PROCEDURE getTop5StaffRevenues()
 BEGIN
-  SELECT STAFF.fullname, SUM(bill.revenue) as total_revenue
-  FROM detailBill
-  JOIN bill ON detailBill.billID = bill.billID
-  JOIN STAFF ON detailBill.staffID = STAFF.ID
-  WHERE MONTH(bill.purchaseDate) = MONTH(CURDATE()) AND YEAR(bill.purchaseDate) = YEAR(CURDATE())
-  GROUP BY detailBill.staffID
+  SELECT s.fullname, SUM(b.revenue) as total_revenue
+  FROM bill b
+  JOIN detailbill db ON db.billID = b.billID
+  JOIN STAFF s ON b.staffID = s.ID
+  WHERE MONTH(b.purchaseDate) = MONTH(CURDATE()) AND YEAR(b.purchaseDate) = YEAR(CURDATE())
+  GROUP BY b.staffID
   ORDER BY total_revenue DESC
   LIMIT 5;
 END//
@@ -15,13 +15,13 @@ DELIMITER ;
 DELIMITER //
 CREATE PROCEDURE top5CustomersRevenues()
 BEGIN
-  SELECT CUSTOMERS.FULLNAME, SUM(bill.revenue) AS revenue
-  FROM detailBill
-  JOIN CUSTOMERS ON CUSTOMERS.CID = detailBill.customerID
-  JOIN bill ON bill.billID = detailBill.billID
-  WHERE MONTH(bill.purchaseDate) = MONTH(CURDATE()) AND YEAR(bill.purchaseDate) = YEAR(CURDATE())
-  GROUP BY detailBill.customerID
-  ORDER BY revenue DESC
+  SELECT c.FULLNAME, SUM(b.revenue) AS revenue
+  FROM bill b
+  JOIN CUSTOMERS c ON c.CID = b.customerID
+  JOIN detailbill db ON b.billID = db.billID
+  WHERE MONTH(b.purchaseDate) = MONTH(CURDATE()) AND YEAR(b.purchaseDate) = YEAR(CURDATE())
+  GROUP BY b.customerID
+  ORDER BY b.revenue DESC
   LIMIT 5;
 END//
 DELIMITER ;
@@ -39,7 +39,7 @@ BEGIN
   LIMIT 5;
 END //
 DELIMITER ;
-// thêm data cho bảng products
+-- thêm data cho bảng products
 DELIMITER //
 CREATE PROCEDURE insert_products()
 BEGIN
@@ -48,17 +48,15 @@ BEGIN
   DECLARE category_id INT;
   DECLARE cost_price FLOAT;
   DECLARE selling_price FLOAT;
-  DECLARE product_sku VARCHAR(100);
 DECLARE supplierID INT;
   WHILE i <= 10000 DO
     SET product_name = CONCAT('Product ', i);
     SET category_id = FLOOR((i - 1) / 9) + 1;
     SET cost_price = i * 1000;
     SET selling_price = i * 1500;
-    SET product_sku = CONCAT('SKU', i);
     SET supplierID = FLOOR((i - 1) / 39) + 1;
-    INSERT INTO products (productname, sid, categoryid, costPrice, sellingPrice, productSKU)
-    VALUES (product_name, supplierID, category_id, cost_price, selling_price, product_sku);
+    INSERT INTO products (productname, sid, categoryid, costPrice, sellingPrice)
+    VALUES (product_name, supplierID, category_id, cost_price, selling_price);
     
     SET i = i + 1;
   END WHILE;

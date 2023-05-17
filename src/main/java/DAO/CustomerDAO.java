@@ -2,8 +2,13 @@ package DAO;
 import Model.InventoryAlert;
 import Model.Customer;
 import DatabaseConnection.ConnectionFactory;
+import Model.Product;
+import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class CustomerDAO extends InventoryAlert implements DaoInterface <Customer>{
     Connection con = null;
@@ -49,7 +54,7 @@ public class CustomerDAO extends InventoryAlert implements DaoInterface <Custome
     public int delete(int cid) {
         String deleteCustomerDetails= "DELETE FROM customers\n" +
                 "WHERE cid = ?\n" +
-                "AND cid NOT IN (SELECT DISTINCT customerID FROM detailbill);";
+                "AND cid NOT IN (SELECT DISTINCT customerID FROM bill);";
         int result;
         try {
             pstmt = con.prepareStatement(deleteCustomerDetails);
@@ -161,5 +166,28 @@ public class CustomerDAO extends InventoryAlert implements DaoInterface <Custome
             throw new RuntimeException(e);
         }
         return rs;
+    }
+    public ArrayList<Customer> search(String searchValue, String searchFilter){
+        ArrayList<Customer> customerSearchList= new ArrayList<>();
+        String fullTextSearches="SELECT FULLNAME,GENDER,cid,PHONE,AVATARLINK\n" +
+                "FROM customers\n" +
+                "WHERE MATCH("+searchFilter+") AGAINST (?);\n";
+        searchValue = "\"" + searchValue.trim() + "\"";
+        try {
+            pstmt = con.prepareStatement(fullTextSearches);
+            pstmt.setString(1,searchValue);
+            rs = pstmt.executeQuery();
+            while (rs.next()){
+                String gender;
+                if (0 != rs.getInt("GENDER")) {
+                    gender= "Nữ";
+                }else gender="Nam";
+                customerSearchList.add(new Customer(rs.getString("fullname"), gender, rs.getInt("cid"),rs.getString("PHONE"),rs.getString("AVATARLINK")));
+
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return customerSearchList;
     }
 }
