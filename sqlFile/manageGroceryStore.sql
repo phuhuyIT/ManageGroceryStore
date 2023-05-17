@@ -29,6 +29,7 @@ CREATE TABLE `suppliers` (
 
 
 
+
 CREATE TABLE productCategories (
     categoryid INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
@@ -202,4 +203,5 @@ SELECT suppliercode AS SupplierCode, fullname AS Name, location as Address, phon
 
 
 SELECT * FROM products p join productcategories pc on p.categoryid=pc.categoryid  WHERE MATCH(pc.name) AGAINST('"Thực phẩm đóng hộp"')
+
 

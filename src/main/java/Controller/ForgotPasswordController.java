@@ -18,6 +18,7 @@ import java.util.ResourceBundle;
 
 
 public class ForgotPasswordController extends Application {
+    private static final UserDAO userDao = new UserDAO();
 
     public TextField email;
     public Button btnSendOTP;
@@ -44,15 +45,20 @@ public class ForgotPasswordController extends Application {
 
     private void btnSendOTP() {
         btnSendOTP.setOnAction(actionEvent -> {
+            if(userDao.getUserByEmail(email.getText()) == null){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Email don't exists");
+                alert.showAndWait();
+                return;
+            }
             MailConfig.sendOTP(email.getText());
         });
     }
 
     private void btnOk() {
         btnOk.setOnAction(actionEvent -> {
-            UserDAO userDAO = new UserDAO();
             Alert alert =  new Alert(Alert.AlertType.ERROR);
-            User user = userDAO.getUserByEmail(email.getText());
+            User user = userDao.getUserByEmail(email.getText());
             boolean isValid = EmailValidator.isValidEmail(email.getText());
             if (isValid) {
                 System.out.println("Email is valid.");
@@ -91,7 +97,7 @@ public class ForgotPasswordController extends Application {
                 return;
             }
 
-            userDAO.changePassword(user.getUsername(), newPassword.getText());
+            userDao.changePassword(user.getUsername(), newPassword.getText());
         });
     }
 
