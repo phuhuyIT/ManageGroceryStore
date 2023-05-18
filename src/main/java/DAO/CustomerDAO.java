@@ -190,4 +190,38 @@ public class CustomerDAO extends InventoryAlert implements DaoInterface <Custome
         }
         return customerSearchList;
     }
+    public String selectByPhone(String  phones) {
+        String result = null;
+        try {
+            String selectByID_query = "SELECT fullName FROM CUSTOMERS WHERE phone = ? LIMIT 1";
+            System.out.println("Phone: " +phones);
+            pstmt= con.prepareStatement(selectByID_query);
+            pstmt.setString(1,phones);
+            rs = pstmt.executeQuery();
+            if(rs.next())
+                result = rs.getString("fullName");
+            else
+                errorAlert("Failed","THIS CUSTOMER IS NOT FINDED");
+        }catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return result;
+    }
+    public int getID(String phones){
+        String query ="SELECT cid FROM customers WHERE phone = ?";
+        int cid=0;
+        try {
+            pstmt= con.prepareStatement(query);
+            pstmt.setString(1,phones);
+            rs = pstmt.executeQuery();
+            if(rs.next())
+                cid = rs.getInt("cid");
+            else
+                errorAlert("Failed","THIS CUSTOMER IS NOT FINDED");
+        }catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return cid;
+    }
 }

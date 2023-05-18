@@ -255,4 +255,18 @@ public class StaffDAO implements DaoInterface<Staff>{
         }
         return staffSearchList;
     }
+    public int getID(String fullname){
+        String query ="SELECT id FROM staff WHERE fullname = ?";
+        int cid=0;
+        try {
+            pstmt= con.prepareStatement(query);
+            pstmt.setString(1,fullname);
+            rs = pstmt.executeQuery();
+            if(rs.next())
+                cid = rs.getInt("id");
+        }catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return cid;
+    }
 }

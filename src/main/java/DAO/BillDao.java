@@ -1,6 +1,6 @@
 package DAO;
 
-import Model.Category;
+import Controller.LoginController;
 import Model.InventoryAlert;
 import DatabaseConnection.ConnectionFactory;
 import Model.Bill;
@@ -8,6 +8,7 @@ import Model.Product;
 
 import java.sql.*;
 import java.text.DecimalFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class BillDao implements DaoInterface <Bill> {
@@ -56,9 +57,11 @@ public class BillDao implements DaoInterface <Bill> {
         int result=0;
 
         try {
-            String addBill="INSERT INTO bill (billcode)"+"VALUE(?)";
+            String addBill="INSERT INTO bill (billcode, customerID, staffID)"+"VALUE(?,?,?)";
             pstmt = con.prepareStatement(addBill);
             pstmt.setString(1,bill.getBillCode());
+            pstmt.setInt(2, new CustomerDAO().getID(bill.getCustomerName()));
+            pstmt.setInt(3, new StaffDAO().getID(LoginController.getLoggedInUsername()));
             pstmt.executeUpdate();
             String getBillID ="SELECT LAST_INSERT_ID()";
             rs=pstmt.executeQuery(getBillID);
@@ -66,14 +69,12 @@ public class BillDao implements DaoInterface <Bill> {
             if(rs.next()) {
                 billID = rs.getInt("LAST_INSERT_ID()");
             }
-            String addDetailBill= "INSERT INTO detailBill (billID, productID, customerID, staffID, quantity)"
-                    +"VALUE(?,?,?,?,?)";
+            String addDetailBill= "INSERT INTO detailBill (billID, productID, quantity)"
+                    +"VALUE(?,?,?)";
             pstmt = con.prepareStatement(addDetailBill);
             pstmt.setInt(1,billID);
             pstmt.setInt(2,bill.getProductID());
-            pstmt.setInt(3,bill.getCustomerID());
-            pstmt.setInt(4,bill.getStaffID());
-            pstmt.setInt(5,bill.getPurchaseQuantity());
+            pstmt.setInt(3,bill.getPurchaseQuantity());
             result=pstmt.executeUpdate();
             if(result>1)
                 InventoryAlert.informationAlert("Addition","SUCCESSFULLY ADDED NEW BILL");
@@ -121,7 +122,7 @@ public class BillDao implements DaoInterface <Bill> {
                 ResultSet rs2 = pstmt2.executeQuery();
                 if(rs2.next()){
                     String billCode = rs2.getString("billCode");
-                    Timestamp createdDate = rs2.getTimestamp("purchaseDate");
+                    LocalDate createdDate = LocalDate.parse(rs2.getDate("purchaseDate").toString());
                     Float revenue = rs2.getFloat("revenue");
                     int billID = rs2.getInt("billID");
                     String staffName = rs2.getString("staffName");

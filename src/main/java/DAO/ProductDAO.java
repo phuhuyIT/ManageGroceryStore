@@ -132,13 +132,15 @@ public class ProductDAO extends InventoryAlert implements DaoInterface<Product> 
     public int addFunction(Product product) {
         int result=0;
         try {
-            String addProduct= "INSERT INTO PRODUCTS (productname,sid,categoryid,thumbnail)"
+            String addProduct= "INSERT INTO PRODUCTS (productname,sid,categoryid,thumbnail, costPrice, sellingPrice)"
                     +"VALUE(?,?,?,?)";
             pstmt = con.prepareStatement(addProduct);
             pstmt.setString(1, product.getProductName());
             pstmt.setInt(2,product.getSupplierID());
             pstmt.setInt(3,product.getCategoryID());
             pstmt.setString(4,product.getThumbnailLink());
+            pstmt.setDouble(5,product.getCostPrice());
+            pstmt.setDouble(6, product.getSellingPrice());
             pstmt.executeUpdate();
             String skuFileName=product.getProductName()+product.getMFGDate();
             CameraApp.skuGenerate(product.getSKUCode(),skuFileName+".png");

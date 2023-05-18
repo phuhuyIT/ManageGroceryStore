@@ -1,6 +1,6 @@
 package Model;
 
-import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -8,7 +8,7 @@ import java.util.Objects;
 public class Bill {
     private int billID;
     private String billCode;
-    private Timestamp purchaseDate;
+    private LocalDate purchaseDate;
     private String revenue;
     private int detailBillID;
     private int productID;
@@ -18,6 +18,15 @@ public class Bill {
     private String customerName;
     private String staffName;
     private int sequence;
+
+    public Bill(String billCode, LocalDate invoiceDate, String staffName, String customerName, String format, ArrayList<Product> productList) {
+        this.billCode=billCode;
+        this.purchaseDate=invoiceDate;
+        this.staffName =staffName;
+        this.customerName=customerName;
+        this.revenue = format;
+        this.productList=productList;
+    }
 
     public int getPurchaseQuantity() {
         return purchaseQuantity;
@@ -49,7 +58,7 @@ public class Bill {
         return Objects.hash(billID);
     }
 
-    public Bill(int sequence, int billID, String billCode, Timestamp purchaseDate, String staffName, String customerName, String revenue , ArrayList<Product> product) {
+    public Bill(int sequence, int billID, String billCode, LocalDate purchaseDate, String staffName, String customerName, String revenue , ArrayList<Product> product) {
         this.billID = billID;
         this.billCode = billCode;
         this.purchaseDate = purchaseDate;
@@ -78,7 +87,7 @@ public class Bill {
         this.billID = billID;
     }
 
-    public Bill(int sequence, String billCode, Timestamp purchaseDate, String revenue, int billID) {
+    public Bill(int sequence, String billCode, LocalDate purchaseDate, String revenue, int billID) {
         this.billID = billID;
         this.billCode = billCode;
         this.purchaseDate = purchaseDate;
@@ -113,11 +122,11 @@ public class Bill {
         this.billCode = billCode;
     }
 
-    public Timestamp getPurchaseDate() {
+    public LocalDate getPurchaseDate() {
         return purchaseDate;
     }
 
-    public void setPurchaseDate(Timestamp purchaseDate) {
+    public void setPurchaseDate(LocalDate purchaseDate) {
         this.purchaseDate = purchaseDate;
     }
 

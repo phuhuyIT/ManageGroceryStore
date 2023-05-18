@@ -25,7 +25,12 @@ import com.google.zxing.common.HybridBinarizer;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.oned.Code128Writer;
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -48,7 +53,7 @@ public class CameraApp {
     public String getBarcode() {
         return barCode;
     }
-    public void run1(VBox vb_productList) {
+    public void run1(VBox vb_productList, Label lb_totalCost,TextField txt_search) {
 
         isRunning.set(true);
         OpenCVFrameGrabber grabber = new OpenCVFrameGrabber(1); // truy cập camera laptop
@@ -69,55 +74,110 @@ public class CameraApp {
                 }
             });
             Result result = null;
+            Boolean isHasbarcode=false;
             while (true) {
                 Frame frame = grabber.grab();
                 BufferedImage image = convertFrameToImage(frame);
                 result = scanBarcode(image);
                 if (result != null ) {
+                    isHasbarcode=true;
                     barCode= result.getText();
-                    Result finalResult = result;
                     ResultSet rs =new ProductDAO().getProductBySKU(barCode);
                     Platform.runLater(() -> {
+                        txt_search.setText(barCode);
                         try {
-                            HBox hbox = new HBox();
-                            Label nameLabel = new Label(rs.getString("productName"));
-                            nameLabel.setPrefWidth(206);
-                            nameLabel.setPrefHeight(38);
+                            if(rs.next()){
+                                HBox hbox = new HBox();
+                                Label nameLabel = new Label(rs.getString("productName"));
+                                nameLabel.setPrefWidth(229);
+                                nameLabel.setPrefHeight(38);
 
-                            // Thiết lập kích thước chữ của Label
-                            nameLabel.setStyle("-fx-font-size: 18;");
+                                // Thiết lập kích thước chữ của Label
+                                nameLabel.setStyle("-fx-font-size: 18;");
 
-                            // Thiết lập vị trí chữ của Label là trung tâm
-                            nameLabel.setAlignment(Pos.CENTER);
-                            // Tạo label cho giá cả
-                            Label priceLabel = new Label(String.valueOf(rs.getDouble("sellingPrice")));
-                            priceLabel.setPrefWidth(107);
-                            priceLabel.setPrefHeight(38);
+                                // Thiết lập vị trí chữ của Label là trung tâm
+                                nameLabel.setAlignment(Pos.CENTER);
+                                // Tạo label cho giá cả
+                                Label priceLabel = new Label(String.valueOf(rs.getDouble("sellingPrice")));
+                                priceLabel.setId("priceLabel");
+                                priceLabel.setPrefWidth(91);
+                                priceLabel.setPrefHeight(38);
 
-                            // Thiết lập kích thước chữ của Label
-                            priceLabel.setStyle("-fx-font-size: 18;");
+                                // Thiết lập kích thước chữ của Label
+                                priceLabel.setStyle("-fx-font-size: 18;");
 
-                            // Thiết lập vị trí chữ của Label là trung tâm
-                            priceLabel.setAlignment(Pos.CENTER);
+                                // Thiết lập vị trí chữ của Label là trung tâm
+                                priceLabel.setAlignment(Pos.CENTER);
 
-                            // Tạo textField cho số lượng
-                            TextField quantityTextField = new TextField();
-                            quantityTextField.setPrefWidth(156);
-                            quantityTextField.setPrefHeight(38);
-                            quantityTextField.setStyle("-fx-font-size: 18;");
-                            quantityTextField.setAlignment(Pos.CENTER);
-                            hbox.getChildren().addAll(nameLabel, priceLabel, quantityTextField);
-                            vb_productList.getChildren().add(hbox);
+                                // Tạo textField cho số lượng
+                                TextField quantityTextField = new TextField();
+                                quantityTextField.setId("quantityTextField");
+                                quantityTextField.setPrefWidth(101);
+                                quantityTextField.setPrefHeight(38);
+                                quantityTextField.setStyle("-fx-font-size: 18;");
+                                quantityTextField.setAlignment(Pos.CENTER);
+                                javafx.scene.control.Button btnDelete = new Button();
+                                btnDelete.setPrefWidth(52);
+                                btnDelete.setPrefHeight(38);
+                                btnDelete.setStyle("-fx-font-size: 12;");
+                                btnDelete.setAlignment(Pos.CENTER);
+                                btnDelete.setText("Delete");
+                                hbox.setOnMouseClicked(event -> {
+
+                                });
+                                hbox.getChildren().addAll(btnDelete,nameLabel, priceLabel, quantityTextField);
+                                vb_productList.getChildren().add(hbox);
+                                btnDelete.setOnAction(new EventHandler<ActionEvent>() {
+                                    @Override
+                                    public void handle(ActionEvent actionEvent) {
+                                        // Lấy danh sách các node con trong VBox
+                                        ObservableList<Node> children = vb_productList.getChildren();
+
+                                        // Lấy chỉ mục của HBox trong danh sách
+                                        int index = children.indexOf(hbox);
+                                        if (index >= 0 && index < vb_productList.getChildren().size()) {
+                                            // Xóa HBox khỏi danh sách
+                                            HBox productHBox = (HBox) vb_productList.getChildren().get(index);
+
+                                            double totalCost= Double.parseDouble(lb_totalCost.getText());
+                                            Label lookupPrice = (Label) productHBox.lookup("#priceLabel");
+                                            TextField lookupQuantity = (TextField) productHBox.lookup("#quantityTextField");
+                                            totalCost-=Double.parseDouble(lookupPrice.getText())*Integer.parseInt(lookupQuantity.getText());
+                                            lb_totalCost.setText(String.valueOf(totalCost));
+                                            vb_productList.getChildren().remove(productHBox);
+                                        }
+                                    }
+                                });
+                                quantityTextField.setOnKeyReleased(keyEvent ->  {
+                                    double totalCost = 0;
+                                    int i=0;
+                                    for (Node node : vb_productList.getChildren()) {
+                                        if (node instanceof HBox) {
+                                            HBox hboxa = (HBox) node;
+                                            Label lookupPrice = (Label) hboxa.lookup("#priceLabel");
+                                            TextField lookupQuantity = (TextField) hboxa.lookup("#quantityTextField");
+                                            double sellingPrice = Double.parseDouble(lookupPrice.getText());
+                                            int quantityInHBox = Integer.parseInt(lookupQuantity.getText());
+                                            System.out.println("quantity: "+i+" "+quantityInHBox);
+
+                                            totalCost += sellingPrice * quantityInHBox;
+                                            i++;
+                                        }
+                                    }
+                                    System.out.println(totalCost);
+                                    lb_totalCost.setText(String.valueOf(totalCost));
+                                });
+                            }
                         } catch (SQLException e) {
                             throw new RuntimeException(e);
                         }
 
 
                     });
-                    Thread.sleep(3000);
-                    System.out.println("Barcode: " + finalResult.getText());
                 }
                 canvasFrame.showImage(frame);
+                if(isHasbarcode)
+                    Thread.sleep(1500);
             }
         } catch (FrameGrabber.Exception e) {
             throw new RuntimeException(e);
@@ -152,11 +212,12 @@ public class CameraApp {
             BufferedImage image = convertFrameToImage(frame);
             result = scanBarcode(image);
             if(result!=null && tf_addProductUPC !=null){
+                isNotHasBarCode=false;
                 Result finalResult = result;
                 tf_addProductUPC.setText(finalResult.getText());
                 result=null;
             }
-            if (result != null ) {
+            if (result != null&&txt_IndentifierCustomer!=null ) {
                 isNotHasBarCode=false;
                 barCode= result.getText();
                 Result finalResult = result;
@@ -168,16 +229,13 @@ public class CameraApp {
                     dp_customerBirthdate.setValue(LocalDate.parse(parts[2]));
                     txt_locationCustomer.setText(parts[4]);
                 });
-                Thread.sleep(3000);
-                System.out.println("Barcode: " + finalResult.getText());
             }
             canvasFrame.showImage(frame);
         }
             grabber.release();
+            grabber.release();
             canvasFrame.dispose();
         } catch (FrameGrabber.Exception e) {
-            throw new RuntimeException(e);
-        } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
     }
