@@ -3,9 +3,13 @@ package Controller;
 import DAO.BillDao;
 import Model.Bill;
 import Model.Product;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.pdf.PdfWriter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -14,13 +18,27 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.WritableImage;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.Paths;
 import java.text.DecimalFormat;
 import java.util.ResourceBundle;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.Document;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.common.PDRectangle;
+
+import javax.imageio.ImageIO;
 
 public class BillController implements Initializable {
 
@@ -139,8 +157,45 @@ public class BillController implements Initializable {
                 stage.setScene(scene);
                 stage.setResizable(false);
                 stage.show();
+
+
+                //tạo Pdf
+                File imageFile = new File("temp_image.png");
+
+                try {
+                    // Render the scene to an image
+                    WritableImage image = scene.snapshot(null);
+                    java.awt.image.BufferedImage bufferedImage = SwingFXUtils.fromFXImage(image,null);
+                    ImageIO.write(bufferedImage,"png",imageFile);
+
+                    // Create a new PDF document
+                    PDDocument document = new PDDocument();
+                    PDPage page = new PDPage(new PDRectangle(583, 838));
+                    document.addPage(page);
+
+                    // Create a content stream for the page
+                    PDPageContentStream contentStream = new PDPageContentStream(document, page);
+
+                    // Load the image from the file and draw it on the page
+                    BufferedImage awtImage = ImageIO.read(imageFile);
+                    contentStream.drawImage(
+                            org.apache.pdfbox.pdmodel.graphics.image.LosslessFactory.createFromImage(document, awtImage),
+                            (float) 0, (float) 0, (float) image.getWidth(), (float) image.getHeight()
+                    );
+
+                    contentStream.close();
+                    document.save("DetailBill.pdf");
+                    document.close();
+
+                    // Delete the temporary image file
+                    imageFile.delete();
+                } catch ( IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
+
+
 
 
 
@@ -225,5 +280,8 @@ public class BillController implements Initializable {
         tc_productQuantity.setCellValueFactory(new PropertyValueFactory<>(""));
         tc_productRevenue.setCellValueFactory(new PropertyValueFactory<>(""));
     }
+
+
+
 
 }
