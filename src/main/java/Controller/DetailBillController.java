@@ -79,6 +79,10 @@ public class DetailBillController implements Initializable {
         lb_totalRevenue.setText(selectedBill.getRevenue());
         lb_receive.setText(String.valueOf(selectedBill.getRevenue()));
         lb_refund.setText(String.valueOf(selectedBill.getRevenue()));
+        if(!selectedBill.getReceive().equals(null)){
+            lb_receive.setText(String.valueOf(selectedBill.getReceive()));
+            lb_refund.setText(String.valueOf(selectedBill.getRefund()));
+        }
         productList = FXCollections.observableArrayList(selectedBill.getProductList());
         tv_showDetailBill.setItems(productList);
     }

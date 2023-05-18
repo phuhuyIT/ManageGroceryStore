@@ -61,7 +61,8 @@ public class BillDao implements DaoInterface <Bill> {
             pstmt = con.prepareStatement(addBill);
             pstmt.setString(1,bill.getBillCode());
             pstmt.setInt(2, new CustomerDAO().getID(bill.getCustomerName()));
-            pstmt.setInt(3, new StaffDAO().getID(LoginController.getLoggedInUsername()));
+            //pstmt.setInt(3, new StaffDAO().getID(LoginController.getLoggedInUsername()));
+            pstmt.setInt(3,1);
             pstmt.executeUpdate();
             String getBillID ="SELECT LAST_INSERT_ID()";
             rs=pstmt.executeQuery(getBillID);
@@ -73,7 +74,7 @@ public class BillDao implements DaoInterface <Bill> {
                     +"VALUE(?,?,?)";
             pstmt = con.prepareStatement(addDetailBill);
             pstmt.setInt(1,billID);
-            pstmt.setInt(2,bill.getProductID());
+            pstmt.setInt(2,1000); // làm lại
             pstmt.setInt(3,bill.getPurchaseQuantity());
             result=pstmt.executeUpdate();
             if(result>1)

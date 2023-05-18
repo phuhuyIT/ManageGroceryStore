@@ -109,7 +109,7 @@ public class CaculatorController implements Initializable {
     @FXML
     private Button btn_payment;
     private Bill selectedBill;
-    private Double receive;
+
     DecimalFormat formattera = new DecimalFormat("#,###");
     public Bill getSelectedBill() {
         return selectedBill;
@@ -152,6 +152,12 @@ public class CaculatorController implements Initializable {
                     throw new RuntimeException(e);
                 }
             }
+        });
+        lb_discount.setText("0");
+        lb_receive.setOnKeyReleased(keyEvent ->  {
+            double receive = 0;
+            receive = Double.parseDouble(lb_receive.getText())-Double.parseDouble(lb_totalRevenue.getText()) - Double.parseDouble(lb_discount.getText());
+            lb_refund.setText(String.valueOf(receive));
         });
         btn_search.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -245,6 +251,7 @@ public class CaculatorController implements Initializable {
                             public void handle(ActionEvent actionEvent) {
                                 ArrayList<Product> productList = new ArrayList<>();
                                 Double totalRevenue= Double.valueOf(0);
+                                int quantity=0;
                                 for (Node node : vb_productList.getChildren()) {
                                     if (node instanceof HBox) {
                                         HBox hboxa = (HBox) node;
@@ -253,10 +260,10 @@ public class CaculatorController implements Initializable {
                                         Label lookupNameLabel = (Label) hboxa.lookup("#nameLabel");
                                         double sellingPrice = Double.parseDouble(lookupPrice.getText());
                                         int quantityInHBox = Integer.parseInt(lookupQuantity.getText());
-                                        System.out.println("sellingPrice: "+sellingPrice+" "+quantityInHBox);
                                         String productName  = lookupNameLabel.getText();
                                         Double totalCost = sellingPrice * quantityInHBox;
                                         totalRevenue+=totalCost;
+                                        quantity=quantityInHBox;
                                         productList.add(new Product(productName,sellingPrice,quantityInHBox,formattera.format(totalCost)));
                                     }
                                 }
@@ -264,8 +271,8 @@ public class CaculatorController implements Initializable {
                                 String billCode="HDS"+currentDate+totalRevenue;
                                 String staffName = txt_searchCustomer.getText();
                                 String customerName = txt_searchCustomer.getText();
-                                new BillDao().addFunction(new Bill(billCode,currentDate, staffName,customerName,formattera.format(Double.parseDouble(lb_totalCost.getText())),productList));
-                                selectedBill = new Bill(0,0,billCode,currentDate, LoginController.getLoggedInUsername(),lb_customerName.getText(),formattera.format(Double.parseDouble(lb_totalCost.getText())),productList);
+                                new BillDao().addFunction(new Bill(billCode,currentDate, staffName,customerName,formattera.format(Double.parseDouble(lb_totalCost.getText())),productList,quantity ));
+                                selectedBill = new Bill(0,0,billCode,currentDate, LoginController.getLoggedInUsername(),lb_customerName.getText(),formattera.format(Double.parseDouble(lb_totalCost.getText())),productList,Double.parseDouble(lb_receive.getText()),Double.parseDouble(lb_refund.getText()));
                                 FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("views/detail_bill.fxml"));
                                 DetailBillController controller = new DetailBillController(selectedBill);
                                 fxmlLoader.setController(controller);
@@ -294,12 +301,7 @@ public class CaculatorController implements Initializable {
                 lb_customerName.setText(new CustomerDAO().selectByPhone(txt_searchCustomer.getText()));
             }
         });
-        lb_discount.setText("0");
-        lb_receive.setOnKeyReleased(keyEvent ->  {
-            double receive = 0;
-            receive = Double.parseDouble(lb_receive.getText())-Double.parseDouble(lb_totalRevenue.getText()) - Double.parseDouble(lb_discount.getText());
-            lb_refund.setText(String.valueOf(receive));
-        });
+
 
     }
 

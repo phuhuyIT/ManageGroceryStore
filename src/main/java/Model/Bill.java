@@ -18,16 +18,44 @@ public class Bill {
     private String customerName;
     private String staffName;
     private int sequence;
+    private Double receive;
+    private Double refund;
 
-    public Bill(String billCode, LocalDate invoiceDate, String staffName, String customerName, String format, ArrayList<Product> productList) {
+    public Double getReceive() {
+        return receive;
+    }
+
+    public void setReceive(Double receive) {
+        this.receive = receive;
+    }
+
+    public Double getRefund() {
+        return refund;
+    }
+
+    public void setRefund(Double refund) {
+        this.refund = refund;
+    }
+
+    public Bill(String billCode, LocalDate invoiceDate, String staffName, String customerName, String format, ArrayList<Product> productList, int quantity) {
         this.billCode=billCode;
         this.purchaseDate=invoiceDate;
         this.staffName =staffName;
         this.customerName=customerName;
         this.revenue = format;
         this.productList=productList;
+        this.purchaseQuantity=quantity;
     }
-
+    public Bill(int i, int i1, String billCode, LocalDate invoiceDate, String staffName, String customerName, String format, ArrayList<Product> productList, Double receive, Double refund) {
+        this.billCode=billCode;
+        this.purchaseDate=invoiceDate;
+        this.staffName =staffName;
+        this.customerName=customerName;
+        this.revenue = format;
+        this.productList=productList;
+        this.receive = receive;
+        this.refund = refund;
+    }
     public int getPurchaseQuantity() {
         return purchaseQuantity;
     }
