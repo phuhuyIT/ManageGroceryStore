@@ -10,7 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
+import Model.Verification;
 import java.io.IOException;
 import java.sql.*;
 
@@ -129,6 +129,9 @@ public class LoginController extends InventoryAlert {
 
     public static void LogInUser(ActionEvent event , String username , String password){
         String encrp= UserProfileController.encryptPassword(password);
+        Verification verification = new Verification();
+        verification.CheckUsername(username);
+        verification.CheckPass(password);
         if(new ConnectionFactory().checkLogin(username,encrp)==true){
             changeScence(event, "homePage.fxml", "Welcome",username);
             loggedInUsername=username;

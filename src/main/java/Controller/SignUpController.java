@@ -1,6 +1,7 @@
 package Controller;
 
 import MailConfig.MailConfig;
+import Model.InventoryAlert;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -16,7 +17,7 @@ import java.util.regex.Pattern;
 
 import static Model.InventoryAlert.errorAlert;
 
-public class SignUpController implements Initializable {
+public class SignUpController extends InventoryAlert implements Initializable {
 
     public TextField email;
     @FXML
@@ -54,40 +55,30 @@ public class SignUpController implements Initializable {
                 boolean isValid = ForgotPasswordController.EmailValidator.isValidEmail(email.getText());
                 if (email.getText().equals("")) {
                     System.out.println("Email");
-                    alert.setTitle("Warning");
-                    alert.setContentText("Warning:Trường email của bạn đang trông!Vui lòng nhập email");
-                    alert.showAndWait();
+                    errorAlert("ERROR","Email is empty");
                 } else {
                     if (isValid) {
                         System.out.println("Email is valid.");
                     } else {
-                        alert.setTitle("Warning");
-                        alert.setContentText("Warning:Email của bạn không hợp lệ !");
-                        alert.showAndWait();
+                        errorAlert("ERROR","Email is Invalid");
                     }
                 }
 
                 if (tf_username.getText().equals("")) {
                     System.out.println("username");
-                    alert.setTitle("Warning");
-                    alert.setContentText("Warning:Trường username của bạn đang trông!Vui lòng nhập username");
-                    alert.showAndWait();
+                    errorAlert("ERROR","Username is empty");
                     return;
                 }
 
                 if (tf_password.getText().equals("")) {
                     System.out.println("password");
-                    alert.setTitle("Warning");
-                    alert.setContentText("Warning:Trường password của bạn đang trông!Vui lòng nhập password");
-                    alert.showAndWait();
+                    errorAlert("ERROR","Password is empty");
                     return;
                 }
 
                 if (!tf_confirmpass.getText().equals(tf_password.getText())) {
                     System.out.println("Confirm");
-                    alert.setTitle("Warning");
-                    alert.setContentText("Warning:Trường confirm của bạn đang trông!Vui lòng nhập lại mật khẩu");
-                    alert.showAndWait();
+                    errorAlert("ERROR","Confirm Password is empty");
                     return;
                 }
 
