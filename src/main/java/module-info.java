@@ -19,9 +19,9 @@ module com.example.btl_demo {
     requires jasperreports;
     requires java.mail;
     requires itextpdf;
+    requires org.apache.commons.collections4;
+    requires pdfbox;
     requires javafx.swing;
-    requires org.apache.pdfbox;
-
     opens Controller to javafx.fxml;
     exports Controller;
     opens Model to javafx.fxml;

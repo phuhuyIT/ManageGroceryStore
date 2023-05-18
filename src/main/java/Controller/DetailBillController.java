@@ -13,6 +13,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
 public class DetailBillController implements Initializable {
@@ -56,6 +57,7 @@ public class DetailBillController implements Initializable {
     private TableView<Product> tv_showDetailBill;
 
     private Bill selectedBill;
+    DecimalFormat formattera = new DecimalFormat("#,###");
 
     public DetailBillController(Bill selectedBill) {
         System.out.println("contructor:"+selectedBill.toString() );
@@ -79,10 +81,10 @@ public class DetailBillController implements Initializable {
         lb_totalRevenue.setText(selectedBill.getRevenue());
         lb_receive.setText(String.valueOf(selectedBill.getRevenue()));
         lb_refund.setText(String.valueOf(selectedBill.getRevenue()));
-//        if(selectedBill.getReceive().equals(null)){
-//            lb_receive.setText(String.valueOf(selectedBill.getReceive()));
-//            lb_refund.setText(String.valueOf(selectedBill.getRefund()));
-//        }
+        if(selectedBill.getReceive()!=null){
+            lb_receive.setText(formattera.format(selectedBill.getReceive()));
+            lb_refund.setText(formattera.format(selectedBill.getRefund()));
+        }
         productList = FXCollections.observableArrayList(selectedBill.getProductList());
         tv_showDetailBill.setItems(productList);
     }

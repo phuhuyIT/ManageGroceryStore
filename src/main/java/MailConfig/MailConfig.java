@@ -109,7 +109,7 @@ public class MailConfig {
                         throw new RuntimeException(e);
                     }
                     System.out.println("Delete done");
-                }, 30, TimeUnit.SECONDS);
+                }, 120, TimeUnit.SECONDS);
                 // Đóng ScheduledExecutorService sau khi hoàn thành công việc
                 executor.shutdown();
             }

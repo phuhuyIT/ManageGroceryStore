@@ -3,6 +3,7 @@ package Controller;
 import DAO.UserDAO;
 import MailConfig.MailConfig;
 import Model.User;
+import Model.Verification;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -78,12 +79,11 @@ public class ForgotPasswordController extends Application {
 
             if(!MailConfig.verifyOTP(email.getText(), otp.getText())) {
                 System.out.println("mail");
-
                 alert.showAndWait();
                 return;
             }
 
-            if(newPassword.getText().equals("")) {
+            if(newPassword.getText().equals("") || !Verification.CheckPass(newPassword.getText())) {
                 System.out.println("pw");
 
                 alert.showAndWait();

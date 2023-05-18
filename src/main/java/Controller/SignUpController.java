@@ -2,6 +2,7 @@ package Controller;
 
 import MailConfig.MailConfig;
 import Model.InventoryAlert;
+import Model.Verification;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -59,48 +60,50 @@ public class SignUpController extends InventoryAlert implements Initializable {
                 } else {
                     if (isValid) {
                         System.out.println("Email is valid.");
+                        if (tf_username.getText().equals("") || !Verification.CheckUsername(tf_username.getText())) {
+                            System.out.println("username");
+                            errorAlert("ERROR","Invalid Username");
+                            return;
+                        }
+
+                        if (tf_password.getText().equals("") || !Verification.CheckPass(tf_password.getText())) {
+                            System.out.println("password");
+                            errorAlert("ERROR","Invalid Password");
+                            return;
+                        }
+
+                        if (!tf_confirmpass.getText().equals(tf_password.getText())) {
+                            System.out.println("Confirm");
+                            errorAlert("ERROR","Confirm Password is empty");
+                            return;
+                        }
+
+
+                        MailConfig.sendOTP(email.getText());
+                        TextInputDialog dialog = new TextInputDialog("");
+                        dialog.setTitle("Nhập thông tin");
+                        dialog.setHeaderText("Vui lòng nhập thông tin");
+                        dialog.setContentText("Nhập OTP verify email:");
+
+                        Optional<String> result = dialog.showAndWait();
+                        String otp = result.get();
+                        if (!MailConfig.verifyOTP(email.getText(), otp)) {
+                            alert.showAndWait();
+                            return;
+                        }
+                        if (!tf_username.getText().trim().isEmpty() && !tf_password.getText().trim().isEmpty() && !tf_confirmpass.getText().trim().isEmpty()) {
+                            LoginController.SignUpUser(event, email.getText(), tf_username.getText(), tf_password.getText(), tf_confirmpass.getText());
+                            return;
+                        }
+
+                        errorAlert("ERROR", "Please fill in all information!");
+
                     } else {
                         errorAlert("ERROR","Email is Invalid");
                     }
                 }
 
-                if (tf_username.getText().equals("")) {
-                    System.out.println("username");
-                    errorAlert("ERROR","Username is empty");
-                    return;
-                }
 
-                if (tf_password.getText().equals("")) {
-                    System.out.println("password");
-                    errorAlert("ERROR","Password is empty");
-                    return;
-                }
-
-                if (!tf_confirmpass.getText().equals(tf_password.getText())) {
-                    System.out.println("Confirm");
-                    errorAlert("ERROR","Confirm Password is empty");
-                    return;
-                }
-
-
-                MailConfig.sendOTP(email.getText());
-                TextInputDialog dialog = new TextInputDialog("");
-                dialog.setTitle("Nhập thông tin");
-                dialog.setHeaderText("Vui lòng nhập thông tin");
-                dialog.setContentText("Nhập OTP verify email:");
-
-                Optional<String> result = dialog.showAndWait();
-                String otp = result.get();
-                if (!MailConfig.verifyOTP(email.getText(), otp)) {
-                    alert.showAndWait();
-                    return;
-                }
-                if (!tf_username.getText().trim().isEmpty() && !tf_password.getText().trim().isEmpty() && !tf_confirmpass.getText().trim().isEmpty()) {
-                    LoginController.SignUpUser(event, email.getText(), tf_username.getText(), tf_password.getText(), tf_confirmpass.getText());
-                    return;
-                }
-
-                errorAlert("ERROR", "Please fill in all information!");
 
             }
         });
