@@ -39,7 +39,7 @@
       <Line endX="499.99993896484375" endY="-8.0" layoutX="498.0" layoutY="75.0" startX="-500.0" startY="-8.0" strokeWidth="3.0" />
       <ImageView fx:id="image_user" fitHeight="127.0" fitWidth="125.0" layoutX="440.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="https://img.freepik.com/free-vector/illustration-user-avatar-icon_53876-5907.jpg?w=740&amp;t=st=1683003422~exp=1683004022~hmac=057b6d420859ea6a49f175db90ae4017350a9aa8ce8e93b8caab5e3f10c16493" />
+            <Image url="@../image/add-user.png" />
          </image>
       </ImageView>
       <Hyperlink layoutX="733.0" layoutY="202.0" />

@@ -198,7 +198,7 @@
             <Image url="@../image/search.png" />
          </image>
       </ImageView>
-      <Button fx:id="btn_payment" alignment="CENTER" contentDisplay="CENTER" layoutX="594.0" layoutY="713.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="191.0" style="-fx-cursor: hand;" stylesheets="@css/test.css" text="Thanh toán" textAlignment="CENTER">
+      <Button fx:id="btn_payment" alignment="CENTER" contentDisplay="CENTER" layoutX="638.0" layoutY="716.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="191.0" style="-fx-cursor: hand;" stylesheets="@css/test.css" text="Thanh toán" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
@@ -206,19 +206,6 @@
             <Insets left="30.0" />
          </padding>
       </Button>
-      <Button fx:id="btn_print" alignment="CENTER" layoutX="806.0" layoutY="713.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="132.0" style="-fx-cursor: hand;" stylesheets="@css/test.css" text="In">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-         <padding>
-            <Insets left="30.0" />
-         </padding>
-      </Button>
-      <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="818.0" layoutY="723.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../image/printer.png" />
-         </image>
-      </ImageView>
       <ImageView fx:id="iv_scanSKU" fitHeight="46.0" fitWidth="44.0" layoutX="420.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../image/barcode-scanner.png" />
@@ -233,7 +220,7 @@
          </image>
       </ImageView>
       <Button fx:id="btn_searchCustomer" layoutX="565.0" layoutY="8.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="44.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
-      <ImageView fitHeight="44.0" fitWidth="44.0" layoutX="597.0" layoutY="720.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="35.0" fitWidth="38.0" layoutX="645.0" layoutY="727.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../image/confirm.png" />
          </image>

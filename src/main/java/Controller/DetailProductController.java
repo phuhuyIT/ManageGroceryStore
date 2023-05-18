@@ -101,7 +101,7 @@ public class DetailProductController extends ProductController implements Initia
     }
 
     private void updateDetailProduct(){
-        int categoryID=new CategoryDao().getCategoryIDByName(cb_detailProductCategory.getValue().toString());
+        int categoryID=new CategoryDao().getCategoryIDByName(lb_Category.getText());
         if(filePath==null)
             filePath = new File("D:/java/ManageGroceryStore/src/main/resources/Controller/image/PHMart.jpg");
         System.out.println(filePath.toString());

@@ -195,7 +195,9 @@ public class CaculatorController implements Initializable {
                         quantityTextField.setPrefHeight(38);
                         quantityTextField.setStyle("-fx-font-size: 18;");
                         quantityTextField.setAlignment(Pos.CENTER);
+
                         Button btnDelete = new Button();
+                        btnDelete.setId("btn_deleteCaculator");
                         btnDelete.setPrefWidth(52);
                         btnDelete.setPrefHeight(38);
                         btnDelete.setStyle("-fx-font-size: 12;");

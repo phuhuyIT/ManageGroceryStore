@@ -50,6 +50,7 @@ CREATE TABLE `products` (
   costPrice FLOAT DEFAULT 0 CHECK (`costPrice` >= 0),
   sellingPrice FLOAT DEFAULT 0 CHECK (`sellingPrice` >= 0),
   thumbnail varchar(200) DEFAULT NULL,
+  productBarcode varchar(200) DEFAULT NULL,
   CONSTRAINT `fk_products_category` FOREIGN KEY (`categoryid`) REFERENCES `productCategories`(`categoryid`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_products_suppliers` FOREIGN KEY (sid) REFERENCES `suppliers`(`sid`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB;
@@ -63,7 +64,7 @@ CREATE TABLE PRODUCTBATCH(
 	quantity INT DEFAULT 11,
 	CHECK (PRODUCTBATCH.manufractureDate <= PRODUCTBATCH.expirationDate),
 	CHECK (PRODUCTBATCH.quantity >= 0),
-	FOREIGN KEY (pid) REFERENCES products(pid)
+	FOREIGN KEY (pid) REFERENCES products(pid) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 
 

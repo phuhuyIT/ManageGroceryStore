@@ -205,7 +205,7 @@ public class CustomerController extends ItemController implements Initializable 
                     Label customerGender =(Label) anchorPane.lookup("#genderCustomer"+(i+1));
                     Label customerPhone =(Label) anchorPane.lookup("#phoneCustomer"+(i+1));
                     anchorPane.setUserData("");
-                    String img  = "C:\\Users\\Tan Thinh\\IdeaProjects\\ManageGroceryStore\\src\\main\\resources\\Controller\\image\\gamer.png";
+                    String img  = "D:\\java\\ManageGroceryStore\\src\\main\\resources\\Controller\\image\\gamer.png";
                     if(img!=null) {
                         Image image1 = new Image(String.valueOf(img));
                         customerAvatar.setImage(image1);

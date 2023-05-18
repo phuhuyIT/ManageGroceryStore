@@ -217,11 +217,18 @@
        -fx-background-color:linear-gradient(to top right, #FF99FF, #9999FF);
 }
 
-#btn_print{
+#btn_payment{
       -fx-background-color:#2596be;
       -fx-text-fill  : #FFFFFF;
 }
-#btn_print:hover{
+#btn_payment:hover{
+       -fx-background-color:linear-gradient(to top right, #FF99FF, #9999FF);
+}
+#btn_deleteCaculator{
+      -fx-background-color:#2596be;
+      -fx-text-fill  : #FFFFFF;
+}
+#btn_deleteCaculator:hover{
        -fx-background-color:linear-gradient(to top right, #FF99FF, #9999FF);
 }
 

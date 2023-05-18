@@ -4,7 +4,9 @@ import Model.InventoryAlert;
 import DatabaseConnection.ConnectionFactory;
 import Model.CameraApp;
 import Model.Product;
+import com.google.zxing.WriterException;
 
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -133,7 +135,7 @@ public class ProductDAO extends InventoryAlert implements DaoInterface<Product> 
         int result=0;
         try {
             String addProduct= "INSERT INTO PRODUCTS (productname,sid,categoryid,thumbnail, costPrice, sellingPrice)"
-                    +"VALUE(?,?,?,?)";
+                    +"VALUE(?,?,?,?,?,?)";
             pstmt = con.prepareStatement(addProduct);
             pstmt.setString(1, product.getProductName());
             pstmt.setInt(2,product.getSupplierID());
@@ -176,6 +178,16 @@ public class ProductDAO extends InventoryAlert implements DaoInterface<Product> 
         try {
             String addProductBatch= "INSERT INTO PRODUCTBATCH (pid, expirationDate, manufractureDate,quantity, ProductSKU)"
                     +"VALUE(?,?,?,?,?)";
+            String query ="SELECT productBarcode, productName FROM PRODUCTS WHERE pid=?";
+            pstmt= con.prepareStatement(query);
+            pstmt.setInt(1,product.getProductId());
+            ResultSet rs2=pstmt.executeQuery();
+            String barcode = null;
+            if(rs2.next()){
+                barcode = rs2.getString("productBarcode");
+            }
+            String skuFileName = barcode+product.getProductName();
+            CameraApp.skuGenerate(product.getSKUCode(),skuFileName+".png");
             pstmt = con.prepareStatement(addProductBatch);
             pstmt.setInt(1,product.getProductId());
             pstmt.setDate(2, Date.valueOf(product.getEXPDate()));
@@ -184,8 +196,12 @@ public class ProductDAO extends InventoryAlert implements DaoInterface<Product> 
             pstmt.setString(5,product.getSKUCode());
             int affectedRows = pstmt.executeUpdate();
             if(affectedRows>0)
-                errorAlert("Success","ADDED NEW BATCH SUCCESSFUL");
+                informationAlert("Success","ADDED NEW BATCH SUCCESSFUL");
         } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (WriterException e) {
             throw new RuntimeException(e);
         }
 
