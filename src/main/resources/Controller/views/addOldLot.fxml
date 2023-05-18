@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="205.0" prefWidth="435.0" style="-fx-border-color: #AAAAAA;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AddOldLotController">
+    <children>
+        <Label layoutX="47.0" layoutY="22.0" prefHeight="41.0" prefWidth="74.0" text="Quantity">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </Label>
+        <TextField fx:id="tf_newQuantity" alignment="CENTER" layoutX="174.0" layoutY="22.0" prefHeight="41.0" prefWidth="125.0" promptText="Add quantity">
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+        <Button fx:id="btn_save" layoutX="153.0" layoutY="143.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="118.0" style="-fx-cursor: hand;" stylesheets="@css/test.css" text="Save">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+            <padding>
+                <Insets left="20.0" />
+            </padding>
+        </Button>
+        <ImageView fitHeight="26.0" fitWidth="25.0" layoutX="167.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../image/confirm.png" />
+            </image>
+        </ImageView>
+      <Label layoutX="47.0" layoutY="88.0" prefHeight="42.0" prefWidth="110.0" text="Select Batch">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="cb_selectBatch" layoutX="175.0" layoutY="88.0" prefHeight="41.0" prefWidth="202.0" />
+      <Label fx:id="lb_totalQuantity" layoutX="327.0" layoutY="22.0" prefHeight="41.0" prefWidth="103.0" style="-fx-background-color: transparent;" text="Old quantity">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label layoutX="301.0" layoutY="14.0" text="+">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="48.0" layoutY="67.0" text="* Số lượng mới sẽ được cập nhật ngay sau khi bạn nhấn Save" textFill="RED" />
+    </children>
+</AnchorPane>

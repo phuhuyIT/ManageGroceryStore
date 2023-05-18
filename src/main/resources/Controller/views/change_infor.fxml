@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="pane" prefHeight="900.0" prefWidth="1000.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ChangeInformationController">
+    <children>
+        <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="281.0" layoutY="168.0" prefHeight="30.0" prefWidth="141.0" text="Full Name ">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Label contentDisplay="CENTER" layoutX="281.0" layoutY="220.0" prefHeight="30.0" prefWidth="70.0" text="Phone">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Label alignment="CENTER" layoutY="56.0" prefHeight="53.0" prefWidth="1000.0" style="-fx-font-weight: bold;" text="CHANGE YOUR INFORMATION">
+            <font>
+                <Font size="36.0" />
+            </font>
+            <effect>
+                <InnerShadow />
+            </effect>
+        </Label>
+        <Line endX="499.99993896484375" endY="-8.0" layoutX="500.0" layoutY="124.0" startX="-500.0" startY="-8.0" strokeWidth="3.0" />
+        <TextField fx:id="txt_fullname" layoutX="500.0" layoutY="160.0" prefHeight="38.0" prefWidth="336.0" promptText="Enter your full name" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+        <TextField fx:id="txt_phone" layoutX="500.0" layoutY="220.0" prefHeight="30.0" prefWidth="336.0" promptText="Enter your phone Number" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+        <Label contentDisplay="CENTER" layoutX="281.0" layoutY="273.0" prefHeight="30.0" prefWidth="96.0" text="Location">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <TextField fx:id="txt_location" layoutX="500.0" layoutY="269.0" prefHeight="38.0" prefWidth="336.0" promptText="Enter your location" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #0598ff;" />
+      <Label contentDisplay="CENTER" layoutX="281.0" layoutY="342.0" prefHeight="30.0" prefWidth="96.0" text="Category">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txt_category" layoutX="500.0" layoutY="338.0" prefHeight="38.0" prefWidth="336.0" promptText="Enter your new category" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #0598ff;" />
+      <Button fx:id="btn_update" alignment="CENTER_RIGHT" layoutX="316.0" layoutY="490.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="262.0" style="-fx-cursor: hand;" stylesheets="@css/test.css" text="    Update Information" textAlignment="RIGHT">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <padding>
+            <Insets left="10.0" right="9.0" />
+         </padding>
+      </Button>
+      <ImageView fitHeight="53.0" fitWidth="59.0" layoutX="329.0" layoutY="490.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/update.png" />
+         </image>
+      </ImageView>
+      <Line endX="100.0" endY="128.0" layoutX="330.0" layoutY="265.0" startX="100.0" startY="-134.0" strokeWidth="2.0" />
+    </children>
+</AnchorPane>

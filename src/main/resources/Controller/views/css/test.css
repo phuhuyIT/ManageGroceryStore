@@ -1,0 +1,261 @@
+
+.button{
+
+     -fx-background-color:  #2596be;
+}
+.button:hover{
+
+     -fx-background-color:#FFFFFF;
+     -fx-text-fill: #2596be;
+ }
+.button:focused{
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.9), 5,0,0,0);
+    -fx-background-color:#FFFFFF;
+    -fx-text-fill: #2596be;
+}
+//Bill
+#btn_prBill{
+       -fx-background-color:#2596be;
+       -fx-text-fill  : #FFFFFF;
+}
+
+#btn_prBill:hover{
+        -fx-background-color:linear-gradient(to top right, #FF99FF, #9999FF);
+}
+
+//Customer
+#btn_add_user{
+     -fx-background-color: #00FF00;
+     -fx-text-fill:#000000;
+}
+#btn_add_user:hover{
+     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.9), 5,0,0,0);
+     -fx-font-size: 20px;
+     -fx-font-style: bold;
+}
+
+//Product
+#btn_addProduct{
+     -fx-background-color: #00FF00;
+     -fx-text-fill:#000000;
+}
+
+#btn_addProduct:hover{
+      -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.9), 5,0,0,0);
+      -fx-font-size: 18px;
+      -fx-font-style: bold;
+}
+
+//User Profile
+#btn_update{
+       -fx-background-color:#2596be;
+        -fx-text-fill  : #FFFFFF;
+}
+#btn_update:hover{
+       -fx-background-color:linear-gradient(to top right, #FF99FF, #9999FF);
+}
+#btn_edit{
+     -fx-background-color:#00FF00;
+     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 5,0,0,0);
+}
+#change_pass{
+     -fx-font-size  : 19px;
+     -fx-background-color:  #FFFFFF;
+}
+#change_pass:hover{
+    -fx-font-size  : 20px;
+    -fx-text-fill:#2596be;
+    -fx-background-color:#FFFFFF;
+}
+
+//Add Product
+#btn_save{
+  -fx-background-color:#2596be;
+  -fx-text-fill: #FFFFFF;
+}
+
+#btn_save:hover{
+     -fx-background-color:linear-gradient(to top right, #FF99FF, #9999FF);
+}
+
+#btn_addThumnail{
+     -fx-background-color:transparent;
+     -fx-font-size  :20px;
+}
+
+#btn_addThumnail:hover{
+    -fx-font-size  : 21px;
+     -fx-text-fill:#2596be;
+}
+#datePicker_MFG{
+   -fx-font-size: 18px;
+}
+#datePicker_EXP{
+    -fx-font-size: 18px;
+}
+
+//Làm đẹp choiceBox
+.choice-box {
+    -fx-font-size: 18;
+}
+
+.choice-box:hover {
+    -fx-background-color: #7dd1f0;
+}
+
+.choice-box .arrow {
+    -fx-background-color: black;
+}
+//product
+#productBox1:hover{
+     -fx-background-color: #559EFC;
+     -fx-background-radius :20;
+}
+#productBox2:hover{
+     -fx-background-color: #559EFC;
+     -fx-background-radius :20;
+}
+#productBox3:hover{
+     -fx-background-color: #559EFC;
+     -fx-background-radius :20;
+}
+#productBox4:hover{
+     -fx-background-color: #559EFC;
+     -fx-background-radius :20;
+}
+#productBox5:hover{
+     -fx-background-color: #559EFC;
+     -fx-background-radius :20;
+}
+#productBox6:hover{
+     -fx-background-color: #559EFC;
+     -fx-background-radius :20;
+}
+#productBox7:hover{
+     -fx-background-color: #559EFC;
+     -fx-background-radius :20;
+}
+#productBox8:hover{
+     -fx-background-color: #559EFC;
+     -fx-background-radius :20;
+}
+
+// Customer
+#CustomerBox_1:hover{
+     -fx-background-radius :20;
+     -fx-background-color: #559EFC;
+}
+#CustomerBox_2:hover{
+     -fx-background-radius :20;
+     -fx-background-color: #559EFC;
+}
+#CustomerBox_3:hover{
+     -fx-background-radius :20;
+     -fx-background-color: #559EFC;
+}
+#CustomerBox_4:hover{
+     -fx-background-radius :20;
+     -fx-background-color: #559EFC;
+}
+#CustomerBox_5:hover{
+     -fx-background-radius :20;
+     -fx-background-color: #559EFC;
+}
+#CustomerBox_6:hover{
+     -fx-background-radius :20;
+     -fx-background-color: #559EFC;
+}
+#CustomerBox_7:hover{
+     -fx-background-radius :20;
+     -fx-background-color: #559EFC;
+}
+#CustomerBox_8:hover{
+     -fx-background-radius :20;
+     -fx-background-color: #559EFC;
+}
+
+//Staff
+#StaffBox_1:hover{
+     -fx-background-radius :20;
+     -fx-background-color: #559EFC;
+}
+#StaffBox_2:hover{
+     -fx-background-radius :20;
+     -fx-background-color: #559EFC;
+}
+#StaffBox_3:hover{
+     -fx-background-radius :20;
+     -fx-background-color: #559EFC;
+}
+#StaffBox_4:hover{
+     -fx-background-radius :20;
+     -fx-background-color: #559EFC;
+}
+#StaffBox_5:hover{
+     -fx-background-radius :20;
+     -fx-background-color: #559EFC;
+}
+#StaffBox_6:hover{
+     -fx-background-radius :20;
+     -fx-background-color: #559EFC;
+}
+#StaffBox_7:hover{
+     -fx-background-radius :20;
+     -fx-background-color: #559EFC;
+}
+#StaffBox_8:hover{
+     -fx-background-radius :20;
+     -fx-background-color: #559EFC;
+}
+
+//Sell
+#btn_cancel{
+      -fx-background-color:#2596be;
+      -fx-text-fill  : #FFFFFF;
+}
+#btn_cancel:hover{
+       -fx-background-color:linear-gradient(to top right, #FF99FF, #9999FF);
+}
+
+#btn_payment{
+      -fx-background-color:#2596be;
+      -fx-text-fill  : #FFFFFF;
+}
+#btn_payment:hover{
+       -fx-background-color:linear-gradient(to top right, #FF99FF, #9999FF);
+}
+#btn_deleteCaculator{
+      -fx-background-color:#2596be;
+      -fx-text-fill  : #FFFFFF;
+}
+#btn_deleteCaculator:hover{
+       -fx-background-color:linear-gradient(to top right, #FF99FF, #9999FF);
+}
+
+//EnterPassWord
+#btn_confirm{
+ -fx-background-color:#2596be;
+  -fx-text-fill: #FFFFFF;
+}
+
+#btn_confirm:hover{
+     -fx-background-color:linear-gradient(to top right, #FF99FF, #9999FF);
+}
+
+
+//Forgot PassWord
+#btnOk{
+-fx-background-color:#2596be;
+  -fx-text-fill: #FFFFFF;
+}
+
+#btnOk:hover{
+-fx-background-color:linear-gradient(to top right, #FF99FF, #9999FF);
+}
+
+#btnSendOTP:hover{
+   -fx-font-size  : 15px;
+   -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 5,0,0,0);
+}
+
+

@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchorPane_customer" prefHeight="900.0" prefWidth="1000.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CustomerController">
+   <children>
+      <ImageView fitHeight="35.0" fitWidth="30.0" layoutX="838.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/refresh.png" />
+         </image>
+      </ImageView>
+      <AnchorPane fx:id="CustomerBox_4" layoutX="758.0" layoutY="162.0" prefHeight="259.0" prefWidth="200.0" style="-fx-border-radius: 20; -fx-border-color: #CCCCCC; -fx-cursor: hand;">
+         <children>
+            <ImageView fx:id="imageCustomer4" fitHeight="108.0" fitWidth="112.0" layoutX="42.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="nameCustomer4" alignment="CENTER" layoutY="130.0" prefHeight="32.0" prefWidth="201.0">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="genderCustomer4" alignment="CENTER" layoutX="56.0" layoutY="162.0" prefHeight="30.0" prefWidth="89.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="phoneCustomer4" alignment="CENTER" layoutX="17.0" layoutY="215.0" prefHeight="30.0" prefWidth="170.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="CustomerBox_2" layoutX="262.0" layoutY="162.0" prefHeight="259.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20; -fx-cursor: hand;">
+         <children>
+            <ImageView fx:id="imageCustomer2" fitHeight="108.0" fitWidth="112.0" layoutX="44.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="nameCustomer2" alignment="CENTER" layoutY="130.0" prefHeight="32.0" prefWidth="201.0">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="genderCustomer2" alignment="CENTER" layoutX="57.0" layoutY="172.0" prefHeight="30.0" prefWidth="89.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="phoneCustomer2" alignment="CENTER" layoutX="20.0" layoutY="212.0" prefHeight="30.0" prefWidth="170.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="CustomerBox_3" layoutX="507.0" layoutY="162.0" prefHeight="259.0" prefWidth="200.0" style="-fx-border-radius: 20; -fx-border-color: #CCCCCC; -fx-cursor: hand;">
+         <children>
+            <ImageView fx:id="imageCustomer3" fitHeight="108.0" fitWidth="112.0" layoutX="42.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="nameCustomer3" alignment="CENTER" layoutY="130.0" prefHeight="32.0" prefWidth="201.0">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="genderCustomer3" alignment="CENTER" layoutX="57.0" layoutY="162.0" prefHeight="30.0" prefWidth="89.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="phoneCustomer3" alignment="CENTER" layoutX="17.0" layoutY="215.0" prefHeight="30.0" prefWidth="170.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Label layoutX="416.0" layoutY="9.0" prefHeight="52.0" prefWidth="170.0" style="-fx-font-weight: bold;" text="Customer">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Line endX="756.0" layoutX="244.0" layoutY="67.0" startX="-244.0" strokeWidth="3.0" />
+      <Label fx:id="lb_Search" layoutX="19.0" layoutY="85.0" prefHeight="37.0" prefWidth="299.0" style="-fx-border-width: 3px; -fx-border-color: black; -fx-border-radius: 7px;" />
+      <TextField fx:id="txt_search" layoutX="65.0" layoutY="86.0" prefHeight="35.0" prefWidth="252.0" promptText="Search here...." style="-fx-background-color: transparent; -fx-font-weight: bold;">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <ImageView fitHeight="37.0" fitWidth="30.0" layoutX="28.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/search.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="328.0" layoutY="85.0" prefHeight="37.0" prefWidth="228.0" style="-fx-border-color: black; -fx-font-weight: bold; -fx-border-width: 3px; -fx-border-radius: 7px;" text="Sort by">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <padding>
+            <Insets left="5.0" />
+         </padding>
+      </Label>
+      <ChoiceBox fx:id="choiceBox" layoutX="425.0" layoutY="87.0" prefHeight="35.0" prefWidth="128.0" style="-fx-background-color: transparent;" />
+      <ImageView fitHeight="37.0" fitWidth="30.0" layoutX="395.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/sort.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="img_back" fitHeight="53.0" fitWidth="58.0" layoutX="316.0" layoutY="774.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 5,0,0,0); -fx-cursor: hand;">
+         <image>
+            <Image url="@../image/previous.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="img_next" fitHeight="53.0" fitWidth="63.0" layoutX="609.0" layoutY="775.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 5,0,0,0); -fx-cursor: hand;">
+         <image>
+            <Image url="@../image/next.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btn_add_user" alignment="CENTER_RIGHT" layoutX="839.0" layoutY="82.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="108.0" style="-fx-cursor: hand; -fx-border-color: black; -fx-border-width: 3px; -fx-border-radius: 5px; -fx-background-radius: 7px;" stylesheets="@css/test.css" text="Add">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="851.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/add-user.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btn_refresh" layoutX="814.0" layoutY="14.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="79.0" style="-fx-cursor: hand; -fx-background-color: transparent;" />
+      <AnchorPane fx:id="CustomerBox_1" layoutX="20.0" layoutY="162.0" prefHeight="259.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-cursor: hand; -fx-border-radius: 20;">
+         <children>
+            <ImageView fx:id="imageCustomer1" fitHeight="108.0" fitWidth="112.0" layoutX="47.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="nameCustomer1" alignment="CENTER" layoutX="1.0" layoutY="130.0" prefHeight="32.0" prefWidth="201.0">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="genderCustomer1" alignment="CENTER" layoutX="58.0" layoutY="172.0" prefHeight="30.0" prefWidth="89.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="phoneCustomer1" alignment="CENTER" layoutX="13.0" layoutY="212.0" prefHeight="30.0" prefWidth="170.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="CustomerBox_5" layoutX="21.0" layoutY="473.0" prefHeight="259.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20; -fx-cursor: hand;">
+         <children>
+            <ImageView fx:id="imageCustomer5" fitHeight="108.0" fitWidth="112.0" layoutX="44.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="nameCustomer5" alignment="CENTER" layoutY="130.0" prefHeight="32.0" prefWidth="201.0">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="genderCustomer5" alignment="CENTER" layoutX="57.0" layoutY="172.0" prefHeight="30.0" prefWidth="89.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="phoneCustomer5" alignment="CENTER" layoutX="20.0" layoutY="212.0" prefHeight="30.0" prefWidth="170.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="CustomerBox_6" layoutX="262.0" layoutY="473.0" prefHeight="259.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20; -fx-cursor: hand;">
+         <children>
+            <ImageView fx:id="imageCustomer6" fitHeight="108.0" fitWidth="112.0" layoutX="44.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="nameCustomer6" alignment="CENTER" layoutY="130.0" prefHeight="32.0" prefWidth="201.0">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="genderCustomer6" alignment="CENTER" layoutX="57.0" layoutY="172.0" prefHeight="30.0" prefWidth="89.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="phoneCustomer6" alignment="CENTER" layoutX="20.0" layoutY="212.0" prefHeight="30.0" prefWidth="170.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="CustomerBox_7" layoutX="507.0" layoutY="473.0" prefHeight="259.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20; -fx-cursor: hand;">
+         <children>
+            <ImageView fx:id="imageCustomer7" fitHeight="108.0" fitWidth="112.0" layoutX="44.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="nameCustomer7" alignment="CENTER" layoutY="130.0" prefHeight="32.0" prefWidth="201.0">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="genderCustomer7" alignment="CENTER" layoutX="57.0" layoutY="172.0" prefHeight="30.0" prefWidth="89.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="phoneCustomer7" alignment="CENTER" layoutX="20.0" layoutY="212.0" prefHeight="30.0" prefWidth="170.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="CustomerBox_8" layoutX="758.0" layoutY="473.0" prefHeight="259.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20; -fx-cursor: hand;">
+         <children>
+            <ImageView fx:id="imageCustomer8" fitHeight="108.0" fitWidth="112.0" layoutX="44.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="nameCustomer8" alignment="CENTER" layoutY="130.0" prefHeight="32.0" prefWidth="201.0">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="genderCustomer8" alignment="CENTER" layoutX="57.0" layoutY="172.0" prefHeight="30.0" prefWidth="89.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="phoneCustomer8" alignment="CENTER" layoutX="20.0" layoutY="212.0" prefHeight="30.0" prefWidth="170.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Button fx:id="btn_previousPage" layoutX="313.0" layoutY="770.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="59.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
+      <Button fx:id="btn_nextPage" layoutX="606.0" layoutY="771.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="59.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
+      <Label fx:id="lb_pageNumber" layoutX="472.0" layoutY="783.0" text="Number of page">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="btn_search" layoutX="17.0" layoutY="85.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="52.0" style="-fx-background-color: transparent;" />
+      <ImageView fx:id="iv_scanSKU" fitHeight="30.0" fitWidth="37.0" layoutX="285.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/barcode-scanner.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btn_scanSKU" layoutX="284.0" layoutY="85.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="35.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
+   </children>
+</AnchorPane>

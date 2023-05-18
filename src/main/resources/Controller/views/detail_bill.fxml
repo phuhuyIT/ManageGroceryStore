@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="838.0" prefWidth="583.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" >
+   <ImageView fx:id="imageView" fitHeight="138.0" fitWidth="150.0" layoutX="25.0" layoutY="17.0">
+      <image>
+         <Image url="@../image/PHMart.jpg" />
+      </image></ImageView>
+   <Label layoutX="188.0" layoutY="17.0" prefHeight="19.0" prefWidth="73.0" text="PH Mart">
+      <font>
+         <Font size="14.0" />
+      </font>
+   </Label>
+   <Label layoutX="188.0" layoutY="40.0" text="450 Lê Văn Việt">
+      <font>
+         <Font size="14.0" />
+      </font></Label>
+   <Label layoutX="187.0" layoutY="60.0" text="Thủ Đức, Hồ Chí MInh">
+      <font>
+         <Font size="14.0" />
+      </font></Label>
+   <Label layoutX="187.0" layoutY="82.0" text="Điện thoại : 0344581022">
+      <font>
+         <Font size="14.0" />
+      </font></Label>
+   <Label layoutX="188.0" layoutY="102.0" text="Email : PHMart@gmail.com">
+      <font>
+         <Font size="14.0" />
+      </font></Label>
+   <Label layoutX="188.0" layoutY="122.0" text="Website : www.phmart.vn">
+      <font>
+         <Font size="14.0" />
+      </font></Label>
+   <Label layoutX="53.0" layoutY="283.0" text="Nhân viên : ">
+      <font>
+         <Font size="15.0" />
+      </font></Label>
+   <Label layoutX="427.0" layoutY="122.0" text="Loại tiền : VND">
+      <font>
+         <Font size="14.0" />
+      </font></Label>
+   <Label fx:id="lb_staffName" layoutX="158.0" layoutY="283.0" prefHeight="21.0" prefWidth="269.0">
+      <font>
+         <Font size="15.0" />
+      </font>
+      <padding>
+         <Insets left="40.0" />
+      </padding></Label>
+   <Line endX="415.0" layoutX="135.0" layoutY="155.0" startX="-100.0" />
+   <Label layoutX="187.0" layoutY="164.0" prefHeight="36.0" prefWidth="226.0" style="-fx-background-color: white;" text="Phiếu Thanh Toán">
+      <font>
+         <Font name="Arial Bold" size="25.0" />
+      </font>
+   </Label>
+   <TableView fx:id="tv_showDetailBill" layoutX="35.0" layoutY="371.0" prefHeight="306.0" prefWidth="516.0" style="-fx-background-color: white; -fx-border-color: black;">
+      <columns>
+         <TableColumn fx:id="tc_productName" prefWidth="154.0" text="Tên sản phẩm" />
+         <TableColumn fx:id="tc_productPrice" prefWidth="137.0" text="Đơn giá" />
+         <TableColumn fx:id="tc_productQuantity" prefWidth="68.0" text="SL" />
+         <TableColumn fx:id="tc_productRevenue" prefWidth="155.0" text="Thành tiền " />
+      </columns>
+   </TableView>
+   <Label layoutX="53.0" layoutY="219.0" style="-fx-background-color: white;" text="Mã hóa đơn : ">
+      <font>
+         <Font size="15.0" />
+      </font>
+   </Label>
+   <Label fx:id="lb_billCode" layoutX="161.0" layoutY="219.0" prefHeight="21.0" prefWidth="269.0">
+      <font>
+         <Font size="15.0" />
+      </font>
+      <padding>
+         <Insets left="40.0" />
+      </padding></Label>
+   <Label layoutX="53.0" layoutY="251.0" text="Ngày lập :">
+      <font>
+         <Font size="15.0" />
+      </font>
+   </Label>
+   <Label fx:id="lb_purchaseDate" layoutX="160.0" layoutY="251.0" prefHeight="21.0" prefWidth="269.0">
+      <font>
+         <Font size="15.0" />
+      </font>
+      <padding>
+         <Insets left="40.0" />
+      </padding></Label>
+   <Label layoutX="363.0" layoutY="691.0" prefHeight="21.0" prefWidth="93.0" text="Tổng tiền : ">
+      <font>
+         <Font name="System Bold" size="15.0" />
+      </font>
+   </Label>
+   <Label fx:id="lb_receive" alignment="CENTER" layoutX="462.0" layoutY="710.0" prefHeight="17.0" prefWidth="100.0">
+      <font>
+         <Font size="15.0" />
+      </font></Label>
+   <Label fx:id="lb_totalRevenue" alignment="CENTER" layoutX="464.0" layoutY="691.0" prefHeight="20.0" prefWidth="96.0">
+      <font>
+         <Font size="15.0" />
+      </font></Label>
+   <Label layoutX="363.0" layoutY="708.0" prefHeight="21.0" prefWidth="87.0" text="Tiền nhận :">
+      <font>
+         <Font name="System Bold" size="15.0" />
+      </font>
+   </Label>
+   <Label layoutX="363.0" layoutY="729.0" prefHeight="21.0" prefWidth="96.0" text="Tiền thối lại :">
+      <font>
+         <Font name="System Bold" size="15.0" />
+      </font>
+   </Label>
+   <Label fx:id="lb_refund" alignment="CENTER" layoutX="464.0" layoutY="731.0" prefHeight="17.0" prefWidth="96.0">
+      <font>
+         <Font size="15.0" />
+      </font></Label>
+   <Label alignment="CENTER" layoutX="464.0" layoutY="752.0" prefHeight="17.0" prefWidth="96.0">
+      <font>
+         <Font size="15.0" />
+      </font></Label>
+   <Label layoutX="53.0" layoutY="310.0" text="Khách hàng :">
+      <font>
+         <Font size="15.0" />
+      </font>
+   </Label>
+   <Label fx:id="lb_customerName" layoutX="158.0" layoutY="310.0" prefHeight="21.0" prefWidth="269.0">
+      <font>
+         <Font size="15.0" />
+      </font>
+      <padding>
+         <Insets left="40.0" />
+      </padding>
+   </Label>
+   <Line endX="415.0" layoutX="136.0" layoutY="350.0" startX="-100.0" />
+   <Line endX="415.0" layoutX="142.0" layoutY="786.0" startX="-100.0" />
+   <Label layoutX="142.0" layoutY="794.0" text="THANK YOU FOR YOUR BUSINESS">
+      <font>
+         <Font name="System Italic" size="20.0" />
+      </font>
+   </Label>
+</AnchorPane>

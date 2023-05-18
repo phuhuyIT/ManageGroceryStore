@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchorPane_staff" prefHeight="900.0" prefWidth="1000.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.StaffController">
+   <children>
+      <ImageView fitHeight="35.0" fitWidth="30.0" layoutX="838.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/refresh.png" />
+         </image>
+      </ImageView>
+      <AnchorPane fx:id="StaffBox_4" layoutX="759.0" layoutY="142.0" prefHeight="259.0" prefWidth="200.0" style="-fx-border-radius: 20; -fx-border-color: #CCCCCC; -fx-cursor: hand;">
+         <children>
+            <ImageView fx:id="imageStaff_4" fitHeight="108.0" fitWidth="112.0" layoutX="42.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="nameStaff_4" alignment="CENTER" layoutY="130.0" prefHeight="32.0" prefWidth="201.0">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="positionStaff_4" alignment="CENTER" layoutY="170.0" prefHeight="30.0" prefWidth="201.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="fwd_Staff4" alignment="CENTER" layoutX="7.0" layoutY="215.0" prefHeight="30.0" prefWidth="188.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="StaffBox_2" layoutX="263.0" layoutY="142.0" prefHeight="259.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20; -fx-cursor: hand;">
+         <children>
+            <ImageView fx:id="imageStaff_2" fitHeight="108.0" fitWidth="112.0" layoutX="44.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="nameStaff_2" alignment="CENTER" layoutY="130.0" prefHeight="32.0" prefWidth="201.0">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="positionStaff_2" alignment="CENTER" layoutX="1.0" layoutY="170.0" prefHeight="30.0" prefWidth="201.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="fwd_Staff2" alignment="CENTER" layoutX="12.0" layoutY="212.0" prefHeight="30.0" prefWidth="188.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="StaffBox_3" layoutX="506.0" layoutY="142.0" prefHeight="259.0" prefWidth="200.0" style="-fx-border-radius: 20; -fx-border-color: #CCCCCC; -fx-cursor: hand;">
+         <children>
+            <ImageView fx:id="imageStaff_3" fitHeight="108.0" fitWidth="112.0" layoutX="42.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="nameStaff_3" alignment="CENTER" layoutY="130.0" prefHeight="32.0" prefWidth="201.0">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="positionStaff_3" alignment="CENTER" layoutX="3.0" layoutY="172.0" prefHeight="30.0" prefWidth="201.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="fwd_Staff3" alignment="CENTER" layoutX="9.0" layoutY="215.0" prefHeight="30.0" prefWidth="188.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Label alignment="CENTER" layoutX="371.0" prefHeight="52.0" prefWidth="170.0" style="-fx-font-weight: bold;" text="Staff">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Line endX="756.0" layoutX="244.0" layoutY="53.0" startX="-244.0" strokeWidth="3.0" />
+      <Label fx:id="lb_Search" layoutX="19.0" layoutY="68.0" prefHeight="37.0" prefWidth="299.0" style="-fx-border-width: 3px; -fx-border-color: black; -fx-border-radius: 7px;" />
+      <TextField fx:id="txt_search" layoutX="65.0" layoutY="69.0" prefHeight="35.0" prefWidth="252.0" promptText="Search here...." style="-fx-background-color: transparent; -fx-font-weight: bold;">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <ImageView fitHeight="37.0" fitWidth="30.0" layoutX="28.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/search.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="331.0" layoutY="69.0" prefHeight="38.0" prefWidth="274.0" style="-fx-border-color: black; -fx-font-weight: bold; -fx-border-width: 3px; -fx-border-radius: 7px;" text="Sort by">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <padding>
+            <Insets left="5.0" />
+         </padding>
+      </Label>
+      <ChoiceBox fx:id="choiceBox" layoutX="428.0" layoutY="71.0" prefHeight="35.0" prefWidth="178.0" style="-fx-background-color: transparent;" />
+      <ImageView fitHeight="37.0" fitWidth="30.0" layoutX="398.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/sort.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="img_back" fitHeight="53.0" fitWidth="58.0" layoutX="316.0" layoutY="768.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 5,0,0,0); -fx-cursor: hand;">
+         <image>
+            <Image url="@../image/previous.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="img_next" fitHeight="53.0" fitWidth="63.0" layoutX="609.0" layoutY="769.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 5,0,0,0); -fx-cursor: hand;">
+         <image>
+            <Image url="@../image/next.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btn_add_user" alignment="CENTER_RIGHT" layoutX="839.0" layoutY="64.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="108.0" style="-fx-cursor: hand; -fx-border-color: black; -fx-border-width: 3px; -fx-border-radius: 5px; -fx-background-radius: 7px;" stylesheets="@css/test.css" text="Add">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="853.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/add-user.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btn_refresh" layoutX="814.0" layoutY="7.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="79.0" style="-fx-cursor: hand; -fx-background-color: transparent;" />
+      <AnchorPane fx:id="StaffBox_1" layoutX="20.0" layoutY="142.0" prefHeight="259.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-cursor: hand; -fx-border-radius: 20;">
+         <children>
+            <ImageView fx:id="imageStaff_1" fitHeight="108.0" fitWidth="112.0" layoutX="47.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/gamer.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="nameStaff_1" alignment="CENTER" layoutX="1.0" layoutY="130.0" prefHeight="32.0" prefWidth="201.0">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="positionStaff_1" alignment="CENTER" layoutX="2.0" layoutY="172.0" prefHeight="30.0" prefWidth="201.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="fwd_Staff1" alignment="CENTER" layoutX="8.0" layoutY="212.0" prefHeight="30.0" prefWidth="188.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="StaffBox_5" layoutX="21.0" layoutY="450.0" prefHeight="259.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20; -fx-cursor: hand;">
+         <children>
+            <ImageView fx:id="imageStaff_5" fitHeight="108.0" fitWidth="112.0" layoutX="44.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="nameStaff_5" alignment="CENTER" layoutY="130.0" prefHeight="32.0" prefWidth="201.0">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="positionStaff_5" alignment="CENTER" layoutX="1.0" layoutY="172.0" prefHeight="30.0" prefWidth="201.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="fwd_Staff5" alignment="CENTER" layoutX="10.0" layoutY="212.0" prefHeight="30.0" prefWidth="188.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="StaffBox_6" layoutX="264.0" layoutY="450.0" prefHeight="259.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20; -fx-cursor: hand;">
+         <children>
+            <ImageView fx:id="imageStaff_6" fitHeight="108.0" fitWidth="112.0" layoutX="44.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="nameStaff_6" alignment="CENTER" layoutY="130.0" prefHeight="32.0" prefWidth="201.0">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="positionStaff_6" alignment="CENTER" layoutY="172.0" prefHeight="30.0" prefWidth="201.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="fwd_Staff6" alignment="CENTER" layoutX="9.0" layoutY="212.0" prefHeight="30.0" prefWidth="188.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="StaffBox_7" layoutX="507.0" layoutY="450.0" prefHeight="259.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20; -fx-cursor: hand;">
+         <children>
+            <ImageView fx:id="imageStaff_7" fitHeight="108.0" fitWidth="112.0" layoutX="44.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="nameStaff_7" alignment="CENTER" layoutY="130.0" prefHeight="32.0" prefWidth="201.0">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="positionStaff_7" alignment="CENTER" layoutX="1.0" layoutY="172.0" prefHeight="30.0" prefWidth="201.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="fwd_Staff7" alignment="CENTER" layoutX="10.0" layoutY="212.0" prefHeight="30.0" prefWidth="188.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="StaffBox_8" layoutX="758.0" layoutY="450.0" prefHeight="259.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 20; -fx-cursor: hand;">
+         <children>
+            <ImageView fx:id="imageStaff_8" fitHeight="108.0" fitWidth="112.0" layoutX="44.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="nameStaff_8" alignment="CENTER" layoutY="130.0" prefHeight="32.0" prefWidth="201.0">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="positionStaff_8" alignment="CENTER" layoutX="2.0" layoutY="172.0" prefHeight="30.0" prefWidth="201.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="fwd_Staff8" alignment="CENTER" layoutX="8.0" layoutY="212.0" prefHeight="30.0" prefWidth="188.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Button fx:id="btn_previousPage" layoutX="313.0" layoutY="764.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="59.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
+      <Button fx:id="btn_nextPage" layoutX="598.0" layoutY="765.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="59.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
+      <Label fx:id="lb_pageNumber" layoutX="477.0" layoutY="787.0" text="Number of page">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="btn_search" layoutX="21.0" layoutY="68.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="52.0" style="-fx-background-color: transparent;" />
+      <ImageView fx:id="iv_scanSKU" fitHeight="30.0" fitWidth="37.0" layoutX="286.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/barcode-scanner.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btn_scanSKU" layoutX="285.0" layoutY="69.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="35.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
+   </children>
+</AnchorPane>

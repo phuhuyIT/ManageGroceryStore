@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="541.0" prefWidth="617.0" style="-fx-background-color: #171717;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HelloController">
+   <left>
+      <AnchorPane prefHeight="549.0" prefWidth="282.0" style="-fx-background-color: #09C9CD;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="173.0" fitWidth="180.0" layoutX="52.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/shopping.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </left>
+   <center>
+      <AnchorPane prefHeight="544.0" prefWidth="334.0" style="-fx-background-color: White;" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="tf_showPass" layoutX="56.0" layoutY="259.0" prefHeight="37.0" prefWidth="209.0" style="-fx-background-color: transparent;">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <Label layoutX="16.0" layoutY="252.0" prefHeight="55.0" prefWidth="307.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 10PX;" />
+            <Label layoutX="15.0" layoutY="178.0" prefHeight="55.0" prefWidth="307.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 10PX;" />
+            <PasswordField fx:id="tf_password" layoutX="56.0" layoutY="259.0" prefHeight="37.0" prefWidth="209.0" promptText="Password" style="-fx-background-color: transparent;">
+               <font>
+                  <Font size="15.0" />
+               </font></PasswordField>
+            <Button fx:id="btn_login" layoutX="22.0" layoutY="382.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="293.0" style="-fx-background-color: #FF9933; -fx-cursor: hand; -fx-background-radius: 10px;" text="Log In" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font></Button>
+            <TextField fx:id="tf_username" layoutX="56.0" layoutY="187.0" prefHeight="37.0" prefWidth="243.0" promptText="Username" style="-fx-background-color: transparent;">
+               <font>
+                  <Font size="15.0" />
+               </font></TextField>
+            <ImageView fitHeight="28.0" fitWidth="31.0" layoutX="23.0" layoutY="192.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/user_2.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="31.0" layoutX="24.0" layoutY="264.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/padlock_1.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="37.0" layoutY="505.0" prefHeight="27.0" prefWidth="172.0" text="Don't have account ?" textFill="#f20303">
+               <font>
+                  <Font size="16.0" />
+               </font></Label>
+            <Hyperlink fx:id="btn_signup" layoutX="193.0" layoutY="501.0" prefHeight="35.0" prefWidth="118.0" text="Register now !">
+               <font>
+                  <Font size="16.0" />
+               </font></Hyperlink>
+            <ImageView fitHeight="163.0" fitWidth="167.0" layoutX="90.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/PHMart.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="btn_forgotpassword" layoutX="174.0" layoutY="313.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="152.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Recovery password" textFill="RED">
+               <font>
+                  <Font size="15.0" />
+               </font></Button>
+            <ToggleButton fx:id="tb_showHidePass" layoutX="268.0" layoutY="256.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="47.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
+         </children>
+      </AnchorPane>
+   </center>
+   <top>
+      <Line endX="100.0" startX="-100.0" BorderPane.alignment="CENTER" />
+   </top>
+</BorderPane>

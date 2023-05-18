@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="482.0" prefWidth="408.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CashController">
+   <children>
+      <Label alignment="CENTER" layoutX="4.0" layoutY="313.0" prefHeight="49.0" prefWidth="147.0" text="Tiền khách đưa">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <TextField layoutX="166.0" layoutY="313.0" prefHeight="49.0" prefWidth="238.0" />
+      <Label alignment="CENTER" layoutX="-1.0" layoutY="117.0" prefHeight="49.0" prefWidth="147.0" text="Giảm">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <TextField layoutX="159.0" layoutY="117.0" prefHeight="49.0" prefWidth="238.0" />
+      <Label alignment="CENTER" layoutX="-1.0" layoutY="191.0" prefHeight="49.0" prefWidth="147.0" text="Thanh toán">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <TextField layoutX="158.0" layoutY="191.0" prefHeight="49.0" prefWidth="238.0" />
+      <Label layoutX="30.0" layoutY="230.0" text="(đã làm tròn)">
+         <font>
+            <Font name="System Italic" size="15.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="6.0" layoutY="41.0" prefHeight="49.0" prefWidth="138.0" text="Tổng tiền">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <Line endX="272.0" layoutX="118.0" layoutY="285.0" startX="-100.0" stroke="#bcb0b0" />
+      <Label alignment="CENTER" layoutX="4.0" layoutY="383.0" prefHeight="49.0" prefWidth="147.0" text="Tiền trả lại ">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="166.0" layoutY="383.0" prefHeight="49.0" prefWidth="238.0" style="-fx-border-color: #BBBBBB; -fx-border-radius: 3PX;" />
+      <Label layoutX="95.0" layoutY="458.0" prefHeight="21.0" prefWidth="218.0" text="Giá trên đã bao gồm thuế GTGT">
+         <font>
+            <Font name="System Italic" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="158.0" layoutY="41.0" prefHeight="49.0" prefWidth="238.0" style="-fx-border-color: #BBBBBB; -fx-border-radius: 3PX;" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="pane" prefHeight="900.0" prefWidth="1000.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ChangePassController">
+    <children>
+        <Label contentDisplay="CENTER" layoutX="261.0" layoutY="160.0" prefHeight="30.0" prefWidth="141.0" text="Old PassWord  ">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Label contentDisplay="CENTER" layoutX="261.0" layoutY="320.0" prefHeight="30.0" prefWidth="204.0" text="Confirm Password       ">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Label alignment="CENTER" layoutY="56.0" prefHeight="53.0" prefWidth="1000.0" style="-fx-font-weight: bold;" text="CHANGE YOUR PASSWORD">
+            <font>
+                <Font size="36.0" />
+            </font>
+            <effect>
+                <InnerShadow />
+            </effect>
+        </Label>
+        <Line endX="499.99993896484375" endY="-8.0" layoutX="500.0" layoutY="124.0" startX="-500.0" startY="-8.0" strokeWidth="3.0" />
+        <TextField fx:id="tf_oldPassword" layoutX="501.0" layoutY="146.0" prefHeight="38.0" prefWidth="271.0" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+        <TextField fx:id="tf_confirmPassword" layoutX="501.0" layoutY="306.0" prefHeight="38.0" prefWidth="271.0" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+        <Button fx:id="btn_update" layoutX="389.0" layoutY="444.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="159.0" style="-fx-cursor: hand;" stylesheets="@css/test.css" text="Apply">
+            <font>
+                <Font name="System Bold" size="27.0" />
+            </font>
+         <padding>
+            <Insets left="20.0" />
+         </padding>
+        </Button>
+      <Label contentDisplay="CENTER" layoutX="261.0" layoutY="242.0" prefHeight="30.0" prefWidth="173.0" text="New Password       ">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tf_newPassword" layoutX="501.0" layoutY="228.0" prefHeight="38.0" prefWidth="271.0" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #0598ff;" />
+      <Hyperlink layoutX="396.0" layoutY="372.0" text="Forget Password" textFill="RED" underline="true">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Hyperlink>
+      <Line endX="6.5" endY="-59.0" layoutX="459.0" layoutY="200.0" startX="6.5" startY="149.0" strokeWidth="2.0" />
+      <ImageView fitHeight="38.0" fitWidth="37.0" layoutX="396.0" layoutY="454.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/confirm.png" />
+         </image>
+      </ImageView>
+    </children>
+</AnchorPane>
