@@ -18,6 +18,9 @@ module com.example.btl_demo {
     requires org.bytedeco.opencv;
     requires jasperreports;
     requires java.mail;
+    requires itextpdf;
+    requires javafx.swing;
+    requires org.apache.pdfbox;
 
     opens Controller to javafx.fxml;
     exports Controller;
