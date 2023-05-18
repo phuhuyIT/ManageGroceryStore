@@ -91,9 +91,18 @@ public class AddCustomerController implements Initializable {
         btn_scanIDCard.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                CameraApp scanIDCard=new CameraApp();
-                scanIDCard.setTextFieldForCustomer(txt_fullNameCustomer,txt_IndentifierCustomer,cb_customerGender,dp_customerBirthdate,txt_locationCustomer);
-                scanIDCard.start();
+                Runnable clock = new Runnable() {
+                    @Override
+                    public void run() {
+                        CameraApp scanIDCard=new CameraApp();
+                        scanIDCard.setTextFieldForCustomer(txt_fullNameCustomer,txt_IndentifierCustomer,cb_customerGender,dp_customerBirthdate,txt_locationCustomer);
+                        scanIDCard.run();
+                    }
+                };
+
+                Thread newClock = new Thread(clock); //Creating new thread
+                newClock.setDaemon(true); //Thread will automatically close on applications closing
+                newClock.start();
 
             }
         });

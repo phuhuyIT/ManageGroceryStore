@@ -121,9 +121,18 @@ public class AddStaffController implements Initializable {
         btn_scanIDCard.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                CameraApp scanIDCard=new CameraApp();
-                scanIDCard.setTextFieldForCustomer(txt_fullNameStaff,txt_IndentifierStaff,cb_staffGender,dp_staffBirthdate,txt_locationStaff);
-                scanIDCard.start();
+                Runnable clock = new Runnable() {
+                    @Override
+                    public void run() {
+                        CameraApp scanIDCard=new CameraApp();
+                        scanIDCard.setTextFieldForCustomer(txt_fullNameStaff,txt_IndentifierStaff,cb_staffGender,dp_staffBirthdate,txt_locationStaff);
+                        scanIDCard.run();
+                    }
+                };
+
+                Thread newClock = new Thread(clock); //Creating new thread
+                newClock.setDaemon(true); //Thread will automatically close on applications closing
+                newClock.start();
             }
         });
         btn_save.setOnAction(new EventHandler<ActionEvent>() {

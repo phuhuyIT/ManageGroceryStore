@@ -264,5 +264,31 @@ public class ProductDAO extends InventoryAlert implements DaoInterface<Product> 
         }
         return productSearchList;
     }
+    public void updateProductBatch(String productSKU, int quantity) {
+        try {
+            String selectAllProduct = "UPDATE productbatch\n" +
+                    "SET quantity = quantity - ?\n" +
+                    "WHERE productSKU = ?;\n";
+            pstmt= con.prepareStatement(selectAllProduct);
+            pstmt.setInt(1,quantity);
+            pstmt.setString(2,productSKU);
+            rs = pstmt.executeQuery();
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+    public ResultSet getProductBySKU(String productSKU){
+        try {
+            String selectAllProduct = "SELECT productName, sellingPrice\n" +
+                    "FROM product_view\n" +
+                    "WHERE productSKU = ?;";
+            pstmt= con.prepareStatement(selectAllProduct);
+            pstmt.setString(1,productSKU);
+            rs = pstmt.executeQuery();
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+        return rs;
+    }
 
 }

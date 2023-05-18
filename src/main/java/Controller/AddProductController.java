@@ -112,9 +112,18 @@ public class AddProductController extends ProductController implements Initializ
             @Override
             public void handle(ActionEvent actionEvent) {
                 try {
-                    CameraApp barCodeScanner= new CameraApp();
-                    barCodeScanner.setTextField(tf_addProductUPC);
-                    barCodeScanner.start();
+                    Runnable clock = new Runnable() {
+                        @Override
+                        public void run() {
+                            CameraApp barCodeScanner= new CameraApp();
+                            barCodeScanner.setTextField(tf_addProductUPC);
+                            barCodeScanner.run();
+                        }
+                    };
+
+                    Thread newClock = new Thread(clock); //Creating new thread
+                    newClock.setDaemon(true); //Thread will automatically close on applications closing
+                    newClock.start();
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }

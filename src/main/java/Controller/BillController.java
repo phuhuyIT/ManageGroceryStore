@@ -103,16 +103,31 @@ public class BillController implements Initializable {
     private ObservableList<Bill> billALLList;
     DecimalFormat formattera = new DecimalFormat("#,###");
     private ObservableList<String> listKetSearch;
+    private Bill selectedBill;
+    public Bill getSelectedBill() {
+        return selectedBill;
+    }
+
+    public void setSelectedBill(Bill selectedBill) {
+        this.selectedBill = selectedBill;
+    }
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         listKetSearch = FXCollections.observableArrayList("Tên khách hàng" , "Tên nhân viên", "Mã hóa đơn");
         choiceBox_sort.setItems(listKetSearch);
         choiceBox_sort.setValue("Tên khách hàng");
         search();
+        showData();
+        setActionOnProductList();
         btn_prBill.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+                selectedBill = tv_showBill.getSelectionModel().getSelectedItem();
                 FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("views/detail_bill.fxml"));
+                DetailBillController controller = new DetailBillController(selectedBill);
+                fxmlLoader.setController(controller);
                 Stage stage = new Stage();
                 Scene scene = null;
                 try {
@@ -126,8 +141,8 @@ public class BillController implements Initializable {
                 stage.show();
             }
         });
-        showData();
-        setActionOnProductList();
+
+
 
     }
     private void showData(){
@@ -189,7 +204,6 @@ public class BillController implements Initializable {
         tc_productPrice.setCellValueFactory(new PropertyValueFactory<>("sellingPrice"));
         tc_productRevenue.setCellValueFactory(new PropertyValueFactory<>("totalRevenue"));
         Bill bill = tv_showBill.getSelectionModel().getSelectedItem();
-        System.out.println("Bill:"+bill.toString() );
         ObservableList<Product> productList = tv_productList.getItems();
         lb_billCode.setText(bill.getBillCode());
         lb_purchaseDate.setText(String.valueOf(bill.getPurchaseDate()));

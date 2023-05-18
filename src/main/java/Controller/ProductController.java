@@ -86,9 +86,18 @@ public class ProductController extends ItemController implements Initializable {
             @Override
             public void handle(ActionEvent actionEvent) {
                 try {
-                    CameraApp barCodeScanner= new CameraApp();
-                    barCodeScanner.setTextField(txt_search);
-                    barCodeScanner.start();
+                    Runnable clock = new Runnable() {
+                        @Override
+                        public void run() {
+                            CameraApp barCodeScanner= new CameraApp();
+                            barCodeScanner.setTextField(txt_search);
+                            barCodeScanner.run();
+                        }
+                    };
+
+                    Thread newClock = new Thread(clock); //Creating new thread
+                    newClock.setDaemon(true); //Thread will automatically close on applications closing
+                    newClock.start();
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }

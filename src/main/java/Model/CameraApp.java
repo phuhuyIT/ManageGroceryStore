@@ -6,6 +6,8 @@ import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -13,8 +15,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 import javax.imageio.ImageIO;
-import javax.swing.*;
+import javax.swing.JFrame;
 
+import DAO.ProductDAO;
 import com.google.zxing.*;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
@@ -22,14 +25,18 @@ import com.google.zxing.common.HybridBinarizer;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.oned.Code128Writer;
 import javafx.application.Platform;
+import javafx.geometry.Pos;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import org.bytedeco.javacv.*;
 import org.bytedeco.javacv.Frame;
 
 
-public class CameraApp extends Thread{
+public class CameraApp {
     private  String barCode;
     private TextField tf_addProductUPC;
     private TextField txt_fullNameCustomer;
@@ -41,7 +48,83 @@ public class CameraApp extends Thread{
     public String getBarcode() {
         return barCode;
     }
-    @Override
+    public void run1(VBox vb_productList) {
+
+        isRunning.set(true);
+        OpenCVFrameGrabber grabber = new OpenCVFrameGrabber(1); // truy cập camera laptop
+        try {
+            grabber.start();
+
+            CanvasFrame canvasFrame = new CanvasFrame("Barcode Scanner");
+            canvasFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+            addWindowListener(new WindowAdapter() {
+                public void windowClosing(WindowEvent e) {
+                    isRunning.set(false);
+                    canvasFrame.dispose();
+                    try {
+                        grabber.release();
+                    } catch (FrameGrabber.Exception ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
+            });
+            Result result = null;
+            while (true) {
+                Frame frame = grabber.grab();
+                BufferedImage image = convertFrameToImage(frame);
+                result = scanBarcode(image);
+                if (result != null ) {
+                    barCode= result.getText();
+                    Result finalResult = result;
+                    ResultSet rs =new ProductDAO().getProductBySKU(barCode);
+                    Platform.runLater(() -> {
+                        try {
+                            HBox hbox = new HBox();
+                            Label nameLabel = new Label(rs.getString("productName"));
+                            nameLabel.setPrefWidth(206);
+                            nameLabel.setPrefHeight(38);
+
+                            // Thiết lập kích thước chữ của Label
+                            nameLabel.setStyle("-fx-font-size: 18;");
+
+                            // Thiết lập vị trí chữ của Label là trung tâm
+                            nameLabel.setAlignment(Pos.CENTER);
+                            // Tạo label cho giá cả
+                            Label priceLabel = new Label(String.valueOf(rs.getDouble("sellingPrice")));
+                            priceLabel.setPrefWidth(107);
+                            priceLabel.setPrefHeight(38);
+
+                            // Thiết lập kích thước chữ của Label
+                            priceLabel.setStyle("-fx-font-size: 18;");
+
+                            // Thiết lập vị trí chữ của Label là trung tâm
+                            priceLabel.setAlignment(Pos.CENTER);
+
+                            // Tạo textField cho số lượng
+                            TextField quantityTextField = new TextField();
+                            quantityTextField.setPrefWidth(156);
+                            quantityTextField.setPrefHeight(38);
+                            quantityTextField.setStyle("-fx-font-size: 18;");
+                            quantityTextField.setAlignment(Pos.CENTER);
+                            hbox.getChildren().addAll(nameLabel, priceLabel, quantityTextField);
+                            vb_productList.getChildren().add(hbox);
+                        } catch (SQLException e) {
+                            throw new RuntimeException(e);
+                        }
+
+
+                    });
+                    Thread.sleep(3000);
+                    System.out.println("Barcode: " + finalResult.getText());
+                }
+                canvasFrame.showImage(frame);
+            }
+        } catch (FrameGrabber.Exception e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
     public void run() {
 
         isRunning.set(true);
@@ -57,7 +140,6 @@ public class CameraApp extends Thread{
                     canvasFrame.dispose();
                     try {
                         grabber.release();
-                        interrupt();
                     } catch (FrameGrabber.Exception ex) {
                         throw new RuntimeException(ex);
                     }
@@ -90,8 +172,9 @@ public class CameraApp extends Thread{
                 System.out.println("Barcode: " + finalResult.getText());
             }
             canvasFrame.showImage(frame);
-
         }
+            grabber.release();
+            canvasFrame.dispose();
         } catch (FrameGrabber.Exception e) {
             throw new RuntimeException(e);
         } catch (InterruptedException e) {

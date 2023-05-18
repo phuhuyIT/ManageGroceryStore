@@ -202,6 +202,9 @@ SELECT suppliercode AS SupplierCode, fullname AS Name, location as Address, phon
 SELECT suppliercode AS SupplierCode, fullname AS Name, location as Address, phone AS Phone FROM suppliers WHERE fullname LIKE searchTxt OR location LIKE searchTxt OR suppliercode LIKE searchTxt OR phone LIKE searchTxt;
 
 
-SELECT * FROM products p join productcategories pc on p.categoryid=pc.categoryid  WHERE MATCH(pc.name) AGAINST('"Thực phẩm đóng hộp"')
+SELECT * FROM products p join productcategories pc on p.categoryid=pc.categoryid  WHERE MATCH(pc.name) AGAINST('"Thực phẩm đóng hộp"');
+UPDATE productbatch
+SET quantity = quantity+110
+WHERE productSKU ='100-329-6809';
 
 
