@@ -134,8 +134,8 @@ public class ProductDAO extends InventoryAlert implements DaoInterface<Product> 
     public int addFunction(Product product) {
         int result=0;
         try {
-            String addProduct= "INSERT INTO PRODUCTS (productname,sid,categoryid,thumbnail, costPrice, sellingPrice)"
-                    +"VALUE(?,?,?,?,?,?)";
+            String addProduct= "INSERT INTO PRODUCTS (productname,sid,categoryid,thumbnail, costPrice, sellingPrice, productBarcode)"
+                    +"VALUE(?,?,?,?,?,?,?)";
             pstmt = con.prepareStatement(addProduct);
             pstmt.setString(1, product.getProductName());
             pstmt.setInt(2,product.getSupplierID());
@@ -143,6 +143,7 @@ public class ProductDAO extends InventoryAlert implements DaoInterface<Product> 
             pstmt.setString(4,product.getThumbnailLink());
             pstmt.setDouble(5,product.getCostPrice());
             pstmt.setDouble(6, product.getSellingPrice());
+            pstmt.setString(7, product.getProductBarCode());
             pstmt.executeUpdate();
             String skuFileName=product.getProductName()+product.getMFGDate();
             CameraApp.skuGenerate(product.getSKUCode(),skuFileName+".png");
@@ -178,15 +179,8 @@ public class ProductDAO extends InventoryAlert implements DaoInterface<Product> 
         try {
             String addProductBatch= "INSERT INTO PRODUCTBATCH (pid, expirationDate, manufractureDate,quantity, ProductSKU)"
                     +"VALUE(?,?,?,?,?)";
-            String query ="SELECT productBarcode, productName FROM PRODUCTS WHERE pid=?";
-            pstmt= con.prepareStatement(query);
-            pstmt.setInt(1,product.getProductId());
-            ResultSet rs2=pstmt.executeQuery();
-            String barcode = null;
-            if(rs2.next()){
-                barcode = rs2.getString("productBarcode");
-            }
-            String skuFileName = barcode+product.getProductName();
+            String skuFileName = product.getProductBarCode()+product.getMFGDate();
+            product.setSKUCode(skuFileName);
             CameraApp.skuGenerate(product.getSKUCode(),skuFileName+".png");
             pstmt = con.prepareStatement(addProductBatch);
             pstmt.setInt(1,product.getProductId());
@@ -307,6 +301,19 @@ public class ProductDAO extends InventoryAlert implements DaoInterface<Product> 
             throw new RuntimeException(e);
         }
         return rs;
+    }
+    public String getProductBarCodeByID(int id){
+        String query = "SELECT productBarCode FROM products WHERE pid =?";
+        try {
+            pstmt = con.prepareStatement(query);
+            pstmt.setInt(1,id);
+            rs = pstmt.executeQuery();
+            if(rs.next())
+                return rs.getString("productBarCode");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
     }
 
 }

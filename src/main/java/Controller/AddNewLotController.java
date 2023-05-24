@@ -35,7 +35,8 @@ public class AddNewLotController implements Initializable {
         datePicker.setDatePickerConverter(dp_expnewLot);
 
         btn_save.setOnAction(ActionEvent -> {
-            new ProductDAO().addProductBatch(new Product(ProductController.getCurrentItemID(), dp_mfgnewLot.getValue(), dp_expnewLot.getValue(), Integer.valueOf(tf_quantity.getText())));
+            int id =ProductController.getCurrentItemID();
+            new ProductDAO().addProductBatch(new Product(id, dp_mfgnewLot.getValue(), dp_expnewLot.getValue(), Integer.valueOf(tf_quantity.getText()),new ProductDAO().getProductBarCodeByID(id)));
         });
     }
 }

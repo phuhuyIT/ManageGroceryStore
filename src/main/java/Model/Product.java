@@ -53,11 +53,12 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public Product(Integer productId, LocalDate MFGDate, LocalDate EXPDate, Integer quantity) {
+    public Product(Integer productId, LocalDate MFGDate, LocalDate EXPDate, Integer quantity, String productBarCode) {
         this.productId = productId;
         this.MFGDate = MFGDate;
         this.EXPDate = EXPDate;
         this.quantity = quantity;
+        this.productBarCode = productBarCode;
     }
 
     public Product(int STT, String productName, int quantity, String totalRevenue) {

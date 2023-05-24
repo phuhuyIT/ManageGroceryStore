@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS managegrocerystore;
-CREATE DATABASE MANAGEGROCERYSTORE
+DROP DATABASE IF EXISTS manageinventorystore;
+CREATE DATABASE manageinventorystore
 CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ;
-USE MANAGEGROCERYSTORE;
+USE manageinventorystore;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+07:00";
 
