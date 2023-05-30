@@ -2,10 +2,7 @@ package Controller;
 
 import DAO.CategoryDao;
 import DAO.ProductDAO;
-import DAO.StaffDAO;
 import DAO.SupplierDAO;
-import Model.CameraApp;
-import Model.Category;
 import Model.Product;
 import Model.Supplier;
 import javafx.event.ActionEvent;
@@ -25,14 +22,12 @@ import javafx.util.StringConverter;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-import static Model.InventoryAlert.errorAlert;
-import static Model.InventoryAlert.informationAlert;
+import static Controller.InventoryAlert.errorAlert;
+import static Controller.InventoryAlert.informationAlert;
 
 public class AddProductController extends ProductController implements Initializable {
     @FXML

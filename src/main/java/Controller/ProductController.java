@@ -2,12 +2,9 @@ package Controller;
 
 import DAO.CategoryDao;
 import DAO.ProductDAO;
-import Model.CameraApp;
 import Model.Category;
 import Model.Product;
 import callable.CategoryCallable;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;

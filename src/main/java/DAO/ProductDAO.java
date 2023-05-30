@@ -1,8 +1,8 @@
 package DAO;
 
-import Model.InventoryAlert;
+import Controller.InventoryAlert;
 import DatabaseConnection.ConnectionFactory;
-import Model.CameraApp;
+import Controller.CameraApp;
 import Model.Product;
 import com.google.zxing.WriterException;
 

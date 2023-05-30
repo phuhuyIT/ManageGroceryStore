@@ -6,10 +6,7 @@ package DatabaseConnection;
  * and open the template in the editor.
  */
 
-import java.sql.Statement;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
+import java.sql.*;
 
 /**
  *
@@ -23,7 +20,7 @@ public class ConnectionFactory {
 
     public ConnectionFactory(){
         try{
-            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/MANAGEGROCERYSTORE", "root", "1234");
+            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/MANAGEINVENTORYSTORE", "root", "1234");
             stmt=con.createStatement();
         }catch(Exception e){
             e.printStackTrace();
@@ -32,7 +29,7 @@ public class ConnectionFactory {
 
     public Connection getConnection(){
         try{
-            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/MANAGEGROCERYSTORE", "root", "1234");
+            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/MANAGEINVENTORYSTORE", "root", "1234");
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -42,7 +39,8 @@ public class ConnectionFactory {
     public boolean checkLogin(String username,String password/*, String user*/){
         String query="SELECT * FROM users WHERE username='"+username+"' AND password='"+password+"'  LIMIT 1";//AND category='ADMINISTRATOR'
         try{
-            rs=stmt.executeQuery(query);
+            PreparedStatement pstmt = con.prepareStatement(query);
+            rs = pstmt.executeQuery();
             if(rs.next()){
                 return true;
             }

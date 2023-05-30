@@ -1,7 +1,6 @@
 package DAO;
 
-import Controller.LoginController;
-import Model.InventoryAlert;
+import Controller.InventoryAlert;
 import DatabaseConnection.ConnectionFactory;
 import Model.Bill;
 import Model.Product;

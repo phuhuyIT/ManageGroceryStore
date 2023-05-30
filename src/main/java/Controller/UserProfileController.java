@@ -1,7 +1,6 @@
 package Controller;
 
 import DAO.UserDAO;
-import Model.InventoryAlert;
 import Model.User;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

@@ -1,11 +1,7 @@
 package DAO;
-import Model.InventoryAlert;
+import Controller.InventoryAlert;
 import Model.Customer;
 import DatabaseConnection.ConnectionFactory;
-import Model.Product;
-import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 
 import java.sql.*;
 import java.util.ArrayList;

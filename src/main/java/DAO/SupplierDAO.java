@@ -1,7 +1,7 @@
 package DAO;
 
 
-import Model.InventoryAlert;
+import Controller.InventoryAlert;
 import DatabaseConnection.ConnectionFactory;
 import Model.Supplier;
 

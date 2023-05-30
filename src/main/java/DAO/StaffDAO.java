@@ -1,15 +1,14 @@
 package DAO;
 
-import Model.InventoryAlert;
 import DatabaseConnection.ConnectionFactory;
-import Model.Product;
 import Model.Staff;
+import Model.monthlySalary;
 
 import java.sql.*;
 import java.util.ArrayList;
 
-import static Model.InventoryAlert.errorAlert;
-import static Model.InventoryAlert.informationAlert;
+import static Controller.InventoryAlert.errorAlert;
+import static Controller.InventoryAlert.informationAlert;
 
 public class StaffDAO implements DaoInterface<Staff>{
     Connection con = null;
@@ -153,7 +152,7 @@ public class StaffDAO implements DaoInterface<Staff>{
 
         return result;
     }
-    public void addMonthlySalary(Staff staff){
+    public void addMonthlySalary(monthlySalary staff){
         /*String checkSalary ="Select id FROM monthly_salary WHERE staffid=? AND monthSalary=?";*/
         int affectedRow=0;
         try {
@@ -162,7 +161,7 @@ public class StaffDAO implements DaoInterface<Staff>{
             System.out.println("Date: "+ staff.getMonthSalary().toString());
             pstmt.setDate(2, Date.valueOf(staff.getMonthSalary()));
             rs=pstmt.executeQuery();*/
-            rs= isHasThisMonthSalary(staff.getId());
+            rs= isHasThisMonthSalary(staff.getID());
             if(rs.next()){
                 String sql = "UPDATE monthly_salary SET monthSalary=?, workingHours=?, overtimeHours=?, allowance=?, deduction=? WHERE id=?";
                 pstmt = con.prepareStatement(sql);
@@ -173,7 +172,7 @@ public class StaffDAO implements DaoInterface<Staff>{
                 pstmt.setInt(3, staff.getOvertimeHours());
                 pstmt.setFloat(4, staff.getAllowance());
                 pstmt.setFloat(5, staff.getDeduction());
-                pstmt.setInt(6, staff.getId());
+                pstmt.setInt(6, staff.getID());
                 // Thực thi truy vấn
                 affectedRow = pstmt.executeUpdate();
                 if(affectedRow>0)
@@ -183,7 +182,7 @@ public class StaffDAO implements DaoInterface<Staff>{
                 try {
                     pstmt = con.prepareStatement(sql);
                     // Thiết lập các tham số truy vấn
-                    pstmt.setInt(1, staff.getId());
+                    pstmt.setInt(1, staff.getID());
                     pstmt.setInt(2, staff.getWorkingHours());
                     pstmt.setInt(3, staff.getOvertimeHours());
                     pstmt.setFloat(4, staff.getAllowance());

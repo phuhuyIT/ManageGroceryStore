@@ -1,6 +1,6 @@
-package Model;
+package Oauth2;
 
-import java.util.regex.Pattern;
+import Controller.InventoryAlert;
 
 public class Verification extends InventoryAlert {
     public static Boolean CheckUsername(String username) {

@@ -1,8 +1,7 @@
 package Controller;
 
 import MailConfig.MailConfig;
-import Model.InventoryAlert;
-import Model.Verification;
+import Oauth2.Verification;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -15,8 +14,6 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import static Model.InventoryAlert.errorAlert;
 
 public class SignUpController extends InventoryAlert implements Initializable {
 

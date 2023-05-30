@@ -1,25 +1,18 @@
 package Controller;
 
 import DAO.StaffDAO;
-import DAO.UserDAO;
 import DatabaseConnection.ConnectionFactory;
-import Model.Product;
-import Model.Staff;
+import Model.monthlySalary;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -29,8 +22,8 @@ import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
-import static Model.InventoryAlert.errorAlert;
-import static Model.InventoryAlert.informationAlert;
+import static Controller.InventoryAlert.errorAlert;
+import static Controller.InventoryAlert.informationAlert;
 
 public class SalaryController implements Initializable {
     @FXML
@@ -75,7 +68,7 @@ public class SalaryController implements Initializable {
     private Button btn_confirmPassword;
     @FXML
     private TextField tf_enterPassword;
-    private Staff staffSalary;
+    private monthlySalary staffSalary;
     DecimalFormat formatter = new DecimalFormat("#.###");
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -143,9 +136,9 @@ public class SalaryController implements Initializable {
                 rs=new StaffDAO().isHasThisMonthSalary(StaffController.getCurrentItemID());
 
                 if(rs.next()){
-                    staffSalary=new Staff(StaffController.getCurrentItemID(),rs.getDate("monthSalary").toLocalDate(),rs.getInt("workingHours"),
+                    staffSalary=new monthlySalary(StaffController.getCurrentItemID(),rs.getDate("monthSalary").toLocalDate(),rs.getInt("workingHours"),
                             rs.getInt("overtimeHours"),rs.getFloat("allowance"),
-                            rs.getFloat("deduction"),0);
+                            rs.getFloat("deduction"));
                     tf_workingHours.setText(String.valueOf(staffSalary.getWorkingHours()));
                     tf_workingHours.setEditable(false);
                     tf_overTime.setText(String.valueOf(staffSalary.getOvertimeHours()));
@@ -180,8 +173,8 @@ public class SalaryController implements Initializable {
             errorAlert("Empty field","PLEASE FILL IN ALL NECESSARY INFORMATION!");
         }
         else{
-            new StaffDAO().addMonthlySalary(new Staff(StaffController.getCurrentItemID(),dp_MonthSalary.getValue(),Integer.parseInt(tf_workingHours.getText()),Integer.parseInt(tf_overTime.getText()),Float.parseFloat(tf_allowance.getText()),
-                    Float.parseFloat(txt_deduction.getText()),result));
+            new StaffDAO().addMonthlySalary(new monthlySalary(StaffController.getCurrentItemID(),dp_MonthSalary.getValue(),Integer.parseInt(tf_workingHours.getText()),Integer.parseInt(tf_overTime.getText()),Float.parseFloat(tf_allowance.getText()),
+                    Float.parseFloat(txt_deduction.getText())));
         }
 
 

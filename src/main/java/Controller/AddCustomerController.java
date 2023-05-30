@@ -1,7 +1,6 @@
 package Controller;
 
 import DAO.CustomerDAO;
-import Model.CameraApp;
 import Model.Customer;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -21,7 +20,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static Model.InventoryAlert.errorAlert;
+import static Controller.InventoryAlert.errorAlert;
 
 public class AddCustomerController implements Initializable {
     @FXML

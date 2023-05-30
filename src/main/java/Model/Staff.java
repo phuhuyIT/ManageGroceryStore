@@ -10,18 +10,14 @@ public class Staff {
     private String phone;
     private LocalDate joinDate;
     private float basicSalary;
-    private int workingHours;
+
     private float totalSalary;
     private String gender;
     private String Email;
     private LocalDate birthDate;
     private String avatarLink;
     private String location;
-    private int overtimeHours;
-    private float allowance;
-    private float deduction;
-    private float salary;
-    private LocalDate monthSalary;
+
 
     public Staff(String fullName, LocalDate joinDate,int id, String position, String avatarLink) {
         this.id = id;
@@ -41,15 +37,6 @@ public class Staff {
         this.avatarLink=avatarLink;
     }
 
-    public Staff(int ID,LocalDate monthSalary, int workingHours, int overtimeHours, float allowance, float deduction, float salary) {
-        this.id=ID;
-        this.workingHours = workingHours;
-        this.overtimeHours = overtimeHours;
-        this.allowance = allowance;
-        this.deduction = deduction;
-        this.salary = salary;
-        this.monthSalary = monthSalary;
-    }
 
     public Staff(String fullName, String staffIDCard, String gender, String location, String phone, String email, String avatarLink, LocalDate birthDate, float basicSalary, String position, LocalDate joinDate) {
         this.fullName = fullName;
@@ -65,45 +52,6 @@ public class Staff {
         this.location = location;
     }
 
-    public LocalDate getMonthSalary() {
-        return monthSalary;
-    }
-
-    public void setMonthSalary(LocalDate monthSalary) {
-        this.monthSalary = monthSalary;
-    }
-
-    public int getOvertimeHours() {
-        return overtimeHours;
-    }
-
-    public void setOvertimeHours(int overtimeHours) {
-        this.overtimeHours = overtimeHours;
-    }
-
-    public float getAllowance() {
-        return allowance;
-    }
-
-    public void setAllowance(float allowance) {
-        this.allowance = allowance;
-    }
-
-    public float getDeduction() {
-        return deduction;
-    }
-
-    public void setDeduction(float deduction) {
-        this.deduction = deduction;
-    }
-
-    public float getSalary() {
-        return salary;
-    }
-
-    public void setSalary(float salary) {
-        this.salary = salary;
-    }
 
     public String getLocation() {
         return location;
@@ -201,13 +149,6 @@ public class Staff {
         this.basicSalary = basicSalary;
     }
 
-    public int getWorkingHours() {
-        return workingHours;
-    }
-
-    public void setWorkingHours(int workingHours) {
-        this.workingHours = workingHours;
-    }
 
     public float getTotalSalary() {
         return totalSalary;

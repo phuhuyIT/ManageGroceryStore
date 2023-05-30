@@ -2,7 +2,6 @@ package Controller;
 
 import DAO.UserDAO;
 import DatabaseConnection.ConnectionFactory;
-import Model.InventoryAlert;
 import Model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import Model.Verification;
+import Oauth2.Verification;
 import java.io.IOException;
 import java.sql.*;
 

@@ -1,10 +1,7 @@
 package Controller;
 
 import DAO.CustomerDAO;
-import DAO.ProductDAO;
-import Model.CameraApp;
 import Model.Customer;
-import Model.Product;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

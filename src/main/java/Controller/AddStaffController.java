@@ -1,9 +1,6 @@
 package Controller;
 
-import DAO.CustomerDAO;
 import DAO.StaffDAO;
-import Model.CameraApp;
-import Model.Customer;
 import Model.Staff;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -24,12 +21,9 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.ResourceBundle;
 
-import static Model.InventoryAlert.errorAlert;
+import static Controller.InventoryAlert.errorAlert;
 
 public class AddStaffController implements Initializable {
     @FXML
