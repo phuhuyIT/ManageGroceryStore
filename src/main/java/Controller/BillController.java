@@ -3,9 +3,6 @@ package Controller;
 import DAO.BillDao;
 import Model.Bill;
 import Model.Product;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.PageSize;
-import com.itextpdf.text.pdf.PdfWriter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -24,15 +21,11 @@ import javafx.stage.Stage;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.nio.file.Paths;
 import java.text.DecimalFormat;
 import java.util.ResourceBundle;
-import com.itextpdf.text.Image;
-import com.itextpdf.text.Document;
+
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;

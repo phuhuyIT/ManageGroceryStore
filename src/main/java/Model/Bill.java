@@ -14,7 +14,7 @@ public class Bill {
     private int productID;
     private int customerID;
     private int staffID;
-    private List productList;
+    private ArrayList productList;
     private String customerName;
     private String staffName;
     private int sequence;
@@ -69,7 +69,7 @@ public class Bill {
         return productList;
     }
 
-    public void setProductList(List<Product> product) {
+    public void setProductList(ArrayList product) {
         this.productList = product;
     }
 
