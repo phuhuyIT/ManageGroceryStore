@@ -58,27 +58,22 @@
                   </AnchorPane>
                   <AnchorPane prefHeight="200.0" prefWidth="284.0" style="-fx-background-color: #2596be;" styleClass="button" stylesheets="@css/test.css" GridPane.rowIndex="1">
                      <children>
-                        <Button fx:id="btn_DashBoard" alignment="TOP_LEFT" layoutX="13.0" layoutY="21.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="240.0" style="-fx-cursor: hand; -fx-background-radius: 15;" styleClass="button" stylesheets="@css/test.css" text="          DashBoard" textAlignment="RIGHT" textFill="WHITE">
+                        <Button fx:id="btn_DashBoard" alignment="TOP_LEFT" layoutX="13.0" layoutY="41.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="240.0" style="-fx-cursor: hand; -fx-background-radius: 15;" styleClass="button" stylesheets="@css/test.css" text="          DashBoard" textAlignment="RIGHT" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="20.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btn_Customer" alignment="TOP_LEFT" layoutX="14.0" layoutY="81.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="240.0" style="-fx-background-radius: 15; -fx-cursor: hand;" stylesheets="@css/test.css" text="          Customer" textAlignment="RIGHT" textFill="WHITE">
+                        <Button fx:id="btn_Customer" alignment="TOP_LEFT" layoutX="14.0" layoutY="101.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="240.0" style="-fx-background-radius: 15; -fx-cursor: hand;" stylesheets="@css/test.css" text="          Customer" textAlignment="RIGHT" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="20.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btn_Product" alignment="TOP_LEFT" layoutX="14.0" layoutY="141.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="240.0" style="-fx-background-radius: 15; -fx-cursor: hand;" stylesheets="@css/test.css" text="          Product" textAlignment="RIGHT" textFill="WHITE">
+                        <Button fx:id="btn_Product" alignment="TOP_LEFT" layoutX="14.0" layoutY="161.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="240.0" style="-fx-background-radius: 15; -fx-cursor: hand;" stylesheets="@css/test.css" text="          Product" textAlignment="RIGHT" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="20.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btn_UserProfile" alignment="TOP_LEFT" layoutX="13.0" layoutY="373.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="240.0" style="-fx-background-radius: 15; -fx-cursor: hand;" stylesheets="@css/test.css" text="          User Profile" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="20.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="btn_Caculator" alignment="TOP_LEFT" layoutX="13.0" layoutY="262.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="240.0" style="-fx-background-radius: 15; -fx-cursor: hand;" stylesheets="@css/test.css" text="          Caculator" textFill="WHITE">
+                        <Button fx:id="btn_Caculator" alignment="TOP_LEFT" layoutX="13.0" layoutY="282.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="240.0" style="-fx-background-radius: 15; -fx-cursor: hand;" stylesheets="@css/test.css" text="          Caculator" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="20.0" />
                            </font>
@@ -92,29 +87,24 @@
                               <Insets left="20.0" />
                            </padding>
                         </Label>
-                        <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="26.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="26.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../image/layout.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="30.0" fitWidth="55.0" layoutX="29.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="30.0" fitWidth="55.0" layoutX="29.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../image/target.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="26.0" layoutY="145.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="26.0" layoutY="165.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../image/process.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="25.0" layoutY="266.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="25.0" layoutY="286.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../image/trade.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="30.0" fitWidth="36.0" layoutX="28.0" layoutY="380.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../image/profile.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="56.0" fitWidth="68.0" layoutX="22.0" layoutY="450.0" pickOnBounds="true" preserveRatio="true">
@@ -122,12 +112,12 @@
                               <Image url="@../image/Really%20Nice%20Cards%20Mailed%20For%20You.gif" />
                            </image>
                         </ImageView>
-                        <Button fx:id="btn_Staff" alignment="TOP_LEFT" layoutX="13.0" layoutY="202.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="240.0" style="-fx-background-radius: 15; -fx-cursor: hand;" stylesheets="@css/test.css" text="          Staff" textFill="WHITE">
+                        <Button fx:id="btn_Staff" alignment="TOP_LEFT" layoutX="13.0" layoutY="222.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="240.0" style="-fx-background-radius: 15; -fx-cursor: hand;" stylesheets="@css/test.css" text="          Staff" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="20.0" />
                            </font>
                         </Button>
-                        <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="25.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="25.0" layoutY="226.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../image/teamwork.png" />
                            </image>
@@ -142,12 +132,12 @@
                               <Image url="@../image/exit.png" />
                            </image>
                         </ImageView>
-                        <Button fx:id="btn_Bill" alignment="TOP_LEFT" layoutX="17.0" layoutY="316.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="240.0" style="-fx-background-radius: 15; -fx-cursor: hand;" stylesheets="@css/test.css" text="         Bill" textFill="WHITE">
+                        <Button fx:id="btn_Bill" alignment="TOP_LEFT" layoutX="17.0" layoutY="336.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="240.0" style="-fx-background-radius: 15; -fx-cursor: hand;" stylesheets="@css/test.css" text="         Bill" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="20.0" />
                            </font>
                         </Button>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="28.0" layoutY="323.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="28.0" layoutY="343.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../image/invoice.png" />
                            </image>

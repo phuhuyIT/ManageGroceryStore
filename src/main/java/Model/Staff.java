@@ -1,5 +1,6 @@
 package Model;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 public class Staff {
@@ -50,6 +51,14 @@ public class Staff {
         this.birthDate = birthDate;
         this.avatarLink = avatarLink;
         this.location = location;
+    }
+
+    public Staff(String email, String name, Date birthday, Date joinDate, int Id) {
+        Email = email;
+        fullName = name;
+        this.birthDate = birthday.toLocalDate();
+        this.joinDate = joinDate.toLocalDate();
+        id = Id;
     }
 
 

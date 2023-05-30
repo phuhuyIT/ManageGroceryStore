@@ -103,7 +103,7 @@ public class DetailStaffController implements Initializable {
         });
     }
     private void showData(){
-        ResultSet rs=new StaffDAO().selectByID(CustomerController.getCurrentItemID());
+        ResultSet rs=new StaffDAO().selectByID(StaffController.getCurrentItemID());
             try {
                 if(rs.next()){
                     lb_fullnameDStaff.setText(rs.getString("FULLNAME"));

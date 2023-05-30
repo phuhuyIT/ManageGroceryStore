@@ -27,11 +27,6 @@
             <version>19</version>
         </dependency>
         <dependency>
-            <groupId>org.controlsfx</groupId>
-            <artifactId>controlsfx</artifactId>
-            <version>11.1.1</version>
-        </dependency>
-        <dependency>
             <groupId>com.dlsc.formsfx</groupId>
             <artifactId>formsfx-core</artifactId>
             <version>11.5.0</version>
@@ -111,24 +106,9 @@
             <version>1.3.2</version>
         </dependency>
         <dependency>
-            <groupId>com.eljavatar</groupId>
-            <artifactId>SwingUtils</artifactId>
-            <version>1.3.2</version>
-        </dependency>
-        <dependency>
-            <groupId>net.sf.jasperreports</groupId>
-            <artifactId>jasperreports</artifactId>
-            <version>6.20.4</version>
-        </dependency>
-        <dependency>
             <groupId>io.github.dzmitry-lakisau</groupId>
             <artifactId>month-year-picker-dialog</artifactId>
             <version>1.1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.controlsfx</groupId>
-            <artifactId>controlsfx</artifactId>
-            <version>11.1.2</version>
         </dependency>
         <dependency>
             <groupId>org.controlsfx</groupId>
@@ -142,7 +122,11 @@
             <artifactId>javax.mail</artifactId>
             <version>1.6.2</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.github.sarxos</groupId>
+            <artifactId>webcam-capture</artifactId>
+            <version>0.3.12</version> <!-- or the latest version -->
+        </dependency>
         <!-- https://mvnrepository.com/artifact/com.itextpdf/itextpdf -->
         <dependency>
             <groupId>com.itextpdf</groupId>
@@ -156,6 +140,16 @@
             <version>3.0.0-RC1</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.13.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-swing</artifactId>
+            <version>19</version>  <!-- Adjust version as needed -->
+        </dependency>
 
     </dependencies>
 
@@ -165,7 +159,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.10.1</version>
+                <version>3.13.0</version>
                 <configuration>
                     <source>19</source>
                     <target>19</target>

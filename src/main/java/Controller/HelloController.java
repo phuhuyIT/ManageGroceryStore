@@ -41,7 +41,7 @@ public class HelloController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 LoginController.LogInUser(event , tf_username.getText(), tf_password.getText());
-
+                System.out.println(tf_username.getText()+" "+ tf_password.getText());
             }
         });
 
@@ -63,13 +63,11 @@ public class HelloController implements Initializable {
                 tb_showHidePass.setGraphic(new ImageView(icon2));
                 tf_showPass.toFront();
                 String pass = tf_password.getText();
-                tf_showPass.setText(pass);
-                tf_showPass.setEditable(true);
+                tf_password.setText(pass);
                 tf_showPass.setVisible(true);
                 tf_password.setVisible(false);
             } else {
                 tb_showHidePass.setGraphic(new ImageView(icon1));
-                tf_password.setEditable(true);
                 tf_showPass.setVisible(false);
                 tf_password.setVisible(true);
             }

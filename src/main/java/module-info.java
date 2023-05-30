@@ -16,12 +16,11 @@ module com.example.btl_demo {
     requires org.bytedeco.javacpp;
     requires org.bytedeco.javacv;
     requires org.bytedeco.opencv;
-    requires jasperreports;
     requires java.mail;
     requires itextpdf;
-    requires org.apache.commons.collections4;
-    requires pdfbox;
     requires javafx.swing;
+    requires pdfbox;
+    requires webcam.capture;
     opens Controller to javafx.fxml;
     exports Controller;
     opens Model to javafx.fxml;

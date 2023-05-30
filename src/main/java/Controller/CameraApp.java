@@ -12,12 +12,14 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
 import DAO.ProductDAO;
+import com.github.sarxos.webcam.Webcam;
 import com.google.zxing.*;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
@@ -56,7 +58,8 @@ public class CameraApp {
     public void run1(VBox vb_productList, Label lb_totalCost,TextField txt_search) {
 
         isRunning.set(true);
-        OpenCVFrameGrabber grabber = new OpenCVFrameGrabber(1); // truy cập camera laptop
+
+        OpenCVFrameGrabber grabber = new OpenCVFrameGrabber(0); // truy cập camera laptop
         try {
             grabber.start();
 
@@ -116,7 +119,7 @@ public class CameraApp {
                                 quantityTextField.setPrefHeight(38);
                                 quantityTextField.setStyle("-fx-font-size: 18;");
                                 quantityTextField.setAlignment(Pos.CENTER);
-                                javafx.scene.control.Button btnDelete = new Button();
+                                Button btnDelete = new Button();
                                 btnDelete.setId("btn_deleteCaculator");
                                 btnDelete.setPrefWidth(52);
                                 btnDelete.setPrefHeight(38);
@@ -223,6 +226,8 @@ public class CameraApp {
                 barCode= result.getText();
                 Result finalResult = result;
                 Platform.runLater(() -> {
+                    System.out.println(finalResult.getText());
+
                     String[] parts =splitString(finalResult.getText());
                     txt_IndentifierCustomer.setText(parts[0]);
                     txt_fullNameCustomer.setText(parts[1]);

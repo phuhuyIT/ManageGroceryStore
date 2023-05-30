@@ -1,7 +1,10 @@
 package Controller;
 
+import DAO.RoleDAO;
 import DAO.StaffDAO;
+import Model.Role;
 import Model.Staff;
+import Oauth2.Verification;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -21,6 +24,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import static Controller.InventoryAlert.errorAlert;
@@ -76,7 +80,6 @@ public class AddStaffController implements Initializable {
     private TextField txt_staffBasicSalary;
 
     private String[] gender = {"Nam" , "Nữ" , "Khác"};
-    private String[] position = {"Nhân viên" , "Quản lý" , "Kế toán"};
 
     @FXML
     public void chooseImageStaff(ActionEvent event) throws IOException {
@@ -95,10 +98,21 @@ public class AddStaffController implements Initializable {
         Image image = new Image(String.valueOf(filePath));
         iv_staffImage.setImage(image);
     }
+
+    private String[] convertRoleListToStringArray(List<Role> roleList) {
+        String[] roleNamesArray = new String[roleList.size()];
+        for (int i = 0; i < roleList.size(); i++) {
+            Role role = roleList.get(i);
+            roleNamesArray[i] = role.getName();
+        }
+        return roleNamesArray;
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         cb_staffGender.getItems().addAll(gender);
-        cb_staffPosition.getItems().addAll(position);
+        List<Role> roles = new RoleDAO().getAllRoles();
+        String[] roleNamesArray = convertRoleListToStringArray(roles);
+        cb_staffPosition.getItems().addAll(roleNamesArray);
         btn_back.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -137,10 +151,20 @@ public class AddStaffController implements Initializable {
         });
     }
     public void addStaff(){
-        if(txt_fullNameStaff.getText().isEmpty()||cb_staffGender.getValue().isEmpty()||
+        if(txt_fullNameStaff.getText().isEmpty()||cb_staffGender.isShowing()||cb_staffGender.getValue().isEmpty()||
                 dp_staffBirthdate.equals(null)||txt_phoneNumberStaff.equals(null)){
             errorAlert("Empty field","PLEASE FILL IN ALL NECESSARY INFORMATION!");
-        }else{
+        }
+        else if(Verification.isValidPhoneNumber(txt_phoneNumberStaff.getText())==false){
+            errorAlert("Invalid phone number","PLEASE ENTER A VALID PHONE NUMBER!");
+        }
+        else if(Verification.isValidEmail(txt_emailStaff.getText())==false){
+            errorAlert("Invalid email","PLEASE ENTER A VALID EMAIL!");
+        }
+        else if(Verification.isValidQuantity(Integer.parseInt(txt_staffBasicSalary.getText()))==false){
+            errorAlert("Invalid salary","PLEASE ENTER SALARY EQUAL OR BIGGER THAN 0!");
+        }
+        else{
             if(cb_staffGender.getValue()=="Nam"&&filePath.toString()==null){
                 filePath = new File("D:/java/ManageGroceryStore/src/main/resources/Controller/image/woman1.jpg");
             } else if (cb_staffGender.getValue()=="Nữ"&&filePath.toString()==null) {

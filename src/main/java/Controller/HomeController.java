@@ -41,8 +41,6 @@ public class HomeController implements Initializable {
     @FXML
     private Button btn_Bill;
     @FXML
-    private Button btn_UserProfile;
-    @FXML
     private Label wlc_user;
 
     @FXML
@@ -162,19 +160,19 @@ public class HomeController implements Initializable {
             }
         });
         //cài sự kiện cho btn_UserProfile
-        btn_UserProfile.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("views/user_profile.fxml"));
-                Node node = null;
-                try {
-                    node = loader.load();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                paneRight.getChildren().set(0, node);
-            }
-        });
+//        btn_Account.setOnAction(new EventHandler<ActionEvent>() {
+//            @Override
+//            public void handle(ActionEvent actionEvent) {
+//                FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("views/home.fxml"));
+//                Node node = null;
+//                try {
+//                    node = loader.load();
+//                } catch (IOException e) {
+//                    throw new RuntimeException(e);
+//                }
+//                paneRight.getChildren().set(0, node);
+//            }
+//        });
         //cài sự kiện cho btn_Logout
         btn_logout.setOnAction(new EventHandler<ActionEvent>() {
             @Override

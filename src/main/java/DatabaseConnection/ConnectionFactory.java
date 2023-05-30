@@ -20,7 +20,7 @@ public class ConnectionFactory {
 
     public ConnectionFactory(){
         try{
-            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/MANAGEINVENTORYSTORE", "root", "1234");
+            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/MANAGEGROCERYSTORE", "root", "Phuhuy113@");
             stmt=con.createStatement();
         }catch(Exception e){
             e.printStackTrace();
@@ -29,7 +29,7 @@ public class ConnectionFactory {
 
     public Connection getConnection(){
         try{
-            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/MANAGEINVENTORYSTORE", "root", "1234");
+            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/MANAGEGROCERYSTORE", "root", "Phuhuy113@");
         }catch(Exception e){
             e.printStackTrace();
         }

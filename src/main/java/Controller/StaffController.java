@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 
@@ -41,6 +42,16 @@ public class StaffController extends ItemController implements Initializable {
     @FXML
     private ChoiceBox <String> choiceBox;
     private String[] choice = {"Tìm theo tên" , "Tìm theo số cccd"};
+    private Stage accountStage;
+
+    public Stage getAccountStage() {
+        return accountStage;
+    }
+
+    public void setAccountStage(Stage accountStage) {
+        this.accountStage = accountStage;
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         numberData = new StaffDAO().getNumStaff();
@@ -85,7 +96,15 @@ public class StaffController extends ItemController implements Initializable {
         salary.setText("Salary Management");
         salary.setStyle("-fx-font-size : 16px ; -fx-padding : 0px 0px 0px 50px;");
 
-        contextMenu.getItems().add(1,salary);
+        MenuItem Account = new MenuItem("Account");
+        ImageView iconAccount = new ImageView(new Image(getClass().getResourceAsStream("image/account.png")));
+        iconAccount.setFitHeight(30);
+        iconAccount.setFitWidth(30);
+        Account.setGraphic(iconAccount);
+        Account.setText("Account");
+        Account.setStyle("-fx-font-size : 16px ; -fx-padding : 0px 0px 0px 50px;");
+
+        contextMenu.getItems().addAll(salary, Account);
         for (int i=0;i<8;i++){
             AnchorPane ap = (AnchorPane) anchorPane_staff.lookup("#StaffBox_"+(i+1));
             ap.setOnContextMenuRequested(event -> {
@@ -136,6 +155,20 @@ public class StaffController extends ItemController implements Initializable {
             stage.setResizable(false);
             stage.show();
         });
+        Account.setOnAction(actionEvent ->{
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("views/account.fxml"));
+            accountStage = new Stage();
+            Scene scene = null;
+            try {
+                scene = new Scene(fxmlLoader.load(),800, 620);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            accountStage.setTitle("Account");
+            accountStage.setScene(scene);
+            accountStage.setResizable(false);
+            accountStage.show();
+        });
     }
 
     @Override
@@ -184,7 +217,7 @@ public class StaffController extends ItemController implements Initializable {
             Label staffPosition =(Label) anchorPane.lookup("#positionStaff_"+(i+1));
             Label staffJoinDate =(Label) anchorPane.lookup("#fwd_Staff"+(i+1));
             anchorPane.setUserData(null);
-            String img  = "D:\\java\\ManageGroceryStore\\src\\main\\resources\\Controller\\image\\gamer.png";
+            String img  = "C:\\Users\\phu huy\\IdeaProjects\\ManageGroceryStore\\src\\main\\resources\\Controller\\image\\gamer.png";
             if(img!=null) {
                 Image image1 = new Image(String.valueOf(img));
                 staffAvatar.setImage(image1);

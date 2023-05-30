@@ -6,6 +6,7 @@ import DAO.SupplierDAO;
 import Model.Product;
 import Model.Supplier;
 import Model.productLot;
+import Oauth2.Verification;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -164,11 +165,32 @@ public class AddProductController extends ProductController implements Initializ
     private void addProduct(){
         if(filePath==null)
             filePath = new File("D:/java/ManageGroceryStore/src/main/resources/Controller/image/PHMart.jpg");
+
+
         if(tf_addProductName.getText().isEmpty()||lb_Category.getText()==null||tf_addProductQuantity.getText().isEmpty()||
         tf_addProductUPC.getText().isEmpty()||dp_addProductManufractureDate.getValue()==null||dp_addProductExpireDate.getValue()==null||
                 tf_addProductCostPrice.getText().isEmpty()||tf_addProductSellingPrice.getText().isEmpty()){
             errorAlert("Empty field","PLEASE FILL IN ALL NECESSARY INFORMATION!");
-        }else{
+        }
+        else if(!Verification.isValidQuantity(Integer.parseInt(tf_addProductQuantity.getText()))){
+            errorAlert("Invalid quantity","QUANTITY MUST BE A POSITIVE NUMBER!");
+        }
+        else if(!Verification.isValidPrice(Integer.parseInt(tf_addProductCostPrice.getText()))){
+            errorAlert("Invalid cost price","COST PRICE MUST BE A POSITIVE NUMBER!");
+        }
+        else if(!Verification.isValidPrice(Integer.parseInt(tf_addProductSellingPrice.getText()))){
+            errorAlert("Invalid selling price","SELLING PRICE MUST BE A POSITIVE NUMBER!");
+        }
+        else if(!Verification.isValidQuantity(Integer.parseInt(tf_addProductQuantity.getText()))){
+            errorAlert("Invalid quantity","QUANTITY MUST BE A POSITIVE NUMBER!");
+        }
+        else if(!Verification.isValidManufactureDate(dp_addProductManufractureDate.getValue(), dp_addProductExpireDate.getValue())){
+            errorAlert("Invalid date","MANUFACTURE DATE MUST BE BEFORE EXPIRE DATE AND CURRENT DATE!");
+        }
+        else if (!Verification.isValidExpirationDate(dp_addProductManufractureDate.getValue(),dp_addProductExpireDate.getValue())){
+            errorAlert("Invalid date","EXPIRE DATE MUST BE AFTER MANUFACTURE DATE AND CURRENT DATE!");
+        }
+        else{
             Supplier supplier = new Supplier(tf_addProductSupplierName.getText(),tf_addProductSupplierLocation.getText(),tf_addProductSupplierPhone.getText());
             SupplierDAO supplierDAO = new SupplierDAO();
             int sid = supplierDAO.insert(supplier);

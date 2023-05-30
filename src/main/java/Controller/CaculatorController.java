@@ -227,23 +227,29 @@ public class CaculatorController implements Initializable {
                             }
                         });
                         quantityTextField.setOnKeyReleased(keyEvent ->  {
-                            double totalCost = 0;
-                            int i=0;
-                            for (Node node : vb_productList.getChildren()) {
-                                if (node instanceof HBox) {
-                                    HBox hboxa = (HBox) node;
-                                    Label lookupPrice = (Label) hboxa.lookup("#priceLabel");
-                                    TextField lookupQuantity = (TextField) hboxa.lookup("#quantityTextField");
 
-                                    double sellingPrice = Double.parseDouble(lookupPrice.getText());
-                                    int quantityInHBox = Integer.parseInt(lookupQuantity.getText());
+                            String input = quantityTextField.getText() + keyEvent.getCharacter();
+                            if (isPositiveNumber(input)) {
+                                double totalCost = 0;
+                                int i=0;
+                                for (Node node : vb_productList.getChildren()) {
+                                    if (node instanceof HBox) {
+                                        HBox hboxa = (HBox) node;
+                                        Label lookupPrice = (Label) hboxa.lookup("#priceLabel");
+                                        TextField lookupQuantity = (TextField) hboxa.lookup("#quantityTextField");
 
-                                    totalCost += sellingPrice * quantityInHBox;
-                                    i++;
+                                        double sellingPrice = Double.parseDouble(lookupPrice.getText());
+                                        int quantityInHBox = Integer.parseInt(lookupQuantity.getText());
+
+                                        totalCost += sellingPrice * quantityInHBox;
+                                        i++;
+                                    }
                                 }
+                                lb_totalRevenue.setText(String.valueOf(totalCost));
+                                lb_totalCost.setText(String.valueOf(totalCost));
                             }
-                            lb_totalRevenue.setText(String.valueOf(totalCost));
-                            lb_totalCost.setText(String.valueOf(totalCost));
+
+
                         });
                         btn_payment.setOnAction(new EventHandler<ActionEvent>() {
                             @Override
@@ -294,6 +300,7 @@ public class CaculatorController implements Initializable {
                 }
             }
         });
+
         btn_searchCustomer.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -302,6 +309,14 @@ public class CaculatorController implements Initializable {
         });
 
 
+    }
+    private boolean isPositiveNumber(String input) {
+        try {
+            double number = Double.parseDouble(input);
+            return number > 0;
+        } catch (NumberFormatException e) {
+            return false; // Not a valid number
+        }
     }
 
 }

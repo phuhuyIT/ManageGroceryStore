@@ -4,6 +4,7 @@ import DAO.CategoryDao;
 import DAO.ProductDAO;
 import DAO.SupplierDAO;
 import Model.Product;
+import Oauth2.Verification;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -28,6 +29,8 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
+
+import static Controller.InventoryAlert.errorAlert;
 
 public class DetailProductController extends ProductController implements Initializable {
     @FXML
@@ -101,11 +104,23 @@ public class DetailProductController extends ProductController implements Initia
     private void updateDetailProduct(){
         int categoryID=new CategoryDao().getCategoryIDByName(lb_Category.getText());
         if(filePath==null)
-            filePath = new File("D:/java/ManageGroceryStore/src/main/resources/Controller/image/PHMart.jpg");
+            filePath = new File("C:\\Users\\phu huy\\IdeaProjects\\ManageGroceryStore\\src\\main\\resources\\Controller\\image\\empty.png");
         System.out.println(filePath.toString());
-        Product product=new Product(lb_detailProductName.getText(),ProductController.getCurrentItemID(),categoryID,Integer.parseInt(lb_detailProductQuantity.getText()),
-                filePath.toString(), Double.parseDouble(tf_detailProductCostPrice.getText()),Double.parseDouble(tf_detailProductSellingPrice.getText()));
-        new ProductDAO().update(product);
+        if(lb_Category.getText()==null||
+                tf_detailProductCostPrice.getText().isEmpty()||tf_detailProductSellingPrice.getText().isEmpty()){
+            errorAlert("Empty field","PLEASE FILL IN ALL NECESSARY INFORMATION!");
+        }
+        else if(!Verification.isValidPrice(Integer.parseInt(tf_detailProductCostPrice.getText()))){
+            errorAlert("Invalid cost price","COST PRICE MUST BE A POSITIVE NUMBER!");
+        }
+        else if(!Verification.isValidPrice(Integer.parseInt(tf_detailProductSellingPrice.getText()))){
+            errorAlert("Invalid selling price","SELLING PRICE MUST BE A POSITIVE NUMBER!");
+        }
+        else{
+            Product product=new Product(lb_detailProductName.getText(),ProductController.getCurrentItemID(),categoryID,Integer.parseInt(lb_detailProductQuantity.getText()),
+                    filePath.toString(), Double.parseDouble(tf_detailProductCostPrice.getText()),Double.parseDouble(tf_detailProductSellingPrice.getText()));
+            new ProductDAO().update(product);
+        }
     }
     protected void showProduct(){
         ProductDAO product=new ProductDAO();
@@ -127,6 +142,7 @@ public class DetailProductController extends ProductController implements Initia
                 cb_mfgDate.setValue("Chọn nsx để xem hsd");
 
                 String thumbnailLink = rs.getString("THUMBNAIL");
+                //String thumbnailLink  = "C:\\Users\\phu huy\\IdeaProjects\\ManageGroceryStore\\src\\main\\resources\\Controller\\image\\empty.png";
                 if(thumbnailLink!=null){
                     Image productThumnail = new Image(String.valueOf(thumbnailLink));
                     iv_productThumbnail.setImage(productThumnail);

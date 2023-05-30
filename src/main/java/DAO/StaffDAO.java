@@ -2,10 +2,16 @@ package DAO;
 
 import DatabaseConnection.ConnectionFactory;
 import Model.Staff;
+import Model.User;
 import Model.monthlySalary;
 
 import java.sql.*;
+import java.text.Normalizer;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 import static Controller.InventoryAlert.errorAlert;
 import static Controller.InventoryAlert.informationAlert;
@@ -122,10 +128,11 @@ public class StaffDAO implements DaoInterface<Staff>{
 
     @Override
     public int addFunction(Staff staff) {
+        int userId = addAccountStaff(staff);
         int result = 0;
         try {
-            String url = "insert into staff (fullname, gender, staffIDCard, position , phone, joinDate, EMAIL, avatarLink, Birthdate, basicSalary, location)"
-                    + "values (?,?,?,?,?,?,?,?,?,?,?)";
+            String url = "insert into staff (fullname, gender, staffIDCard, position , phone, joinDate, EMAIL, avatarLink, Birthdate, basicSalary, location, userId)"
+                    + "values (?,?,?,?,?,?,?,?,?,?,?,?)";
             pstmt = con.prepareStatement(url);
             pstmt.setString(1, staff.getFullName());
             if(staff.getGender().equals("Nam"))
@@ -143,6 +150,7 @@ public class StaffDAO implements DaoInterface<Staff>{
             pstmt.setDate(9, Date.valueOf(staff.getBirthDate()));
             pstmt.setFloat(10,staff.getBasicSalary());
             pstmt.setString(11,staff.getLocation());
+            pstmt.setInt(12,userId);
             result = pstmt.executeUpdate();
             if(result>0)
                 informationAlert("Sucessful","THIS STAFF HAS BEEN ADDED SUCCESSFULLY");
@@ -152,6 +160,23 @@ public class StaffDAO implements DaoInterface<Staff>{
 
         return result;
     }
+
+
+
+    public int addAccountStaff(Staff staff){
+
+        LocalDate date = LocalDate.now(); // or any other LocalDate instance
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("ddMMyyyy");
+        return new UserDAO().addUserDAO(new User(staff.getEmail(), convertVietnameseToEnglish(staff.getFullName()) + staff.getBirthDate().format(formatter), convertVietnameseToEnglish(staff.getFullName()) + staff.getJoinDate().format(formatter), staff.getId()));
+    }
+
+    private String convertVietnameseToEnglish(String str) {
+        String temp = Normalizer.normalize(str, Normalizer.Form.NFD);
+        Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+        return pattern.matcher(temp).replaceAll("").toLowerCase().replaceAll(" ", "");
+    }
+
+
     public void addMonthlySalary(monthlySalary staff){
         /*String checkSalary ="Select id FROM monthly_salary WHERE staffid=? AND monthSalary=?";*/
         int affectedRow=0;
@@ -201,6 +226,9 @@ public class StaffDAO implements DaoInterface<Staff>{
         }
 
     }
+
+
+
     public int getNumStaff(){
         String query="SELECT COUNT(id) as numberStaff FROM staff";
         int numberProduct=0;
@@ -214,6 +242,9 @@ public class StaffDAO implements DaoInterface<Staff>{
         }
         return numberProduct;
     }
+
+
+
     public ResultSet getTop5StaffRevenues(){
         try {
             CallableStatement cstmt = con.prepareCall("{ CALL getTop5StaffRevenues() }");
@@ -237,6 +268,9 @@ public class StaffDAO implements DaoInterface<Staff>{
         }
         return rs;
     }
+
+
+
     public ArrayList<Staff> search(String searchValue, String searchFilter){
         ArrayList<Staff> staffSearchList= new ArrayList<>();
         String fullTextSearches="SELECT FULLNAME,joinDate,ID,POSITION,avatarLink\n" +
@@ -254,6 +288,9 @@ public class StaffDAO implements DaoInterface<Staff>{
         }
         return staffSearchList;
     }
+
+
+
     public int getID(String fullname){
         String query ="SELECT id FROM staff WHERE fullname = ?";
         int cid=0;

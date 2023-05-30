@@ -12,8 +12,24 @@ public class User {
     private String password;
     private String category;
     private String imgLink;
+    private int staffID;
+
+    public int getStaffID() {
+        return staffID;
+    }
+
+    public void setStaffID(int staffID) {
+        this.staffID = staffID;
+    }
 
     public User() {
+    }
+
+    public User(String email, String username, String password, int staffID) {
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        this.staffID = staffID;
     }
 
     public String getEmail() {

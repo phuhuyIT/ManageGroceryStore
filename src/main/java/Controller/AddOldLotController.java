@@ -4,12 +4,10 @@ import DAO.ProductDAO;
 import DatabaseConnection.ConnectionFactory;
 import Model.Product;
 import Model.productLot;
+import Oauth2.Verification;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.util.Pair;
 import org.controlsfx.control.action.Action;
 
@@ -53,10 +51,25 @@ public class AddOldLotController implements Initializable {
     });
     btn_save.setOnAction(ActionEvent -> {
         totalQuantity += Integer.parseInt(tf_newQuantity.getText());
-        batchList.put(LocalDate.parse(cb_selectBatch.getValue().toString()), totalQuantity);
-        new ProductDAO().updateOldBatch(new productLot(ProductController.getCurrentItemID(), LocalDate.parse(cb_selectBatch.getValue().toString()),totalQuantity));
-        lb_totalQuantity.setText(String.valueOf(batchList.get(LocalDate.parse(cb_selectBatch.getValue().toString()))));
-        tf_newQuantity.clear();
+        if(Verification.isValidQuantity(totalQuantity) == false){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Invalid number of quantity");
+            alert.setContentText("Quantity must be greater than 0");
+            alert.showAndWait();
+        }
+        else {
+            batchList.put(LocalDate.parse(cb_selectBatch.getValue().toString()), totalQuantity);
+            new ProductDAO().updateOldBatch(new productLot(ProductController.getCurrentItemID(), LocalDate.parse(cb_selectBatch.getValue().toString()),totalQuantity));
+            lb_totalQuantity.setText(String.valueOf(batchList.get(LocalDate.parse(cb_selectBatch.getValue().toString()))));
+            tf_newQuantity.clear();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText("Update success");
+            alert.setContentText("Update quantity of batch success");
+            alert.showAndWait();
+        }
+
     });
 
     }

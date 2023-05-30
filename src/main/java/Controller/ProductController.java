@@ -246,7 +246,7 @@ public class ProductController extends ItemController implements Initializable {
                     Label productName = (Label)ap.lookup("#productName"+(z+1));
                     String img  = productList.get(i).getThumbnailLink();
                     if(img!=null) {
-                        Image image1 = new Image(String.valueOf(img));
+                        Image image1 = new Image(String.valueOf("C:\\Users\\phu huy\\IdeaProjects\\ManageGroceryStore\\src\\main\\resources\\Controller\\image\\empty.png"));
                         productThumbnail.setImage(image1);
 
                     }
@@ -281,7 +281,7 @@ public class ProductController extends ItemController implements Initializable {
                 Label productQuantity =(Label) ap.lookup("#productQuantity"+(i+1));
                 Label productPrice =(Label)ap.lookup("#productPrice"+(i+1));
                 Label productName = (Label)ap.lookup("#productName"+(i+1));
-                String img  = "D:/java/ManageGroceryStore/src/main/resources/Controller/image/empty.png";
+                String img  = "C:\\Users\\phu huy\\IdeaProjects\\ManageGroceryStore\\src\\main\\resources\\Controller\\image\\empty.png";
                 if(img!=null) {
                     Image image1 = new Image(String.valueOf(img));
                     productThumbnail.setImage(image1);
