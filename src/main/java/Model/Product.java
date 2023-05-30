@@ -1,12 +1,11 @@
 package Model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Product {
     private Integer productId;
     private String productBarCode;
-    private LocalDate MFGDate;
-    private LocalDate EXPDate;
     private int supplierID;
     private String productName;
     private Integer quantity;
@@ -17,8 +16,57 @@ public class Product {
     private String customerCode;
     private Double totalCost;
     private String totalRevenue;
-    private String SKUCode;
     private String thumbnailLink;
+    private ArrayList<productLot> productLots;
+
+    public Product(productLot productLot) {
+        productLots=new ArrayList<>();
+        productLots.add(productLot);
+    }
+
+    public Product(String productName, int categoryId, String avatar, int sid, double costPrice, double sellingPrice, ArrayList<productLot> productLots) {
+        productLots=new ArrayList<>();
+        this.productName=productName;
+        this.categoryID=categoryId;
+        this.thumbnailLink=avatar;
+        this.supplierID=sid;
+        this.costPrice=costPrice;
+        this.sellingPrice=sellingPrice;
+        this.productLots=productLots;
+    }
+
+    public void setProductId(Integer productId) {
+        this.productId = productId;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public ArrayList<productLot> getProductLots() {
+        return productLots;
+    }
+
+    public void setProductLots(ArrayList<productLot> productLots) {
+        this.productLots = productLots;
+    }
+
+    public Product(Integer productId, String productBarCode, int supplierID, String productName, Integer quantity, double costPrice, double sellingPrice, int categoryID, int userId, String customerCode, Double totalCost, String totalRevenue, String thumbnailLink, ArrayList<productLot> productLots) {
+        this.productId = productId;
+        this.productBarCode = productBarCode;
+        this.supplierID = supplierID;
+        this.productName = productName;
+        this.quantity = quantity;
+        this.costPrice = costPrice;
+        this.sellingPrice = sellingPrice;
+        this.categoryID = categoryID;
+        this.userId = userId;
+        this.customerCode = customerCode;
+        this.totalCost = totalCost;
+        this.totalRevenue = totalRevenue;
+        this.thumbnailLink = thumbnailLink;
+        this.productLots = productLots;
+    }
 
     public Product(String productName, double sellingPrice, int quantity, String totalRevenue) {
         this.productName = productName;
@@ -47,19 +95,6 @@ public class Product {
         this.totalRevenue = totalRevenue;
     }
 
-    public Product(Integer productId, LocalDate MFGDate, Integer quantity) {
-        this.productId = productId;
-        this.MFGDate = MFGDate;
-        this.quantity = quantity;
-    }
-
-    public Product(Integer productId, LocalDate MFGDate, LocalDate EXPDate, Integer quantity, String productBarCode) {
-        this.productId = productId;
-        this.MFGDate = MFGDate;
-        this.EXPDate = EXPDate;
-        this.quantity = quantity;
-        this.productBarCode = productBarCode;
-    }
 
     public Product(int STT, String productName, int quantity, String totalRevenue) {
         this.productId=STT;
@@ -88,18 +123,6 @@ public class Product {
         this.thumbnailLink = thumbnailLink;
     }
 
-    public Product(String productName, int categoryID, String productBarCode, String thumbnailLink, int supplierID, double costPrice, double sellingPrice, LocalDate MFGDate, LocalDate EXPDate, int quantity) {
-        this.productBarCode = productBarCode;
-        this.MFGDate = MFGDate;
-        this.EXPDate = EXPDate;
-        this.supplierID = supplierID;
-        this.productName = productName;
-        this.quantity = quantity;
-        this.costPrice = costPrice;
-        this.sellingPrice = sellingPrice;
-        this.categoryID = categoryID;
-        this.thumbnailLink = thumbnailLink;
-    }
 
     public String getThumbnailLink() {
         return thumbnailLink;
@@ -109,39 +132,7 @@ public class Product {
         this.thumbnailLink = thumbnailLink;
     }
 
-    public Product(int productId, String productBarCode, LocalDate MFGDate, LocalDate EXPDate, int supplierID, String productName, int quantity, double costPrice, double sellingPrice, int categoryID, int userId, String customerCode, Double totalCost, String totalRevenue, String SKUCode) {
-        this.productId = productId;
-        this.productBarCode = productBarCode;
-        this.MFGDate = MFGDate;
-        this.EXPDate = EXPDate;
-        this.supplierID = supplierID;
-        this.productName = productName;
-        this.quantity = quantity;
-        this.costPrice = costPrice;
-        this.sellingPrice = sellingPrice;
-        this.categoryID = categoryID;
-        this.userId = userId;
-        this.customerCode = customerCode;
-        this.totalCost = totalCost;
-        this.totalRevenue = totalRevenue;
-        this.SKUCode = SKUCode;
-    }
 
-    public String getSKUCode() {
-        return SKUCode;
-    }
-
-    public void setSKUCode(String SKUCode) {
-        this.SKUCode = SKUCode;
-    }
-
-    public Product(int productId, String productBarCode, LocalDate MFGDate, LocalDate EXPDate, int supplierID) {
-        this.productId = productId;
-        this.productBarCode = productBarCode;
-        this.MFGDate = MFGDate;
-        this.EXPDate = EXPDate;
-        this.supplierID = supplierID;
-    }
     public int getSupplierID() {
         return supplierID;
     }
@@ -156,21 +147,6 @@ public class Product {
 
     public void setCategoryID(int categoryID) {
         this.categoryID = categoryID;
-    }
-    public LocalDate getMFGDate() {
-        return MFGDate;
-    }
-
-    public void setMFGDate(LocalDate MFGDate) {
-        this.MFGDate = MFGDate;
-    }
-
-    public LocalDate getEXPDate() {
-        return EXPDate;
-    }
-
-    public void setEXPDate() {
-        this.EXPDate = EXPDate;
     }
 
     public int getProductId() {

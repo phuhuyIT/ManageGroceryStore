@@ -3,6 +3,7 @@ package Controller;
 import DAO.ProductDAO;
 import DatabaseConnection.ConnectionFactory;
 import Model.Product;
+import Model.productLot;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -53,7 +54,7 @@ public class AddOldLotController implements Initializable {
     btn_save.setOnAction(ActionEvent -> {
         totalQuantity += Integer.parseInt(tf_newQuantity.getText());
         batchList.put(LocalDate.parse(cb_selectBatch.getValue().toString()), totalQuantity);
-        new ProductDAO().updateOldBatch(new Product(ProductController.getCurrentItemID(), LocalDate.parse(cb_selectBatch.getValue().toString()),totalQuantity));
+        new ProductDAO().updateOldBatch(new productLot(ProductController.getCurrentItemID(), LocalDate.parse(cb_selectBatch.getValue().toString()),totalQuantity));
         lb_totalQuantity.setText(String.valueOf(batchList.get(LocalDate.parse(cb_selectBatch.getValue().toString()))));
         tf_newQuantity.clear();
     });

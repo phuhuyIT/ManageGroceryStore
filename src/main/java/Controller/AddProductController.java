@@ -5,6 +5,7 @@ import DAO.ProductDAO;
 import DAO.SupplierDAO;
 import Model.Product;
 import Model.Supplier;
+import Model.productLot;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -175,8 +176,10 @@ public class AddProductController extends ProductController implements Initializ
             CategoryDao categoryDao= new CategoryDao();
             int categoryId =categoryDao.getCategoryIDByName(lb_Category.getText());
             ProductDAO productdao = new ProductDAO();
-            Product product = new Product(tf_addProductName.getText(),categoryId,tf_addProductUPC.getText(),filePath.toString(),sid,Double.parseDouble(tf_addProductCostPrice.getText()),Double.parseDouble(tf_addProductSellingPrice.getText()),
-                    dp_addProductManufractureDate.getValue(),dp_addProductExpireDate.getValue(),Integer.parseInt(tf_addProductQuantity.getText()));
+            ArrayList<productLot> productLots = new ArrayList<>();
+            productLots.add(new productLot(tf_addProductUPC.getText(),dp_addProductManufractureDate.getValue(),dp_addProductExpireDate.getValue(),Integer.parseInt(tf_addProductQuantity.getText())));
+            Product product = new Product(tf_addProductName.getText(),categoryId,filePath.toString(),sid,Double.parseDouble(tf_addProductCostPrice.getText()),
+                    Double.parseDouble(tf_addProductSellingPrice.getText()), productLots);
             int isAdded=productdao.insert(product);
 
             if(isAdded!=0)

@@ -3,6 +3,7 @@ package Controller;
 import DAO.ProductDAO;
 import Model.DatePickerFormat;
 import Model.Product;
+import Model.productLot;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
@@ -36,7 +37,7 @@ public class AddNewLotController implements Initializable {
 
         btn_save.setOnAction(ActionEvent -> {
             int id =ProductController.getCurrentItemID();
-            new ProductDAO().addProductBatch(new Product(id, dp_mfgnewLot.getValue(), dp_expnewLot.getValue(), Integer.valueOf(tf_quantity.getText()),new ProductDAO().getProductBarCodeByID(id)));
+            new ProductDAO().addProductBatch(new Product(new productLot(new ProductDAO().getProductBarCodeByID(id), id, dp_mfgnewLot.getValue(), dp_expnewLot.getValue(), Integer.valueOf(tf_quantity.getText()))));
         });
     }
 }

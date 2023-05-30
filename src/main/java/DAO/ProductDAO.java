@@ -4,6 +4,7 @@ import Controller.InventoryAlert;
 import DatabaseConnection.ConnectionFactory;
 import Controller.CameraApp;
 import Model.Product;
+import Model.productLot;
 import com.google.zxing.WriterException;
 
 import java.io.IOException;
@@ -33,19 +34,8 @@ public class ProductDAO extends InventoryAlert implements DaoInterface<Product> 
     @Override
     public int insert(Product product) {
         try{
-            String productSKUCode = null;
-            productSKUCode = product.getProductBarCode()+" "+product.getMFGDate();
-            product.setSKUCode(productSKUCode);
-            String query = "SELECT pid FROM product_view WHERE productSKU=?";
-            pstmt = con.prepareStatement(query);
-            pstmt.setString(1,product.getSKUCode());
-            rs=pstmt.executeQuery();
-            if(rs.next()){
-                errorAlert("ERROR","THIS PRODUCT HAS BEEN ADDED!");
-                return 0;
-            }else{
+
                 addFunction(product);
-            }
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -145,8 +135,10 @@ public class ProductDAO extends InventoryAlert implements DaoInterface<Product> 
             pstmt.setDouble(6, product.getSellingPrice());
             pstmt.setString(7, product.getProductBarCode());
             pstmt.executeUpdate();
-            String skuFileName=product.getProductName()+product.getMFGDate();
-            CameraApp.skuGenerate(product.getSKUCode(),skuFileName+".png");
+            productLot lot = new productLot(product.getProductLots().get(0));
+            String skuCode = product.getProductBarCode() + lot.getMFGDate();
+            String skuFileName=product.getProductName()+ skuCode;
+            CameraApp.skuGenerate(skuCode,skuFileName+".png");
             String getPid ="SELECT LAST_INSERT_ID()";
             rs=pstmt.executeQuery(getPid);
             int pid=0;
@@ -174,20 +166,20 @@ public class ProductDAO extends InventoryAlert implements DaoInterface<Product> 
         }
         return totalQuantity;
     }
-    public void addProductBatch(Product product){
+    public void addProductBatch(Product producta){
 
         try {
             String addProductBatch= "INSERT INTO PRODUCTBATCH (pid, expirationDate, manufractureDate,quantity, ProductSKU)"
                     +"VALUE(?,?,?,?,?)";
-            String skuFileName = product.getProductBarCode()+product.getMFGDate();
-            product.setSKUCode(skuFileName);
-            CameraApp.skuGenerate(product.getSKUCode(),skuFileName+".png");
+            productLot product = new productLot(producta.getProductLots().get(0));
+            String skuFileName = product.getSKUCode()+product.getMFGDate();
+            CameraApp.skuGenerate(skuFileName,skuFileName+".png");
             pstmt = con.prepareStatement(addProductBatch);
-            pstmt.setInt(1,product.getProductId());
+            pstmt.setInt(1,product.getProductID());
             pstmt.setDate(2, Date.valueOf(product.getEXPDate()));
             pstmt.setDate(3,Date.valueOf(product.getMFGDate()));
             pstmt.setInt(4,product.getQuantity());
-            pstmt.setString(5,product.getSKUCode());
+            pstmt.setString(5,skuFileName);
             int affectedRows = pstmt.executeUpdate();
             if(affectedRows>0)
                 informationAlert("Success","ADDED NEW BATCH SUCCESSFUL");
@@ -233,16 +225,16 @@ public class ProductDAO extends InventoryAlert implements DaoInterface<Product> 
         }
         return rs;
     }
-    public void updateOldBatch(Product product){
+    public void updateOldBatch(productLot product){
         String updateProductBatch = "UPDATE PRODUCTBATCH SET Quantity=?,importDate=CURRENT_TIMESTAMP WHERE manufractureDate=? AND PID =?";
         try {
             pstmt = con.prepareStatement(updateProductBatch);
             pstmt.setInt(1, product.getQuantity());
             pstmt.setDate(2,Date.valueOf(product.getMFGDate()));
-            pstmt.setInt(3,product.getProductId());
+            pstmt.setInt(3,product.getProductID());
             int affectedRow = pstmt.executeUpdate();
             if(affectedRow>0)
-                informationAlert("Update","THE BATCH OF PRODUCT "+product.getProductId()+" PRODUCED ON "+product.getMFGDate()+" HAS BEEN UPDATED WITH THE QUANTITY");
+                informationAlert("Update","THE BATCH OF PRODUCT "+product.getProductID()+" PRODUCED ON "+product.getMFGDate()+" HAS BEEN UPDATED WITH THE QUANTITY");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
